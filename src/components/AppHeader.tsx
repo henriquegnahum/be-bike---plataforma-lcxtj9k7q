@@ -11,7 +11,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 
-export default function AppHeader() {
+export function AppHeader() {
   const location = useLocation()
   const { isMobile } = useSidebar()
 

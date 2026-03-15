@@ -20,7 +20,7 @@ const menuItems = [
   { title: 'Deliverer Master', icon: Users, url: '/deliverers' },
 ]
 
-export default function AppSidebar() {
+export function AppSidebar() {
   const location = useLocation()
 
   return (
