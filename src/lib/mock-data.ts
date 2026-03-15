@@ -50,6 +50,7 @@ export const deliverers = [
     score: 95,
     risk: 'Baixo',
     bike: 'X-123',
+    subsidy: { time: 98, acceptance: 90, completion: 95 },
   },
   {
     cpf: '222.333.444-55',
@@ -58,6 +59,7 @@ export const deliverers = [
     score: 60,
     risk: 'Alto',
     bike: 'Y-456',
+    subsidy: { time: 45, acceptance: 60, completion: 70 },
   },
   {
     cpf: '333.444.555-66',
@@ -66,13 +68,14 @@ export const deliverers = [
     score: 88,
     risk: 'Médio',
     bike: 'Z-789',
+    subsidy: { time: 85, acceptance: 80, completion: 88 },
   },
 ]
 
 export const bikes = [
   {
     chassi: 'X-123',
-    mileage: 2450,
+    mileage: 2510,
     lastMaintenance: '10/02/2026',
     status: 'Ativa',
     user: 'João Silva',
@@ -113,5 +116,31 @@ export const taskColumns = [
     id: 'done',
     title: 'Concluído',
     tasks: [{ id: 'T-4', chassi: 'X-123', desc: 'Ajuste Freio' }],
+  },
+]
+
+export const inventoryItems = [
+  { id: 'I-01', name: 'Pneu Aro 29', current: 4, min: 10, hub: 'Centro', usage: 'Alta' },
+  { id: 'I-02', name: 'Corrente KMC', current: 45, min: 20, hub: 'Sul', usage: 'Média' },
+  { id: 'I-03', name: 'Pastilha de Freio', current: 12, min: 15, hub: 'Norte', usage: 'Alta' },
+  { id: 'I-04', name: 'Módulo Eletrônico', current: 5, min: 5, hub: 'Centro', usage: 'Baixa' },
+]
+
+export const pendingApprovals = [
+  {
+    id: 'APP-001',
+    type: 'Manutenção',
+    desc: 'Troca de Motor (Bike #Y-456)',
+    value: 'R$ 1.250',
+    requester: 'Op-João',
+    team: 'Financeiro',
+  },
+  {
+    id: 'APP-002',
+    type: 'Subsídio',
+    desc: 'Aprovação Exceção 99',
+    value: 'R$ 150',
+    requester: 'Com-Maria',
+    team: 'Comercial',
   },
 ]
