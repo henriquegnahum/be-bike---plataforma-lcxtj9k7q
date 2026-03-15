@@ -1,163 +1,149 @@
 import { useParams, Link } from 'react-router-dom'
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { ArrowLeft, ExternalLink, Activity, Send } from 'lucide-react'
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table'
-import { useToast } from '@/hooks/use-toast'
-import { deliverers } from '@/lib/mock-data'
+  ArrowLeft,
+  User,
+  FileText,
+  MessageSquare,
+  Bike,
+  CalendarDays,
+  AlertTriangle,
+} from 'lucide-react'
+import { MOCK_DELIVERERS, MOCK_DELIVERER_LOGS } from '@/lib/mock-data'
 
 export default function DelivererDetail() {
   const { id } = useParams()
-  const { toast } = useToast()
+  const deliverer = MOCK_DELIVERERS.find((d) => d.id === id) || MOCK_DELIVERERS[0]
 
-  // Find deliverer or use default
-  const deliverer = deliverers.find((d) => d.cpf.replace(/\D/g, '') === id) || deliverers[0]
-
-  const handleComms = () => {
-    toast({
-      title: 'Notificação Enviada',
-      description: 'SMS e WhatsApp disparados com sucesso via Hub de Comunicação.',
-    })
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'Active':
+        return 'bg-primary text-white border-primary'
+      case 'Onboarding':
+        return 'bg-blue-500 text-white border-blue-500'
+      case 'In Debt':
+        return 'bg-destructive text-white border-destructive'
+      default:
+        return 'bg-secondary text-white border-secondary'
+    }
   }
 
   return (
-    <div className="flex flex-col gap-6 max-w-5xl mx-auto pb-10">
-      <div className="flex items-center gap-4 flex-wrap">
-        <Button variant="ghost" size="icon" asChild>
-          <Link to="/entregadores">
-            <ArrowLeft className="h-5 w-5" />
+    <div className="space-y-6">
+      <div className="flex items-center gap-4 mb-4">
+        <Button variant="outline" size="icon" asChild>
+          <Link to="/deliverers">
+            <ArrowLeft className="w-4 h-4" />
           </Link>
         </Button>
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">{deliverer.name}</h1>
-          <p className="text-muted-foreground font-mono">CPF: {deliverer.cpf}</p>
+          <div className="flex items-center gap-3">
+            <h1 className="text-3xl font-bold tracking-tight text-secondary">{deliverer.name}</h1>
+            <Badge variant="outline" className={getStatusColor(deliverer.status)}>
+              {deliverer.status}
+            </Badge>
+          </div>
+          <p className="text-muted-foreground flex items-center gap-2 mt-1 font-mono text-sm">
+            CPF: {deliverer.cpf}
+          </p>
         </div>
-        <Badge className="ml-auto bg-primary text-primary-foreground">Ativo</Badge>
-        <Button variant="outline" size="sm" onClick={handleComms}>
-          <Send className="w-4 h-4 mr-2" /> Contatar
-        </Button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Card className="shadow-subtle">
-          <CardHeader>
-            <CardTitle>Módulo de Subsídio (Integração 99)</CardTitle>
-            <CardDescription>Cálculo automático de elegibilidade mensal</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <SubsidyMetric title="Tempo de Serviço" value={deliverer.subsidy.time} min={80} />
-            <SubsidyMetric
-              title="Taxa de Aceitação"
-              value={deliverer.subsidy.acceptance}
-              min={85}
-            />
-            <SubsidyMetric
-              title="Taxa de Conclusão"
-              value={deliverer.subsidy.completion}
-              min={90}
-            />
-
-            <div className="pt-4 border-t mt-4">
-              <div className="flex items-center justify-between">
-                <span className="font-semibold text-sm">Status Atual</span>
-                <Badge variant={deliverer.subsidy.completion >= 90 ? 'default' : 'destructive'}>
-                  {deliverer.subsidy.completion >= 90 ? 'Elegível (Ouro)' : 'Risco de Perda'}
-                </Badge>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        <div className="flex flex-col gap-6">
-          <Card className="shadow-subtle">
-            <CardHeader>
-              <CardTitle>Ativo Vinculado</CardTitle>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="space-y-6 md:col-span-1">
+          <Card className="border-border shadow-sm">
+            <CardHeader className="bg-muted/20 border-b border-border pb-4">
+              <CardTitle className="text-lg flex items-center gap-2">
+                <User className="w-4 h-4 text-primary" /> Profile Details
+              </CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="flex items-center justify-between p-4 border rounded-xl bg-muted/30">
+            <CardContent className="pt-6 space-y-4">
+              <div>
+                <p className="text-sm text-muted-foreground mb-1">Joined Date</p>
+                <p className="font-medium flex items-center gap-2">
+                  <CalendarDays className="w-4 h-4 text-secondary" /> {deliverer.joinDate}
+                </p>
+              </div>
+              <div>
+                <p className="text-sm text-muted-foreground mb-1">Performance</p>
                 <div className="flex items-center gap-4">
-                  <div className="p-3 bg-primary/10 text-primary rounded-lg">
-                    <Activity className="w-5 h-5" />
+                  <div>
+                    <span className="font-bold text-lg">{deliverer.trips}</span> trips
                   </div>
                   <div>
-                    <h4 className="font-semibold text-sm">Bike Chassi #{deliverer.bike}</h4>
-                    <p className="text-xs text-muted-foreground">Última Telemetria: Há 5 min</p>
+                    <span className="font-bold text-lg text-primary">{deliverer.rating}</span> avg
+                    rating
                   </div>
                 </div>
-                <Button variant="outline" size="sm" asChild>
-                  <Link to={`/frota/${deliverer.bike}`}>
-                    Ver Frota <ExternalLink className="ml-2 w-3 h-3" />
-                  </Link>
-                </Button>
+              </div>
+              <div className="pt-4 border-t border-border">
+                <p className="text-sm text-muted-foreground mb-2">Current Asset</p>
+                {deliverer.activeBike ? (
+                  <div className="flex items-center gap-3 p-3 bg-muted/40 rounded-lg border border-border">
+                    <Bike className="w-5 h-5 text-secondary" />
+                    <div>
+                      <p className="text-xs text-muted-foreground">Chassi ID</p>
+                      <p className="font-mono font-medium text-sm">{deliverer.activeBike}</p>
+                    </div>
+                  </div>
+                ) : (
+                  <p className="text-sm italic text-muted-foreground">
+                    No bike currently assigned.
+                  </p>
+                )}
+              </div>
+              {deliverer.status === 'In Debt' && (
+                <div className="mt-4 p-3 bg-destructive/10 border border-destructive text-destructive rounded-lg flex items-start gap-2 text-sm">
+                  <AlertTriangle className="w-4 h-4 mt-0.5" />
+                  <p>User currently has pending payments. Contract suspended.</p>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="md:col-span-2 space-y-6">
+          <Card className="border-border shadow-sm h-full">
+            <CardHeader className="bg-muted/20 border-b border-border pb-4">
+              <CardTitle className="text-lg flex items-center gap-2">
+                <FileText className="w-4 h-4 text-primary" /> Journey & Communication Logs
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="pt-6">
+              <div className="space-y-6">
+                {MOCK_DELIVERER_LOGS.map((log) => (
+                  <div key={log.id} className="flex gap-4 group">
+                    <div className="flex flex-col items-center">
+                      <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-secondary border border-border group-hover:border-primary group-hover:text-primary transition-colors">
+                        {log.type === 'Communication' ? (
+                          <MessageSquare className="w-4 h-4" />
+                        ) : log.type === 'Fleet' ? (
+                          <Bike className="w-4 h-4" />
+                        ) : (
+                          <FileText className="w-4 h-4" />
+                        )}
+                      </div>
+                      <div className="w-px h-full bg-border mt-2 group-last:hidden"></div>
+                    </div>
+                    <div className="pb-6">
+                      <div className="flex items-center gap-2 mb-1">
+                        <Badge variant="secondary" className="text-[10px] uppercase tracking-wider">
+                          {log.type}
+                        </Badge>
+                        <span className="text-xs text-muted-foreground">{log.date}</span>
+                      </div>
+                      <p className="text-sm text-secondary leading-relaxed bg-muted/30 p-3 rounded-lg border border-border mt-2">
+                        {log.note}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </CardContent>
           </Card>
         </div>
-      </div>
-
-      <Card className="shadow-subtle">
-        <CardHeader>
-          <CardTitle>Histórico de Vinculação (Master Data)</CardTitle>
-          <CardDescription>Relacionamento entre CPF e Chassi ao longo do tempo</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Chassi (Bike)</TableHead>
-                <TableHead>Data Início</TableHead>
-                <TableHead>Data Fim</TableHead>
-                <TableHead>Status</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              <TableRow>
-                <TableCell className="font-mono">{deliverer.bike}</TableCell>
-                <TableCell>15/01/2026</TableCell>
-                <TableCell className="text-muted-foreground">Atual</TableCell>
-                <TableCell>
-                  <Badge>Ativo</Badge>
-                </TableCell>
-              </TableRow>
-              <TableRow className="opacity-70">
-                <TableCell className="font-mono">W-098</TableCell>
-                <TableCell>01/10/2025</TableCell>
-                <TableCell>14/01/2026</TableCell>
-                <TableCell>
-                  <Badge variant="secondary">Concluído</Badge>
-                </TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
-    </div>
-  )
-}
-
-function SubsidyMetric({ title, value, min }: { title: string; value: number; min: number }) {
-  const isEligible = value >= min
-  return (
-    <div>
-      <div className="flex items-center justify-between mb-2">
-        <span className="text-sm font-medium">{title}</span>
-        <span className={`text-sm font-bold ${isEligible ? 'text-primary' : 'text-destructive'}`}>
-          {value}% <span className="text-xs text-muted-foreground font-normal">(Min: {min}%)</span>
-        </span>
-      </div>
-      <div className="w-full bg-muted rounded-full h-2">
-        <div
-          className={`h-2 rounded-full ${isEligible ? 'bg-primary' : 'bg-destructive'}`}
-          style={{ width: `${value}%` }}
-        />
       </div>
     </div>
   )

@@ -1,81 +1,67 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    /* Brand Colors: Green #1cd15c, Background #f9fafb, Text #414042 */
-    --background: 210 33% 99%;
-    --foreground: 270 2% 26%; /* #414042 */
-
+    --background: 0 0% 100%;
+    --foreground: 250 2% 25.5%;
     --card: 0 0% 100%;
-    --card-foreground: 270 2% 26%;
-
+    --card-foreground: 250 2% 25.5%;
     --popover: 0 0% 100%;
-    --popover-foreground: 270 2% 26%;
-
-    --primary: 141 76% 46%; /* #1cd15c */
+    --popover-foreground: 250 2% 25.5%;
+    --primary: 141 76.5% 46.5%; /* #1cd15c Be Bike Green */
     --primary-foreground: 0 0% 100%;
-
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 270 2% 26%;
-
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96%;
-    --accent-foreground: 141 76% 46%;
-
+    --secondary: 250 2% 25.5%; /* #414042 Be Bike Gray */
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 141 10% 96%;
+    --accent-foreground: 141 76.5% 46.5%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 141 76% 46%;
-
-    --radius: 0.75rem;
-
-    --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 270 2% 26%;
-    --sidebar-primary: 141 76% 46%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 141 76.5% 46.5%;
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 141 76.5% 46.5%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 210 40% 96%;
-    --sidebar-accent-foreground: 141 76% 46%;
-    --sidebar-border: 214.3 31.8% 91.4%;
-    --sidebar-ring: 141 76% 46%;
-
-    --chart-1: 141 76% 46%;
-    --chart-2: 210 100% 50%;
-    --chart-3: 35 100% 50%;
-    --chart-4: 0 84% 60%;
-    --chart-5: 270 2% 26%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 141 76.5% 46.5%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --primary: 141 76% 46%;
-    --primary-foreground: 222.2 84% 4.9%;
-  }
-
-  body {
-    font-family: 'Inter', sans-serif;
+    --background: 250 2% 15%;
+    --foreground: 0 0% 98%;
+    --card: 250 2% 20%;
+    --card-foreground: 0 0% 98%;
+    --popover: 250 2% 15%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 141 76.5% 46.5%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 250 2% 25.5%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 250 2% 25%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 250 2% 25%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 250 2% 25%;
+    --input: 250 2% 25%;
+    --ring: 141 76.5% 46.5%;
   }
 }
 
-@layer utilities {
-  @keyframes pulse-alert {
-    0%,
-    100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.5;
-    }
+@layer base {
+  * {
+    @apply border-border;
   }
-  .animate-pulse-alert {
-    animation: pulse-alert 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  body {
+    @apply bg-background text-foreground font-sans;
   }
 }

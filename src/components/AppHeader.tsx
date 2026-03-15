@@ -1,56 +1,73 @@
-import { Bell, Search, Plus } from 'lucide-react'
-import { Input } from '@/components/ui/input'
+import { Link, useLocation } from 'react-router-dom'
+import { SidebarTrigger, useSidebar } from '@/components/ui/sidebar'
 import { Button } from '@/components/ui/button'
-import { SidebarTrigger } from '@/components/ui/sidebar'
+import { Bell, Menu, User } from 'lucide-react'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { Badge } from '@/components/ui/badge'
 
-export function AppHeader() {
+export default function AppHeader() {
+  const location = useLocation()
+  const { isMobile } = useSidebar()
+
+  const getPageTitle = () => {
+    const path = location.pathname
+    if (path === '/') return 'Dashboard'
+    if (path.startsWith('/crm')) return 'CRM & Funnel'
+    if (path.startsWith('/bikes')) return 'Fleet Master'
+    if (path.startsWith('/deliverers')) return 'Deliverer Master'
+    if (path.startsWith('/maintenance')) return 'Maintenance'
+    return ''
+  }
+
   return (
-    <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-background px-6 shadow-sm">
-      <SidebarTrigger />
-
-      <div className="flex-1 flex items-center gap-4">
-        <div className="relative w-full max-w-md">
-          <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-          <Input
-            type="search"
-            placeholder="Buscar por Chassi ou CPF..."
-            className="w-full bg-muted pl-9 rounded-full"
-          />
+    <header className="sticky top-0 z-10 w-full flex h-16 items-center justify-between border-b border-border bg-white px-4 md:px-6 shadow-sm">
+      <div className="flex items-center gap-4">
+        <SidebarTrigger>
+          <Menu className="h-5 w-5 text-secondary" />
+        </SidebarTrigger>
+        <div className="font-semibold text-lg text-secondary hidden md:block border-l pl-4 border-border/50">
+          {getPageTitle()}
         </div>
       </div>
 
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-3">
+        <Button
+          variant="ghost"
+          size="icon"
+          className="relative text-secondary hover:text-primary hover:bg-primary/10"
+        >
+          <Bell className="h-5 w-5" />
+          <span className="absolute top-2 right-2.5 h-2 w-2 rounded-full bg-destructive"></span>
+        </Button>
+
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon" className="relative">
-              <Bell className="h-5 w-5" />
-              <span className="absolute top-1 right-1 flex h-2 w-2 rounded-full bg-destructive animate-pulse-alert" />
+            <Button
+              variant="outline"
+              size="icon"
+              className="rounded-full border-border hover:border-primary"
+            >
+              <User className="h-4 w-4 text-secondary" />
+              <span className="sr-only">User menu</span>
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-64">
-            <DropdownMenuItem className="flex flex-col items-start gap-1 p-3">
-              <div className="flex items-center gap-2 font-semibold">
-                <Badge variant="destructive">Urgente</Badge>
-                Bike #X-123
-              </div>
-              <span className="text-sm text-muted-foreground">
-                Atingiu 2.500km. Revisão necessária.
-              </span>
+          <DropdownMenuContent align="end" className="w-56">
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>Profile Settings</DropdownMenuItem>
+            <DropdownMenuItem>System Configuration</DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem className="text-destructive focus:text-destructive">
+              Log out
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-
-        <Button className="rounded-full shadow-subtle hover:shadow-elevation transition-shadow">
-          <Plus className="mr-2 h-4 w-4" />
-          Ação Rápida
-        </Button>
       </div>
     </header>
   )

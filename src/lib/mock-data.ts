@@ -1,146 +1,176 @@
-export const kpis = {
-  mrr: 'R$ 452.890',
-  activeFleet: '88%',
-  churnRisk: '12 Entregadores',
-  subsidyPaid: 'R$ 34.500',
-}
-
-export const financialData = [
-  { month: 'Jan', projetado: 400000, realizado: 410000 },
-  { month: 'Fev', projetado: 420000, realizado: 415000 },
-  { month: 'Mar', projetado: 440000, realizado: 452890 },
-  { month: 'Abr', projetado: 460000, realizado: null },
-]
-
-export const fleetStatusData = [
-  { name: 'Ativas', value: 220, fill: 'var(--color-ativas)' },
-  { name: 'Manutenção', value: 15, fill: 'var(--color-manutencao)' },
-  { name: 'Ociosas', value: 15, fill: 'var(--color-ociosas)' },
-]
-
-export const alerts = [
+export const MOCK_CRM_LEADS = [
+  { id: '1', name: 'Carlos Silva', phone: '(11) 98888-1111', stage: 'Leads', source: 'Instagram' },
   {
-    id: 1,
-    type: 'warning',
-    title: 'Bike #X-123 atingiu 2.500km',
-    desc: 'Revisão preventiva necessária.',
-    urgent: true,
+    id: '2',
+    name: 'Ana Oliveira',
+    phone: '(11) 97777-2222',
+    stage: 'Contacted',
+    source: 'Referral',
+  },
+  { id: '3', name: 'Pedro Santos', phone: '(11) 96666-3333', stage: 'Analysis', source: 'Website' },
+  {
+    id: '4',
+    name: 'João Costa',
+    phone: '(11) 95555-4444',
+    stage: 'Negotiation',
+    source: 'Organic',
   },
   {
-    id: 2,
-    type: 'danger',
-    title: 'Risco de Inadimplência',
-    desc: 'Entregador CPF ***.456.789-** com 85% de risco.',
-    urgent: true,
-  },
-  {
-    id: 3,
-    type: 'info',
-    title: 'Estoque Baixo',
-    desc: 'Pneus aro 29 (Apenas 4 unidades restantes).',
-    urgent: false,
+    id: '5',
+    name: 'Maria Lima',
+    phone: '(11) 94444-5555',
+    stage: 'Signed/Onboarding',
+    source: 'Instagram',
   },
 ]
 
-export const deliverers = [
+export const MOCK_BIKES = [
   {
-    cpf: '111.222.333-44',
-    name: 'João Silva',
-    status: 'Ativo',
-    score: 95,
-    risk: 'Baixo',
-    bike: 'X-123',
-    subsidy: { time: 98, acceptance: 90, completion: 95 },
+    id: '1',
+    chassi: '9C21A4B2C3D4E5F6G',
+    status: 'In Use',
+    model: 'BeBike City Pro',
+    mileage: 1250,
+    nextMaintenance: '2024-05-10',
+    deliverer: 'Carlos Silva',
   },
   {
-    cpf: '222.333.444-55',
-    name: 'Maria Oliveira',
-    status: 'Em Risco',
-    score: 60,
-    risk: 'Alto',
-    bike: 'Y-456',
-    subsidy: { time: 45, acceptance: 60, completion: 70 },
+    id: '2',
+    chassi: '9C22B5C3D4E5F6G7H',
+    status: 'Maintenance',
+    model: 'BeBike Cargo',
+    mileage: 3400,
+    nextMaintenance: 'Overdue',
+    deliverer: null,
   },
   {
-    cpf: '333.444.555-66',
-    name: 'Carlos Santos',
-    status: 'Ativo',
-    score: 88,
-    risk: 'Médio',
-    bike: 'Z-789',
-    subsidy: { time: 85, acceptance: 80, completion: 88 },
-  },
-]
-
-export const bikes = [
-  {
-    chassi: 'X-123',
-    mileage: 2510,
-    lastMaintenance: '10/02/2026',
-    status: 'Ativa',
-    user: 'João Silva',
-  },
-  {
-    chassi: 'Y-456',
-    mileage: 3100,
-    lastMaintenance: '15/12/2025',
-    status: 'Manutenção',
-    user: 'Oficina',
-  },
-  {
-    chassi: 'Z-789',
-    mileage: 1200,
-    lastMaintenance: '01/03/2026',
-    status: 'Ativa',
-    user: 'Carlos Santos',
+    id: '3',
+    chassi: '9C23C6D4E5F6G7H8I',
+    status: 'Available',
+    model: 'BeBike City Pro',
+    mileage: 150,
+    nextMaintenance: '2024-11-20',
+    deliverer: null,
   },
 ]
 
-export const taskColumns = [
+export const MOCK_BIKE_OS = [
   {
-    id: 'pending',
-    title: 'Pendente',
-    tasks: [{ id: 'T-1', chassi: 'A-001', desc: 'Troca de Corrente' }],
+    id: 'OS-1029',
+    date: '2024-03-15',
+    description: 'Brake pad replacement',
+    cost: 45.0,
+    status: 'Completed',
   },
   {
-    id: 'progress',
-    title: 'Em Progresso',
-    tasks: [{ id: 'T-2', chassi: 'Y-456', desc: 'Revisão 3.000km' }],
+    id: 'OS-1045',
+    date: '2024-04-02',
+    description: 'Tire puncture repair',
+    cost: 25.0,
+    status: 'Completed',
   },
   {
-    id: 'validation',
-    title: 'Validação',
-    tasks: [{ id: 'T-3', chassi: 'B-002', desc: 'Troca de Pneu' }],
-  },
-  {
-    id: 'done',
-    title: 'Concluído',
-    tasks: [{ id: 'T-4', chassi: 'X-123', desc: 'Ajuste Freio' }],
+    id: 'OS-1088',
+    date: '2024-04-20',
+    description: 'Full drivetrain overhaul',
+    cost: 120.0,
+    status: 'In Progress',
   },
 ]
 
-export const inventoryItems = [
-  { id: 'I-01', name: 'Pneu Aro 29', current: 4, min: 10, hub: 'Centro', usage: 'Alta' },
-  { id: 'I-02', name: 'Corrente KMC', current: 45, min: 20, hub: 'Sul', usage: 'Média' },
-  { id: 'I-03', name: 'Pastilha de Freio', current: 12, min: 15, hub: 'Norte', usage: 'Alta' },
-  { id: 'I-04', name: 'Módulo Eletrônico', current: 5, min: 5, hub: 'Centro', usage: 'Baixa' },
+export const MOCK_BIKE_PARTS = [
+  { id: 'P-01', name: 'Ceramic Brake Pads', stock: 45, status: 'Good' },
+  { id: 'P-02', name: 'All-Weather Tire 26"', stock: 12, status: 'Low' },
+  { id: 'P-03', name: 'Chain Lubricant 500ml', stock: 8, status: 'Critical' },
 ]
 
-export const pendingApprovals = [
+export const MOCK_DELIVERERS = [
   {
-    id: 'APP-001',
-    type: 'Manutenção',
-    desc: 'Troca de Motor (Bike #Y-456)',
-    value: 'R$ 1.250',
-    requester: 'Op-João',
-    team: 'Financeiro',
+    id: '1',
+    name: 'Carlos Silva',
+    cpf: '123.456.789-00',
+    status: 'Active',
+    trips: 145,
+    rating: 4.8,
+    activeBike: '9C21A4B2C3D4E5F6G',
+    joinDate: '2023-11-10',
   },
   {
-    id: 'APP-002',
-    type: 'Subsídio',
-    desc: 'Aprovação Exceção 99',
-    value: 'R$ 150',
-    requester: 'Com-Maria',
-    team: 'Comercial',
+    id: '2',
+    name: 'Ana Oliveira',
+    cpf: '234.567.890-11',
+    status: 'Onboarding',
+    trips: 0,
+    rating: 0,
+    activeBike: null,
+    joinDate: '2024-04-25',
+  },
+  {
+    id: '3',
+    name: 'Pedro Santos',
+    cpf: '345.678.901-22',
+    status: 'In Debt',
+    trips: 412,
+    rating: 4.2,
+    activeBike: '9C23C6D4E5F6G7H8I',
+    joinDate: '2023-08-05',
+  },
+  {
+    id: '4',
+    name: 'João Costa',
+    cpf: '456.789.012-33',
+    status: 'Inactive',
+    trips: 89,
+    rating: 4.5,
+    activeBike: null,
+    joinDate: '2023-12-01',
+  },
+]
+
+export const MOCK_DELIVERER_LOGS = [
+  {
+    id: 'L-1',
+    date: '2024-04-24 10:30',
+    type: 'Communication',
+    note: 'Sent payment reminder via WhatsApp.',
+  },
+  {
+    id: 'L-2',
+    date: '2024-04-10 14:15',
+    type: 'Contract',
+    note: 'Signed new 6-month leasing agreement.',
+  },
+  {
+    id: 'L-3',
+    date: '2024-03-05 09:00',
+    type: 'Fleet',
+    note: 'Assigned to bike CHASSI: 9C23C6D4E5F6G7H8I.',
+  },
+]
+
+export const MOCK_CLOUD_HUMANS_TICKETS = [
+  {
+    id: 'CH-8821',
+    subject: 'App Login Issue',
+    user: 'Ana Oliveira',
+    status: 'Open',
+    priority: 'High',
+    time: '10m ago',
+  },
+  {
+    id: 'CH-8822',
+    subject: 'Payment not received',
+    user: 'Pedro Santos',
+    status: 'In Progress',
+    priority: 'Medium',
+    time: '2h ago',
+  },
+  {
+    id: 'CH-8815',
+    subject: 'Bike maintenance request',
+    user: 'Carlos Silva',
+    status: 'Resolved',
+    priority: 'Low',
+    time: '1d ago',
   },
 ]

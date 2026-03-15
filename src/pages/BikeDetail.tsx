@@ -1,139 +1,196 @@
 import { useParams, Link } from 'react-router-dom'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { ArrowLeft, Activity, MapPin, AlertTriangle, PlusCircle } from 'lucide-react'
-import { useToast } from '@/hooks/use-toast'
-import { bikes } from '@/lib/mock-data'
+import { Button } from '@/components/ui/button'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table'
+import {
+  ArrowLeft,
+  Wrench,
+  Settings,
+  History,
+  Bike as BikeIcon,
+  Calendar,
+  CheckCircle2,
+} from 'lucide-react'
+import { MOCK_BIKES, MOCK_BIKE_OS, MOCK_BIKE_PARTS } from '@/lib/mock-data'
 
 export default function BikeDetail() {
   const { id } = useParams()
-  const { toast } = useToast()
-
-  const bikeId = id || 'X-123'
-  const bike = bikes.find((b) => b.chassi === bikeId) || bikes[0]
-
-  const needsMaintenance = bike.mileage >= 2500
-
-  const handleCreateOS = () => {
-    toast({
-      title: 'Ordem de Serviço Criada',
-      description: `OS Preditiva gerada para a Bike #${bikeId}. Notificação enviada à oficina.`,
-    })
-  }
+  const bike = MOCK_BIKES.find((b) => b.id === id) || MOCK_BIKES[0]
 
   return (
-    <div className="flex flex-col gap-6 max-w-5xl mx-auto pb-10">
-      <div className="flex items-center gap-4 flex-wrap">
-        <Button variant="ghost" size="icon" asChild>
-          <Link to="/frota">
-            <ArrowLeft className="h-5 w-5" />
+    <div className="space-y-6">
+      <div className="flex items-center gap-4 mb-4">
+        <Button variant="outline" size="icon" asChild>
+          <Link to="/bikes">
+            <ArrowLeft className="w-4 h-4" />
           </Link>
         </Button>
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Bike #{bikeId}</h1>
-          <p className="text-muted-foreground">Telemetria e Histórico Operacional</p>
+          <h1 className="text-3xl font-bold tracking-tight font-mono text-secondary">
+            {bike.chassi}
+          </h1>
+          <p className="text-muted-foreground flex items-center gap-2 mt-1">
+            <BikeIcon className="w-4 h-4 text-primary" /> {bike.model} • Lifecycle Dashboard
+          </p>
         </div>
-        <Badge className="ml-auto bg-primary text-primary-foreground">Ativa (Em Rota)</Badge>
       </div>
 
-      {needsMaintenance && (
-        <div className="bg-destructive/10 border border-destructive/20 text-destructive p-4 rounded-xl flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <AlertTriangle className="w-6 h-6" />
-            <div>
-              <h4 className="font-semibold">Alerta de Manutenção Preditiva</h4>
-              <p className="text-sm opacity-90">
-                A bicicleta ultrapassou o limite de 2.500km de telemetria.
-              </p>
-            </div>
-          </div>
-          <Button variant="destructive" onClick={handleCreateOS}>
-            <PlusCircle className="w-4 h-4 mr-2" />
-            Gerar OS Auto
-          </Button>
-        </div>
-      )}
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Card className="shadow-subtle md:col-span-2">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <Card className="md:col-span-1 border-primary/20">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Activity className="text-primary w-5 h-5" />
-              Visão de Telemetria Integrada
-            </CardTitle>
+            <CardTitle className="text-lg">Current Status</CardTitle>
           </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-2 gap-4 mb-6">
-              <div className="p-4 rounded-xl border bg-muted/30">
-                <p className="text-sm text-muted-foreground mb-1">Km Atual</p>
-                <p className={`text-3xl font-bold ${needsMaintenance ? 'text-destructive' : ''}`}>
-                  {bike.mileage.toLocaleString()}{' '}
-                  <span className="text-sm font-normal text-muted-foreground">km</span>
-                </p>
-                <div className="w-full bg-muted rounded-full h-1 mt-3 overflow-hidden">
-                  <div
-                    className={`${needsMaintenance ? 'bg-destructive' : 'bg-primary'} h-1 rounded-full`}
-                    style={{ width: `${Math.min((bike.mileage / 2500) * 100, 100)}%` }}
-                  ></div>
-                </div>
-                <p className="text-[10px] text-muted-foreground mt-1 text-right">
-                  Limite preventivo: 2.500km
-                </p>
-              </div>
-              <div className="p-4 rounded-xl border bg-muted/30">
-                <p className="text-sm text-muted-foreground mb-1">Status da Bateria</p>
-                <p className="text-3xl font-bold">78%</p>
-                <div className="w-full bg-muted rounded-full h-1 mt-3 overflow-hidden">
-                  <div className="bg-primary h-1 rounded-full" style={{ width: '78%' }}></div>
-                </div>
-              </div>
+          <CardContent className="space-y-4">
+            <div>
+              <p className="text-sm text-muted-foreground mb-1">State</p>
+              <Badge className="text-sm px-3 py-1">{bike.status}</Badge>
             </div>
-
-            <div className="h-48 rounded-xl bg-slate-100 flex items-center justify-center border relative overflow-hidden">
-              <MapPin
-                className="text-primary w-8 h-8 absolute animate-bounce"
-                style={{ top: '40%', left: '50%' }}
-              />
-              <div className="absolute inset-0 opacity-10 bg-[url('https://img.usecurling.com/p/800/400?q=map')] bg-cover bg-center"></div>
-              <p className="text-muted-foreground font-medium z-10 relative bg-white/80 px-3 py-1 rounded-full shadow-sm text-sm">
-                Localização Real-time
-              </p>
+            <div>
+              <p className="text-sm text-muted-foreground mb-1">Current Deliverer</p>
+              <p className="font-medium">{bike.deliverer || 'None'}</p>
+            </div>
+            <div>
+              <p className="text-sm text-muted-foreground mb-1">Total Mileage</p>
+              <p className="font-medium">{bike.mileage} km</p>
+            </div>
+            <div className="pt-4 border-t border-border">
+              <Button className="w-full bg-primary hover:bg-primary/90 text-white">
+                <Wrench className="w-4 h-4 mr-2" /> New Service Order
+              </Button>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="shadow-subtle">
-          <CardHeader>
-            <CardTitle>Ciclo de Manutenção</CardTitle>
-            <CardDescription>Histórico de intervenções</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="relative border-l ml-3 border-muted space-y-6">
-              {needsMaintenance && (
-                <div className="relative pl-6">
-                  <span className="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-destructive ring-4 ring-background animate-pulse-alert"></span>
-                  <p className="text-sm font-semibold text-destructive">Hoje</p>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    Alerta preditivo gerado (2.500km).
-                  </p>
+        <Card className="md:col-span-3">
+          <CardContent className="p-0">
+            <Tabs defaultValue="maintenance" className="w-full">
+              <div className="px-6 py-4 border-b border-border bg-muted/20">
+                <TabsList className="grid w-full max-w-md grid-cols-3">
+                  <TabsTrigger value="maintenance">
+                    <Wrench className="w-4 h-4 mr-2" /> OrdSrv
+                  </TabsTrigger>
+                  <TabsTrigger value="parts">
+                    <Settings className="w-4 h-4 mr-2" /> Parts
+                  </TabsTrigger>
+                  <TabsTrigger value="history">
+                    <History className="w-4 h-4 mr-2" /> Timeline
+                  </TabsTrigger>
+                </TabsList>
+              </div>
+
+              <TabsContent value="maintenance" className="p-6 m-0">
+                <div className="flex justify-between items-center mb-4">
+                  <h3 className="text-lg font-semibold text-secondary">Service Orders History</h3>
                 </div>
-              )}
-              <div className="relative pl-6">
-                <span
-                  className={`absolute -left-1.5 top-1.5 w-3 h-3 rounded-full ${!needsMaintenance ? 'bg-primary' : 'bg-muted-foreground'} ring-4 ring-background`}
-                ></span>
-                <p className="text-sm font-semibold">{bike.lastMaintenance}</p>
-                <p className="text-xs text-muted-foreground mt-1">Revisão preventiva (OS #1029).</p>
-              </div>
-              <div className="relative pl-6">
-                <span className="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-muted-foreground ring-4 ring-background"></span>
-                <p className="text-sm font-semibold">15/01/2026</p>
-                <p className="text-xs text-muted-foreground mt-1">
-                  Troca de pneu traseiro (OS #0844).
-                </p>
-              </div>
-            </div>
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>OS Number</TableHead>
+                      <TableHead>Date</TableHead>
+                      <TableHead>Description</TableHead>
+                      <TableHead>Cost</TableHead>
+                      <TableHead>Status</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {MOCK_BIKE_OS.map((os) => (
+                      <TableRow key={os.id}>
+                        <TableCell className="font-medium">{os.id}</TableCell>
+                        <TableCell>{os.date}</TableCell>
+                        <TableCell>{os.description}</TableCell>
+                        <TableCell>${os.cost.toFixed(2)}</TableCell>
+                        <TableCell>
+                          <Badge
+                            variant={os.status === 'Completed' ? 'default' : 'secondary'}
+                            className={os.status === 'Completed' ? 'bg-primary' : ''}
+                          >
+                            {os.status}
+                          </Badge>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TabsContent>
+
+              <TabsContent value="parts" className="p-6 m-0">
+                <h3 className="text-lg font-semibold text-secondary mb-4">
+                  Parts & Inventory Tracker
+                </h3>
+                <div className="grid gap-4 md:grid-cols-2">
+                  {MOCK_BIKE_PARTS.map((part) => (
+                    <div
+                      key={part.id}
+                      className="flex items-center justify-between p-4 border border-border rounded-lg"
+                    >
+                      <div>
+                        <p className="font-medium">{part.name}</p>
+                        <p className="text-sm text-muted-foreground">ID: {part.id}</p>
+                      </div>
+                      <div className="text-right">
+                        <Badge
+                          variant="outline"
+                          className={
+                            part.status === 'Critical' ? 'border-red-500 text-red-500' : ''
+                          }
+                        >
+                          Stock: {part.stock}
+                        </Badge>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </TabsContent>
+
+              <TabsContent value="history" className="p-6 m-0">
+                <h3 className="text-lg font-semibold text-secondary mb-6">
+                  Chronological Timeline
+                </h3>
+                <div className="space-y-6 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-border before:to-transparent">
+                  <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                    <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-primary text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                      <CheckCircle2 className="w-5 h-5" />
+                    </div>
+                    <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-lg border border-border bg-card shadow-sm">
+                      <div className="flex items-center justify-between mb-1">
+                        <div className="font-bold text-secondary">Maintenance Completed</div>
+                        <time className="text-xs font-medium text-muted-foreground">
+                          Mar 15, 2024
+                        </time>
+                      </div>
+                      <div className="text-sm text-muted-foreground">
+                        Brake pad replacement done by Workshop Team.
+                      </div>
+                    </div>
+                  </div>
+                  <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                    <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-secondary text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                      <Calendar className="w-5 h-5" />
+                    </div>
+                    <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-lg border border-border bg-card shadow-sm">
+                      <div className="flex items-center justify-between mb-1">
+                        <div className="font-bold text-secondary">Assigned to Carlos</div>
+                        <time className="text-xs font-medium text-muted-foreground">
+                          Nov 10, 2023
+                        </time>
+                      </div>
+                      <div className="text-sm text-muted-foreground">
+                        Contract signed and bike delivered in perfect condition.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </TabsContent>
+            </Tabs>
           </CardContent>
         </Card>
       </div>
