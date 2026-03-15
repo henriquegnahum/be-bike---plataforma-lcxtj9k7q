@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { AlertTriangle, TrendingUp, Activity, DollarSign } from 'lucide-react'
+import { AlertTriangle, TrendingUp, Activity, DollarSign, Sparkles } from 'lucide-react'
 import { kpis, financialData, fleetStatusData, alerts } from '@/lib/mock-data'
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart'
 import {
