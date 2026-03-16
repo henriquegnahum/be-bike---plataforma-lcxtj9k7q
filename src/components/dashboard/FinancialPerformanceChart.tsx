@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid } from 'recharts'
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Cell } from 'recharts'
 import {
   ChartContainer,
   ChartTooltip,
@@ -27,8 +27,8 @@ export function FinancialPerformanceChart() {
 
   const config = useMemo(
     () => ({
-      revenue: { label: t('revenue'), color: 'hsl(var(--primary))' },
-      expenses: { label: t('expenses'), color: '#ef4444' },
+      revenue: { label: t('revenue'), theme: { light: '#065f46', dark: '#34d399' } },
+      expenses: { label: t('expenses'), theme: { light: '#b91c1c', dark: '#f87171' } },
     }),
     [t],
   )
@@ -44,17 +44,7 @@ export function FinancialPerformanceChart() {
           config={config}
           className="w-full h-full min-h-[280px] max-h-[320px] animate-in zoom-in-95 fade-in duration-1000 fill-mode-both"
         >
-          <AreaChart data={data} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-            <defs>
-              <linearGradient id="fillRev" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="var(--color-revenue)" stopOpacity={0.4} />
-                <stop offset="95%" stopColor="var(--color-revenue)" stopOpacity={0} />
-              </linearGradient>
-              <linearGradient id="fillExp" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="var(--color-expenses)" stopOpacity={0.2} />
-                <stop offset="95%" stopColor="var(--color-expenses)" stopOpacity={0} />
-              </linearGradient>
-            </defs>
+          <BarChart data={data} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
             <CartesianGrid
               strokeDasharray="4 4"
               vertical={false}
@@ -77,30 +67,33 @@ export function FinancialPerformanceChart() {
               className="text-muted-foreground font-medium"
             />
             <ChartTooltip
-              content={
-                <ChartTooltipContent indicator="dot" className="glass-card bg-background/90" />
-              }
-              cursor={{ stroke: 'hsl(var(--primary)/0.3)', strokeWidth: 2, strokeDasharray: '4 4' }}
+              content={<ChartTooltipContent className="glass-card bg-background/90" />}
+              cursor={{ fill: 'hsl(var(--muted)/0.3)' }}
             />
             <ChartLegend content={<ChartLegendContent />} />
-            <Area
-              type="monotone"
+            <Bar
               dataKey="revenue"
-              stroke="var(--color-revenue)"
-              strokeWidth={4}
-              fill="url(#fillRev)"
+              fill="var(--color-revenue)"
+              radius={[4, 4, 0, 0]}
               animationDuration={2000}
-              activeDot={{ r: 6, fill: 'var(--color-revenue)', stroke: '#fff', strokeWidth: 2 }}
-            />
-            <Area
-              type="monotone"
+              barSize={24}
+            >
+              {data.map((entry, index) => (
+                <Cell key={`cell-${index}`} className="hover:opacity-80 transition-opacity" />
+              ))}
+            </Bar>
+            <Bar
               dataKey="expenses"
-              stroke="var(--color-expenses)"
-              strokeWidth={3}
-              fill="url(#fillExp)"
+              fill="var(--color-expenses)"
+              radius={[4, 4, 0, 0]}
               animationDuration={2000}
-            />
-          </AreaChart>
+              barSize={24}
+            >
+              {data.map((entry, index) => (
+                <Cell key={`cell-${index}`} className="hover:opacity-80 transition-opacity" />
+              ))}
+            </Bar>
+          </BarChart>
         </ChartContainer>
       </CardContent>
     </Card>

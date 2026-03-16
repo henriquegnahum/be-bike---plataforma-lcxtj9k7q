@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Sparkles, Send, Bot, User, BrainCircuit } from 'lucide-react'
+import { Sparkles, Send, Bot, User, BrainCircuit, Mic, AudioLines } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import {
@@ -27,6 +27,8 @@ export function AIAssistant({
   ])
   const [input, setInput] = useState('')
   const [isTyping, setIsTyping] = useState(false)
+  const [isListening, setIsListening] = useState(false)
+  const [isSpeaking, setIsSpeaking] = useState(false)
 
   useEffect(() => {
     const defaultContent = t('ai_default_response')
@@ -39,8 +41,21 @@ export function AIAssistant({
     }
   }, [language, t, messages])
 
+  const handleVoiceToggle = () => {
+    if (isListening) {
+      setIsListening(false)
+    } else {
+      setIsListening(true)
+      // Simulating voice-to-text input processing
+      setTimeout(() => {
+        setIsListening(false)
+        setInput('Qual a situação de manutenção no Hub SP-Sul?')
+      }, 3000)
+    }
+  }
+
   const handleSend = () => {
-    if (!input.trim()) return
+    if (!input.trim() && !isListening) return
     const newMsg = { role: 'user', content: input }
     setMessages((prev) => [...prev, newMsg])
     setInput('')
@@ -80,6 +95,9 @@ export function AIAssistant({
 
       setMessages((prev) => [...prev, { role: 'assistant', content: aiResponse }])
       setIsTyping(false)
+      setIsSpeaking(true)
+      // Simulate speaking duration
+      setTimeout(() => setIsSpeaking(false), 3500)
     }, 1500)
   }
 
@@ -126,9 +144,14 @@ export function AIAssistant({
                   {m.role === 'user' ? <User size={16} /> : <Bot size={16} />}
                 </div>
                 <div
-                  className={`p-4 rounded-2xl shadow-sm ${m.role === 'user' ? 'bg-primary text-primary-foreground rounded-tr-sm' : 'bg-card border border-border/60 rounded-tl-sm'}`}
+                  className={`p-4 rounded-2xl shadow-sm relative ${m.role === 'user' ? 'bg-primary text-primary-foreground rounded-tr-sm' : 'bg-card border border-border/60 rounded-tl-sm'}`}
                 >
                   {renderMessage(m.content)}
+                  {m.role === 'assistant' && i === messages.length - 1 && isSpeaking && (
+                    <div className="absolute -bottom-2 -right-2 bg-primary text-white p-1.5 rounded-full shadow-md animate-pulse">
+                      <AudioLines className="w-3 h-3" />
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
@@ -159,20 +182,29 @@ export function AIAssistant({
               e.preventDefault()
               handleSend()
             }}
-            className="flex gap-2"
+            className="flex gap-2 items-center"
           >
+            <Button
+              type="button"
+              size="icon"
+              variant={isListening ? 'default' : 'outline'}
+              className={`h-12 w-12 rounded-full shrink-0 shadow-sm transition-all duration-300 ${isListening ? 'animate-pulse bg-red-500 hover:bg-red-600 text-white border-transparent shadow-[0_0_15px_rgba(239,68,68,0.5)]' : 'bg-background hover:bg-muted'}`}
+              onClick={handleVoiceToggle}
+            >
+              <Mic className="w-5 h-5" />
+            </Button>
             <Input
-              value={input}
+              value={isListening ? 'Ouvindo...' : input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder={t('ai_placeholder')}
-              className="rounded-full shadow-inner bg-background focus-visible:ring-primary/50 h-12 px-5 font-medium"
-              disabled={isTyping}
+              placeholder={isListening ? 'Fale agora...' : t('ai_placeholder')}
+              className="rounded-full shadow-inner bg-background focus-visible:ring-primary/50 h-12 px-5 font-medium flex-1"
+              disabled={isTyping || isListening}
             />
             <Button
               type="submit"
               size="icon"
               className="h-12 w-12 rounded-full shrink-0 shadow-md bg-primary hover:bg-primary/90 text-white hover:scale-105 transition-transform"
-              disabled={isTyping || !input.trim()}
+              disabled={isTyping || (!input.trim() && !isListening)}
             >
               <Send className="w-5 h-5 ml-0.5" />
             </Button>

@@ -5,11 +5,10 @@ import { AppHeader } from './AppHeader'
 import { AIAssistant } from './AIAssistant'
 import { TopAlerts } from './TopAlerts'
 import { RightSidebar } from './RightSidebar'
-import { InternalChat } from './InternalChat'
 import useAppStore from '@/stores/main'
 
 export default function Layout() {
-  const { aiOpen, setAiOpen, chatOpen, setChatOpen } = useAppStore()
+  const { aiOpen, setAiOpen } = useAppStore()
 
   return (
     <SidebarProvider>
@@ -30,7 +29,6 @@ export default function Layout() {
         </div>
 
         <AIAssistant open={aiOpen} onOpenChange={setAiOpen} />
-        <InternalChat open={chatOpen} onOpenChange={setChatOpen} />
       </div>
     </SidebarProvider>
   )

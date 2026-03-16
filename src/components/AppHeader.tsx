@@ -37,6 +37,8 @@ export function AppHeader() {
     if (path.startsWith('/tasks')) return t('tasks')
     if (path.startsWith('/hubs')) return t('hubs')
     if (path.startsWith('/calendar')) return t('calendar')
+    if (path.startsWith('/chat')) return 'Comunicação e Chat'
+    if (path.startsWith('/integrations')) return 'Integrações Workspace'
     return ''
   }
 

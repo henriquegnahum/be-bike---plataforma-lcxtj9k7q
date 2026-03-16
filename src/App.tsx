@@ -18,6 +18,8 @@ import Community from '@/pages/Community'
 import Tasks from '@/pages/Tasks'
 import Financial from '@/pages/Financial'
 import Security from '@/pages/Security'
+import Chat from '@/pages/Chat'
+import Integrations from '@/pages/Integrations'
 import NotFound from '@/pages/NotFound'
 import { AppProvider } from '@/stores/main'
 import { ThemeProvider } from 'next-themes'
@@ -67,6 +69,9 @@ function App() {
               <Route path="tasks" element={<Tasks />} />
               <Route path="financial" element={<Financial />} />
               <Route path="security" element={<Security />} />
+              <Route path="chat" element={<Chat />} />
+              <Route path="chat/:channel" element={<Chat />} />
+              <Route path="integrations" element={<Integrations />} />
               <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>

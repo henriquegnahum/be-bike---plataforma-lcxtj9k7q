@@ -30,11 +30,26 @@ export function FleetDistributionChart() {
 
   const config = useMemo(
     () => ({
-      fleet_segment_99food: { label: t('fleet_segment_99food'), color: 'hsl(var(--primary))' },
-      fleet_segment_other: { label: t('fleet_segment_other'), color: '#34d399' },
-      fleet_segment_b2b: { label: t('fleet_segment_b2b'), color: '#0ea5e9' },
-      fleet_segment_intermediation: { label: t('fleet_segment_intermediation'), color: '#f59e0b' },
-      fleet_segment_own: { label: t('fleet_segment_own'), color: '#8b5cf6' },
+      fleet_segment_99food: {
+        label: t('fleet_segment_99food'),
+        theme: { light: '#065f46', dark: '#34d399' },
+      },
+      fleet_segment_other: {
+        label: t('fleet_segment_other'),
+        theme: { light: '#4338ca', dark: '#818cf8' },
+      },
+      fleet_segment_b2b: {
+        label: t('fleet_segment_b2b'),
+        theme: { light: '#0369a1', dark: '#38bdf8' },
+      },
+      fleet_segment_intermediation: {
+        label: t('fleet_segment_intermediation'),
+        theme: { light: '#b45309', dark: '#fbbf24' },
+      },
+      fleet_segment_own: {
+        label: t('fleet_segment_own'),
+        theme: { light: '#be185d', dark: '#f472b6' },
+      },
     }),
     [t],
   )
@@ -78,12 +93,12 @@ export function FleetDistributionChart() {
               ))}
             </Pie>
             <ChartTooltip
-              content={<ChartTooltipContent hideLabel />}
+              content={<ChartTooltipContent hideLabel className="glass-card bg-background/90" />}
               cursor={{ fill: 'transparent' }}
             />
             <ChartLegend
               content={<ChartLegendContent />}
-              className="flex-wrap gap-x-4 gap-y-2 text-[11px] mt-4 opacity-80"
+              className="flex-wrap gap-x-4 gap-y-2 text-[11px] mt-4 font-medium"
             />
           </PieChart>
         </ChartContainer>

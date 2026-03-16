@@ -8,6 +8,7 @@ import {
   DollarSign,
   Brain,
   Settings,
+  MessageSquare,
 } from 'lucide-react'
 
 export const navHierarchy = [
@@ -17,10 +18,26 @@ export const navHierarchy = [
     roles: ['Admin', 'Finance', 'Operations', 'Hubs', 'Supply'],
     items: [
       { title: 'Dashboard Executivo', url: '/' },
-      { title: 'Painel de Hubs', url: '/hubs' },
       { title: 'Alertas Críticos', url: '/security' },
       { title: 'Agenda Operacional', url: '/calendar' },
       { title: 'Agenda Executiva', url: '/calendar' },
+    ],
+  },
+  {
+    title: 'Comunicação',
+    icon: MessageSquare,
+    roles: ['Admin', 'Operations', 'Hubs', 'Supply', 'Finance'],
+    items: [
+      {
+        title: 'Canais de Chat',
+        subItems: [
+          { title: '# geral', url: '/chat/geral' },
+          { title: '# operacoes', url: '/chat/operacoes' },
+          { title: '# manutencao', url: '/chat/manutencao' },
+          { title: '# hubs', url: '/chat/hubs' },
+          { title: '# financeiro', url: '/chat/financeiro' },
+        ],
+      },
     ],
   },
   {
@@ -65,7 +82,7 @@ export const navHierarchy = [
       {
         title: 'Hubs',
         subItems: [
-          { title: 'Visão Geral', url: '/hubs' },
+          { title: 'Painel de Hubs', url: '/hubs' },
           { title: 'Retiradas', url: '/hubs' },
           { title: 'Devoluções', url: '/hubs' },
           { title: 'Estoque', url: '/hubs' },
@@ -88,7 +105,7 @@ export const navHierarchy = [
           { title: 'Inventário Global', url: '/maintenance' },
           { title: 'Pedidos', url: '/maintenance' },
           { title: 'Fornecedores', url: '/maintenance' },
-          { title: 'Hubs', url: '/maintenance' },
+          { title: 'Hubs (Estoque)', url: '/maintenance' },
           { title: 'Alertas', url: '/maintenance' },
         ],
       },
@@ -159,9 +176,8 @@ export const navHierarchy = [
     roles: ['Admin'],
     items: [
       { title: 'Usuários', url: '/' },
+      { title: 'Integrações Google', url: '/integrations' },
       { title: 'Permissões', url: '/' },
-      { title: 'Hubs', url: '/' },
-      { title: 'Integrações', url: '/' },
       { title: 'Logs', url: '/' },
       { title: 'Auditoria', url: '/' },
       { title: 'Configurações', url: '/' },

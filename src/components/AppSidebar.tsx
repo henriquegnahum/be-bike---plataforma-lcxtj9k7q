@@ -29,7 +29,7 @@ import { navHierarchy } from '@/lib/navigation'
 
 export function AppSidebar() {
   const location = useLocation()
-  const { role, setRole, setAiOpen, setChatOpen } = useAppStore()
+  const { role, setRole, setAiOpen } = useAppStore()
 
   const roles = ['Admin', 'Finance', 'Operations', 'Hubs', 'Supply']
 
@@ -130,9 +130,11 @@ export function AppSidebar() {
           <Button
             variant="outline"
             className="flex-1 rounded-xl shadow-sm border-border/60 hover:bg-primary/10 hover:text-primary hover:border-primary/30"
-            onClick={() => setChatOpen(true)}
+            asChild
           >
-            <MessageSquare className="w-4 h-4 mr-2" /> Chat
+            <Link to="/chat/geral">
+              <MessageSquare className="w-4 h-4 mr-2" /> Chat
+            </Link>
           </Button>
           <Button
             variant="default"
