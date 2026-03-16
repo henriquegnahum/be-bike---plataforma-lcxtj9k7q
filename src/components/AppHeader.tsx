@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom'
 import { SidebarTrigger } from '@/components/ui/sidebar'
 import { Button } from '@/components/ui/button'
-import { Menu, User, Settings, Globe, MessageSquarePlus, Sun, Moon } from 'lucide-react'
+import { Menu, Globe, Sun, Moon } from 'lucide-react'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,28 +10,17 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { Badge } from '@/components/ui/badge'
 import useAppStore from '@/stores/main'
 import { useTranslation } from '@/lib/i18n'
-import { useToast } from '@/hooks/use-toast'
 import { useTheme } from 'next-themes'
 
 export function AppHeader() {
   const location = useLocation()
-  const { role, setRole, language, setLanguage } = useAppStore()
+  const { language, setLanguage } = useAppStore()
   const t = useTranslation()
-  const { toast } = useToast()
   const { theme, setTheme } = useTheme()
 
-  const roles = ['Admin', 'Finance', 'Operations', 'Hubs', 'Supply']
   const languages = ['PT', 'EN', 'ES'] as const
-
-  const handleFeedback = () => {
-    toast({
-      title: 'Feedback Loop',
-      description: 'Formulário de sugestões de implementação aberto.',
-    })
-  }
 
   const getPageTitle = () => {
     const path = location.pathname
@@ -46,36 +35,23 @@ export function AppHeader() {
     if (path.startsWith('/financial')) return t('financial')
     if (path.startsWith('/security')) return t('security')
     if (path.startsWith('/tasks')) return t('tasks')
+    if (path.startsWith('/hubs')) return t('hubs')
+    if (path.startsWith('/calendar')) return t('calendar')
     return ''
   }
 
   return (
-    <header className="sticky top-0 z-20 w-full flex h-16 items-center justify-between border-b glass-panel px-4 md:px-6 shadow-sm">
+    <header className="sticky top-0 z-20 w-full flex h-14 items-center justify-between border-b border-border/50 glass-panel px-4 md:px-6 shadow-sm">
       <div className="flex items-center gap-4">
         <SidebarTrigger>
           <Menu className="h-5 w-5 text-foreground" />
         </SidebarTrigger>
-        <div className="font-bold text-lg text-foreground hidden md:flex items-center gap-3 border-l pl-4 border-border/50">
+        <div className="font-extrabold text-lg text-foreground hidden md:flex items-center gap-3 border-l pl-4 border-border/50">
           {getPageTitle()}
-          <Badge
-            variant="outline"
-            className="text-[10px] uppercase font-bold bg-primary/10 text-primary border-primary/20 backdrop-blur-sm"
-          >
-            {role}
-          </Badge>
         </div>
       </div>
 
       <div className="flex items-center gap-2">
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={handleFeedback}
-          className="hidden md:flex gap-2 text-muted-foreground hover:text-foreground hover:bg-background/40"
-        >
-          <MessageSquarePlus className="w-4 h-4" /> {t('feedback')}
-        </Button>
-
         <Button
           variant="ghost"
           size="icon"
@@ -104,7 +80,7 @@ export function AppHeader() {
               <DropdownMenuItem
                 key={l}
                 onClick={() => setLanguage(l)}
-                className="justify-between cursor-pointer"
+                className="justify-between cursor-pointer font-medium"
               >
                 {l === 'PT' ? 'Português (BR)' : l === 'EN' ? 'English' : 'Español'}
                 {language === l && (
@@ -112,39 +88,6 @@ export function AppHeader() {
                 )}
               </DropdownMenuItem>
             ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
-
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button
-              variant="outline"
-              size="sm"
-              className="gap-2 ml-2 border-border/60 hover:border-primary/50 transition-colors bg-white/40 dark:bg-black/40 backdrop-blur-md rounded-2xl"
-            >
-              <User className="h-4 w-4 text-primary" />
-              <span className="hidden sm:inline-block font-semibold">{role}</span>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-56 glass-card">
-            <DropdownMenuLabel>Switch Role</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            {roles.map((r) => (
-              <DropdownMenuItem
-                key={r}
-                onClick={() => setRole(r)}
-                className="justify-between cursor-pointer"
-              >
-                {r}{' '}
-                {role === r && (
-                  <span className="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_var(--primary)]" />
-                )}
-              </DropdownMenuItem>
-            ))}
-            <DropdownMenuSeparator />
-            <DropdownMenuItem className="cursor-pointer text-muted-foreground">
-              <Settings className="w-4 h-4 mr-2" /> System Configuration
-            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
