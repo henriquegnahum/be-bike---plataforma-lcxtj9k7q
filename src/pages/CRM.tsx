@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from '@/lib/i18n'
 import { useToast } from '@/hooks/use-toast'
 
-const STAGES = ['Leads', 'Contacted', 'Analysis', 'Negotiation', 'Signed/Onboarding']
+const STAGES = ['Leads', 'Contacted', 'Analysis', 'Negotiation', 'Signed/Onboarding'] as const
 
 export default function CRM() {
   const [leads, setLeads] = useState(MOCK_CRM_LEADS)
@@ -21,7 +21,7 @@ export default function CRM() {
     setLeads((current) =>
       current.map((lead) => {
         if (lead.id !== id) return lead
-        const currentIndex = STAGES.indexOf(lead.stage)
+        const currentIndex = STAGES.indexOf(lead.stage as any)
         const newIndex = direction === 'next' ? currentIndex + 1 : currentIndex - 1
         if (newIndex >= 0 && newIndex < STAGES.length) {
           return { ...lead, stage: STAGES[newIndex] }
@@ -32,17 +32,15 @@ export default function CRM() {
   }
 
   const handleAction = (action: string) => {
-    toast({ title: action, description: `Ação ${action} simulada com sucesso.` })
+    toast({ title: t('action_executed'), description: `${t('system_processing')} ${action}` })
   }
 
   return (
     <div className="space-y-6 h-[calc(100vh-8rem)] flex flex-col">
       <div className="flex justify-between items-center flex-wrap gap-4">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-secondary">Advanced CRM Funnel</h1>
-          <p className="text-muted-foreground">
-            Manage deliverer acquisition with predictive scoring.
-          </p>
+          <h1 className="text-3xl font-bold tracking-tight text-secondary">{t('crm_title')}</h1>
+          <p className="text-muted-foreground">{t('crm_desc')}</p>
         </div>
         <div className="flex gap-2">
           <Button variant="outline" onClick={() => handleAction('Export CSV')}>
@@ -64,7 +62,7 @@ export default function CRM() {
             className="w-80 flex-shrink-0 bg-muted/40 rounded-xl p-4 border border-border flex flex-col max-h-full"
           >
             <div className="flex items-center justify-between mb-4">
-              <h3 className="font-semibold text-secondary">{stage}</h3>
+              <h3 className="font-semibold text-secondary">{t(stage)}</h3>
               <Badge variant="secondary" className="bg-white shadow-sm">
                 {leads.filter((l) => l.stage === stage).length}
               </Badge>
@@ -89,7 +87,7 @@ export default function CRM() {
                           </span>
                           {lead.type && (
                             <span className="text-xs font-medium text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded-sm w-fit">
-                              {lead.type}
+                              {t(lead.type as any)}
                             </span>
                           )}
                         </div>
@@ -124,7 +122,7 @@ export default function CRM() {
                 ))}
               {leads.filter((l) => l.stage === stage).length === 0 && (
                 <div className="text-center text-sm text-muted-foreground py-8 border-2 border-dashed rounded-lg opacity-60">
-                  No leads
+                  {t('no_leads')}
                 </div>
               )}
             </div>

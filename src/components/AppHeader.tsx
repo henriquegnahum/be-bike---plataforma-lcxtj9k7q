@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom'
-import { SidebarTrigger, useSidebar } from '@/components/ui/sidebar'
+import { SidebarTrigger } from '@/components/ui/sidebar'
 import { Button } from '@/components/ui/button'
-import { Bell, Menu, User, Settings, Globe, MessageSquarePlus } from 'lucide-react'
+import { Menu, User, Settings, Globe, MessageSquarePlus } from 'lucide-react'
 import {
   DropdownMenu,
   DropdownMenuContent,

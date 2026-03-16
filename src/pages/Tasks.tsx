@@ -6,6 +6,7 @@ import { useToast } from '@/hooks/use-toast'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { pendingApprovals } from '@/lib/mock-data'
 import { Badge } from '@/components/ui/badge'
+import { useTranslation } from '@/lib/i18n'
 
 const ONBOARDING_STEPS = [
   { id: 1, title: 'Validação de CPF', desc: 'Consulta Receita e Serasa.' },
@@ -21,50 +22,49 @@ export default function Tasks() {
   const [currentStep, setCurrentStep] = useState(1)
   const [approvalsList, setApprovalsList] = useState(pendingApprovals)
   const { toast } = useToast()
+  const t = useTranslation()
 
   const handleValidateStep = (stepId: number) => {
     toast({
-      title: 'Etapa Concluída',
-      description: `${ONBOARDING_STEPS[stepId - 1].title} finalizada com sucesso.`,
+      title: t('step_completed'),
+      description: `${t(ONBOARDING_STEPS[stepId - 1].title as any)} ${t('step_completed_desc')}`,
     })
     setCurrentStep(stepId + 1)
   }
 
   const handleApprove = (id: string) => {
     setApprovalsList((prev) => prev.filter((a) => a.id !== id))
-    toast({ title: 'Aprovado', description: `Solicitação ${id} aprovada e registrada em log.` })
+    toast({ title: t('approved'), description: t('approved_log') })
   }
 
   return (
     <div className="flex flex-col gap-6 max-w-7xl mx-auto pb-12">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Task & Ticket Management</h1>
-        <p className="text-muted-foreground mt-1">
-          Integrated workflows, approvals, and module-wide tickets.
-        </p>
+        <h1 className="text-3xl font-bold tracking-tight">{t('tasks_title')}</h1>
+        <p className="text-muted-foreground mt-1">{t('tasks_desc')}</p>
       </div>
 
       <Tabs defaultValue="tickets" className="w-full">
         <TabsList className="grid w-full sm:w-auto grid-cols-2 sm:grid-cols-4 h-auto">
           <TabsTrigger value="tickets" className="py-2 gap-2">
-            <Ticket className="w-4 h-4" /> Tickets
+            <Ticket className="w-4 h-4" /> {t('tickets')}
           </TabsTrigger>
           <TabsTrigger value="calendar" className="py-2 gap-2">
-            <CalendarDays className="w-4 h-4" /> Calendar
+            <CalendarDays className="w-4 h-4" /> {t('calendar')}
           </TabsTrigger>
           <TabsTrigger value="gantt" className="py-2 gap-2">
-            <AlignLeft className="w-4 h-4" /> Gantt
+            <AlignLeft className="w-4 h-4" /> {t('gantt')}
           </TabsTrigger>
           <TabsTrigger value="workflows" className="py-2 gap-2">
-            Workflows
+            {t('workflows')}
           </TabsTrigger>
         </TabsList>
 
         <TabsContent value="tickets" className="mt-6">
           <Card className="shadow-sm">
             <CardHeader>
-              <CardTitle>Global Tickets View</CardTitle>
-              <CardDescription>Cross-module task attribution and tracking.</CardDescription>
+              <CardTitle>{t('global_tickets')}</CardTitle>
+              <CardDescription>{t('global_tickets_desc')}</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="flex flex-col gap-4">
@@ -112,7 +112,7 @@ export default function Tasks() {
                       </div>
                       <div className="px-2 py-1 bg-muted rounded text-xs">{tk.assignee}</div>
                       <Button variant="outline" size="sm">
-                        View
+                        {t('view')}
                       </Button>
                     </div>
                   </div>
@@ -125,15 +125,13 @@ export default function Tasks() {
         <TabsContent value="calendar" className="mt-6">
           <Card className="shadow-sm">
             <CardHeader>
-              <CardTitle>Calendar View</CardTitle>
-              <CardDescription>
-                Visual timeline of deadlines and maintenance schedules.
-              </CardDescription>
+              <CardTitle>{t('calendar_view')}</CardTitle>
+              <CardDescription>{t('calendar_desc')}</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="h-[400px] border-2 border-dashed rounded-xl flex items-center justify-center bg-muted/10 text-muted-foreground flex-col gap-2">
                 <CalendarDays className="w-12 h-12 opacity-20" />
-                <p>Interactive Calendar Integration to be rendered here.</p>
+                <p>{t('calendar_placeholder')}</p>
               </div>
             </CardContent>
           </Card>
@@ -142,13 +140,13 @@ export default function Tasks() {
         <TabsContent value="gantt" className="mt-6">
           <Card className="shadow-sm">
             <CardHeader>
-              <CardTitle>Gantt Chart</CardTitle>
-              <CardDescription>Long-term project and operation timeline tracking.</CardDescription>
+              <CardTitle>{t('gantt_chart')}</CardTitle>
+              <CardDescription>{t('gantt_desc')}</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="h-[400px] border-2 border-dashed rounded-xl flex items-center justify-center bg-muted/10 text-muted-foreground flex-col gap-2">
                 <AlignLeft className="w-12 h-12 opacity-20" />
-                <p>Gantt Chart Component to be rendered here.</p>
+                <p>{t('gantt_placeholder')}</p>
               </div>
             </CardContent>
           </Card>
@@ -157,8 +155,8 @@ export default function Tasks() {
         <TabsContent value="workflows" className="mt-6 space-y-6">
           <Card className="shadow-sm border-primary/20">
             <CardHeader>
-              <CardTitle>Cascade Workflow: New Courier Onboarding</CardTitle>
-              <CardDescription>Mandatory sequential validation flow.</CardDescription>
+              <CardTitle>{t('cascade_workflow')}</CardTitle>
+              <CardDescription>{t('cascade_desc')}</CardDescription>
             </CardHeader>
             <CardContent className="flex flex-col gap-0">
               {ONBOARDING_STEPS.map((step, index) => {
@@ -196,20 +194,20 @@ export default function Tasks() {
                         )}
                         <div>
                           <h4 className={`font-semibold ${isActive ? 'text-primary' : ''}`}>
-                            {step.title}
+                            {t(step.title as any)}
                           </h4>
-                          <p className="text-sm text-muted-foreground">{step.desc}</p>
+                          <p className="text-sm text-muted-foreground">{t(step.desc as any)}</p>
                         </div>
                       </div>
 
                       {!isLocked && !isValidated && (
                         <Button onClick={() => handleValidateStep(step.id)} size="sm">
-                          Validar Etapa
+                          {t('validate_step')}
                         </Button>
                       )}
                       {isValidated && (
                         <Badge variant="outline" className="text-primary border-primary">
-                          Validado
+                          {t('validated')}
                         </Badge>
                       )}
                     </div>
@@ -222,20 +220,20 @@ export default function Tasks() {
           <Card className="shadow-sm">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                Approvals Inbox
+                {t('approvals_inbox')}
                 {approvalsList.length > 0 && (
                   <Badge variant="destructive" className="ml-2">
                     {approvalsList.length}
                   </Badge>
                 )}
               </CardTitle>
-              <CardDescription>Critical actions requiring dual validation.</CardDescription>
+              <CardDescription>{t('approvals_desc')}</CardDescription>
             </CardHeader>
             <CardContent>
               {approvalsList.length === 0 ? (
                 <div className="text-center py-10 text-muted-foreground">
                   <CheckCircle2 className="w-12 h-12 mx-auto mb-3 opacity-20" />
-                  <p>No pending approvals.</p>
+                  <p>{t('no_approvals')}</p>
                 </div>
               ) : (
                 <div className="flex flex-col gap-4">
@@ -257,20 +255,20 @@ export default function Tasks() {
                             {app.type}: {app.desc}
                           </h4>
                           <p className="text-xs text-muted-foreground mt-1">
-                            Value: <strong className="text-foreground">{app.value}</strong> |
-                            Requester: {app.requester}
+                            {t('value')}: <strong className="text-foreground">{app.value}</strong> |
+                            {t('requester')}: {app.requester}
                           </p>
                         </div>
                       </div>
                       <div className="flex items-center gap-2 w-full sm:w-auto">
                         <Button variant="outline" className="flex-1 sm:flex-none">
-                          Reject
+                          {t('reject')}
                         </Button>
                         <Button
                           onClick={() => handleApprove(app.id)}
                           className="flex-1 sm:flex-none"
                         >
-                          Approve
+                          {t('approve')}
                         </Button>
                       </div>
                     </div>

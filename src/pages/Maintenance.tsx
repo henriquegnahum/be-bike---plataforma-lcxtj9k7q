@@ -11,20 +11,23 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+import { useTranslation } from '@/lib/i18n'
 
 export default function Maintenance() {
+  const t = useTranslation()
+
   return (
     <div className="flex flex-col gap-6 max-w-7xl mx-auto pb-10">
       <div className="flex justify-between items-start flex-wrap gap-4">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Maintenance & Supply Chain</h1>
-          <p className="text-muted-foreground mt-1">Predictive O.S. and parts control.</p>
+          <h1 className="text-3xl font-bold tracking-tight">{t('maint_title')}</h1>
+          <p className="text-muted-foreground mt-1">{t('maint_desc')}</p>
         </div>
 
         {inventoryItems.some((i) => i.current <= i.min) && (
           <div className="flex items-center gap-2 px-4 py-2 bg-destructive/10 text-destructive rounded-lg border border-destructive/20 shadow-sm">
             <AlertTriangle className="w-5 h-5" />
-            <span className="font-semibold text-sm">Critical Stock Alert</span>
+            <span className="font-semibold text-sm">{t('critical_stock')}</span>
           </div>
         )}
       </div>
@@ -32,10 +35,10 @@ export default function Maintenance() {
       <Tabs defaultValue="kanban" className="flex-1 flex flex-col">
         <TabsList className="w-full sm:w-auto self-start">
           <TabsTrigger value="kanban" className="gap-2">
-            <Wrench className="w-4 h-4" /> O.S. Kanban
+            <Wrench className="w-4 h-4" /> {t('os_kanban')}
           </TabsTrigger>
           <TabsTrigger value="inventory" className="gap-2">
-            <Package className="w-4 h-4" /> Inventory
+            <Package className="w-4 h-4" /> {t('inventory')}
           </TabsTrigger>
         </TabsList>
 
@@ -47,7 +50,7 @@ export default function Maintenance() {
                 className="min-w-[300px] flex-1 flex flex-col bg-muted/30 rounded-xl p-4 border"
               >
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="font-semibold">{col.title}</h3>
+                  <h3 className="font-semibold">{t(col.title as any)}</h3>
                   <Badge variant="secondary">{col.tasks.length}</Badge>
                 </div>
                 <div className="flex flex-col gap-3 flex-1 overflow-y-auto">
@@ -67,14 +70,14 @@ export default function Maintenance() {
                         </div>
                         <p className="font-medium text-sm">{task.desc}</p>
                         <div className="mt-3 flex justify-between items-center text-xs text-muted-foreground">
-                          <span>Auto-Predict IA</span>
+                          <span>{t('auto_predict_ia')}</span>
                         </div>
                       </CardContent>
                     </Card>
                   ))}
                   {col.tasks.length === 0 && (
                     <div className="flex-1 flex items-center justify-center border-2 border-dashed rounded-lg opacity-50 py-8">
-                      <span className="text-sm">No tasks</span>
+                      <span className="text-sm">{t('no_tasks')}</span>
                     </div>
                   )}
                 </div>
@@ -86,18 +89,18 @@ export default function Maintenance() {
         <TabsContent value="inventory" className="mt-6">
           <Card className="shadow-sm">
             <CardHeader>
-              <CardTitle>Consolidated Inventory</CardTitle>
+              <CardTitle>{t('consolidated_inventory')}</CardTitle>
             </CardHeader>
             <CardContent>
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>SKU / Item</TableHead>
-                    <TableHead>Hub</TableHead>
-                    <TableHead>Usage Freq</TableHead>
-                    <TableHead>Min Stock</TableHead>
-                    <TableHead>Current</TableHead>
-                    <TableHead>Status</TableHead>
+                    <TableHead>{t('sku_item')}</TableHead>
+                    <TableHead>{t('hub')}</TableHead>
+                    <TableHead>{t('usage_freq')}</TableHead>
+                    <TableHead>{t('min_stock')}</TableHead>
+                    <TableHead>{t('current')}</TableHead>
+                    <TableHead>{t('status')}</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -105,17 +108,17 @@ export default function Maintenance() {
                     const isCritical = item.current <= item.min
                     return (
                       <TableRow key={item.id}>
-                        <TableCell className="font-medium">{item.name}</TableCell>
-                        <TableCell>{item.hub}</TableCell>
-                        <TableCell>{item.usage}</TableCell>
+                        <TableCell className="font-medium">{t(item.name as any)}</TableCell>
+                        <TableCell>{t(item.hub as any)}</TableCell>
+                        <TableCell>{t(item.usage as any)}</TableCell>
                         <TableCell>{item.min}</TableCell>
                         <TableCell className="font-mono font-semibold">{item.current}</TableCell>
                         <TableCell>
                           {isCritical ? (
-                            <Badge variant="destructive">Repor Urgente</Badge>
+                            <Badge variant="destructive">{t('status_urgent')}</Badge>
                           ) : (
                             <Badge variant="outline" className="border-primary text-primary">
-                              Normal
+                              {t('status_normal')}
                             </Badge>
                           )}
                         </TableCell>

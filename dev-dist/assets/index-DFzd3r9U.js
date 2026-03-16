@@ -15370,10 +15370,10 @@ var require_react_dom_client_development = /* @__PURE__ */ __commonJSMin(((expor
 	})();
 }));
 //#endregion
-//#region ../../cache/modules/gestao-de-frota-centralizada-2a06a/node_modules/.pnpm/react-dom@19.2.4_react@19.2.4/node_modules/react-dom/client.js
-var require_client = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+//#region src/App.css
+var import_client = (/* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports = require_react_dom_client_development();
-}));
+})))();
 //#endregion
 //#region \0vite/preload-helper.js
 var scriptRel = "modulepreload";
@@ -17279,8 +17279,8 @@ function useViewTransitionState(to, { relative } = {}) {
 	return matchPath(path.pathname, nextPath) != null || matchPath(path.pathname, currentPath) != null;
 }
 //#endregion
-//#region src/components/ui/sonner.css
-var import_client = require_client(), M = (e, i, s, u, m, a, l, h) => {
+//#region ../../cache/modules/gestao-de-frota-centralizada-2a06a/node_modules/.pnpm/next-themes@0.4.6_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next-themes/dist/index.mjs
+var M = (e, i, s, u, m, a, l, h) => {
 	let d = document.documentElement, w = ["light", "dark"];
 	function p(n) {
 		(Array.isArray(e) ? e : [e]).forEach((y) => {
@@ -25888,45 +25888,744 @@ var dict = {
 		security: "Segurança e Risco",
 		tasks: "Tarefas e Workflows",
 		export: "Exportar",
+		export_csv: "Exportar CSV",
+		export_xml: "Exportar XML",
 		import: "Importar Massa",
+		import_clients: "Importar Clientes",
 		new: "Novo",
 		feedback: "Enviar Sugestão",
-		language: "Idioma"
+		language: "Idioma",
+		view: "Ver",
+		view_details: "Ver Detalhes",
+		open_card: "Abrir Ficha",
+		status: "Status",
+		action: "Ação",
+		name: "Nome",
+		date: "Data",
+		description: "Descrição",
+		cost: "Custo",
+		index_desc: "Centro de comando centralizado unificando CRM, Operações e dados Financeiros.",
+		active_fleet: "Frota Ativa",
+		active_deliverers: "Entregadores Ativos",
+		monthly_conversion: "Conversão Mensal",
+		mrr: "MRR (AsaaS)",
+		cloud_humans: "Atendimento Cloud Humans",
+		recent_tickets: "Tickets recentes integrados via API",
+		ai_insights: "Insights de IA",
+		predictive_churn: "Churn Preditivo:",
+		predictive_churn_desc: "15 entregadores apresentam sinais de inatividade. Sugerindo fluxo de retenção.",
+		maintenance_alert: "Alerta de Manutenção:",
+		maintenance_alert_desc: "8 motos atingirão o limite de 2500km esta semana. Gerar O.S. automaticamente.",
+		crm_title: "CRM Avançado e Funil",
+		crm_desc: "Gerencie a aquisição de entregadores com score preditivo.",
+		no_leads: "Sem leads",
+		Leads: "Leads",
+		Contacted: "Contatados",
+		Analysis: "Em Análise",
+		Negotiation: "Negociação",
+		"Signed/Onboarding": "Assinado/Onboarding",
+		whatsapp: "WhatsApp",
+		generate_bo: "Gerar B.O. Digital",
+		master_360: "360º Master",
+		contracts: "Contratos",
+		performance: "Performance",
+		files: "Arquivos",
+		reg_data: "Dados Cadastrais",
+		fin_contract_status: "Status Financeiro e Contrato",
+		duration: "Duração",
+		score: "Score",
+		zapsign_integration: "Integração ZapSign",
+		standard_lease: "Termo de Locação Padrão",
+		signed: "Assinado",
+		upload_sheet: "Upload Planilha 99Food",
+		drag_sheet: "Arraste a planilha CSV/Excel",
+		drop_files: "Drop de apólices e CNH aqui.",
+		cpf_rg: "CPF / RG",
+		dob_nat: "Nasc. / Naturalidade",
+		email: "Email",
+		parents: "Filiação",
+		address: "Endereço",
+		previous_bikes: "Bikes Anteriores",
+		none: "Nenhuma",
+		fleet_title: "Mestre de Frota",
+		fleet_desc: "Gerenciamento abrangente de ciclo de vida e status.",
+		bulk_import: "Importação em Massa",
+		new_bike: "Nova Moto",
+		active_fleet_inventory: "Inventário da Frota Ativa",
+		chassi_id: "Chassi (ID)",
+		model_project: "Modelo / Projeto",
+		telemetry_km: "Telemetria (KM)",
+		assigned_to: "Atribuído A",
+		unassigned: "Não atribuído",
+		send_workshop: "Enviar Oficina",
+		telemetry: "Telemetria",
+		total_km: "KM Total",
+		last_revision: "Última Revisão",
+		next_revision: "Próxima Revisão",
+		in: "em",
+		auto_os: "O.S. Automática",
+		specs_finance: "Especificações e Financeiro",
+		maintenance_log: "Log de O.S.",
+		brand_size: "Marca / Tamanho",
+		color_version: "Cor / Versão",
+		purchase_invoice: "Compra / NFe",
+		security_assets: "Ativos de Segurança",
+		tracker_num: "Rastreador #",
+		battery_num: "Bateria #",
+		lock_code: "Código do Cadeado",
+		deliverer_title: "Dados Mestres de Entregadores",
+		deliverer_desc: "Base unificada para todos os entregadores e assinantes.",
+		directory: "Diretório",
+		active_bike: "Moto Ativa",
+		profile: "Perfil",
+		profile_snapshot: "Resumo do Perfil",
+		joined_date: "Data de Entrada",
+		financial_standing: "Situação Financeira",
+		current_asset: "Ativo Atual",
+		no_bike_assigned: "Nenhuma moto atribuída.",
+		logs: "Registros (Logs)",
+		maint_title: "Manutenção e Cadeia de Suprimentos",
+		maint_desc: "Controle preditivo de O.S. e peças.",
+		critical_stock: "Alerta de Estoque Crítico",
+		os_kanban: "Kanban de O.S.",
+		inventory: "Inventário",
+		todo_os: "A Fazer (O.S.)",
+		doing: "Em Manutenção",
+		done: "Finalizado",
+		auto_predict_ia: "Previsão Auto IA",
+		no_tasks: "Sem tarefas",
+		consolidated_inventory: "Inventário Consolidado",
+		sku_item: "SKU / Item",
+		hub: "Hub",
+		usage_freq: "Freq. Uso",
+		min_stock: "Estoque Min",
+		current: "Atual",
+		status_urgent: "Repor Urgente",
+		status_normal: "Normal",
+		tasks_title: "Gestão de Tarefas e Tickets",
+		tasks_desc: "Workflows integrados, aprovações e tickets inter-módulos.",
+		tickets: "Tickets",
+		calendar: "Calendário",
+		gantt: "Gantt",
+		workflows: "Workflows",
+		global_tickets: "Visão Global de Tickets",
+		global_tickets_desc: "Atribuição e rastreamento de tarefas entre módulos.",
+		calendar_view: "Visão de Calendário",
+		calendar_desc: "Linha do tempo visual de prazos e manutenções.",
+		calendar_placeholder: "Integração de Calendário Interativo a ser renderizada aqui.",
+		gantt_chart: "Gráfico de Gantt",
+		gantt_desc: "Rastreamento de projetos de longo prazo e linha do tempo da operação.",
+		gantt_placeholder: "Componente de Gráfico de Gantt a ser renderizado aqui.",
+		cascade_workflow: "Workflow em Cascata: Onboarding Novo Entregador",
+		cascade_desc: "Fluxo de validação sequencial obrigatório.",
+		validate_step: "Validar Etapa",
+		validated: "Validado",
+		approvals_inbox: "Caixa de Aprovações",
+		approvals_desc: "Ações críticas que requerem dupla validação.",
+		no_approvals: "Sem aprovações pendentes.",
+		reject: "Rejeitar",
+		approve: "Aprovar",
+		value: "Valor",
+		requester: "Solicitante",
+		fin_title: "Hub de Governança Financeira",
+		fin_desc: "Integração API AsaaS, CP/CR e gestão de Subsídios.",
+		accounts_receivable: "Contas a Receber",
+		asaas_synced: "Sincronizado AsaaS",
+		accounts_payable: "Contas a Pagar",
+		suppliers_workshops: "Fornecedores e Oficinas",
+		subsidy_pool: "Pool de Subsídios 99",
+		auto_discount: "Desconto automático aplicado",
+		recent_transactions: "Transações Recentes (Mock)",
+		real_time_feed: "Feed em tempo real do gateway de pagamento.",
+		transaction_placeholder: "Módulo de tabela de transações a ser populado pela API AsaaS.",
+		sec_title: "Módulo de Segurança e Risco",
+		sec_desc: "Detecção de fraudes, workflows de recuperação e boletins de ocorrência.",
+		high_risk_alerts: "Alertas de Alto Risco",
+		high_risk_desc: "Motos suspeitas de apropriação indébita (telemetria desconectada).",
+		last_seen: "Última vez visto: há 48h - Zona Leste, SP",
+		trigger_recovery: "Acionar Recuperação",
+		trackplus_integration: "Integração Trackplus",
+		live_map_feed: "Feed de mapa ao vivo para equipes de recuperação.",
+		map_placeholder: "Placeholder de Visão de Mapa",
+		ai_title: "Be Bike AI Insights",
+		ai_subtitle: "Faça perguntas sobre frota, churn, subsídios e alertas.",
+		ai_placeholder: "Ex: Quem está em risco de churn?",
+		ai_typing: "Digitando...",
+		ai_default_response: "Consultei a base unificada. Notei que temos entregadores com risco alto de churn esta semana e 3 bikes aguardando manutenção preditiva.",
+		ai_churn_response: "Identifiquei 12 entregadores com risco alto de churn. O CPF 222.333.444-55 (Maria Oliveira) está com score 60 e taxa de conclusão no app 99 em apenas 70%. Deseja iniciar um fluxo de retenção?",
+		ai_maint_response: "A Bike #X-123 ultrapassou o limite de 2.500km hoje. Uma OS preditiva foi sugerida. Além disso, o estoque de Pneu Aro 29 no Hub Centro está crítico (4 unidades).",
+		ai_fin_response: "A sincronização com a 99 ocorreu há 2 horas. 85% dos entregadores estão elegíveis para o nível Ouro de subsídio este mês.",
+		bo_copied_title: "Resumo B.O. Copiado (1400c)",
+		bo_copied_desc: "Cole no portal da delegacia. Redirecionando...",
+		bo_summary: "B.O. Digital Be Bike - CPF: {cpf} | Nome: {name} | RG: {rg} | End: {address} | Status: {status} | Contato: {phone}",
+		bo_summary_deliverer: "B.O. Digital Entregador - Nome: {name} | CPF: {cpf} | Status: {status} | Moto: {bike}",
+		action_executed: "Ação Executada",
+		system_processing: "Sistema processando: ",
+		status_updated: "Status Atualizado",
+		workshop_log_created: "Moto encaminhada para oficina. Log criado.",
+		step_completed: "Etapa Concluída",
+		step_completed_desc: "finalizada com sucesso.",
+		approved: "Aprovado",
+		approved_log: "Solicitação aprovada e registrada em log.",
+		"Entregador 99Food": "Entregador 99Food",
+		"Entregador 99": "Entregador 99",
+		Entregador: "Entregador",
+		Outros: "Outros",
+		B2B: "B2B",
+		Vigente: "Vigente",
+		"Em devolução": "Em devolução",
+		Encerrado: "Encerrado",
+		Permuta: "Permuta",
+		"Apropriação indébita": "Apropriação indébita",
+		"Em venda": "Em venda",
+		Investigar: "Investigar",
+		Estornado: "Estornado",
+		Adimplente: "Adimplente",
+		Inadimplente: "Inadimplente",
+		"Em avaliação": "Em avaliação",
+		"Pendências financeiras": "Pendências financeiras",
+		"Nada consta": "Nada consta",
+		Vendida: "Vendida",
+		Serasa: "Serasa",
+		Atenção: "Atenção",
+		Ok: "Ok",
+		"Revisar Agora": "Revisar Agora",
+		"Em Revisão": "Em Revisão",
+		Ativa: "Ativa",
+		Oficina: "Oficina",
+		Disponível: "Disponível",
+		Active: "Ativo",
+		Onboarding: "Em Onboarding",
+		"In Debt": "Em Dívida",
+		Completed: "Concluído",
+		Open: "Aberto",
+		High: "Alta",
+		"A Fazer (O.S.)": "A Fazer (O.S.)",
+		"Em Manutenção": "Em Manutenção",
+		Finalizado: "Finalizado",
+		"Pneu Aro 26": "Pneu Aro 26",
+		"Câmara de Ar": "Câmara de Ar",
+		Alto: "Alto",
+		"SP-Centro": "SP-Centro",
+		"Validação de CPF": "Validação de CPF",
+		"Consulta Receita e Serasa.": "Consulta Receita e Serasa.",
+		"Dados Pessoais": "Dados Pessoais",
+		"Preenchimento cadastral.": "Preenchimento cadastral.",
+		"Validação de Docs": "Validação de Docs",
+		"Análise de CNH e residência.": "Análise de CNH e residência.",
+		"Criação Master Data": "Criação Master Data",
+		"Sincronização no repositório unificado.": "Sincronização no repositório unificado.",
+		"Geração de Contrato": "Geração de Contrato",
+		"Envio ZapSign automático.": "Envio ZapSign automático.",
+		"Ativação Assinatura": "Ativação Assinatura",
+		"Gateway de Pagamento.": "Gateway de Pagamento.",
+		"Liberação de Ativo": "Liberação de Ativo",
+		"Vínculo final CPF <> Chassi.": "Vínculo final CPF <> Chassi.",
+		Communication: "Comunicação",
+		Contract: "Contrato"
 	},
 	EN: {
 		dashboard: "Dashboard Hub",
 		crm: "CRM & Funnel",
-		fleet: "Fleet Master",
-		deliverers: "Deliverer Master",
+		fleet: "Fleet Management",
+		deliverers: "Deliverers",
 		maintenance: "Maintenance & Supply",
 		financial: "Financial Hub",
 		security: "Security & Risk",
 		tasks: "Tasks & Workflows",
 		export: "Export",
+		export_csv: "Export CSV",
+		export_xml: "Export XML",
 		import: "Bulk Import",
+		import_clients: "Import Clients",
 		new: "New",
 		feedback: "Submit Feedback",
-		language: "Language"
+		language: "Language",
+		view: "View",
+		view_details: "View Details",
+		open_card: "Open Card",
+		status: "Status",
+		action: "Action",
+		name: "Name",
+		date: "Date",
+		description: "Description",
+		cost: "Cost",
+		index_desc: "Centralized command center unifying CRM, Operations, and Financial data.",
+		active_fleet: "Active Fleet",
+		active_deliverers: "Active Deliverers",
+		monthly_conversion: "Monthly Conversion",
+		mrr: "MRR (AsaaS)",
+		cloud_humans: "Cloud Humans Service",
+		recent_tickets: "Recent support tickets integrated via API",
+		ai_insights: "AI Insights",
+		predictive_churn: "Predictive Churn:",
+		predictive_churn_desc: "15 couriers are showing signs of inactivity. Suggesting retention workflow.",
+		maintenance_alert: "Maintenance Alert:",
+		maintenance_alert_desc: "8 bikes will hit the 2500km threshold this week. Generate O.S. automatically.",
+		crm_title: "Advanced CRM Funnel",
+		crm_desc: "Manage deliverer acquisition with predictive scoring.",
+		no_leads: "No leads",
+		Leads: "Leads",
+		Contacted: "Contacted",
+		Analysis: "Analysis",
+		Negotiation: "Negotiation",
+		"Signed/Onboarding": "Signed/Onboarding",
+		whatsapp: "WhatsApp",
+		generate_bo: "Generate Digital P.R.",
+		master_360: "360º Master",
+		contracts: "Contracts",
+		performance: "Performance",
+		files: "Files",
+		reg_data: "Registration Data",
+		fin_contract_status: "Financial & Contract Status",
+		duration: "Duration",
+		score: "Score",
+		zapsign_integration: "ZapSign Integration",
+		standard_lease: "Standard Lease Agreement",
+		signed: "Signed",
+		upload_sheet: "Upload 99Food Sheet",
+		drag_sheet: "Drag and drop CSV/Excel",
+		drop_files: "Drop policies and license here.",
+		cpf_rg: "ID / Passport",
+		dob_nat: "DOB / Nationality",
+		email: "Email",
+		parents: "Parents",
+		address: "Address",
+		previous_bikes: "Previous Bikes",
+		none: "None",
+		fleet_title: "Fleet Master",
+		fleet_desc: "Comprehensive lifecycle and status management.",
+		bulk_import: "Bulk Import",
+		new_bike: "New Bike",
+		active_fleet_inventory: "Active Fleet Inventory",
+		chassi_id: "Chassis (ID)",
+		model_project: "Model / Project",
+		telemetry_km: "Telemetry (KM)",
+		assigned_to: "Assigned To",
+		unassigned: "Unassigned",
+		send_workshop: "Send to Workshop",
+		telemetry: "Telemetry",
+		total_km: "Total KM",
+		last_revision: "Last Revision",
+		next_revision: "Next Revision",
+		in: "in",
+		auto_os: "Auto O.S.",
+		specs_finance: "Specs & Finance",
+		maintenance_log: "O.S. Log",
+		brand_size: "Brand / Size",
+		color_version: "Color / Version",
+		purchase_invoice: "Purchase / Invoice",
+		security_assets: "Security Assets",
+		tracker_num: "Tracker #",
+		battery_num: "Battery #",
+		lock_code: "Lock Code",
+		deliverer_title: "Deliverer Master Data",
+		deliverer_desc: "Unified base for all couriers and subscribers.",
+		directory: "Directory",
+		active_bike: "Active Bike",
+		profile: "Profile",
+		profile_snapshot: "Profile Snapshot",
+		joined_date: "Joined Date",
+		financial_standing: "Financial Standing",
+		current_asset: "Current Asset",
+		no_bike_assigned: "No bike assigned.",
+		logs: "Logs",
+		maint_title: "Maintenance & Supply Chain",
+		maint_desc: "Predictive O.S. and parts control.",
+		critical_stock: "Critical Stock Alert",
+		os_kanban: "O.S. Kanban",
+		inventory: "Inventory",
+		todo_os: "To Do (O.S.)",
+		doing: "In Maintenance",
+		done: "Done",
+		auto_predict_ia: "Auto-Predict AI",
+		no_tasks: "No tasks",
+		consolidated_inventory: "Consolidated Inventory",
+		sku_item: "SKU / Item",
+		hub: "Hub",
+		usage_freq: "Usage Freq",
+		min_stock: "Min Stock",
+		current: "Current",
+		status_urgent: "Refill Urgent",
+		status_normal: "Normal",
+		tasks_title: "Task & Ticket Management",
+		tasks_desc: "Integrated workflows, approvals, and module-wide tickets.",
+		tickets: "Tickets",
+		calendar: "Calendar",
+		gantt: "Gantt",
+		workflows: "Workflows",
+		global_tickets: "Global Tickets View",
+		global_tickets_desc: "Cross-module task attribution and tracking.",
+		calendar_view: "Calendar View",
+		calendar_desc: "Visual timeline of deadlines and maintenance schedules.",
+		calendar_placeholder: "Interactive Calendar Integration to be rendered here.",
+		gantt_chart: "Gantt Chart",
+		gantt_desc: "Long-term project and operation timeline tracking.",
+		gantt_placeholder: "Gantt Chart Component to be rendered here.",
+		cascade_workflow: "Cascade Workflow: New Courier Onboarding",
+		cascade_desc: "Mandatory sequential validation flow.",
+		validate_step: "Validate Step",
+		validated: "Validated",
+		approvals_inbox: "Approvals Inbox",
+		approvals_desc: "Critical actions requiring dual validation.",
+		no_approvals: "No pending approvals.",
+		reject: "Reject",
+		approve: "Approve",
+		value: "Value",
+		requester: "Requester",
+		fin_title: "Financial Governance Hub",
+		fin_desc: "AsaaS API integration, AP/AR, and Subsidy management.",
+		accounts_receivable: "Accounts Receivable",
+		asaas_synced: "AsaaS Synced",
+		accounts_payable: "Accounts Payable",
+		suppliers_workshops: "Suppliers & Workshops",
+		subsidy_pool: "99 Subsidy Pool",
+		auto_discount: "Automated discount applied",
+		recent_transactions: "Recent Transactions (Mock)",
+		real_time_feed: "Real-time feed from payment gateway.",
+		transaction_placeholder: "Transaction table module to be populated by AsaaS API.",
+		sec_title: "Security & Risk Module",
+		sec_desc: "Fraud detection, recovery workflows, and police reporting.",
+		high_risk_alerts: "High Risk Alerts",
+		high_risk_desc: "Bikes suspected of misappropriation (telemetry disconnected).",
+		last_seen: "Last seen: 48h ago - East Zone, SP",
+		trigger_recovery: "Trigger Recovery",
+		trackplus_integration: "Trackplus Integration",
+		live_map_feed: "Live map feed for recovery teams.",
+		map_placeholder: "Map View Placeholder",
+		ai_title: "Be Bike AI Insights",
+		ai_subtitle: "Ask questions about fleet, churn, subsidies and alerts.",
+		ai_placeholder: "Ex: Who is at risk of churn?",
+		ai_typing: "Typing...",
+		ai_default_response: "I consulted the unified base. We have couriers with high churn risk this week and 3 bikes waiting for predictive maintenance.",
+		ai_churn_response: "Identified 12 couriers with high churn risk. ID 222.333.444-55 (Maria Oliveira) has a score of 60 and a 99 app completion rate of only 70%. Do you want to start a retention workflow?",
+		ai_maint_response: "Bike #X-123 exceeded the 2500km limit today. A predictive O.S. was suggested. Also, 29\" Tire stock at Hub Center is critical (4 units).",
+		ai_fin_response: "Synchronization with 99 occurred 2 hours ago. 85% of couriers are eligible for the Gold subsidy level this month.",
+		bo_copied_title: "Digital P.R. Copied (1400c)",
+		bo_copied_desc: "Paste it on the police portal. Redirecting...",
+		bo_summary: "Digital P.R. Be Bike - ID: {cpf} | Name: {name} | Passport: {rg} | Addr: {address} | Status: {status} | Contact: {phone}",
+		bo_summary_deliverer: "Digital P.R. Courier - Name: {name} | ID: {cpf} | Status: {status} | Bike: {bike}",
+		action_executed: "Action Executed",
+		system_processing: "System processing: ",
+		status_updated: "Status Updated",
+		workshop_log_created: "Bike routed to workshop. Log created.",
+		step_completed: "Step Completed",
+		step_completed_desc: "finished successfully.",
+		approved: "Approved",
+		approved_log: "Request approved and logged.",
+		"Entregador 99Food": "Courier 99Food",
+		"Entregador 99": "Courier 99",
+		Entregador: "Courier",
+		Outros: "Others",
+		B2B: "B2B",
+		Vigente: "Active",
+		"Em devolução": "Returning",
+		Encerrado: "Closed",
+		Permuta: "Exchange",
+		"Apropriação indébita": "Misappropriation",
+		"Em venda": "On Sale",
+		Investigar: "Investigate",
+		Estornado: "Refunded",
+		Adimplente: "Compliant",
+		Inadimplente: "Delinquent",
+		"Em avaliação": "Under Review",
+		"Pendências financeiras": "Financial Issues",
+		"Nada consta": "Clear",
+		Vendida: "Sold",
+		Serasa: "Credit Bureau",
+		Atenção: "Attention",
+		Ok: "Ok",
+		"Revisar Agora": "Review Now",
+		"Em Revisão": "In Review",
+		Ativa: "Active",
+		Oficina: "Workshop",
+		Disponível: "Available",
+		Active: "Active",
+		Onboarding: "Onboarding",
+		"In Debt": "In Debt",
+		Completed: "Completed",
+		Open: "Open",
+		High: "High",
+		"A Fazer (O.S.)": "To Do (O.S.)",
+		"Em Manutenção": "In Maintenance",
+		Finalizado: "Done",
+		"Pneu Aro 26": "26\" Tire",
+		"Câmara de Ar": "Inner Tube",
+		Alto: "High",
+		"SP-Centro": "SP-Center",
+		"Validação de CPF": "ID Validation",
+		"Consulta Receita e Serasa.": "IRS and Credit check.",
+		"Dados Pessoais": "Personal Data",
+		"Preenchimento cadastral.": "Form completion.",
+		"Validação de Docs": "Doc Validation",
+		"Análise de CNH e residência.": "License and address analysis.",
+		"Criação Master Data": "Master Data Creation",
+		"Sincronização no repositório unificado.": "Sync to unified repo.",
+		"Geração de Contrato": "Contract Generation",
+		"Envio ZapSign automático.": "Auto ZapSign dispatch.",
+		"Ativação Assinatura": "Subscription Activation",
+		"Gateway de Pagamento.": "Payment Gateway.",
+		"Liberação de Ativo": "Asset Release",
+		"Vínculo final CPF <> Chassi.": "Final link User <> Chassis.",
+		Communication: "Communication",
+		Contract: "Contract"
 	},
 	ES: {
-		dashboard: "Tablero",
+		dashboard: "Tablero Hub",
 		crm: "CRM y Embudo",
 		fleet: "Gestión de Flota",
 		deliverers: "Repartidores",
 		maintenance: "Mantenimiento y Sum.",
-		financial: "Financiero",
+		financial: "Financiero AsaaS",
 		security: "Seguridad y Riesgo",
 		tasks: "Tareas y Flujos",
 		export: "Exportar",
+		export_csv: "Exportar CSV",
+		export_xml: "Exportar XML",
 		import: "Importación Masiva",
+		import_clients: "Importar Clientes",
 		new: "Nuevo",
 		feedback: "Enviar Sugerencia",
-		language: "Idioma"
+		language: "Idioma",
+		view: "Ver",
+		view_details: "Ver Detalles",
+		open_card: "Abrir Ficha",
+		status: "Estado",
+		action: "Acción",
+		name: "Nombre",
+		date: "Fecha",
+		description: "Descripción",
+		cost: "Costo",
+		index_desc: "Centro de comando centralizado que unifica CRM, Operaciones y datos Financieros.",
+		active_fleet: "Flota Activa",
+		active_deliverers: "Repartidores Activos",
+		monthly_conversion: "Conversión Mensual",
+		mrr: "MRR (AsaaS)",
+		cloud_humans: "Servicio Cloud Humans",
+		recent_tickets: "Tickets recientes integrados vía API",
+		ai_insights: "Insights de IA",
+		predictive_churn: "Abandono Predictivo:",
+		predictive_churn_desc: "15 repartidores muestran signos de inactividad. Sugiriendo flujo de retención.",
+		maintenance_alert: "Alerta de Mantenimiento:",
+		maintenance_alert_desc: "8 motos alcanzarán el límite de 2500km esta semana. Generar O.S. automáticamente.",
+		crm_title: "CRM Avanzado y Embudo",
+		crm_desc: "Gestione la adquisición de repartidores con puntaje predictivo.",
+		no_leads: "Sin prospectos",
+		Leads: "Prospectos",
+		Contacted: "Contactados",
+		Analysis: "En Análisis",
+		Negotiation: "Negociación",
+		"Signed/Onboarding": "Firmado/Onboarding",
+		whatsapp: "WhatsApp",
+		generate_bo: "Generar Denuncia Digital",
+		master_360: "360º Maestro",
+		contracts: "Contratos",
+		performance: "Rendimiento",
+		files: "Archivos",
+		reg_data: "Datos de Registro",
+		fin_contract_status: "Estado Financiero y Contrato",
+		duration: "Duración",
+		score: "Puntaje",
+		zapsign_integration: "Integración ZapSign",
+		standard_lease: "Contrato de Arrendamiento",
+		signed: "Firmado",
+		upload_sheet: "Subir Hoja 99Food",
+		drag_sheet: "Arrastre la hoja CSV/Excel",
+		drop_files: "Suelte pólizas y licencia aquí.",
+		cpf_rg: "ID / Pasaporte",
+		dob_nat: "Nac. / Nacionalidad",
+		email: "Correo",
+		parents: "Padres",
+		address: "Dirección",
+		previous_bikes: "Motos Anteriores",
+		none: "Ninguna",
+		fleet_title: "Maestro de Flota",
+		fleet_desc: "Gestión integral del ciclo de vida y estado.",
+		bulk_import: "Importación Masiva",
+		new_bike: "Nueva Moto",
+		active_fleet_inventory: "Inventario de Flota Activa",
+		chassi_id: "Chasis (ID)",
+		model_project: "Modelo / Proyecto",
+		telemetry_km: "Telemetría (KM)",
+		assigned_to: "Asignado a",
+		unassigned: "No asignado",
+		send_workshop: "Enviar a Taller",
+		telemetry: "Telemetría",
+		total_km: "KM Total",
+		last_revision: "Última Revisión",
+		next_revision: "Próxima Revisión",
+		in: "en",
+		auto_os: "O.S. Automática",
+		specs_finance: "Especificaciones y Finanzas",
+		maintenance_log: "Registro O.S.",
+		brand_size: "Marca / Tamaño",
+		color_version: "Color / Versión",
+		purchase_invoice: "Compra / Factura",
+		security_assets: "Activos de Seguridad",
+		tracker_num: "Rastreador #",
+		battery_num: "Batería #",
+		lock_code: "Código de Candado",
+		deliverer_title: "Datos Maestros de Repartidores",
+		deliverer_desc: "Base unificada para todos los repartidores y suscriptores.",
+		directory: "Directorio",
+		active_bike: "Moto Activa",
+		profile: "Perfil",
+		profile_snapshot: "Resumen de Perfil",
+		joined_date: "Fecha de Ingreso",
+		financial_standing: "Situación Financiera",
+		current_asset: "Activo Actual",
+		no_bike_assigned: "Sin moto asignada.",
+		logs: "Registros (Logs)",
+		maint_title: "Mantenimiento y Cadena de Suministro",
+		maint_desc: "Control predictivo de O.S. y piezas.",
+		critical_stock: "Alerta de Stock Crítico",
+		os_kanban: "Kanban O.S.",
+		inventory: "Inventario",
+		todo_os: "Por Hacer (O.S.)",
+		doing: "En Mantenimiento",
+		done: "Finalizado",
+		auto_predict_ia: "Predicción Auto IA",
+		no_tasks: "Sin tareas",
+		consolidated_inventory: "Inventario Consolidado",
+		sku_item: "SKU / Artículo",
+		hub: "Centro",
+		usage_freq: "Frec. Uso",
+		min_stock: "Stock Mín",
+		current: "Actual",
+		status_urgent: "Reponer Urgente",
+		status_normal: "Normal",
+		tasks_title: "Gestión de Tareas y Tickets",
+		tasks_desc: "Flujos de trabajo integrados, aprobaciones y tickets.",
+		tickets: "Tickets",
+		calendar: "Calendario",
+		gantt: "Gantt",
+		workflows: "Flujos",
+		global_tickets: "Vista Global de Tickets",
+		global_tickets_desc: "Atribución y seguimiento de tareas entre módulos.",
+		calendar_view: "Vista de Calendario",
+		calendar_desc: "Línea de tiempo visual de plazos y mantenimientos.",
+		calendar_placeholder: "Integración de Calendario a renderizar aquí.",
+		gantt_chart: "Gráfico de Gantt",
+		gantt_desc: "Seguimiento de proyectos a largo plazo.",
+		gantt_placeholder: "Componente de Gráfico de Gantt a renderizar aquí.",
+		cascade_workflow: "Flujo en Cascada: Onboarding",
+		cascade_desc: "Flujo de validación secuencial obligatorio.",
+		validate_step: "Validar Paso",
+		validated: "Validado",
+		approvals_inbox: "Bandeja de Aprobaciones",
+		approvals_desc: "Acciones críticas que requieren doble validación.",
+		no_approvals: "Sin aprobaciones pendientes.",
+		reject: "Rechazar",
+		approve: "Aprobar",
+		value: "Valor",
+		requester: "Solicitante",
+		fin_title: "Hub de Gobernanza Financiera",
+		fin_desc: "Integración API AsaaS, CP/CC y gestión de Subsidios.",
+		accounts_receivable: "Cuentas por Cobrar",
+		asaas_synced: "Sincronizado AsaaS",
+		accounts_payable: "Cuentas por Pagar",
+		suppliers_workshops: "Proveedores y Talleres",
+		subsidy_pool: "Fondo de Subsidios 99",
+		auto_discount: "Descuento automático aplicado",
+		recent_transactions: "Transacciones Recientes (Mock)",
+		real_time_feed: "Feed en tiempo real de la pasarela de pago.",
+		transaction_placeholder: "Módulo de tabla de transacciones por API AsaaS.",
+		sec_title: "Módulo de Seguridad y Riesgo",
+		sec_desc: "Detección de fraudes, flujos de recuperación y denuncias.",
+		high_risk_alerts: "Alertas de Alto Riesgo",
+		high_risk_desc: "Motos sospechosas de apropiación indebida (telemetría desconectada).",
+		last_seen: "Última vez visto: hace 48h - Zona Este, SP",
+		trigger_recovery: "Activar Recuperación",
+		trackplus_integration: "Integración Trackplus",
+		live_map_feed: "Feed de mapa en vivo para equipos de recuperación.",
+		map_placeholder: "Placeholder de Vista de Mapa",
+		ai_title: "Be Bike AI Insights",
+		ai_subtitle: "Haga preguntas sobre flota, abandono, subsidios y alertas.",
+		ai_placeholder: "Ej: ¿Quién está en riesgo de abandono?",
+		ai_typing: "Escribiendo...",
+		ai_default_response: "Consulté la base unificada. Tenemos repartidores con alto riesgo de abandono esta semana y 3 motos esperando mantenimiento predictivo.",
+		ai_churn_response: "Identifiqué 12 repartidores con alto riesgo de abandono. El ID 222.333.444-55 (Maria Oliveira) tiene un puntaje de 60 y una tasa de finalización en la app 99 de solo 70%. ¿Desea iniciar un flujo de retención?",
+		ai_maint_response: "La Moto #X-123 superó el límite de 2500km hoy. Se sugirió una O.S. predictiva. Además, el stock de Neumático Aro 29 en Hub Centro es crítico (4 unidades).",
+		ai_fin_response: "La sincronización con 99 ocurrió hace 2 horas. El 85% de los repartidores son elegibles para el nivel Oro de subsidio este mes.",
+		bo_copied_title: "Denuncia Digital Copiada (1400c)",
+		bo_copied_desc: "Péguela en el portal de la policía. Redirigiendo...",
+		bo_summary: "Denuncia Digital Be Bike - ID: {cpf} | Nombre: {name} | Pasaporte: {rg} | Dir: {address} | Estado: {status} | Contacto: {phone}",
+		bo_summary_deliverer: "Denuncia Digital Repartidor - Nombre: {name} | ID: {cpf} | Estado: {status} | Moto: {bike}",
+		action_executed: "Acción Ejecutada",
+		system_processing: "Sistema procesando: ",
+		status_updated: "Estado Actualizado",
+		workshop_log_created: "Moto enviada a taller. Registro creado.",
+		step_completed: "Paso Completado",
+		step_completed_desc: "finalizado con éxito.",
+		approved: "Aprobado",
+		approved_log: "Solicitud aprobada y registrada.",
+		"Entregador 99Food": "Repartidor 99Food",
+		"Entregador 99": "Repartidor 99",
+		Entregador: "Repartidor",
+		Outros: "Otros",
+		B2B: "B2B",
+		Vigente: "Vigente",
+		"Em devolução": "En devolución",
+		Encerrado: "Cerrado",
+		Permuta: "Intercambio",
+		"Apropriação indébita": "Apropiación indebida",
+		"Em venda": "En venta",
+		Investigar: "Investigar",
+		Estornado: "Reembolsado",
+		Adimplente: "Cumplidor",
+		Inadimplente: "Moroso",
+		"Em avaliação": "En evaluación",
+		"Pendências financeiras": "Problemas Financieros",
+		"Nada consta": "Nada consta",
+		Vendida: "Vendida",
+		Serasa: "Buró de Crédito",
+		Atenção: "Atención",
+		Ok: "Ok",
+		"Revisar Agora": "Revisar Ahora",
+		"Em Revisão": "En Revisión",
+		Ativa: "Activa",
+		Oficina: "Taller",
+		Disponível: "Disponible",
+		Active: "Activo",
+		Onboarding: "Onboarding",
+		"In Debt": "En Deuda",
+		Completed: "Completado",
+		Open: "Abierto",
+		High: "Alta",
+		"A Fazer (O.S.)": "Por Hacer (O.S.)",
+		"Em Manutenção": "En Mantenimiento",
+		Finalizado: "Finalizado",
+		"Pneu Aro 26": "Neumático Aro 26",
+		"Câmara de Ar": "Cámara de Aire",
+		Alto: "Alto",
+		"SP-Centro": "SP-Centro",
+		"Validação de CPF": "Validación de ID",
+		"Consulta Receita e Serasa.": "Consulta de impuestos y crédito.",
+		"Dados Pessoais": "Datos Personales",
+		"Preenchimento cadastral.": "Llenado de formulario.",
+		"Validação de Docs": "Validación de Docs",
+		"Análise de CNH e residência.": "Análisis de licencia y residencia.",
+		"Criação Master Data": "Creación Datos Maestros",
+		"Sincronização no repositório unificado.": "Sincronización a repositorio.",
+		"Geração de Contrato": "Generación de Contrato",
+		"Envio ZapSign automático.": "Envío automático ZapSign.",
+		"Ativação Assinatura": "Activación de Suscripción",
+		"Gateway de Pagamento.": "Pasarela de Pago.",
+		"Liberação de Ativo": "Liberación de Activo",
+		"Vínculo final CPF <> Chassi.": "Vínculo final Usuario <> Chasis.",
+		Communication: "Comunicación",
+		Contract: "Contrato"
 	}
 };
 function useTranslation() {
 	const { language } = useAppStore();
-	return (key) => dict[language][key] || key;
+	return (key, params) => {
+		let str = (dict[language] || dict.PT)[key] || key;
+		if (params) Object.entries(params).forEach(([k, v]) => {
+			str = str.replace(`{${k}}`, v);
+		});
+		return str;
+	};
 }
 //#endregion
 //#region src/components/AppSidebar.tsx
@@ -28528,12 +29227,24 @@ ScrollBar.displayName = ScrollAreaScrollbar.displayName;
 //#endregion
 //#region src/components/AIAssistant.tsx
 function AIAssistant({ open, onOpenChange }) {
+	const t = useTranslation();
+	const { language } = useAppStore();
 	const [messages, setMessages] = (0, import_react.useState)([{
 		role: "assistant",
-		content: "Olá! Sou a Be Bike AI. Conectada ao Master Data. Como posso ajudar com insights operacionais hoje?"
+		content: t("ai_default_response")
 	}]);
 	const [input, setInput] = (0, import_react.useState)("");
 	const [isTyping, setIsTyping] = (0, import_react.useState)(false);
+	(0, import_react.useEffect)(() => {
+		if (messages.length === 1 && messages[0].role === "assistant") setMessages([{
+			role: "assistant",
+			content: t("ai_default_response")
+		}]);
+	}, [
+		language,
+		t,
+		messages.length
+	]);
 	const handleSend = () => {
 		if (!input.trim()) return;
 		const newMsg = {
@@ -28544,11 +29255,11 @@ function AIAssistant({ open, onOpenChange }) {
 		setInput("");
 		setIsTyping(true);
 		setTimeout(() => {
-			let aiResponse = "Consultei a base unificada. Notei que temos entregadores com risco alto de churn esta semana e 3 bikes aguardando manutenção preditiva.";
+			let aiResponse = t("ai_default_response");
 			const lowerInput = newMsg.content.toLowerCase();
-			if (lowerInput.includes("churn") || lowerInput.includes("risco")) aiResponse = "Identifiquei 12 entregadores com risco alto de churn. O CPF 222.333.444-55 (Maria Oliveira) está com score 60 e taxa de conclusão no app 99 em apenas 70%. Deseja iniciar um fluxo de retenção?";
-			else if (lowerInput.includes("manuten") || lowerInput.includes("bike")) aiResponse = "A Bike #X-123 ultrapassou o limite de 2.500km hoje. Uma OS preditiva foi sugerida. Além disso, o estoque de Pneu Aro 29 no Hub Centro está crítico (4 unidades).";
-			else if (lowerInput.includes("99") || lowerInput.includes("sub")) aiResponse = "A sincronização com a 99 ocorreu há 2 horas. 85% dos entregadores estão elegíveis para o nível Ouro de subsídio este mês.";
+			if (lowerInput.includes("churn") || lowerInput.includes("risc") || lowerInput.includes("riesgo") || lowerInput.includes("risk")) aiResponse = t("ai_churn_response");
+			else if (lowerInput.includes("manuten") || lowerInput.includes("bike") || lowerInput.includes("maint") || lowerInput.includes("moto")) aiResponse = t("ai_maint_response");
+			else if (lowerInput.includes("99") || lowerInput.includes("sub")) aiResponse = t("ai_fin_response");
 			setMessages((prev) => [...prev, {
 				role: "assistant",
 				content: aiResponse
@@ -28557,96 +29268,96 @@ function AIAssistant({ open, onOpenChange }) {
 		}, 1500);
 	};
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sheet, {
-		"data-uid": "src/components/AIAssistant.tsx:61:5",
+		"data-uid": "src/components/AIAssistant.tsx:76:5",
 		"data-prohibitions": "[editContent]",
 		open,
 		onOpenChange,
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(SheetContent, {
-			"data-uid": "src/components/AIAssistant.tsx:62:7",
+			"data-uid": "src/components/AIAssistant.tsx:77:7",
 			"data-prohibitions": "[editContent]",
 			className: "w-full sm:max-w-md flex flex-col p-0 border-l-primary/20",
 			children: [
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(SheetHeader, {
-					"data-uid": "src/components/AIAssistant.tsx:63:9",
-					"data-prohibitions": "[]",
+					"data-uid": "src/components/AIAssistant.tsx:78:9",
+					"data-prohibitions": "[editContent]",
 					className: "p-6 border-b bg-muted/30",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(SheetTitle, {
-						"data-uid": "src/components/AIAssistant.tsx:64:11",
-						"data-prohibitions": "[]",
+						"data-uid": "src/components/AIAssistant.tsx:79:11",
+						"data-prohibitions": "[editContent]",
 						className: "flex items-center gap-2 text-primary",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, {
-							"data-uid": "src/components/AIAssistant.tsx:65:13",
+							"data-uid": "src/components/AIAssistant.tsx:80:13",
 							"data-prohibitions": "[editContent]",
 							className: "w-5 h-5"
-						}), "Be Bike AI Insights"]
+						}), t("ai_title")]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SheetDescription, {
-						"data-uid": "src/components/AIAssistant.tsx:68:11",
-						"data-prohibitions": "[]",
-						children: "Faça perguntas sobre frota, churn, subsídios e alertas."
+						"data-uid": "src/components/AIAssistant.tsx:83:11",
+						"data-prohibitions": "[editContent]",
+						children: t("ai_subtitle")
 					})]
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ScrollArea, {
-					"data-uid": "src/components/AIAssistant.tsx:73:9",
+					"data-uid": "src/components/AIAssistant.tsx:86:9",
 					"data-prohibitions": "[editContent]",
 					className: "flex-1 p-4",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						"data-uid": "src/components/AIAssistant.tsx:74:11",
+						"data-uid": "src/components/AIAssistant.tsx:87:11",
 						"data-prohibitions": "[editContent]",
 						className: "flex flex-col gap-4",
 						children: [messages.map((m, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							"data-uid": "src/components/AIAssistant.tsx:76:15",
+							"data-uid": "src/components/AIAssistant.tsx:89:15",
 							"data-prohibitions": "[editContent]",
 							className: `flex gap-3 max-w-[90%] ${m.role === "user" ? "ml-auto flex-row-reverse" : ""}`,
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								"data-uid": "src/components/AIAssistant.tsx:80:17",
+								"data-uid": "src/components/AIAssistant.tsx:93:17",
 								"data-prohibitions": "[editContent]",
 								className: `w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${m.role === "user" ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"}`,
 								children: m.role === "user" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(User, {
-									"data-uid": "src/components/AIAssistant.tsx:83:40",
+									"data-uid": "src/components/AIAssistant.tsx:96:40",
 									"data-prohibitions": "[editContent]",
 									size: 16
 								}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bot, {
-									"data-uid": "src/components/AIAssistant.tsx:83:61",
+									"data-uid": "src/components/AIAssistant.tsx:96:61",
 									"data-prohibitions": "[editContent]",
 									size: 16
 								})
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								"data-uid": "src/components/AIAssistant.tsx:85:17",
+								"data-uid": "src/components/AIAssistant.tsx:98:17",
 								"data-prohibitions": "[editContent]",
 								className: `p-3 rounded-xl text-sm leading-relaxed shadow-sm ${m.role === "user" ? "bg-primary text-primary-foreground rounded-tr-sm" : "bg-muted/50 border rounded-tl-sm"}`,
 								children: m.content
 							})]
 						}, i)), isTyping && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							"data-uid": "src/components/AIAssistant.tsx:93:15",
+							"data-uid": "src/components/AIAssistant.tsx:106:15",
 							"data-prohibitions": "[]",
 							className: "flex gap-3 max-w-[85%]",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								"data-uid": "src/components/AIAssistant.tsx:94:17",
+								"data-uid": "src/components/AIAssistant.tsx:107:17",
 								"data-prohibitions": "[]",
 								className: "w-8 h-8 rounded-full bg-muted text-muted-foreground flex items-center justify-center shrink-0",
 								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bot, {
-									"data-uid": "src/components/AIAssistant.tsx:95:19",
+									"data-uid": "src/components/AIAssistant.tsx:108:19",
 									"data-prohibitions": "[editContent]",
 									size: 16
 								})
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								"data-uid": "src/components/AIAssistant.tsx:97:17",
+								"data-uid": "src/components/AIAssistant.tsx:110:17",
 								"data-prohibitions": "[]",
 								className: "p-3 rounded-xl text-sm bg-muted/50 border rounded-tl-sm flex items-center gap-1",
 								children: [
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										"data-uid": "src/components/AIAssistant.tsx:98:19",
+										"data-uid": "src/components/AIAssistant.tsx:111:19",
 										"data-prohibitions": "[]",
 										className: "w-1.5 h-1.5 rounded-full bg-primary/50 animate-bounce"
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										"data-uid": "src/components/AIAssistant.tsx:99:19",
+										"data-uid": "src/components/AIAssistant.tsx:112:19",
 										"data-prohibitions": "[]",
 										className: "w-1.5 h-1.5 rounded-full bg-primary/50 animate-bounce",
 										style: { animationDelay: "0.2s" }
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										"data-uid": "src/components/AIAssistant.tsx:103:19",
+										"data-uid": "src/components/AIAssistant.tsx:116:19",
 										"data-prohibitions": "[]",
 										className: "w-1.5 h-1.5 rounded-full bg-primary/50 animate-bounce",
 										style: { animationDelay: "0.4s" }
@@ -28657,11 +29368,11 @@ function AIAssistant({ open, onOpenChange }) {
 					})
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-					"data-uid": "src/components/AIAssistant.tsx:113:9",
+					"data-uid": "src/components/AIAssistant.tsx:126:9",
 					"data-prohibitions": "[]",
 					className: "p-4 border-t bg-background",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
-						"data-uid": "src/components/AIAssistant.tsx:114:11",
+						"data-uid": "src/components/AIAssistant.tsx:127:11",
 						"data-prohibitions": "[]",
 						onSubmit: (e) => {
 							e.preventDefault();
@@ -28669,22 +29380,22 @@ function AIAssistant({ open, onOpenChange }) {
 						},
 						className: "flex gap-2",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-							"data-uid": "src/components/AIAssistant.tsx:121:13",
+							"data-uid": "src/components/AIAssistant.tsx:134:13",
 							"data-prohibitions": "[editContent]",
 							value: input,
 							onChange: (e) => setInput(e.target.value),
-							placeholder: "Ex: Quem está em risco de churn?",
+							placeholder: t("ai_placeholder"),
 							className: "rounded-full shadow-sm",
 							disabled: isTyping
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-							"data-uid": "src/components/AIAssistant.tsx:128:13",
+							"data-uid": "src/components/AIAssistant.tsx:141:13",
 							"data-prohibitions": "[]",
 							type: "submit",
 							size: "icon",
 							className: "rounded-full shrink-0 shadow-sm",
 							disabled: isTyping || !input.trim(),
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Send, {
-								"data-uid": "src/components/AIAssistant.tsx:134:15",
+								"data-uid": "src/components/AIAssistant.tsx:147:15",
 								"data-prohibitions": "[editContent]",
 								className: "w-4 h-4"
 							})
@@ -28701,13 +29412,13 @@ function Layout() {
 	const [aiOpen, setAiOpen] = (0, import_react.useState)(false);
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(SidebarProvider, {
 		"data-uid": "src/components/Layout.tsx:14:5",
-		"data-prohibitions": "[editContent]",
+		"data-prohibitions": "[]",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(AppSidebar, {
 			"data-uid": "src/components/Layout.tsx:15:7",
 			"data-prohibitions": "[editContent]"
 		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 			"data-uid": "src/components/Layout.tsx:16:7",
-			"data-prohibitions": "[editContent]",
+			"data-prohibitions": "[]",
 			className: "flex flex-col flex-1 min-h-screen overflow-hidden bg-background",
 			children: [
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(AppHeader, {
@@ -28724,24 +29435,24 @@ function Layout() {
 					})
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-					"data-uid": "src/components/Layout.tsx:23:9",
+					"data-uid": "src/components/Layout.tsx:22:9",
 					"data-prohibitions": "[]",
 					className: "fixed bottom-6 right-6 z-40 animate-bounce hover:animate-none",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-						"data-uid": "src/components/Layout.tsx:24:11",
+						"data-uid": "src/components/Layout.tsx:23:11",
 						"data-prohibitions": "[]",
 						onClick: () => setAiOpen(true),
 						className: "h-14 w-14 rounded-full shadow-elevation hover:shadow-xl hover:scale-105 transition-all",
 						size: "icon",
 						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, {
-							"data-uid": "src/components/Layout.tsx:29:13",
+							"data-uid": "src/components/Layout.tsx:28:13",
 							"data-prohibitions": "[editContent]",
 							className: "h-6 w-6"
 						})
 					})
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(AIAssistant, {
-					"data-uid": "src/components/Layout.tsx:33:9",
+					"data-uid": "src/components/Layout.tsx:32:9",
 					"data-prohibitions": "[editContent]",
 					open: aiOpen,
 					onOpenChange: setAiOpen
@@ -29076,39 +29787,39 @@ function Index() {
 					children: t("dashboard")
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 					"data-uid": "src/pages/Index.tsx:16:9",
-					"data-prohibitions": "[]",
+					"data-prohibitions": "[editContent]",
 					className: "text-muted-foreground",
-					children: "Centralized command center unifying CRM, Operations, and Financial data."
+					children: t("index_desc")
 				})]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				"data-uid": "src/pages/Index.tsx:21:7",
+				"data-uid": "src/pages/Index.tsx:19:7",
 				"data-prohibitions": "[editContent]",
 				className: "grid gap-4 md:grid-cols-4",
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-						"data-uid": "src/pages/Index.tsx:22:9",
+						"data-uid": "src/pages/Index.tsx:20:9",
 						"data-prohibitions": "[editContent]",
 						className: "border-l-4 border-l-primary shadow-sm",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardHeader, {
-							"data-uid": "src/pages/Index.tsx:23:11",
-							"data-prohibitions": "[]",
+							"data-uid": "src/pages/Index.tsx:21:11",
+							"data-prohibitions": "[editContent]",
 							className: "flex flex-row items-center justify-between pb-2",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardTitle, {
-								"data-uid": "src/pages/Index.tsx:24:13",
-								"data-prohibitions": "[]",
+								"data-uid": "src/pages/Index.tsx:22:13",
+								"data-prohibitions": "[editContent]",
 								className: "text-sm font-medium",
-								children: "Active Fleet"
+								children: t("active_fleet")
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bike, {
-								"data-uid": "src/pages/Index.tsx:25:13",
+								"data-uid": "src/pages/Index.tsx:23:13",
 								"data-prohibitions": "[editContent]",
 								className: "h-4 w-4 text-muted-foreground"
 							})]
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
-							"data-uid": "src/pages/Index.tsx:27:11",
+							"data-uid": "src/pages/Index.tsx:25:11",
 							"data-prohibitions": "[editContent]",
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								"data-uid": "src/pages/Index.tsx:28:13",
+								"data-uid": "src/pages/Index.tsx:26:13",
 								"data-prohibitions": "[editContent]",
 								className: "text-2xl font-bold",
 								children: [
@@ -29120,28 +29831,28 @@ function Index() {
 						})]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-						"data-uid": "src/pages/Index.tsx:33:9",
+						"data-uid": "src/pages/Index.tsx:31:9",
 						"data-prohibitions": "[editContent]",
 						className: "border-l-4 border-l-secondary shadow-sm",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardHeader, {
-							"data-uid": "src/pages/Index.tsx:34:11",
-							"data-prohibitions": "[]",
+							"data-uid": "src/pages/Index.tsx:32:11",
+							"data-prohibitions": "[editContent]",
 							className: "flex flex-row items-center justify-between pb-2",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardTitle, {
-								"data-uid": "src/pages/Index.tsx:35:13",
-								"data-prohibitions": "[]",
+								"data-uid": "src/pages/Index.tsx:33:13",
+								"data-prohibitions": "[editContent]",
 								className: "text-sm font-medium",
-								children: "Active Deliverers"
+								children: t("active_deliverers")
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Users, {
-								"data-uid": "src/pages/Index.tsx:36:13",
+								"data-uid": "src/pages/Index.tsx:34:13",
 								"data-prohibitions": "[editContent]",
 								className: "h-4 w-4 text-muted-foreground"
 							})]
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
-							"data-uid": "src/pages/Index.tsx:38:11",
+							"data-uid": "src/pages/Index.tsx:36:11",
 							"data-prohibitions": "[editContent]",
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								"data-uid": "src/pages/Index.tsx:39:13",
+								"data-uid": "src/pages/Index.tsx:37:13",
 								"data-prohibitions": "[editContent]",
 								className: "text-2xl font-bold",
 								children: [
@@ -29153,28 +29864,28 @@ function Index() {
 						})]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-						"data-uid": "src/pages/Index.tsx:44:9",
-						"data-prohibitions": "[]",
+						"data-uid": "src/pages/Index.tsx:42:9",
+						"data-prohibitions": "[editContent]",
 						className: "border-l-4 border-l-blue-500 shadow-sm",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardHeader, {
-							"data-uid": "src/pages/Index.tsx:45:11",
-							"data-prohibitions": "[]",
+							"data-uid": "src/pages/Index.tsx:43:11",
+							"data-prohibitions": "[editContent]",
 							className: "flex flex-row items-center justify-between pb-2",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardTitle, {
-								"data-uid": "src/pages/Index.tsx:46:13",
-								"data-prohibitions": "[]",
+								"data-uid": "src/pages/Index.tsx:44:13",
+								"data-prohibitions": "[editContent]",
 								className: "text-sm font-medium",
-								children: "Monthly Conversion"
+								children: t("monthly_conversion")
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TrendingUp, {
-								"data-uid": "src/pages/Index.tsx:47:13",
+								"data-uid": "src/pages/Index.tsx:45:13",
 								"data-prohibitions": "[editContent]",
 								className: "h-4 w-4 text-muted-foreground"
 							})]
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
-							"data-uid": "src/pages/Index.tsx:49:11",
+							"data-uid": "src/pages/Index.tsx:47:11",
 							"data-prohibitions": "[]",
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								"data-uid": "src/pages/Index.tsx:50:13",
+								"data-uid": "src/pages/Index.tsx:48:13",
 								"data-prohibitions": "[]",
 								className: "text-2xl font-bold",
 								children: "+12%"
@@ -29182,28 +29893,28 @@ function Index() {
 						})]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-						"data-uid": "src/pages/Index.tsx:53:9",
-						"data-prohibitions": "[]",
+						"data-uid": "src/pages/Index.tsx:51:9",
+						"data-prohibitions": "[editContent]",
 						className: "border-l-4 border-l-emerald-500 shadow-sm",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardHeader, {
-							"data-uid": "src/pages/Index.tsx:54:11",
-							"data-prohibitions": "[]",
+							"data-uid": "src/pages/Index.tsx:52:11",
+							"data-prohibitions": "[editContent]",
 							className: "flex flex-row items-center justify-between pb-2",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardTitle, {
-								"data-uid": "src/pages/Index.tsx:55:13",
-								"data-prohibitions": "[]",
+								"data-uid": "src/pages/Index.tsx:53:13",
+								"data-prohibitions": "[editContent]",
 								className: "text-sm font-medium",
-								children: "MRR (AsaaS)"
+								children: t("mrr")
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DollarSign, {
-								"data-uid": "src/pages/Index.tsx:56:13",
+								"data-uid": "src/pages/Index.tsx:54:13",
 								"data-prohibitions": "[editContent]",
 								className: "h-4 w-4 text-muted-foreground"
 							})]
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
-							"data-uid": "src/pages/Index.tsx:58:11",
+							"data-uid": "src/pages/Index.tsx:56:11",
 							"data-prohibitions": "[]",
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								"data-uid": "src/pages/Index.tsx:59:13",
+								"data-uid": "src/pages/Index.tsx:57:13",
 								"data-prohibitions": "[]",
 								className: "text-2xl font-bold",
 								children: "R$ 142k"
@@ -29213,105 +29924,121 @@ function Index() {
 				]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				"data-uid": "src/pages/Index.tsx:64:7",
+				"data-uid": "src/pages/Index.tsx:62:7",
 				"data-prohibitions": "[editContent]",
 				className: "grid gap-6 md:grid-cols-2",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-					"data-uid": "src/pages/Index.tsx:65:9",
+					"data-uid": "src/pages/Index.tsx:63:9",
 					"data-prohibitions": "[editContent]",
 					className: "shadow-sm",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardHeader, {
-						"data-uid": "src/pages/Index.tsx:66:11",
-						"data-prohibitions": "[]",
+						"data-uid": "src/pages/Index.tsx:64:11",
+						"data-prohibitions": "[editContent]",
 						className: "bg-muted/30 border-b",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardTitle, {
-							"data-uid": "src/pages/Index.tsx:67:13",
-							"data-prohibitions": "[]",
+							"data-uid": "src/pages/Index.tsx:65:13",
+							"data-prohibitions": "[editContent]",
 							className: "flex items-center gap-2",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Headphones, {
-								"data-uid": "src/pages/Index.tsx:68:15",
-								"data-prohibitions": "[editContent]",
-								className: "w-5 h-5 text-primary"
-							}), " Cloud Humans Service"]
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Headphones, {
+									"data-uid": "src/pages/Index.tsx:66:15",
+									"data-prohibitions": "[editContent]",
+									className: "w-5 h-5 text-primary"
+								}),
+								" ",
+								t("cloud_humans")
+							]
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardDescription, {
-							"data-uid": "src/pages/Index.tsx:70:13",
-							"data-prohibitions": "[]",
-							children: "Recent support tickets integrated via API"
+							"data-uid": "src/pages/Index.tsx:68:13",
+							"data-prohibitions": "[editContent]",
+							children: t("recent_tickets")
 						})]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
-						"data-uid": "src/pages/Index.tsx:72:11",
+						"data-uid": "src/pages/Index.tsx:70:11",
 						"data-prohibitions": "[editContent]",
 						className: "p-0",
 						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							"data-uid": "src/pages/Index.tsx:73:13",
+							"data-uid": "src/pages/Index.tsx:71:13",
 							"data-prohibitions": "[editContent]",
 							className: "divide-y",
 							children: MOCK_CLOUD_HUMANS_TICKETS.map((ticket) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								"data-uid": "src/pages/Index.tsx:75:17",
+								"data-uid": "src/pages/Index.tsx:73:17",
 								"data-prohibitions": "[editContent]",
 								className: "p-4 flex items-center justify-between",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									"data-uid": "src/pages/Index.tsx:76:19",
+									"data-uid": "src/pages/Index.tsx:74:19",
 									"data-prohibitions": "[editContent]",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-										"data-uid": "src/pages/Index.tsx:77:21",
+										"data-uid": "src/pages/Index.tsx:75:21",
 										"data-prohibitions": "[editContent]",
 										className: "font-medium leading-tight",
 										children: ticket.subject
 									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-										"data-uid": "src/pages/Index.tsx:78:21",
+										"data-uid": "src/pages/Index.tsx:76:21",
 										"data-prohibitions": "[editContent]",
 										className: "text-sm text-muted-foreground mt-1",
 										children: ticket.user
 									})]
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-									"data-uid": "src/pages/Index.tsx:80:19",
+									"data-uid": "src/pages/Index.tsx:78:19",
 									"data-prohibitions": "[editContent]",
 									variant: ticket.status === "Open" ? "destructive" : "secondary",
-									children: ticket.status
+									children: t(ticket.status)
 								})]
 							}, ticket.id))
 						})
 					})]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-					"data-uid": "src/pages/Index.tsx:89:9",
-					"data-prohibitions": "[]",
+					"data-uid": "src/pages/Index.tsx:87:9",
+					"data-prohibitions": "[editContent]",
 					className: "bg-primary/5 border-primary/20 shadow-sm",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardHeader, {
-						"data-uid": "src/pages/Index.tsx:90:11",
-						"data-prohibitions": "[]",
+						"data-uid": "src/pages/Index.tsx:88:11",
+						"data-prohibitions": "[editContent]",
 						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardTitle, {
-							"data-uid": "src/pages/Index.tsx:91:13",
-							"data-prohibitions": "[]",
+							"data-uid": "src/pages/Index.tsx:89:13",
+							"data-prohibitions": "[editContent]",
 							className: "flex items-center gap-2 text-primary",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Lightbulb, {
-								"data-uid": "src/pages/Index.tsx:92:15",
-								"data-prohibitions": "[editContent]",
-								className: "w-5 h-5"
-							}), " AI Insights"]
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Lightbulb, {
+									"data-uid": "src/pages/Index.tsx:90:15",
+									"data-prohibitions": "[editContent]",
+									className: "w-5 h-5"
+								}),
+								" ",
+								t("ai_insights")
+							]
 						})
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
-						"data-uid": "src/pages/Index.tsx:95:11",
-						"data-prohibitions": "[]",
+						"data-uid": "src/pages/Index.tsx:93:11",
+						"data-prohibitions": "[editContent]",
 						className: "space-y-4",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							"data-uid": "src/pages/Index.tsx:96:13",
-							"data-prohibitions": "[]",
+							"data-uid": "src/pages/Index.tsx:94:13",
+							"data-prohibitions": "[editContent]",
 							className: "bg-white p-4 rounded-lg shadow-sm text-sm border",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
-								"data-uid": "src/pages/Index.tsx:97:15",
-								"data-prohibitions": "[]",
-								children: "Predictive Churn:"
-							}), " 15 couriers are showing signs of inactivity. Suggesting retention workflow."]
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
+									"data-uid": "src/pages/Index.tsx:95:15",
+									"data-prohibitions": "[editContent]",
+									children: t("predictive_churn")
+								}),
+								" ",
+								t("predictive_churn_desc")
+							]
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							"data-uid": "src/pages/Index.tsx:100:13",
-							"data-prohibitions": "[]",
+							"data-uid": "src/pages/Index.tsx:97:13",
+							"data-prohibitions": "[editContent]",
 							className: "bg-white p-4 rounded-lg shadow-sm text-sm border",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
-								"data-uid": "src/pages/Index.tsx:101:15",
-								"data-prohibitions": "[]",
-								children: "Maintenance Alert:"
-							}), " 8 bikes will hit the 2500km threshold this week. Generate O.S. automatically."]
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
+									"data-uid": "src/pages/Index.tsx:98:15",
+									"data-prohibitions": "[editContent]",
+									children: t("maintenance_alert")
+								}),
+								" ",
+								t("maintenance_alert_desc")
+							]
 						})]
 					})]
 				})]
@@ -29348,8 +30075,8 @@ function CRM() {
 	};
 	const handleAction = (action) => {
 		toast({
-			title: action,
-			description: `Ação ${action} simulada com sucesso.`
+			title: t("action_executed"),
+			description: `${t("system_processing")} ${action}`
 		});
 	};
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -29362,52 +30089,52 @@ function CRM() {
 			className: "flex justify-between items-center flex-wrap gap-4",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				"data-uid": "src/pages/CRM.tsx:41:9",
-				"data-prohibitions": "[]",
+				"data-prohibitions": "[editContent]",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
 					"data-uid": "src/pages/CRM.tsx:42:11",
-					"data-prohibitions": "[]",
+					"data-prohibitions": "[editContent]",
 					className: "text-3xl font-bold tracking-tight text-secondary",
-					children: "Advanced CRM Funnel"
+					children: t("crm_title")
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 					"data-uid": "src/pages/CRM.tsx:43:11",
-					"data-prohibitions": "[]",
+					"data-prohibitions": "[editContent]",
 					className: "text-muted-foreground",
-					children: "Manage deliverer acquisition with predictive scoring."
+					children: t("crm_desc")
 				})]
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				"data-uid": "src/pages/CRM.tsx:47:9",
+				"data-uid": "src/pages/CRM.tsx:45:9",
 				"data-prohibitions": "[editContent]",
 				className: "flex gap-2",
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-						"data-uid": "src/pages/CRM.tsx:48:11",
+						"data-uid": "src/pages/CRM.tsx:46:11",
 						"data-prohibitions": "[]",
 						variant: "outline",
 						onClick: () => handleAction("Export CSV"),
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Download, {
-							"data-uid": "src/pages/CRM.tsx:49:13",
+							"data-uid": "src/pages/CRM.tsx:47:13",
 							"data-prohibitions": "[editContent]",
 							className: "w-4 h-4 mr-2"
 						}), " CSV"]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-						"data-uid": "src/pages/CRM.tsx:51:11",
+						"data-uid": "src/pages/CRM.tsx:49:11",
 						"data-prohibitions": "[]",
 						variant: "outline",
 						onClick: () => handleAction("Export XML"),
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Download, {
-							"data-uid": "src/pages/CRM.tsx:52:13",
+							"data-uid": "src/pages/CRM.tsx:50:13",
 							"data-prohibitions": "[editContent]",
 							className: "w-4 h-4 mr-2"
 						}), " XML"]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-						"data-uid": "src/pages/CRM.tsx:54:11",
+						"data-uid": "src/pages/CRM.tsx:52:11",
 						"data-prohibitions": "[editContent]",
 						onClick: () => handleAction("Import Data"),
 						children: [
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Upload, {
-								"data-uid": "src/pages/CRM.tsx:55:13",
+								"data-uid": "src/pages/CRM.tsx:53:13",
 								"data-prohibitions": "[editContent]",
 								className: "w-4 h-4 mr-2"
 							}),
@@ -29418,52 +30145,52 @@ function CRM() {
 				]
 			})]
 		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-			"data-uid": "src/pages/CRM.tsx:60:7",
+			"data-uid": "src/pages/CRM.tsx:58:7",
 			"data-prohibitions": "[editContent]",
 			className: "flex-1 flex gap-4 overflow-x-auto pb-4 items-start",
 			children: STAGES.map((stage, stageIndex) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				"data-uid": "src/pages/CRM.tsx:62:11",
+				"data-uid": "src/pages/CRM.tsx:60:11",
 				"data-prohibitions": "[editContent]",
 				className: "w-80 flex-shrink-0 bg-muted/40 rounded-xl p-4 border border-border flex flex-col max-h-full",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					"data-uid": "src/pages/CRM.tsx:66:13",
+					"data-uid": "src/pages/CRM.tsx:64:13",
 					"data-prohibitions": "[editContent]",
 					className: "flex items-center justify-between mb-4",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-						"data-uid": "src/pages/CRM.tsx:67:15",
+						"data-uid": "src/pages/CRM.tsx:65:15",
 						"data-prohibitions": "[editContent]",
 						className: "font-semibold text-secondary",
-						children: stage
+						children: t(stage)
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-						"data-uid": "src/pages/CRM.tsx:68:15",
+						"data-uid": "src/pages/CRM.tsx:66:15",
 						"data-prohibitions": "[editContent]",
 						variant: "secondary",
 						className: "bg-white shadow-sm",
 						children: leads.filter((l) => l.stage === stage).length
 					})]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					"data-uid": "src/pages/CRM.tsx:73:13",
+					"data-uid": "src/pages/CRM.tsx:71:13",
 					"data-prohibitions": "[editContent]",
 					className: "space-y-3 overflow-y-auto flex-1 pr-1",
 					children: [leads.filter((l) => l.stage === stage).map((lead) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-						"data-uid": "src/pages/CRM.tsx:77:19",
+						"data-uid": "src/pages/CRM.tsx:75:19",
 						"data-prohibitions": "[editContent]",
 						to: `/crm/${lead.id}`,
 						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-							"data-uid": "src/pages/CRM.tsx:78:21",
+							"data-uid": "src/pages/CRM.tsx:76:21",
 							"data-prohibitions": "[editContent]",
 							className: "cursor-pointer hover:border-primary/50 hover:shadow-md transition-all group",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardHeader, {
-								"data-uid": "src/pages/CRM.tsx:79:23",
+								"data-uid": "src/pages/CRM.tsx:77:23",
 								"data-prohibitions": "[editContent]",
 								className: "p-3 pb-2 flex flex-row items-start justify-between space-y-0",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardTitle, {
-									"data-uid": "src/pages/CRM.tsx:80:25",
+									"data-uid": "src/pages/CRM.tsx:78:25",
 									"data-prohibitions": "[editContent]",
 									className: "text-sm flex items-center gap-2 text-secondary",
 									children: [
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(User, {
-											"data-uid": "src/pages/CRM.tsx:81:27",
+											"data-uid": "src/pages/CRM.tsx:79:27",
 											"data-prohibitions": "[editContent]",
 											className: "w-4 h-4 text-primary"
 										}),
@@ -29471,25 +30198,25 @@ function CRM() {
 										lead.name
 									]
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, {
-									"data-uid": "src/pages/CRM.tsx:83:25",
+									"data-uid": "src/pages/CRM.tsx:81:25",
 									"data-prohibitions": "[editContent]",
 									className: "w-3 h-3 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity"
 								})]
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
-								"data-uid": "src/pages/CRM.tsx:85:23",
+								"data-uid": "src/pages/CRM.tsx:83:23",
 								"data-prohibitions": "[editContent]",
 								className: "p-3 pt-0",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									"data-uid": "src/pages/CRM.tsx:86:25",
+									"data-uid": "src/pages/CRM.tsx:84:25",
 									"data-prohibitions": "[editContent]",
 									className: "flex flex-col gap-1 mb-3",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-										"data-uid": "src/pages/CRM.tsx:87:27",
+										"data-uid": "src/pages/CRM.tsx:85:27",
 										"data-prohibitions": "[editContent]",
 										className: "text-xs text-muted-foreground flex items-center gap-2",
 										children: [
 											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Phone, {
-												"data-uid": "src/pages/CRM.tsx:88:29",
+												"data-uid": "src/pages/CRM.tsx:86:29",
 												"data-prohibitions": "[editContent]",
 												className: "w-3 h-3"
 											}),
@@ -29497,27 +30224,27 @@ function CRM() {
 											lead.phone
 										]
 									}), lead.type && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										"data-uid": "src/pages/CRM.tsx:91:29",
+										"data-uid": "src/pages/CRM.tsx:89:29",
 										"data-prohibitions": "[editContent]",
 										className: "text-xs font-medium text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded-sm w-fit",
-										children: lead.type
+										children: t(lead.type)
 									})]
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									"data-uid": "src/pages/CRM.tsx:96:25",
+									"data-uid": "src/pages/CRM.tsx:94:25",
 									"data-prohibitions": "[editContent]",
 									className: "flex items-center justify-between mt-2",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-										"data-uid": "src/pages/CRM.tsx:97:27",
+										"data-uid": "src/pages/CRM.tsx:95:27",
 										"data-prohibitions": "[editContent]",
 										variant: "outline",
 										className: "text-[10px] uppercase tracking-wider",
 										children: lead.source
 									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										"data-uid": "src/pages/CRM.tsx:100:27",
+										"data-uid": "src/pages/CRM.tsx:98:27",
 										"data-prohibitions": "[]",
 										className: "flex gap-1",
 										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-											"data-uid": "src/pages/CRM.tsx:101:29",
+											"data-uid": "src/pages/CRM.tsx:99:29",
 											"data-prohibitions": "[]",
 											variant: "ghost",
 											size: "icon",
@@ -29525,12 +30252,12 @@ function CRM() {
 											disabled: stageIndex === 0,
 											onClick: (e) => moveLead(e, lead.id, "prev"),
 											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, {
-												"data-uid": "src/pages/CRM.tsx:108:31",
+												"data-uid": "src/pages/CRM.tsx:106:31",
 												"data-prohibitions": "[editContent]",
 												className: "w-3 h-3"
 											})
 										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-											"data-uid": "src/pages/CRM.tsx:110:29",
+											"data-uid": "src/pages/CRM.tsx:108:29",
 											"data-prohibitions": "[]",
 											variant: "ghost",
 											size: "icon",
@@ -29538,7 +30265,7 @@ function CRM() {
 											disabled: stageIndex === STAGES.length - 1,
 											onClick: (e) => moveLead(e, lead.id, "next"),
 											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, {
-												"data-uid": "src/pages/CRM.tsx:117:31",
+												"data-uid": "src/pages/CRM.tsx:115:31",
 												"data-prohibitions": "[editContent]",
 												className: "w-3 h-3"
 											})
@@ -29548,10 +30275,10 @@ function CRM() {
 							})]
 						})
 					}, lead.id)), leads.filter((l) => l.stage === stage).length === 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						"data-uid": "src/pages/CRM.tsx:126:17",
-						"data-prohibitions": "[]",
+						"data-uid": "src/pages/CRM.tsx:124:17",
+						"data-prohibitions": "[editContent]",
 						className: "text-center text-sm text-muted-foreground py-8 border-2 border-dashed rounded-lg opacity-60",
-						children: "No leads"
+						children: t("no_leads")
 					})]
 				})]
 			}, stage))
@@ -29724,192 +30451,208 @@ TabsContent.displayName = Content.displayName;
 function LeadDetail() {
 	const { id } = useParams();
 	const { toast } = useToast();
+	const t = useTranslation();
 	const lead = MOCK_CRM_LEADS.find((l) => l.id === id) || MOCK_CRM_LEADS[0];
 	const handleExportBO = () => {
-		const s = `B.O. Be Bike - CPF: ${lead.cpf || "N/A"} | Nome: ${lead.name} | RG: ${lead.rg || "N/A"} | End: ${lead.address || "N/A"} | Status: ${lead.contractStatus || "N/A"} | Contato: ${lead.phone}`.padEnd(1400, ".");
+		const s = t("bo_summary", {
+			cpf: lead.cpf || "N/A",
+			name: lead.name,
+			rg: lead.rg || "N/A",
+			address: lead.address || "N/A",
+			status: t(lead.contractStatus) || "N/A",
+			phone: lead.phone
+		}).padEnd(1400, ".");
 		navigator.clipboard.writeText(s.substring(0, 1400));
 		toast({
-			title: "Resumo B.O. Copiado (1400c)",
-			description: "Cole no portal da delegacia. Redirecionando..."
+			title: t("bo_copied_title"),
+			description: t("bo_copied_desc")
 		});
 		window.open("https://www.delegaciaeletronica.policiacivil.sp.gov.br/ssp-de-cidadao/pages/comunicar-ocorrencia", "_blank");
 	};
 	const fields = [
 		{
-			l: "CPF / RG",
+			l: t("cpf_rg"),
 			v: `${lead.cpf || "-"} / ${lead.rg || "-"}`
 		},
 		{
-			l: "Nasc. / Naturalidade",
+			l: t("dob_nat"),
 			v: `${lead.dob || "-"} / ${lead.naturalidade || "-"}`
 		},
 		{
-			l: "Email",
+			l: t("email"),
 			v: lead.email || "-"
 		},
 		{
-			l: "Filiação",
+			l: t("parents"),
 			v: lead.parentsNames || "-"
 		},
 		{
-			l: "Endereço",
+			l: t("address"),
 			v: `${lead.address || "-"} - CEP: ${lead.cep || "-"}`
 		},
 		{
-			l: "Bikes Anteriores",
-			v: lead.bikesHistory?.join(", ") || "Nenhuma"
+			l: t("previous_bikes"),
+			v: lead.bikesHistory?.join(", ") || t("none")
 		}
 	];
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		"data-uid": "src/pages/LeadDetail.tsx:42:5",
+		"data-uid": "src/pages/LeadDetail.tsx:48:5",
 		"data-prohibitions": "[editContent]",
 		className: "space-y-6 max-w-6xl mx-auto pb-12",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			"data-uid": "src/pages/LeadDetail.tsx:43:7",
+			"data-uid": "src/pages/LeadDetail.tsx:49:7",
 			"data-prohibitions": "[editContent]",
 			className: "flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-6 rounded-xl border shadow-sm",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				"data-uid": "src/pages/LeadDetail.tsx:44:9",
+				"data-uid": "src/pages/LeadDetail.tsx:50:9",
 				"data-prohibitions": "[editContent]",
 				className: "flex items-center gap-4",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-					"data-uid": "src/pages/LeadDetail.tsx:45:11",
+					"data-uid": "src/pages/LeadDetail.tsx:51:11",
 					"data-prohibitions": "[]",
 					className: "h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center text-primary",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(User, {
-						"data-uid": "src/pages/LeadDetail.tsx:46:13",
+						"data-uid": "src/pages/LeadDetail.tsx:52:13",
 						"data-prohibitions": "[editContent]",
 						className: "h-8 w-8"
 					})
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					"data-uid": "src/pages/LeadDetail.tsx:48:11",
+					"data-uid": "src/pages/LeadDetail.tsx:54:11",
 					"data-prohibitions": "[editContent]",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h1", {
-						"data-uid": "src/pages/LeadDetail.tsx:49:13",
+						"data-uid": "src/pages/LeadDetail.tsx:55:13",
 						"data-prohibitions": "[editContent]",
 						className: "text-3xl font-bold tracking-tight text-secondary flex items-center gap-3",
 						children: [
 							lead.name,
 							" ",
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-								"data-uid": "src/pages/LeadDetail.tsx:50:27",
+								"data-uid": "src/pages/LeadDetail.tsx:56:27",
 								"data-prohibitions": "[editContent]",
 								variant: "outline",
-								children: lead.stage
+								children: t(lead.stage)
 							})
 						]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-						"data-uid": "src/pages/LeadDetail.tsx:52:13",
+						"data-uid": "src/pages/LeadDetail.tsx:58:13",
 						"data-prohibitions": "[editContent]",
 						className: "text-muted-foreground font-mono text-sm mt-1",
 						children: [
 							lead.phone,
 							" • ",
-							lead.type
+							t(lead.type)
 						]
 					})]
 				})]
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				"data-uid": "src/pages/LeadDetail.tsx:57:9",
-				"data-prohibitions": "[]",
+				"data-uid": "src/pages/LeadDetail.tsx:63:9",
+				"data-prohibitions": "[editContent]",
 				className: "flex gap-2 w-full sm:w-auto",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-					"data-uid": "src/pages/LeadDetail.tsx:58:11",
-					"data-prohibitions": "[]",
+					"data-uid": "src/pages/LeadDetail.tsx:64:11",
+					"data-prohibitions": "[editContent]",
 					variant: "outline",
 					asChild: true,
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
-						"data-uid": "src/pages/LeadDetail.tsx:59:13",
-						"data-prohibitions": "[]",
+						"data-uid": "src/pages/LeadDetail.tsx:65:13",
+						"data-prohibitions": "[editContent]",
 						href: `https://wa.me/55${lead.phone}`,
 						target: "_blank",
 						rel: "noopener noreferrer",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, {
-							"data-uid": "src/pages/LeadDetail.tsx:60:15",
-							"data-prohibitions": "[editContent]",
-							className: "w-4 h-4 mr-2"
-						}), " WhatsApp"]
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, {
+								"data-uid": "src/pages/LeadDetail.tsx:66:15",
+								"data-prohibitions": "[editContent]",
+								className: "w-4 h-4 mr-2"
+							}),
+							" ",
+							t("whatsapp")
+						]
 					})
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-					"data-uid": "src/pages/LeadDetail.tsx:63:11",
-					"data-prohibitions": "[]",
+					"data-uid": "src/pages/LeadDetail.tsx:69:11",
+					"data-prohibitions": "[editContent]",
 					variant: "destructive",
 					onClick: handleExportBO,
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TriangleAlert, {
-						"data-uid": "src/pages/LeadDetail.tsx:64:13",
-						"data-prohibitions": "[editContent]",
-						className: "w-4 h-4 mr-2"
-					}), " Gerar B.O."]
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TriangleAlert, {
+							"data-uid": "src/pages/LeadDetail.tsx:70:13",
+							"data-prohibitions": "[editContent]",
+							className: "w-4 h-4 mr-2"
+						}),
+						" ",
+						t("generate_bo")
+					]
 				})]
 			})]
 		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Tabs, {
-			"data-uid": "src/pages/LeadDetail.tsx:69:7",
+			"data-uid": "src/pages/LeadDetail.tsx:75:7",
 			"data-prohibitions": "[editContent]",
 			defaultValue: "master",
 			className: "w-full",
 			children: [
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsList, {
-					"data-uid": "src/pages/LeadDetail.tsx:70:9",
-					"data-prohibitions": "[]",
+					"data-uid": "src/pages/LeadDetail.tsx:76:9",
+					"data-prohibitions": "[editContent]",
 					className: "grid w-full max-w-2xl grid-cols-4",
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsTrigger, {
-							"data-uid": "src/pages/LeadDetail.tsx:71:11",
-							"data-prohibitions": "[]",
+							"data-uid": "src/pages/LeadDetail.tsx:77:11",
+							"data-prohibitions": "[editContent]",
 							value: "master",
-							children: "360º Master"
+							children: t("master_360")
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsTrigger, {
-							"data-uid": "src/pages/LeadDetail.tsx:72:11",
-							"data-prohibitions": "[]",
+							"data-uid": "src/pages/LeadDetail.tsx:78:11",
+							"data-prohibitions": "[editContent]",
 							value: "contract",
-							children: "Contratos"
+							children: t("contracts")
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsTrigger, {
-							"data-uid": "src/pages/LeadDetail.tsx:73:11",
-							"data-prohibitions": "[]",
+							"data-uid": "src/pages/LeadDetail.tsx:79:11",
+							"data-prohibitions": "[editContent]",
 							value: "performance",
-							children: "Performance"
+							children: t("performance")
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsTrigger, {
-							"data-uid": "src/pages/LeadDetail.tsx:74:11",
-							"data-prohibitions": "[]",
+							"data-uid": "src/pages/LeadDetail.tsx:80:11",
+							"data-prohibitions": "[editContent]",
 							value: "files",
-							children: "Arquivos"
+							children: t("files")
 						})
 					]
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsContent, {
-					"data-uid": "src/pages/LeadDetail.tsx:77:9",
+					"data-uid": "src/pages/LeadDetail.tsx:83:9",
 					"data-prohibitions": "[editContent]",
 					value: "master",
 					className: "mt-6 grid grid-cols-1 md:grid-cols-2 gap-6",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-						"data-uid": "src/pages/LeadDetail.tsx:78:11",
+						"data-uid": "src/pages/LeadDetail.tsx:84:11",
 						"data-prohibitions": "[editContent]",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardHeader, {
-							"data-uid": "src/pages/LeadDetail.tsx:79:13",
-							"data-prohibitions": "[]",
+							"data-uid": "src/pages/LeadDetail.tsx:85:13",
+							"data-prohibitions": "[editContent]",
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardTitle, {
-								"data-uid": "src/pages/LeadDetail.tsx:80:15",
-								"data-prohibitions": "[]",
+								"data-uid": "src/pages/LeadDetail.tsx:86:15",
+								"data-prohibitions": "[editContent]",
 								className: "text-lg",
-								children: "Dados Cadastrais"
+								children: t("reg_data")
 							})
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
-							"data-uid": "src/pages/LeadDetail.tsx:82:13",
+							"data-uid": "src/pages/LeadDetail.tsx:88:13",
 							"data-prohibitions": "[editContent]",
 							className: "grid grid-cols-1 gap-y-4",
 							children: fields.map((f) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								"data-uid": "src/pages/LeadDetail.tsx:84:17",
+								"data-uid": "src/pages/LeadDetail.tsx:90:17",
 								"data-prohibitions": "[editContent]",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-									"data-uid": "src/pages/LeadDetail.tsx:85:19",
+									"data-uid": "src/pages/LeadDetail.tsx:91:19",
 									"data-prohibitions": "[editContent]",
 									className: "text-xs text-muted-foreground uppercase",
 									children: f.l
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-									"data-uid": "src/pages/LeadDetail.tsx:86:19",
+									"data-uid": "src/pages/LeadDetail.tsx:92:19",
 									"data-prohibitions": "[editContent]",
 									className: "font-medium text-sm text-secondary",
 									children: f.v
@@ -29917,59 +30660,66 @@ function LeadDetail() {
 							}, f.l))
 						})]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						"data-uid": "src/pages/LeadDetail.tsx:92:11",
+						"data-uid": "src/pages/LeadDetail.tsx:98:11",
 						"data-prohibitions": "[editContent]",
 						className: "space-y-6",
 						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-							"data-uid": "src/pages/LeadDetail.tsx:93:13",
+							"data-uid": "src/pages/LeadDetail.tsx:99:13",
 							"data-prohibitions": "[editContent]",
 							className: "bg-slate-50 border-slate-200",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardHeader, {
-								"data-uid": "src/pages/LeadDetail.tsx:94:15",
-								"data-prohibitions": "[]",
+								"data-uid": "src/pages/LeadDetail.tsx:100:15",
+								"data-prohibitions": "[editContent]",
 								className: "pb-3",
 								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardTitle, {
-									"data-uid": "src/pages/LeadDetail.tsx:95:17",
-									"data-prohibitions": "[]",
+									"data-uid": "src/pages/LeadDetail.tsx:101:17",
+									"data-prohibitions": "[editContent]",
 									className: "text-lg flex items-center gap-2",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DollarSign, {
-										"data-uid": "src/pages/LeadDetail.tsx:96:19",
-										"data-prohibitions": "[editContent]",
-										className: "w-4 h-4"
-									}), " Status Financeiro e Contrato"]
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DollarSign, {
+											"data-uid": "src/pages/LeadDetail.tsx:102:19",
+											"data-prohibitions": "[editContent]",
+											className: "w-4 h-4"
+										}),
+										" ",
+										t("fin_contract_status")
+									]
 								})
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
-								"data-uid": "src/pages/LeadDetail.tsx:99:15",
+								"data-uid": "src/pages/LeadDetail.tsx:105:15",
 								"data-prohibitions": "[editContent]",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									"data-uid": "src/pages/LeadDetail.tsx:100:17",
+									"data-uid": "src/pages/LeadDetail.tsx:106:17",
 									"data-prohibitions": "[editContent]",
 									className: "flex flex-wrap gap-2 mb-4",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-										"data-uid": "src/pages/LeadDetail.tsx:101:19",
+										"data-uid": "src/pages/LeadDetail.tsx:107:19",
 										"data-prohibitions": "[editContent]",
 										variant: lead.contractStatus === "Vigente" ? "default" : "secondary",
-										children: lead.contractStatus
+										children: t(lead.contractStatus)
 									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-										"data-uid": "src/pages/LeadDetail.tsx:104:19",
+										"data-uid": "src/pages/LeadDetail.tsx:110:19",
 										"data-prohibitions": "[editContent]",
 										variant: lead.financialStatus === "Adimplente" ? "outline" : "destructive",
 										className: lead.financialStatus === "Adimplente" ? "border-emerald-500 text-emerald-600" : "",
-										children: lead.financialStatus
+										children: t(lead.financialStatus)
 									})]
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-									"data-uid": "src/pages/LeadDetail.tsx:115:17",
+									"data-uid": "src/pages/LeadDetail.tsx:121:17",
 									"data-prohibitions": "[editContent]",
 									className: "text-sm",
 									children: [
-										"Score (99Food): ",
+										t("score"),
+										" (99Food): ",
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
-											"data-uid": "src/pages/LeadDetail.tsx:116:35",
+											"data-uid": "src/pages/LeadDetail.tsx:122:42",
 											"data-prohibitions": "[editContent]",
 											children: lead.performanceScore || "N/A"
 										}),
-										" | Duração:",
+										" |",
 										" ",
+										t("duration"),
+										": ",
 										lead.contractDuration || "N/A"
 									]
 								})]
@@ -29978,107 +30728,107 @@ function LeadDetail() {
 					})]
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
-					"data-uid": "src/pages/LeadDetail.tsx:124:9",
-					"data-prohibitions": "[]",
+					"data-uid": "src/pages/LeadDetail.tsx:130:9",
+					"data-prohibitions": "[editContent]",
 					value: "contract",
 					className: "mt-6",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-						"data-uid": "src/pages/LeadDetail.tsx:125:11",
-						"data-prohibitions": "[]",
+						"data-uid": "src/pages/LeadDetail.tsx:131:11",
+						"data-prohibitions": "[editContent]",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardHeader, {
-							"data-uid": "src/pages/LeadDetail.tsx:126:13",
-							"data-prohibitions": "[]",
+							"data-uid": "src/pages/LeadDetail.tsx:132:13",
+							"data-prohibitions": "[editContent]",
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardTitle, {
-								"data-uid": "src/pages/LeadDetail.tsx:127:15",
-								"data-prohibitions": "[]",
-								children: "ZapSign Integration"
+								"data-uid": "src/pages/LeadDetail.tsx:133:15",
+								"data-prohibitions": "[editContent]",
+								children: t("zapsign_integration")
 							})
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
-							"data-uid": "src/pages/LeadDetail.tsx:129:13",
-							"data-prohibitions": "[]",
+							"data-uid": "src/pages/LeadDetail.tsx:135:13",
+							"data-prohibitions": "[editContent]",
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								"data-uid": "src/pages/LeadDetail.tsx:130:15",
-								"data-prohibitions": "[]",
+								"data-uid": "src/pages/LeadDetail.tsx:136:15",
+								"data-prohibitions": "[editContent]",
 								className: "flex items-center justify-between p-4 border rounded-lg bg-muted/20",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									"data-uid": "src/pages/LeadDetail.tsx:131:17",
-									"data-prohibitions": "[]",
+									"data-uid": "src/pages/LeadDetail.tsx:137:17",
+									"data-prohibitions": "[editContent]",
 									className: "flex items-center gap-3",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileText, {
-										"data-uid": "src/pages/LeadDetail.tsx:132:19",
+										"data-uid": "src/pages/LeadDetail.tsx:138:19",
 										"data-prohibitions": "[editContent]",
 										className: "w-5 h-5 text-primary"
 									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-										"data-uid": "src/pages/LeadDetail.tsx:133:19",
-										"data-prohibitions": "[]",
+										"data-uid": "src/pages/LeadDetail.tsx:139:19",
+										"data-prohibitions": "[editContent]",
 										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-											"data-uid": "src/pages/LeadDetail.tsx:134:21",
-											"data-prohibitions": "[]",
+											"data-uid": "src/pages/LeadDetail.tsx:140:21",
+											"data-prohibitions": "[editContent]",
 											className: "font-medium",
-											children: "Termo de Locação Padrão"
+											children: t("standard_lease")
 										})
 									})]
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-									"data-uid": "src/pages/LeadDetail.tsx:137:17",
-									"data-prohibitions": "[]",
+									"data-uid": "src/pages/LeadDetail.tsx:143:17",
+									"data-prohibitions": "[editContent]",
 									variant: "outline",
 									className: "border-primary text-primary",
-									children: "Assinado"
+									children: t("signed")
 								})]
 							})
 						})]
 					})
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
-					"data-uid": "src/pages/LeadDetail.tsx:145:9",
-					"data-prohibitions": "[]",
+					"data-uid": "src/pages/LeadDetail.tsx:151:9",
+					"data-prohibitions": "[editContent]",
 					value: "performance",
 					className: "mt-6",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-						"data-uid": "src/pages/LeadDetail.tsx:146:11",
-						"data-prohibitions": "[]",
+						"data-uid": "src/pages/LeadDetail.tsx:152:11",
+						"data-prohibitions": "[editContent]",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardHeader, {
-							"data-uid": "src/pages/LeadDetail.tsx:147:13",
-							"data-prohibitions": "[]",
+							"data-uid": "src/pages/LeadDetail.tsx:153:13",
+							"data-prohibitions": "[editContent]",
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardTitle, {
-								"data-uid": "src/pages/LeadDetail.tsx:148:15",
-								"data-prohibitions": "[]",
-								children: "Upload Planilha 99Food"
+								"data-uid": "src/pages/LeadDetail.tsx:154:15",
+								"data-prohibitions": "[editContent]",
+								children: t("upload_sheet")
 							})
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
-							"data-uid": "src/pages/LeadDetail.tsx:150:13",
-							"data-prohibitions": "[]",
+							"data-uid": "src/pages/LeadDetail.tsx:156:13",
+							"data-prohibitions": "[editContent]",
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								"data-uid": "src/pages/LeadDetail.tsx:151:15",
-								"data-prohibitions": "[]",
+								"data-uid": "src/pages/LeadDetail.tsx:157:15",
+								"data-prohibitions": "[editContent]",
 								className: "border-2 border-dashed rounded-xl p-10 flex flex-col items-center justify-center text-center bg-muted/10 cursor-pointer hover:bg-muted/30 transition-colors",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CloudUpload, {
-									"data-uid": "src/pages/LeadDetail.tsx:152:17",
+									"data-uid": "src/pages/LeadDetail.tsx:158:17",
 									"data-prohibitions": "[editContent]",
 									className: "w-10 h-10 text-muted-foreground mb-4"
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-									"data-uid": "src/pages/LeadDetail.tsx:153:17",
-									"data-prohibitions": "[]",
+									"data-uid": "src/pages/LeadDetail.tsx:159:17",
+									"data-prohibitions": "[editContent]",
 									className: "font-semibold",
-									children: "Arraste a planilha CSV/Excel"
+									children: t("drag_sheet")
 								})]
 							})
 						})]
 					})
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
-					"data-uid": "src/pages/LeadDetail.tsx:159:9",
-					"data-prohibitions": "[]",
+					"data-uid": "src/pages/LeadDetail.tsx:165:9",
+					"data-prohibitions": "[editContent]",
 					value: "files",
 					className: "mt-6",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, {
-						"data-uid": "src/pages/LeadDetail.tsx:160:11",
-						"data-prohibitions": "[]",
+						"data-uid": "src/pages/LeadDetail.tsx:166:11",
+						"data-prohibitions": "[editContent]",
 						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
-							"data-uid": "src/pages/LeadDetail.tsx:161:13",
-							"data-prohibitions": "[]",
+							"data-uid": "src/pages/LeadDetail.tsx:167:13",
+							"data-prohibitions": "[editContent]",
 							className: "pt-6 text-center text-muted-foreground py-10 border-2 border-dashed rounded-lg m-6",
-							children: "Drop de apólices e CNH aqui."
+							children: t("drop_files")
 						})
 					})
 				})
@@ -30161,185 +30911,198 @@ TableCaption.displayName = "TableCaption";
 //#region src/pages/Bikes.tsx
 function Bikes() {
 	const { toast } = useToast();
+	const t = useTranslation();
 	const handleAction = (type) => toast({
-		title: `Ação Executada`,
-		description: `Sistema processando: ${type}.`
+		title: t("action_executed"),
+		description: `${t("system_processing")} ${type}.`
 	});
 	const getRevisionBadge = (mileage, lastRev) => {
 		const diff = mileage - lastRev;
 		if (diff >= 2500) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-			"data-uid": "src/pages/Bikes.tsx:27:9",
+			"data-uid": "src/pages/Bikes.tsx:29:9",
 			"data-prohibitions": "[]",
 			className: "flex h-2 w-2 rounded-full bg-red-500 animate-pulse",
-			title: "Revisar Agora"
+			title: t("Revisar Agora")
 		});
 		if (diff >= 2200) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-			"data-uid": "src/pages/Bikes.tsx:33:14",
+			"data-uid": "src/pages/Bikes.tsx:35:14",
 			"data-prohibitions": "[]",
 			className: "flex h-2 w-2 rounded-full bg-orange-500",
-			title: "Atenção"
+			title: t("Atenção")
 		});
 		return null;
 	};
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		"data-uid": "src/pages/Bikes.tsx:38:5",
+		"data-uid": "src/pages/Bikes.tsx:40:5",
 		"data-prohibitions": "[editContent]",
 		className: "space-y-6 max-w-7xl mx-auto",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			"data-uid": "src/pages/Bikes.tsx:39:7",
-			"data-prohibitions": "[]",
+			"data-uid": "src/pages/Bikes.tsx:41:7",
+			"data-prohibitions": "[editContent]",
 			className: "flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				"data-uid": "src/pages/Bikes.tsx:40:9",
-				"data-prohibitions": "[]",
+				"data-uid": "src/pages/Bikes.tsx:42:9",
+				"data-prohibitions": "[editContent]",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
-					"data-uid": "src/pages/Bikes.tsx:41:11",
-					"data-prohibitions": "[]",
+					"data-uid": "src/pages/Bikes.tsx:43:11",
+					"data-prohibitions": "[editContent]",
 					className: "text-3xl font-bold tracking-tight text-secondary",
-					children: "Fleet Master"
+					children: t("fleet_title")
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					"data-uid": "src/pages/Bikes.tsx:42:11",
-					"data-prohibitions": "[]",
+					"data-uid": "src/pages/Bikes.tsx:44:11",
+					"data-prohibitions": "[editContent]",
 					className: "text-muted-foreground",
-					children: "Comprehensive lifecycle and status management."
+					children: t("fleet_desc")
 				})]
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				"data-uid": "src/pages/Bikes.tsx:44:9",
-				"data-prohibitions": "[]",
+				"data-uid": "src/pages/Bikes.tsx:46:9",
+				"data-prohibitions": "[editContent]",
 				className: "flex flex-wrap gap-2",
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-						"data-uid": "src/pages/Bikes.tsx:45:11",
+						"data-uid": "src/pages/Bikes.tsx:47:11",
 						"data-prohibitions": "[]",
 						variant: "outline",
 						onClick: () => handleAction("Export CSV"),
 						size: "sm",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Download, {
-							"data-uid": "src/pages/Bikes.tsx:46:13",
+							"data-uid": "src/pages/Bikes.tsx:48:13",
 							"data-prohibitions": "[editContent]",
 							className: "w-4 h-4 mr-2"
 						}), " CSV"]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-						"data-uid": "src/pages/Bikes.tsx:48:11",
+						"data-uid": "src/pages/Bikes.tsx:50:11",
 						"data-prohibitions": "[]",
 						variant: "outline",
 						onClick: () => handleAction("Export XML"),
 						size: "sm",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Download, {
-							"data-uid": "src/pages/Bikes.tsx:49:13",
+							"data-uid": "src/pages/Bikes.tsx:51:13",
 							"data-prohibitions": "[editContent]",
 							className: "w-4 h-4 mr-2"
 						}), " XML"]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-						"data-uid": "src/pages/Bikes.tsx:51:11",
-						"data-prohibitions": "[]",
+						"data-uid": "src/pages/Bikes.tsx:53:11",
+						"data-prohibitions": "[editContent]",
 						variant: "secondary",
 						size: "sm",
 						onClick: () => handleAction("Bulk Import"),
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Upload, {
-							"data-uid": "src/pages/Bikes.tsx:52:13",
-							"data-prohibitions": "[editContent]",
-							className: "w-4 h-4 mr-2"
-						}), " Bulk Import"]
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Upload, {
+								"data-uid": "src/pages/Bikes.tsx:54:13",
+								"data-prohibitions": "[editContent]",
+								className: "w-4 h-4 mr-2"
+							}),
+							" ",
+							t("bulk_import")
+						]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-						"data-uid": "src/pages/Bikes.tsx:54:11",
-						"data-prohibitions": "[]",
+						"data-uid": "src/pages/Bikes.tsx:56:11",
+						"data-prohibitions": "[editContent]",
 						className: "bg-primary text-white",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, {
-							"data-uid": "src/pages/Bikes.tsx:55:13",
-							"data-prohibitions": "[editContent]",
-							className: "w-4 h-4 mr-2"
-						}), " New Bike"]
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, {
+								"data-uid": "src/pages/Bikes.tsx:57:13",
+								"data-prohibitions": "[editContent]",
+								className: "w-4 h-4 mr-2"
+							}),
+							" ",
+							t("new_bike")
+						]
 					})
 				]
 			})]
 		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-			"data-uid": "src/pages/Bikes.tsx:60:7",
+			"data-uid": "src/pages/Bikes.tsx:62:7",
 			"data-prohibitions": "[editContent]",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardHeader, {
-				"data-uid": "src/pages/Bikes.tsx:61:9",
-				"data-prohibitions": "[]",
+				"data-uid": "src/pages/Bikes.tsx:63:9",
+				"data-prohibitions": "[editContent]",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardTitle, {
-					"data-uid": "src/pages/Bikes.tsx:62:11",
-					"data-prohibitions": "[]",
+					"data-uid": "src/pages/Bikes.tsx:64:11",
+					"data-prohibitions": "[editContent]",
 					className: "flex items-center gap-2",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bike, {
-						"data-uid": "src/pages/Bikes.tsx:63:13",
-						"data-prohibitions": "[editContent]",
-						className: "w-5 h-5 text-primary"
-					}), " Active Fleet Inventory"]
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bike, {
+							"data-uid": "src/pages/Bikes.tsx:65:13",
+							"data-prohibitions": "[editContent]",
+							className: "w-5 h-5 text-primary"
+						}),
+						" ",
+						t("active_fleet_inventory")
+					]
 				})
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
-				"data-uid": "src/pages/Bikes.tsx:66:9",
+				"data-uid": "src/pages/Bikes.tsx:68:9",
 				"data-prohibitions": "[editContent]",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Table, {
-					"data-uid": "src/pages/Bikes.tsx:67:11",
+					"data-uid": "src/pages/Bikes.tsx:69:11",
 					"data-prohibitions": "[editContent]",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHeader, {
-						"data-uid": "src/pages/Bikes.tsx:68:13",
-						"data-prohibitions": "[]",
+						"data-uid": "src/pages/Bikes.tsx:70:13",
+						"data-prohibitions": "[editContent]",
 						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TableRow, {
-							"data-uid": "src/pages/Bikes.tsx:69:15",
-							"data-prohibitions": "[]",
+							"data-uid": "src/pages/Bikes.tsx:71:15",
+							"data-prohibitions": "[editContent]",
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHead, {
-									"data-uid": "src/pages/Bikes.tsx:70:17",
-									"data-prohibitions": "[]",
-									children: "Chassi (ID)"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHead, {
-									"data-uid": "src/pages/Bikes.tsx:71:17",
-									"data-prohibitions": "[]",
-									children: "Model / Project"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHead, {
 									"data-uid": "src/pages/Bikes.tsx:72:17",
-									"data-prohibitions": "[]",
-									children: "Status"
+									"data-prohibitions": "[editContent]",
+									children: t("chassi_id")
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHead, {
 									"data-uid": "src/pages/Bikes.tsx:73:17",
-									"data-prohibitions": "[]",
-									children: "Telemetry (KM)"
+									"data-prohibitions": "[editContent]",
+									children: t("model_project")
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHead, {
 									"data-uid": "src/pages/Bikes.tsx:74:17",
-									"data-prohibitions": "[]",
-									children: "Assigned To"
+									"data-prohibitions": "[editContent]",
+									children: t("status")
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHead, {
 									"data-uid": "src/pages/Bikes.tsx:75:17",
-									"data-prohibitions": "[]",
+									"data-prohibitions": "[editContent]",
+									children: t("telemetry_km")
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHead, {
+									"data-uid": "src/pages/Bikes.tsx:76:17",
+									"data-prohibitions": "[editContent]",
+									children: t("assigned_to")
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHead, {
+									"data-uid": "src/pages/Bikes.tsx:77:17",
+									"data-prohibitions": "[editContent]",
 									className: "text-right",
-									children: "Action"
+									children: t("action")
 								})
 							]
 						})
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableBody, {
-						"data-uid": "src/pages/Bikes.tsx:78:13",
+						"data-uid": "src/pages/Bikes.tsx:80:13",
 						"data-prohibitions": "[editContent]",
 						children: MOCK_BIKES.map((bike) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TableRow, {
-							"data-uid": "src/pages/Bikes.tsx:80:17",
+							"data-uid": "src/pages/Bikes.tsx:82:17",
 							"data-prohibitions": "[editContent]",
 							className: "hover:bg-muted/30",
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableCell, {
-									"data-uid": "src/pages/Bikes.tsx:81:19",
+									"data-uid": "src/pages/Bikes.tsx:83:19",
 									"data-prohibitions": "[editContent]",
 									className: "font-mono font-medium text-xs",
 									children: bike.chassi
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TableCell, {
-									"data-uid": "src/pages/Bikes.tsx:82:19",
+									"data-uid": "src/pages/Bikes.tsx:84:19",
 									"data-prohibitions": "[editContent]",
 									children: [
 										bike.model,
 										" ",
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											"data-uid": "src/pages/Bikes.tsx:84:21",
+											"data-uid": "src/pages/Bikes.tsx:86:21",
 											"data-prohibitions": "[editContent]",
 											className: "text-muted-foreground text-xs block",
 											children: bike.project
@@ -30347,24 +31110,24 @@ function Bikes() {
 									]
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableCell, {
-									"data-uid": "src/pages/Bikes.tsx:86:19",
+									"data-uid": "src/pages/Bikes.tsx:88:19",
 									"data-prohibitions": "[editContent]",
 									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-										"data-uid": "src/pages/Bikes.tsx:87:21",
+										"data-uid": "src/pages/Bikes.tsx:89:21",
 										"data-prohibitions": "[editContent]",
 										variant: bike.status === "Ativa" ? "default" : "outline",
-										children: bike.status
+										children: t(bike.status)
 									})
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableCell, {
-									"data-uid": "src/pages/Bikes.tsx:91:19",
+									"data-uid": "src/pages/Bikes.tsx:93:19",
 									"data-prohibitions": "[editContent]",
 									children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										"data-uid": "src/pages/Bikes.tsx:92:21",
+										"data-uid": "src/pages/Bikes.tsx:94:21",
 										"data-prohibitions": "[editContent]",
 										className: "flex items-center gap-2",
 										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											"data-uid": "src/pages/Bikes.tsx:93:23",
+											"data-uid": "src/pages/Bikes.tsx:95:23",
 											"data-prohibitions": "[editContent]",
 											className: "font-semibold",
 											children: bike.mileage
@@ -30372,30 +31135,30 @@ function Bikes() {
 									})
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableCell, {
-									"data-uid": "src/pages/Bikes.tsx:97:19",
+									"data-uid": "src/pages/Bikes.tsx:99:19",
 									"data-prohibitions": "[editContent]",
 									children: bike.deliverer || /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										"data-uid": "src/pages/Bikes.tsx:99:23",
-										"data-prohibitions": "[]",
+										"data-uid": "src/pages/Bikes.tsx:101:23",
+										"data-prohibitions": "[editContent]",
 										className: "text-muted-foreground italic",
-										children: "Unassigned"
+										children: t("unassigned")
 									})
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableCell, {
-									"data-uid": "src/pages/Bikes.tsx:102:19",
-									"data-prohibitions": "[]",
+									"data-uid": "src/pages/Bikes.tsx:104:19",
+									"data-prohibitions": "[editContent]",
 									className: "text-right",
 									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-										"data-uid": "src/pages/Bikes.tsx:103:21",
-										"data-prohibitions": "[]",
+										"data-uid": "src/pages/Bikes.tsx:105:21",
+										"data-prohibitions": "[editContent]",
 										variant: "ghost",
 										size: "sm",
 										asChild: true,
 										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-											"data-uid": "src/pages/Bikes.tsx:104:23",
-											"data-prohibitions": "[]",
+											"data-uid": "src/pages/Bikes.tsx:106:23",
+											"data-prohibitions": "[editContent]",
 											to: `/bikes/${bike.id}`,
-											children: "View Details"
+											children: t("view_details")
 										})
 									})
 								})
@@ -30413,26 +31176,27 @@ function BikeDetail() {
 	const { id } = useParams();
 	const [bike, setBike] = (0, import_react.useState)(MOCK_BIKES.find((b) => b.id === id) || MOCK_BIKES[0]);
 	const { toast } = useToast();
+	const t = useTranslation();
 	const nextRevisionKm = bike.lastRevisionKm + 2500;
 	const kmToRevision = nextRevisionKm - bike.mileage;
 	const getRevisionStatus = () => {
 		if (bike.status === "Oficina") return {
-			label: "Em Revisão",
+			label: t("Em Revisão"),
 			color: "text-blue-500",
 			bg: "bg-blue-50"
 		};
 		if (kmToRevision <= 0) return {
-			label: "Revisar Agora",
+			label: t("Revisar Agora"),
 			color: "text-red-500",
 			bg: "bg-red-50"
 		};
 		if (kmToRevision <= 300) return {
-			label: "Atenção",
+			label: t("Atenção"),
 			color: "text-orange-500",
 			bg: "bg-orange-50"
 		};
 		return {
-			label: "Ok",
+			label: t("Ok"),
 			color: "text-emerald-500",
 			bg: "bg-emerald-50"
 		};
@@ -30444,33 +31208,33 @@ function BikeDetail() {
 			status: "Oficina"
 		});
 		toast({
-			title: "Status Atualizado",
-			description: "Moto encaminhada para oficina. Log criado."
+			title: t("status_updated"),
+			description: t("workshop_log_created")
 		});
 	};
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		"data-uid": "src/pages/BikeDetail.tsx:44:5",
+		"data-uid": "src/pages/BikeDetail.tsx:47:5",
 		"data-prohibitions": "[editContent]",
 		className: "space-y-6 max-w-6xl mx-auto pb-12",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			"data-uid": "src/pages/BikeDetail.tsx:45:7",
+			"data-uid": "src/pages/BikeDetail.tsx:48:7",
 			"data-prohibitions": "[editContent]",
 			className: "flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-6 rounded-xl border shadow-sm",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				"data-uid": "src/pages/BikeDetail.tsx:46:9",
+				"data-uid": "src/pages/BikeDetail.tsx:49:9",
 				"data-prohibitions": "[editContent]",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
-					"data-uid": "src/pages/BikeDetail.tsx:47:11",
+					"data-uid": "src/pages/BikeDetail.tsx:50:11",
 					"data-prohibitions": "[editContent]",
 					className: "text-3xl font-bold tracking-tight font-mono text-secondary",
 					children: bike.chassi
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-					"data-uid": "src/pages/BikeDetail.tsx:50:11",
+					"data-uid": "src/pages/BikeDetail.tsx:53:11",
 					"data-prohibitions": "[editContent]",
 					className: "text-muted-foreground flex items-center gap-2 mt-1",
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bike, {
-							"data-uid": "src/pages/BikeDetail.tsx:51:13",
+							"data-uid": "src/pages/BikeDetail.tsx:54:13",
 							"data-prohibitions": "[editContent]",
 							className: "w-4 h-4 text-primary"
 						}),
@@ -30481,108 +31245,117 @@ function BikeDetail() {
 					]
 				})]
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				"data-uid": "src/pages/BikeDetail.tsx:54:9",
+				"data-uid": "src/pages/BikeDetail.tsx:57:9",
 				"data-prohibitions": "[editContent]",
 				className: "flex items-center gap-3",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-					"data-uid": "src/pages/BikeDetail.tsx:55:11",
+					"data-uid": "src/pages/BikeDetail.tsx:58:11",
 					"data-prohibitions": "[editContent]",
 					className: "text-lg px-4 py-1",
 					variant: bike.status === "Ativa" ? "default" : "secondary",
-					children: bike.status
+					children: t(bike.status)
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-					"data-uid": "src/pages/BikeDetail.tsx:61:11",
-					"data-prohibitions": "[]",
+					"data-uid": "src/pages/BikeDetail.tsx:64:11",
+					"data-prohibitions": "[editContent]",
 					variant: "outline",
 					onClick: setOficina,
 					disabled: bike.status === "Oficina",
-					children: "Enviar Oficina"
+					children: t("send_workshop")
 				})]
 			})]
 		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			"data-uid": "src/pages/BikeDetail.tsx:67:7",
+			"data-uid": "src/pages/BikeDetail.tsx:70:7",
 			"data-prohibitions": "[editContent]",
 			className: "grid grid-cols-1 md:grid-cols-4 gap-6",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-				"data-uid": "src/pages/BikeDetail.tsx:68:9",
+				"data-uid": "src/pages/BikeDetail.tsx:71:9",
 				"data-prohibitions": "[editContent]",
 				className: "md:col-span-1 border-primary/20 bg-primary/5",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardHeader, {
-					"data-uid": "src/pages/BikeDetail.tsx:69:11",
-					"data-prohibitions": "[]",
+					"data-uid": "src/pages/BikeDetail.tsx:72:11",
+					"data-prohibitions": "[editContent]",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardTitle, {
-						"data-uid": "src/pages/BikeDetail.tsx:70:13",
-						"data-prohibitions": "[]",
+						"data-uid": "src/pages/BikeDetail.tsx:73:13",
+						"data-prohibitions": "[editContent]",
 						className: "text-lg flex items-center gap-2",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Activity, {
-							"data-uid": "src/pages/BikeDetail.tsx:71:15",
-							"data-prohibitions": "[editContent]",
-							className: "w-4 h-4"
-						}), " Telemetry"]
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Activity, {
+								"data-uid": "src/pages/BikeDetail.tsx:74:15",
+								"data-prohibitions": "[editContent]",
+								className: "w-4 h-4"
+							}),
+							" ",
+							t("telemetry")
+						]
 					})
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
-					"data-uid": "src/pages/BikeDetail.tsx:74:11",
+					"data-uid": "src/pages/BikeDetail.tsx:77:11",
 					"data-prohibitions": "[editContent]",
 					className: "space-y-5",
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							"data-uid": "src/pages/BikeDetail.tsx:75:13",
+							"data-uid": "src/pages/BikeDetail.tsx:78:13",
 							"data-prohibitions": "[editContent]",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								"data-uid": "src/pages/BikeDetail.tsx:76:15",
-								"data-prohibitions": "[]",
+								"data-uid": "src/pages/BikeDetail.tsx:79:15",
+								"data-prohibitions": "[editContent]",
 								className: "text-xs text-muted-foreground uppercase",
-								children: "Total KM"
+								children: t("total_km")
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-								"data-uid": "src/pages/BikeDetail.tsx:77:15",
+								"data-uid": "src/pages/BikeDetail.tsx:80:15",
 								"data-prohibitions": "[editContent]",
 								className: "text-2xl font-bold",
 								children: [bike.mileage, " km"]
 							})]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							"data-uid": "src/pages/BikeDetail.tsx:79:13",
+							"data-uid": "src/pages/BikeDetail.tsx:82:13",
 							"data-prohibitions": "[editContent]",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								"data-uid": "src/pages/BikeDetail.tsx:80:15",
-								"data-prohibitions": "[]",
+								"data-uid": "src/pages/BikeDetail.tsx:83:15",
+								"data-prohibitions": "[editContent]",
 								className: "text-xs text-muted-foreground uppercase",
-								children: "Last Revision"
+								children: t("last_revision")
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-								"data-uid": "src/pages/BikeDetail.tsx:81:15",
+								"data-uid": "src/pages/BikeDetail.tsx:84:15",
 								"data-prohibitions": "[editContent]",
 								className: "font-medium",
 								children: [bike.lastRevisionKm, " km"]
 							})]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							"data-uid": "src/pages/BikeDetail.tsx:83:13",
+							"data-uid": "src/pages/BikeDetail.tsx:86:13",
 							"data-prohibitions": "[editContent]",
 							className: `p-3 rounded-lg border ${revStatus.bg} border-${revStatus.color.split("-")[1]}-200`,
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-									"data-uid": "src/pages/BikeDetail.tsx:86:15",
+									"data-uid": "src/pages/BikeDetail.tsx:89:15",
 									"data-prohibitions": "[editContent]",
 									className: "text-xs font-semibold uppercase flex justify-between",
-									children: ["Next ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										"data-uid": "src/pages/BikeDetail.tsx:87:22",
-										"data-prohibitions": "[editContent]",
-										className: revStatus.color,
-										children: revStatus.label
-									})]
+									children: [
+										t("next_revision"),
+										" ",
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											"data-uid": "src/pages/BikeDetail.tsx:90:38",
+											"data-prohibitions": "[editContent]",
+											className: revStatus.color,
+											children: revStatus.label
+										})
+									]
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-									"data-uid": "src/pages/BikeDetail.tsx:89:15",
+									"data-uid": "src/pages/BikeDetail.tsx:92:15",
 									"data-prohibitions": "[editContent]",
 									className: "font-bold text-lg",
 									children: [nextRevisionKm, " km"]
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-									"data-uid": "src/pages/BikeDetail.tsx:90:15",
+									"data-uid": "src/pages/BikeDetail.tsx:93:15",
 									"data-prohibitions": "[editContent]",
 									className: "text-xs text-muted-foreground mt-1",
 									children: [
-										"em ",
+										t("in"),
+										" ",
 										Math.max(kmToRevision, 0),
 										" km"
 									]
@@ -30590,81 +31363,93 @@ function BikeDetail() {
 							]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-							"data-uid": "src/pages/BikeDetail.tsx:94:13",
-							"data-prohibitions": "[]",
+							"data-uid": "src/pages/BikeDetail.tsx:97:13",
+							"data-prohibitions": "[editContent]",
 							className: "w-full mt-4",
 							variant: "default",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Wrench, {
-								"data-uid": "src/pages/BikeDetail.tsx:95:15",
-								"data-prohibitions": "[editContent]",
-								className: "w-4 h-4 mr-2"
-							}), " Auto O.S."]
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Wrench, {
+									"data-uid": "src/pages/BikeDetail.tsx:98:15",
+									"data-prohibitions": "[editContent]",
+									className: "w-4 h-4 mr-2"
+								}),
+								" ",
+								t("auto_os")
+							]
 						})
 					]
 				})]
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, {
-				"data-uid": "src/pages/BikeDetail.tsx:100:9",
+				"data-uid": "src/pages/BikeDetail.tsx:103:9",
 				"data-prohibitions": "[editContent]",
 				className: "md:col-span-3",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
-					"data-uid": "src/pages/BikeDetail.tsx:101:11",
+					"data-uid": "src/pages/BikeDetail.tsx:104:11",
 					"data-prohibitions": "[editContent]",
 					className: "p-0",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Tabs, {
-						"data-uid": "src/pages/BikeDetail.tsx:102:13",
+						"data-uid": "src/pages/BikeDetail.tsx:105:13",
 						"data-prohibitions": "[editContent]",
 						defaultValue: "specs",
 						className: "w-full",
 						children: [
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								"data-uid": "src/pages/BikeDetail.tsx:103:15",
-								"data-prohibitions": "[]",
+								"data-uid": "src/pages/BikeDetail.tsx:106:15",
+								"data-prohibitions": "[editContent]",
 								className: "px-6 py-4 border-b bg-muted/10",
 								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsList, {
-									"data-uid": "src/pages/BikeDetail.tsx:104:17",
-									"data-prohibitions": "[]",
+									"data-uid": "src/pages/BikeDetail.tsx:107:17",
+									"data-prohibitions": "[editContent]",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
-										"data-uid": "src/pages/BikeDetail.tsx:105:19",
-										"data-prohibitions": "[]",
-										value: "specs",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Settings, {
-											"data-uid": "src/pages/BikeDetail.tsx:106:21",
-											"data-prohibitions": "[editContent]",
-											className: "w-4 h-4 mr-2"
-										}), " Specs & Finance"]
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
 										"data-uid": "src/pages/BikeDetail.tsx:108:19",
-										"data-prohibitions": "[]",
+										"data-prohibitions": "[editContent]",
+										value: "specs",
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Settings, {
+												"data-uid": "src/pages/BikeDetail.tsx:109:21",
+												"data-prohibitions": "[editContent]",
+												className: "w-4 h-4 mr-2"
+											}),
+											" ",
+											t("specs_finance")
+										]
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
+										"data-uid": "src/pages/BikeDetail.tsx:111:19",
+										"data-prohibitions": "[editContent]",
 										value: "maintenance",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Wrench, {
-											"data-uid": "src/pages/BikeDetail.tsx:109:21",
-											"data-prohibitions": "[editContent]",
-											className: "w-4 h-4 mr-2"
-										}), " O.S. Log"]
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Wrench, {
+												"data-uid": "src/pages/BikeDetail.tsx:112:21",
+												"data-prohibitions": "[editContent]",
+												className: "w-4 h-4 mr-2"
+											}),
+											" ",
+											t("maintenance_log")
+										]
 									})]
 								})
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsContent, {
-								"data-uid": "src/pages/BikeDetail.tsx:114:15",
+								"data-uid": "src/pages/BikeDetail.tsx:117:15",
 								"data-prohibitions": "[editContent]",
 								value: "specs",
 								className: "p-6 m-0",
 								children: [
 									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										"data-uid": "src/pages/BikeDetail.tsx:115:17",
+										"data-uid": "src/pages/BikeDetail.tsx:118:17",
 										"data-prohibitions": "[editContent]",
 										className: "grid grid-cols-2 sm:grid-cols-3 gap-6",
 										children: [
 											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-												"data-uid": "src/pages/BikeDetail.tsx:116:19",
+												"data-uid": "src/pages/BikeDetail.tsx:119:19",
 												"data-prohibitions": "[editContent]",
 												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-													"data-uid": "src/pages/BikeDetail.tsx:117:21",
-													"data-prohibitions": "[]",
+													"data-uid": "src/pages/BikeDetail.tsx:120:21",
+													"data-prohibitions": "[editContent]",
 													className: "text-xs text-muted-foreground uppercase",
-													children: "Brand / Size"
+													children: t("brand_size")
 												}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-													"data-uid": "src/pages/BikeDetail.tsx:118:21",
+													"data-uid": "src/pages/BikeDetail.tsx:121:21",
 													"data-prohibitions": "[editContent]",
 													className: "font-medium",
 													children: [
@@ -30675,15 +31460,15 @@ function BikeDetail() {
 												})]
 											}),
 											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-												"data-uid": "src/pages/BikeDetail.tsx:122:19",
+												"data-uid": "src/pages/BikeDetail.tsx:125:19",
 												"data-prohibitions": "[editContent]",
 												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-													"data-uid": "src/pages/BikeDetail.tsx:123:21",
-													"data-prohibitions": "[]",
+													"data-uid": "src/pages/BikeDetail.tsx:126:21",
+													"data-prohibitions": "[editContent]",
 													className: "text-xs text-muted-foreground uppercase",
-													children: "Color / Version"
+													children: t("color_version")
 												}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-													"data-uid": "src/pages/BikeDetail.tsx:124:21",
+													"data-uid": "src/pages/BikeDetail.tsx:127:21",
 													"data-prohibitions": "[editContent]",
 													className: "font-medium",
 													children: [
@@ -30694,19 +31479,23 @@ function BikeDetail() {
 												})]
 											}),
 											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-												"data-uid": "src/pages/BikeDetail.tsx:128:19",
+												"data-uid": "src/pages/BikeDetail.tsx:131:19",
 												"data-prohibitions": "[editContent]",
 												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-													"data-uid": "src/pages/BikeDetail.tsx:129:21",
-													"data-prohibitions": "[]",
-													className: "text-xs text-muted-foreground uppercase flex items-center gap-1",
-													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Calendar, {
-														"data-uid": "src/pages/BikeDetail.tsx:130:23",
-														"data-prohibitions": "[editContent]",
-														className: "w-3 h-3"
-													}), " Purchase / Invoice"]
-												}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 													"data-uid": "src/pages/BikeDetail.tsx:132:21",
+													"data-prohibitions": "[editContent]",
+													className: "text-xs text-muted-foreground uppercase flex items-center gap-1",
+													children: [
+														/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Calendar, {
+															"data-uid": "src/pages/BikeDetail.tsx:133:23",
+															"data-prohibitions": "[editContent]",
+															className: "w-3 h-3"
+														}),
+														" ",
+														t("purchase_invoice")
+													]
+												}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+													"data-uid": "src/pages/BikeDetail.tsx:135:21",
 													"data-prohibitions": "[editContent]",
 													className: "font-medium",
 													children: [
@@ -30719,60 +31508,64 @@ function BikeDetail() {
 										]
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h4", {
-										"data-uid": "src/pages/BikeDetail.tsx:138:17",
-										"data-prohibitions": "[]",
+										"data-uid": "src/pages/BikeDetail.tsx:141:17",
+										"data-prohibitions": "[editContent]",
 										className: "font-semibold text-secondary mt-8 mb-4 border-b pb-2 flex items-center gap-2",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ShieldCheck, {
-											"data-uid": "src/pages/BikeDetail.tsx:139:19",
-											"data-prohibitions": "[editContent]",
-											className: "w-4 h-4"
-										}), " Security Assets"]
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ShieldCheck, {
+												"data-uid": "src/pages/BikeDetail.tsx:142:19",
+												"data-prohibitions": "[editContent]",
+												className: "w-4 h-4"
+											}),
+											" ",
+											t("security_assets")
+										]
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										"data-uid": "src/pages/BikeDetail.tsx:141:17",
+										"data-uid": "src/pages/BikeDetail.tsx:144:17",
 										"data-prohibitions": "[editContent]",
 										className: "grid grid-cols-2 sm:grid-cols-3 gap-6 bg-slate-50 p-4 rounded-xl border",
 										children: [
 											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-												"data-uid": "src/pages/BikeDetail.tsx:142:19",
+												"data-uid": "src/pages/BikeDetail.tsx:145:19",
 												"data-prohibitions": "[editContent]",
 												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-													"data-uid": "src/pages/BikeDetail.tsx:143:21",
-													"data-prohibitions": "[]",
+													"data-uid": "src/pages/BikeDetail.tsx:146:21",
+													"data-prohibitions": "[editContent]",
 													className: "text-xs text-muted-foreground uppercase",
-													children: "Tracker #"
+													children: t("tracker_num")
 												}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-													"data-uid": "src/pages/BikeDetail.tsx:144:21",
+													"data-uid": "src/pages/BikeDetail.tsx:147:21",
 													"data-prohibitions": "[editContent]",
 													className: "font-mono text-sm",
 													children: bike.trackerNum
 												})]
 											}),
 											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-												"data-uid": "src/pages/BikeDetail.tsx:146:19",
+												"data-uid": "src/pages/BikeDetail.tsx:149:19",
 												"data-prohibitions": "[editContent]",
 												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-													"data-uid": "src/pages/BikeDetail.tsx:147:21",
-													"data-prohibitions": "[]",
+													"data-uid": "src/pages/BikeDetail.tsx:150:21",
+													"data-prohibitions": "[editContent]",
 													className: "text-xs text-muted-foreground uppercase",
-													children: "Battery #"
+													children: t("battery_num")
 												}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-													"data-uid": "src/pages/BikeDetail.tsx:148:21",
+													"data-uid": "src/pages/BikeDetail.tsx:151:21",
 													"data-prohibitions": "[editContent]",
 													className: "font-mono text-sm",
 													children: bike.batteryNum
 												})]
 											}),
 											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-												"data-uid": "src/pages/BikeDetail.tsx:150:19",
+												"data-uid": "src/pages/BikeDetail.tsx:153:19",
 												"data-prohibitions": "[editContent]",
 												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-													"data-uid": "src/pages/BikeDetail.tsx:151:21",
-													"data-prohibitions": "[]",
+													"data-uid": "src/pages/BikeDetail.tsx:154:21",
+													"data-prohibitions": "[editContent]",
 													className: "text-xs text-muted-foreground uppercase",
-													children: "Lock Code"
+													children: t("lock_code")
 												}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-													"data-uid": "src/pages/BikeDetail.tsx:152:21",
+													"data-uid": "src/pages/BikeDetail.tsx:155:21",
 													"data-prohibitions": "[editContent]",
 													className: "font-mono text-sm font-bold",
 													children: bike.lockCode
@@ -30783,67 +31576,67 @@ function BikeDetail() {
 								]
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
-								"data-uid": "src/pages/BikeDetail.tsx:157:15",
+								"data-uid": "src/pages/BikeDetail.tsx:160:15",
 								"data-prohibitions": "[editContent]",
 								value: "maintenance",
 								className: "p-6 m-0",
 								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Table, {
-									"data-uid": "src/pages/BikeDetail.tsx:158:17",
+									"data-uid": "src/pages/BikeDetail.tsx:161:17",
 									"data-prohibitions": "[editContent]",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHeader, {
-										"data-uid": "src/pages/BikeDetail.tsx:159:19",
-										"data-prohibitions": "[]",
+										"data-uid": "src/pages/BikeDetail.tsx:162:19",
+										"data-prohibitions": "[editContent]",
 										children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TableRow, {
-											"data-uid": "src/pages/BikeDetail.tsx:160:21",
-											"data-prohibitions": "[]",
+											"data-uid": "src/pages/BikeDetail.tsx:163:21",
+											"data-prohibitions": "[editContent]",
 											children: [
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHead, {
-													"data-uid": "src/pages/BikeDetail.tsx:161:23",
+													"data-uid": "src/pages/BikeDetail.tsx:164:23",
 													"data-prohibitions": "[]",
 													children: "O.S."
 												}),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHead, {
-													"data-uid": "src/pages/BikeDetail.tsx:162:23",
-													"data-prohibitions": "[]",
-													children: "Date"
+													"data-uid": "src/pages/BikeDetail.tsx:165:23",
+													"data-prohibitions": "[editContent]",
+													children: t("date")
 												}),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHead, {
-													"data-uid": "src/pages/BikeDetail.tsx:163:23",
-													"data-prohibitions": "[]",
-													children: "Description"
+													"data-uid": "src/pages/BikeDetail.tsx:166:23",
+													"data-prohibitions": "[editContent]",
+													children: t("description")
 												}),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHead, {
-													"data-uid": "src/pages/BikeDetail.tsx:164:23",
-													"data-prohibitions": "[]",
-													children: "Cost"
+													"data-uid": "src/pages/BikeDetail.tsx:167:23",
+													"data-prohibitions": "[editContent]",
+													children: t("cost")
 												})
 											]
 										})
 									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableBody, {
-										"data-uid": "src/pages/BikeDetail.tsx:167:19",
+										"data-uid": "src/pages/BikeDetail.tsx:170:19",
 										"data-prohibitions": "[editContent]",
 										children: MOCK_BIKE_OS.map((os) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TableRow, {
-											"data-uid": "src/pages/BikeDetail.tsx:169:23",
+											"data-uid": "src/pages/BikeDetail.tsx:172:23",
 											"data-prohibitions": "[editContent]",
 											children: [
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableCell, {
-													"data-uid": "src/pages/BikeDetail.tsx:170:25",
+													"data-uid": "src/pages/BikeDetail.tsx:173:25",
 													"data-prohibitions": "[editContent]",
 													className: "font-mono text-xs",
 													children: os.id
 												}),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableCell, {
-													"data-uid": "src/pages/BikeDetail.tsx:171:25",
+													"data-uid": "src/pages/BikeDetail.tsx:174:25",
 													"data-prohibitions": "[editContent]",
 													children: os.date
 												}),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableCell, {
-													"data-uid": "src/pages/BikeDetail.tsx:172:25",
+													"data-uid": "src/pages/BikeDetail.tsx:175:25",
 													"data-prohibitions": "[editContent]",
 													children: os.description
 												}),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TableCell, {
-													"data-uid": "src/pages/BikeDetail.tsx:173:25",
+													"data-uid": "src/pages/BikeDetail.tsx:176:25",
 													"data-prohibitions": "[editContent]",
 													children: ["R$ ", os.cost]
 												})
@@ -30863,198 +31656,207 @@ function BikeDetail() {
 //#region src/pages/Deliverers.tsx
 function Deliverers() {
 	const { toast } = useToast();
+	const t = useTranslation();
 	const handleAction = (type) => toast({
-		title: `Ação Executada`,
-		description: `Sistema processando: ${type}.`
+		title: t("action_executed"),
+		description: `${t("system_processing")} ${type}.`
 	});
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		"data-uid": "src/pages/Deliverers.tsx:24:5",
+		"data-uid": "src/pages/Deliverers.tsx:26:5",
 		"data-prohibitions": "[editContent]",
 		className: "space-y-6 max-w-7xl mx-auto pb-12",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			"data-uid": "src/pages/Deliverers.tsx:25:7",
-			"data-prohibitions": "[]",
+			"data-uid": "src/pages/Deliverers.tsx:27:7",
+			"data-prohibitions": "[editContent]",
 			className: "flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				"data-uid": "src/pages/Deliverers.tsx:26:9",
-				"data-prohibitions": "[]",
+				"data-uid": "src/pages/Deliverers.tsx:28:9",
+				"data-prohibitions": "[editContent]",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
-					"data-uid": "src/pages/Deliverers.tsx:27:11",
-					"data-prohibitions": "[]",
+					"data-uid": "src/pages/Deliverers.tsx:29:11",
+					"data-prohibitions": "[editContent]",
 					className: "text-3xl font-bold tracking-tight text-secondary",
-					children: "Deliverer Master Data"
+					children: t("deliverer_title")
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					"data-uid": "src/pages/Deliverers.tsx:30:11",
-					"data-prohibitions": "[]",
+					"data-uid": "src/pages/Deliverers.tsx:32:11",
+					"data-prohibitions": "[editContent]",
 					className: "text-muted-foreground",
-					children: "Unified base for all couriers and subscribers."
+					children: t("deliverer_desc")
 				})]
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				"data-uid": "src/pages/Deliverers.tsx:32:9",
-				"data-prohibitions": "[]",
+				"data-uid": "src/pages/Deliverers.tsx:34:9",
+				"data-prohibitions": "[editContent]",
 				className: "flex flex-wrap gap-2",
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-						"data-uid": "src/pages/Deliverers.tsx:33:11",
+						"data-uid": "src/pages/Deliverers.tsx:35:11",
 						"data-prohibitions": "[]",
 						variant: "outline",
 						size: "sm",
 						onClick: () => handleAction("Export CSV"),
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Download, {
-							"data-uid": "src/pages/Deliverers.tsx:34:13",
+							"data-uid": "src/pages/Deliverers.tsx:36:13",
 							"data-prohibitions": "[editContent]",
 							className: "w-4 h-4 mr-2"
 						}), " CSV"]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-						"data-uid": "src/pages/Deliverers.tsx:36:11",
+						"data-uid": "src/pages/Deliverers.tsx:38:11",
 						"data-prohibitions": "[]",
 						variant: "outline",
 						size: "sm",
 						onClick: () => handleAction("Export XML"),
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Download, {
-							"data-uid": "src/pages/Deliverers.tsx:37:13",
+							"data-uid": "src/pages/Deliverers.tsx:39:13",
 							"data-prohibitions": "[editContent]",
 							className: "w-4 h-4 mr-2"
 						}), " XML"]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-						"data-uid": "src/pages/Deliverers.tsx:39:11",
-						"data-prohibitions": "[]",
+						"data-uid": "src/pages/Deliverers.tsx:41:11",
+						"data-prohibitions": "[editContent]",
 						variant: "secondary",
 						size: "sm",
 						onClick: () => handleAction("Bulk Import"),
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Upload, {
-							"data-uid": "src/pages/Deliverers.tsx:40:13",
-							"data-prohibitions": "[editContent]",
-							className: "w-4 h-4 mr-2"
-						}), " Import Clientes"]
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Upload, {
+								"data-uid": "src/pages/Deliverers.tsx:42:13",
+								"data-prohibitions": "[editContent]",
+								className: "w-4 h-4 mr-2"
+							}),
+							" ",
+							t("import_clients")
+						]
 					})
 				]
 			})]
 		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-			"data-uid": "src/pages/Deliverers.tsx:45:7",
+			"data-uid": "src/pages/Deliverers.tsx:47:7",
 			"data-prohibitions": "[editContent]",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardHeader, {
-				"data-uid": "src/pages/Deliverers.tsx:46:9",
-				"data-prohibitions": "[]",
+				"data-uid": "src/pages/Deliverers.tsx:48:9",
+				"data-prohibitions": "[editContent]",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardTitle, {
-					"data-uid": "src/pages/Deliverers.tsx:47:11",
-					"data-prohibitions": "[]",
+					"data-uid": "src/pages/Deliverers.tsx:49:11",
+					"data-prohibitions": "[editContent]",
 					className: "flex items-center gap-2",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Users, {
-						"data-uid": "src/pages/Deliverers.tsx:48:13",
-						"data-prohibitions": "[editContent]",
-						className: "w-5 h-5 text-primary"
-					}), " Directory"]
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Users, {
+							"data-uid": "src/pages/Deliverers.tsx:50:13",
+							"data-prohibitions": "[editContent]",
+							className: "w-5 h-5 text-primary"
+						}),
+						" ",
+						t("directory")
+					]
 				})
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
-				"data-uid": "src/pages/Deliverers.tsx:51:9",
+				"data-uid": "src/pages/Deliverers.tsx:53:9",
 				"data-prohibitions": "[editContent]",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Table, {
-					"data-uid": "src/pages/Deliverers.tsx:52:11",
+					"data-uid": "src/pages/Deliverers.tsx:54:11",
 					"data-prohibitions": "[editContent]",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHeader, {
-						"data-uid": "src/pages/Deliverers.tsx:53:13",
-						"data-prohibitions": "[]",
+						"data-uid": "src/pages/Deliverers.tsx:55:13",
+						"data-prohibitions": "[editContent]",
 						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TableRow, {
-							"data-uid": "src/pages/Deliverers.tsx:54:15",
-							"data-prohibitions": "[]",
+							"data-uid": "src/pages/Deliverers.tsx:56:15",
+							"data-prohibitions": "[editContent]",
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHead, {
-									"data-uid": "src/pages/Deliverers.tsx:55:17",
-									"data-prohibitions": "[]",
-									children: "Name"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHead, {
-									"data-uid": "src/pages/Deliverers.tsx:56:17",
-									"data-prohibitions": "[]",
-									children: "CPF"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHead, {
 									"data-uid": "src/pages/Deliverers.tsx:57:17",
-									"data-prohibitions": "[]",
-									children: "Status"
+									"data-prohibitions": "[editContent]",
+									children: t("name")
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHead, {
 									"data-uid": "src/pages/Deliverers.tsx:58:17",
 									"data-prohibitions": "[]",
-									children: "Financial"
+									children: "CPF"
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHead, {
 									"data-uid": "src/pages/Deliverers.tsx:59:17",
-									"data-prohibitions": "[]",
-									children: "Active Bike"
+									"data-prohibitions": "[editContent]",
+									children: t("status")
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHead, {
 									"data-uid": "src/pages/Deliverers.tsx:60:17",
-									"data-prohibitions": "[]",
+									"data-prohibitions": "[editContent]",
+									children: t("financial_standing")
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHead, {
+									"data-uid": "src/pages/Deliverers.tsx:61:17",
+									"data-prohibitions": "[editContent]",
+									children: t("active_bike")
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHead, {
+									"data-uid": "src/pages/Deliverers.tsx:62:17",
+									"data-prohibitions": "[editContent]",
 									className: "text-right",
-									children: "Profile"
+									children: t("profile")
 								})
 							]
 						})
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableBody, {
-						"data-uid": "src/pages/Deliverers.tsx:63:13",
+						"data-uid": "src/pages/Deliverers.tsx:65:13",
 						"data-prohibitions": "[editContent]",
 						children: MOCK_DELIVERERS.map((deliverer) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TableRow, {
-							"data-uid": "src/pages/Deliverers.tsx:65:17",
+							"data-uid": "src/pages/Deliverers.tsx:67:17",
 							"data-prohibitions": "[editContent]",
 							className: "hover:bg-muted/30",
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableCell, {
-									"data-uid": "src/pages/Deliverers.tsx:66:19",
+									"data-uid": "src/pages/Deliverers.tsx:68:19",
 									"data-prohibitions": "[editContent]",
 									className: "font-medium",
 									children: deliverer.name
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableCell, {
-									"data-uid": "src/pages/Deliverers.tsx:67:19",
+									"data-uid": "src/pages/Deliverers.tsx:69:19",
 									"data-prohibitions": "[editContent]",
 									className: "font-mono text-xs",
 									children: deliverer.cpf
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableCell, {
-									"data-uid": "src/pages/Deliverers.tsx:68:19",
+									"data-uid": "src/pages/Deliverers.tsx:70:19",
 									"data-prohibitions": "[editContent]",
 									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-										"data-uid": "src/pages/Deliverers.tsx:69:21",
+										"data-uid": "src/pages/Deliverers.tsx:71:21",
 										"data-prohibitions": "[editContent]",
 										variant: deliverer.status === "Active" ? "default" : "outline",
-										children: deliverer.status
+										children: t(deliverer.status)
 									})
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableCell, {
-									"data-uid": "src/pages/Deliverers.tsx:73:19",
+									"data-uid": "src/pages/Deliverers.tsx:75:19",
 									"data-prohibitions": "[editContent]",
 									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-										"data-uid": "src/pages/Deliverers.tsx:74:21",
+										"data-uid": "src/pages/Deliverers.tsx:76:21",
 										"data-prohibitions": "[editContent]",
 										variant: deliverer.contractStatus === "Adimplente" ? "outline" : "destructive",
 										className: deliverer.contractStatus === "Adimplente" ? "text-emerald-600 border-emerald-500" : "",
-										children: deliverer.contractStatus
+										children: t(deliverer.contractStatus)
 									})
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableCell, {
-									"data-uid": "src/pages/Deliverers.tsx:87:19",
+									"data-uid": "src/pages/Deliverers.tsx:89:19",
 									"data-prohibitions": "[editContent]",
 									children: deliverer.activeBike || "-"
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableCell, {
-									"data-uid": "src/pages/Deliverers.tsx:88:19",
-									"data-prohibitions": "[]",
+									"data-uid": "src/pages/Deliverers.tsx:90:19",
+									"data-prohibitions": "[editContent]",
 									className: "text-right",
 									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-										"data-uid": "src/pages/Deliverers.tsx:89:21",
-										"data-prohibitions": "[]",
+										"data-uid": "src/pages/Deliverers.tsx:91:21",
+										"data-prohibitions": "[editContent]",
 										variant: "ghost",
 										size: "sm",
 										asChild: true,
 										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-											"data-uid": "src/pages/Deliverers.tsx:90:23",
-											"data-prohibitions": "[]",
+											"data-uid": "src/pages/Deliverers.tsx:92:23",
+											"data-prohibitions": "[editContent]",
 											to: `/deliverers/${deliverer.id}`,
-											children: "Open Card"
+											children: t("open_card")
 										})
 									})
 								})
@@ -31072,126 +31874,144 @@ function DelivererDetail() {
 	const { id } = useParams();
 	const deliverer = MOCK_DELIVERERS.find((d) => d.id === id) || MOCK_DELIVERERS[0];
 	const { toast } = useToast();
+	const t = useTranslation();
 	const handleExportBO = () => {
-		const s = `B.O. Deliverer\nName: ${deliverer.name}\nCPF: ${deliverer.cpf}\nStatus: ${deliverer.status}\nBike: ${deliverer.activeBike || "None"}\n---`.padEnd(1400, ".");
+		const s = t("bo_summary_deliverer", {
+			name: deliverer.name,
+			cpf: deliverer.cpf,
+			status: t(deliverer.status),
+			bike: deliverer.activeBike || t("none")
+		}).padEnd(1400, ".");
 		navigator.clipboard.writeText(s.substring(0, 1400));
 		toast({
-			title: "Exportado para B.O.",
-			description: "Dados copiados (1400 chars). Redirecionando..."
+			title: t("bo_copied_title"),
+			description: t("bo_copied_desc")
 		});
 		window.open("https://www.delegaciaeletronica.policiacivil.sp.gov.br/ssp-de-cidadao/pages/comunicar-ocorrencia", "_blank");
 	};
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		"data-uid": "src/pages/DelivererDetail.tsx:32:5",
+		"data-uid": "src/pages/DelivererDetail.tsx:36:5",
 		"data-prohibitions": "[editContent]",
 		className: "space-y-6 max-w-6xl mx-auto pb-12",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			"data-uid": "src/pages/DelivererDetail.tsx:33:7",
+			"data-uid": "src/pages/DelivererDetail.tsx:37:7",
 			"data-prohibitions": "[editContent]",
 			className: "flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white p-6 rounded-xl border shadow-sm",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				"data-uid": "src/pages/DelivererDetail.tsx:34:9",
+				"data-uid": "src/pages/DelivererDetail.tsx:38:9",
 				"data-prohibitions": "[editContent]",
 				className: "flex items-center gap-4",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-					"data-uid": "src/pages/DelivererDetail.tsx:35:11",
+					"data-uid": "src/pages/DelivererDetail.tsx:39:11",
 					"data-prohibitions": "[]",
 					className: "h-14 w-14 rounded-full bg-secondary text-white flex items-center justify-center",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(User, {
-						"data-uid": "src/pages/DelivererDetail.tsx:36:13",
+						"data-uid": "src/pages/DelivererDetail.tsx:40:13",
 						"data-prohibitions": "[editContent]",
 						className: "h-6 w-6"
 					})
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					"data-uid": "src/pages/DelivererDetail.tsx:38:11",
+					"data-uid": "src/pages/DelivererDetail.tsx:42:11",
 					"data-prohibitions": "[editContent]",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
-						"data-uid": "src/pages/DelivererDetail.tsx:39:13",
+						"data-uid": "src/pages/DelivererDetail.tsx:43:13",
 						"data-prohibitions": "[editContent]",
 						className: "text-3xl font-bold tracking-tight text-secondary",
 						children: deliverer.name
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-						"data-uid": "src/pages/DelivererDetail.tsx:40:13",
+						"data-uid": "src/pages/DelivererDetail.tsx:44:13",
 						"data-prohibitions": "[editContent]",
 						className: "text-muted-foreground font-mono text-sm mt-1",
 						children: ["CPF: ", deliverer.cpf]
 					})]
 				})]
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				"data-uid": "src/pages/DelivererDetail.tsx:43:9",
-				"data-prohibitions": "[]",
+				"data-uid": "src/pages/DelivererDetail.tsx:47:9",
+				"data-prohibitions": "[editContent]",
 				className: "flex gap-2",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-					"data-uid": "src/pages/DelivererDetail.tsx:44:11",
-					"data-prohibitions": "[]",
+					"data-uid": "src/pages/DelivererDetail.tsx:48:11",
+					"data-prohibitions": "[editContent]",
 					variant: "outline",
 					asChild: true,
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
-						"data-uid": "src/pages/DelivererDetail.tsx:45:13",
-						"data-prohibitions": "[]",
+						"data-uid": "src/pages/DelivererDetail.tsx:49:13",
+						"data-prohibitions": "[editContent]",
 						href: `https://wa.me/55${deliverer.phone}`,
 						target: "_blank",
 						rel: "noopener noreferrer",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, {
-							"data-uid": "src/pages/DelivererDetail.tsx:50:15",
-							"data-prohibitions": "[editContent]",
-							className: "w-4 h-4 mr-2"
-						}), " WhatsApp"]
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageSquare, {
+								"data-uid": "src/pages/DelivererDetail.tsx:54:15",
+								"data-prohibitions": "[editContent]",
+								className: "w-4 h-4 mr-2"
+							}),
+							" ",
+							t("whatsapp")
+						]
 					})
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-					"data-uid": "src/pages/DelivererDetail.tsx:53:11",
-					"data-prohibitions": "[]",
+					"data-uid": "src/pages/DelivererDetail.tsx:57:11",
+					"data-prohibitions": "[editContent]",
 					variant: "destructive",
 					onClick: handleExportBO,
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TriangleAlert, {
-						"data-uid": "src/pages/DelivererDetail.tsx:54:13",
-						"data-prohibitions": "[editContent]",
-						className: "w-4 h-4 mr-2"
-					}), " Gerar B.O."]
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TriangleAlert, {
+							"data-uid": "src/pages/DelivererDetail.tsx:58:13",
+							"data-prohibitions": "[editContent]",
+							className: "w-4 h-4 mr-2"
+						}),
+						" ",
+						t("generate_bo")
+					]
 				})]
 			})]
 		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			"data-uid": "src/pages/DelivererDetail.tsx:59:7",
+			"data-uid": "src/pages/DelivererDetail.tsx:63:7",
 			"data-prohibitions": "[editContent]",
 			className: "grid grid-cols-1 lg:grid-cols-3 gap-6",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-				"data-uid": "src/pages/DelivererDetail.tsx:60:9",
+				"data-uid": "src/pages/DelivererDetail.tsx:64:9",
 				"data-prohibitions": "[editContent]",
 				className: "border-border shadow-sm",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardHeader, {
-					"data-uid": "src/pages/DelivererDetail.tsx:61:11",
-					"data-prohibitions": "[]",
+					"data-uid": "src/pages/DelivererDetail.tsx:65:11",
+					"data-prohibitions": "[editContent]",
 					className: "bg-muted/10 border-b pb-4",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardTitle, {
-						"data-uid": "src/pages/DelivererDetail.tsx:62:13",
-						"data-prohibitions": "[]",
+						"data-uid": "src/pages/DelivererDetail.tsx:66:13",
+						"data-prohibitions": "[editContent]",
 						className: "text-lg flex items-center gap-2",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(User, {
-							"data-uid": "src/pages/DelivererDetail.tsx:63:15",
-							"data-prohibitions": "[editContent]",
-							className: "w-4 h-4"
-						}), " Profile Snapshot"]
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(User, {
+								"data-uid": "src/pages/DelivererDetail.tsx:67:15",
+								"data-prohibitions": "[editContent]",
+								className: "w-4 h-4"
+							}),
+							" ",
+							t("profile_snapshot")
+						]
 					})
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
-					"data-uid": "src/pages/DelivererDetail.tsx:66:11",
+					"data-uid": "src/pages/DelivererDetail.tsx:70:11",
 					"data-prohibitions": "[editContent]",
 					className: "pt-6 space-y-4",
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							"data-uid": "src/pages/DelivererDetail.tsx:67:13",
+							"data-uid": "src/pages/DelivererDetail.tsx:71:13",
 							"data-prohibitions": "[editContent]",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								"data-uid": "src/pages/DelivererDetail.tsx:68:15",
-								"data-prohibitions": "[]",
+								"data-uid": "src/pages/DelivererDetail.tsx:72:15",
+								"data-prohibitions": "[editContent]",
 								className: "text-sm text-muted-foreground mb-1",
-								children: "Joined Date"
+								children: t("joined_date")
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-								"data-uid": "src/pages/DelivererDetail.tsx:69:15",
+								"data-uid": "src/pages/DelivererDetail.tsx:73:15",
 								"data-prohibitions": "[editContent]",
 								className: "font-medium flex items-center gap-2",
 								children: [
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CalendarDays, {
-										"data-uid": "src/pages/DelivererDetail.tsx:70:17",
+										"data-uid": "src/pages/DelivererDetail.tsx:74:17",
 										"data-prohibitions": "[editContent]",
 										className: "w-4 h-4"
 									}),
@@ -31201,109 +32021,113 @@ function DelivererDetail() {
 							})]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							"data-uid": "src/pages/DelivererDetail.tsx:73:13",
+							"data-uid": "src/pages/DelivererDetail.tsx:77:13",
 							"data-prohibitions": "[editContent]",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								"data-uid": "src/pages/DelivererDetail.tsx:74:15",
-								"data-prohibitions": "[]",
+								"data-uid": "src/pages/DelivererDetail.tsx:78:15",
+								"data-prohibitions": "[editContent]",
 								className: "text-sm text-muted-foreground mb-1",
-								children: "Financial Standing"
+								children: t("financial_standing")
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-								"data-uid": "src/pages/DelivererDetail.tsx:75:15",
+								"data-uid": "src/pages/DelivererDetail.tsx:79:15",
 								"data-prohibitions": "[editContent]",
 								variant: deliverer.contractStatus === "Adimplente" ? "outline" : "destructive",
 								className: "w-full justify-center",
-								children: deliverer.contractStatus
+								children: t(deliverer.contractStatus)
 							})]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							"data-uid": "src/pages/DelivererDetail.tsx:82:13",
+							"data-uid": "src/pages/DelivererDetail.tsx:86:13",
 							"data-prohibitions": "[editContent]",
 							className: "pt-4 border-t",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								"data-uid": "src/pages/DelivererDetail.tsx:83:15",
-								"data-prohibitions": "[]",
+								"data-uid": "src/pages/DelivererDetail.tsx:87:15",
+								"data-prohibitions": "[editContent]",
 								className: "text-sm text-muted-foreground mb-2",
-								children: "Current Asset"
+								children: t("current_asset")
 							}), deliverer.activeBike ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								"data-uid": "src/pages/DelivererDetail.tsx:85:17",
+								"data-uid": "src/pages/DelivererDetail.tsx:89:17",
 								"data-prohibitions": "[editContent]",
 								className: "flex items-center gap-3 p-3 bg-primary/5 rounded-lg border border-primary/20",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bike, {
-									"data-uid": "src/pages/DelivererDetail.tsx:86:19",
+									"data-uid": "src/pages/DelivererDetail.tsx:90:19",
 									"data-prohibitions": "[editContent]",
 									className: "w-5 h-5 text-primary"
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									"data-uid": "src/pages/DelivererDetail.tsx:87:19",
+									"data-uid": "src/pages/DelivererDetail.tsx:91:19",
 									"data-prohibitions": "[editContent]",
 									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-										"data-uid": "src/pages/DelivererDetail.tsx:88:21",
+										"data-uid": "src/pages/DelivererDetail.tsx:92:21",
 										"data-prohibitions": "[editContent]",
 										className: "font-mono font-bold text-sm",
 										children: deliverer.activeBike
 									})
 								})]
 							}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								"data-uid": "src/pages/DelivererDetail.tsx:92:17",
-								"data-prohibitions": "[]",
+								"data-uid": "src/pages/DelivererDetail.tsx:96:17",
+								"data-prohibitions": "[editContent]",
 								className: "text-sm italic text-muted-foreground",
-								children: "No bike assigned."
+								children: t("no_bike_assigned")
 							})]
 						})
 					]
 				})]
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-				"data-uid": "src/pages/DelivererDetail.tsx:98:9",
+				"data-uid": "src/pages/DelivererDetail.tsx:102:9",
 				"data-prohibitions": "[editContent]",
 				className: "lg:col-span-2 shadow-sm h-full",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardHeader, {
-					"data-uid": "src/pages/DelivererDetail.tsx:99:11",
-					"data-prohibitions": "[]",
+					"data-uid": "src/pages/DelivererDetail.tsx:103:11",
+					"data-prohibitions": "[editContent]",
 					className: "bg-muted/10 border-b pb-4",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardTitle, {
-						"data-uid": "src/pages/DelivererDetail.tsx:100:13",
-						"data-prohibitions": "[]",
+						"data-uid": "src/pages/DelivererDetail.tsx:104:13",
+						"data-prohibitions": "[editContent]",
 						className: "text-lg flex items-center gap-2",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileText, {
-							"data-uid": "src/pages/DelivererDetail.tsx:101:15",
-							"data-prohibitions": "[editContent]",
-							className: "w-4 h-4"
-						}), " Logs"]
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileText, {
+								"data-uid": "src/pages/DelivererDetail.tsx:105:15",
+								"data-prohibitions": "[editContent]",
+								className: "w-4 h-4"
+							}),
+							" ",
+							t("logs")
+						]
 					})
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
-					"data-uid": "src/pages/DelivererDetail.tsx:104:11",
+					"data-uid": "src/pages/DelivererDetail.tsx:108:11",
 					"data-prohibitions": "[editContent]",
 					className: "pt-6",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						"data-uid": "src/pages/DelivererDetail.tsx:105:13",
+						"data-uid": "src/pages/DelivererDetail.tsx:109:13",
 						"data-prohibitions": "[editContent]",
 						className: "space-y-6",
 						children: MOCK_DELIVERER_LOGS.map((log) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							"data-uid": "src/pages/DelivererDetail.tsx:107:17",
+							"data-uid": "src/pages/DelivererDetail.tsx:111:17",
 							"data-prohibitions": "[editContent]",
 							className: "flex gap-4",
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								"data-uid": "src/pages/DelivererDetail.tsx:108:19",
+								"data-uid": "src/pages/DelivererDetail.tsx:112:19",
 								"data-prohibitions": "[editContent]",
 								className: "pb-6 w-full",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									"data-uid": "src/pages/DelivererDetail.tsx:109:21",
+									"data-uid": "src/pages/DelivererDetail.tsx:113:21",
 									"data-prohibitions": "[editContent]",
 									className: "flex items-center gap-2 mb-1",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-										"data-uid": "src/pages/DelivererDetail.tsx:110:23",
+										"data-uid": "src/pages/DelivererDetail.tsx:114:23",
 										"data-prohibitions": "[editContent]",
 										variant: "secondary",
 										className: "text-[10px] uppercase",
-										children: log.type
+										children: t(log.type)
 									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										"data-uid": "src/pages/DelivererDetail.tsx:113:23",
+										"data-uid": "src/pages/DelivererDetail.tsx:117:23",
 										"data-prohibitions": "[editContent]",
 										className: "text-xs text-muted-foreground",
 										children: log.date
 									})]
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-									"data-uid": "src/pages/DelivererDetail.tsx:115:21",
+									"data-uid": "src/pages/DelivererDetail.tsx:119:21",
 									"data-prohibitions": "[editContent]",
 									className: "text-sm text-secondary leading-relaxed bg-muted/30 p-3 rounded-lg border mt-2",
 									children: log.note
@@ -31319,160 +32143,169 @@ function DelivererDetail() {
 //#endregion
 //#region src/pages/Maintenance.tsx
 function Maintenance() {
+	const t = useTranslation();
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		"data-uid": "src/pages/Maintenance.tsx:17:5",
+		"data-uid": "src/pages/Maintenance.tsx:20:5",
 		"data-prohibitions": "[editContent]",
 		className: "flex flex-col gap-6 max-w-7xl mx-auto pb-10",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			"data-uid": "src/pages/Maintenance.tsx:18:7",
+			"data-uid": "src/pages/Maintenance.tsx:21:7",
 			"data-prohibitions": "[editContent]",
 			className: "flex justify-between items-start flex-wrap gap-4",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				"data-uid": "src/pages/Maintenance.tsx:19:9",
-				"data-prohibitions": "[]",
+				"data-uid": "src/pages/Maintenance.tsx:22:9",
+				"data-prohibitions": "[editContent]",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
-					"data-uid": "src/pages/Maintenance.tsx:20:11",
-					"data-prohibitions": "[]",
+					"data-uid": "src/pages/Maintenance.tsx:23:11",
+					"data-prohibitions": "[editContent]",
 					className: "text-3xl font-bold tracking-tight",
-					children: "Maintenance & Supply Chain"
+					children: t("maint_title")
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					"data-uid": "src/pages/Maintenance.tsx:21:11",
-					"data-prohibitions": "[]",
+					"data-uid": "src/pages/Maintenance.tsx:24:11",
+					"data-prohibitions": "[editContent]",
 					className: "text-muted-foreground mt-1",
-					children: "Predictive O.S. and parts control."
+					children: t("maint_desc")
 				})]
 			}), inventoryItems.some((i) => i.current <= i.min) && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				"data-uid": "src/pages/Maintenance.tsx:25:11",
-				"data-prohibitions": "[]",
+				"data-uid": "src/pages/Maintenance.tsx:28:11",
+				"data-prohibitions": "[editContent]",
 				className: "flex items-center gap-2 px-4 py-2 bg-destructive/10 text-destructive rounded-lg border border-destructive/20 shadow-sm",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TriangleAlert, {
-					"data-uid": "src/pages/Maintenance.tsx:26:13",
+					"data-uid": "src/pages/Maintenance.tsx:29:13",
 					"data-prohibitions": "[editContent]",
 					className: "w-5 h-5"
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					"data-uid": "src/pages/Maintenance.tsx:27:13",
-					"data-prohibitions": "[]",
+					"data-uid": "src/pages/Maintenance.tsx:30:13",
+					"data-prohibitions": "[editContent]",
 					className: "font-semibold text-sm",
-					children: "Critical Stock Alert"
+					children: t("critical_stock")
 				})]
 			})]
 		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Tabs, {
-			"data-uid": "src/pages/Maintenance.tsx:32:7",
+			"data-uid": "src/pages/Maintenance.tsx:35:7",
 			"data-prohibitions": "[editContent]",
 			defaultValue: "kanban",
 			className: "flex-1 flex flex-col",
 			children: [
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsList, {
-					"data-uid": "src/pages/Maintenance.tsx:33:9",
-					"data-prohibitions": "[]",
+					"data-uid": "src/pages/Maintenance.tsx:36:9",
+					"data-prohibitions": "[editContent]",
 					className: "w-full sm:w-auto self-start",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
-						"data-uid": "src/pages/Maintenance.tsx:34:11",
-						"data-prohibitions": "[]",
+						"data-uid": "src/pages/Maintenance.tsx:37:11",
+						"data-prohibitions": "[editContent]",
 						value: "kanban",
 						className: "gap-2",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Wrench, {
-							"data-uid": "src/pages/Maintenance.tsx:35:13",
-							"data-prohibitions": "[editContent]",
-							className: "w-4 h-4"
-						}), " O.S. Kanban"]
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Wrench, {
+								"data-uid": "src/pages/Maintenance.tsx:38:13",
+								"data-prohibitions": "[editContent]",
+								className: "w-4 h-4"
+							}),
+							" ",
+							t("os_kanban")
+						]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
-						"data-uid": "src/pages/Maintenance.tsx:37:11",
-						"data-prohibitions": "[]",
+						"data-uid": "src/pages/Maintenance.tsx:40:11",
+						"data-prohibitions": "[editContent]",
 						value: "inventory",
 						className: "gap-2",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Package, {
-							"data-uid": "src/pages/Maintenance.tsx:38:13",
-							"data-prohibitions": "[editContent]",
-							className: "w-4 h-4"
-						}), " Inventory"]
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Package, {
+								"data-uid": "src/pages/Maintenance.tsx:41:13",
+								"data-prohibitions": "[editContent]",
+								className: "w-4 h-4"
+							}),
+							" ",
+							t("inventory")
+						]
 					})]
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
-					"data-uid": "src/pages/Maintenance.tsx:42:9",
+					"data-uid": "src/pages/Maintenance.tsx:45:9",
 					"data-prohibitions": "[editContent]",
 					value: "kanban",
 					className: "flex-1 mt-6",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						"data-uid": "src/pages/Maintenance.tsx:43:11",
+						"data-uid": "src/pages/Maintenance.tsx:46:11",
 						"data-prohibitions": "[editContent]",
 						className: "flex gap-4 overflow-x-auto pb-4",
 						children: taskColumns.map((col) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							"data-uid": "src/pages/Maintenance.tsx:45:15",
+							"data-uid": "src/pages/Maintenance.tsx:48:15",
 							"data-prohibitions": "[editContent]",
 							className: "min-w-[300px] flex-1 flex flex-col bg-muted/30 rounded-xl p-4 border",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								"data-uid": "src/pages/Maintenance.tsx:49:17",
+								"data-uid": "src/pages/Maintenance.tsx:52:17",
 								"data-prohibitions": "[editContent]",
 								className: "flex items-center justify-between mb-4",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-									"data-uid": "src/pages/Maintenance.tsx:50:19",
+									"data-uid": "src/pages/Maintenance.tsx:53:19",
 									"data-prohibitions": "[editContent]",
 									className: "font-semibold",
-									children: col.title
+									children: t(col.title)
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-									"data-uid": "src/pages/Maintenance.tsx:51:19",
+									"data-uid": "src/pages/Maintenance.tsx:54:19",
 									"data-prohibitions": "[editContent]",
 									variant: "secondary",
 									children: col.tasks.length
 								})]
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								"data-uid": "src/pages/Maintenance.tsx:53:17",
+								"data-uid": "src/pages/Maintenance.tsx:56:17",
 								"data-prohibitions": "[editContent]",
 								className: "flex flex-col gap-3 flex-1 overflow-y-auto",
 								children: [col.tasks.map((task) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Card, {
-									"data-uid": "src/pages/Maintenance.tsx:55:21",
+									"data-uid": "src/pages/Maintenance.tsx:58:21",
 									"data-prohibitions": "[editContent]",
 									className: "shadow-sm hover:shadow-md transition-shadow cursor-pointer",
 									children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
-										"data-uid": "src/pages/Maintenance.tsx:59:23",
+										"data-uid": "src/pages/Maintenance.tsx:62:23",
 										"data-prohibitions": "[editContent]",
 										className: "p-4",
 										children: [
 											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-												"data-uid": "src/pages/Maintenance.tsx:60:25",
+												"data-uid": "src/pages/Maintenance.tsx:63:25",
 												"data-prohibitions": "[editContent]",
 												className: "flex justify-between items-start mb-2",
 												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-													"data-uid": "src/pages/Maintenance.tsx:61:27",
+													"data-uid": "src/pages/Maintenance.tsx:64:27",
 													"data-prohibitions": "[editContent]",
 													variant: "outline",
 													className: "font-mono text-[10px]",
 													children: task.id
 												}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-													"data-uid": "src/pages/Maintenance.tsx:64:27",
+													"data-uid": "src/pages/Maintenance.tsx:67:27",
 													"data-prohibitions": "[editContent]",
 													className: "text-xs font-semibold px-2 py-1 bg-primary/10 text-primary rounded",
 													children: ["#", task.chassi]
 												})]
 											}),
 											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-												"data-uid": "src/pages/Maintenance.tsx:68:25",
+												"data-uid": "src/pages/Maintenance.tsx:71:25",
 												"data-prohibitions": "[editContent]",
 												className: "font-medium text-sm",
 												children: task.desc
 											}),
 											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-												"data-uid": "src/pages/Maintenance.tsx:69:25",
-												"data-prohibitions": "[]",
+												"data-uid": "src/pages/Maintenance.tsx:72:25",
+												"data-prohibitions": "[editContent]",
 												className: "mt-3 flex justify-between items-center text-xs text-muted-foreground",
 												children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-													"data-uid": "src/pages/Maintenance.tsx:70:27",
-													"data-prohibitions": "[]",
-													children: "Auto-Predict IA"
+													"data-uid": "src/pages/Maintenance.tsx:73:27",
+													"data-prohibitions": "[editContent]",
+													children: t("auto_predict_ia")
 												})
 											})
 										]
 									})
 								}, task.id)), col.tasks.length === 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									"data-uid": "src/pages/Maintenance.tsx:76:21",
-									"data-prohibitions": "[]",
+									"data-uid": "src/pages/Maintenance.tsx:79:21",
+									"data-prohibitions": "[editContent]",
 									className: "flex-1 flex items-center justify-center border-2 border-dashed rounded-lg opacity-50 py-8",
 									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										"data-uid": "src/pages/Maintenance.tsx:77:23",
-										"data-prohibitions": "[]",
+										"data-uid": "src/pages/Maintenance.tsx:80:23",
+										"data-prohibitions": "[editContent]",
 										className: "text-sm",
-										children: "No tasks"
+										children: t("no_tasks")
 									})
 								})]
 							})]
@@ -31480,117 +32313,117 @@ function Maintenance() {
 					})
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
-					"data-uid": "src/pages/Maintenance.tsx:86:9",
+					"data-uid": "src/pages/Maintenance.tsx:89:9",
 					"data-prohibitions": "[editContent]",
 					value: "inventory",
 					className: "mt-6",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-						"data-uid": "src/pages/Maintenance.tsx:87:11",
+						"data-uid": "src/pages/Maintenance.tsx:90:11",
 						"data-prohibitions": "[editContent]",
 						className: "shadow-sm",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardHeader, {
-							"data-uid": "src/pages/Maintenance.tsx:88:13",
-							"data-prohibitions": "[]",
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardTitle, {
-								"data-uid": "src/pages/Maintenance.tsx:89:15",
-								"data-prohibitions": "[]",
-								children: "Consolidated Inventory"
-							})
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
 							"data-uid": "src/pages/Maintenance.tsx:91:13",
 							"data-prohibitions": "[editContent]",
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Table, {
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardTitle, {
 								"data-uid": "src/pages/Maintenance.tsx:92:15",
 								"data-prohibitions": "[editContent]",
+								children: t("consolidated_inventory")
+							})
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
+							"data-uid": "src/pages/Maintenance.tsx:94:13",
+							"data-prohibitions": "[editContent]",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Table, {
+								"data-uid": "src/pages/Maintenance.tsx:95:15",
+								"data-prohibitions": "[editContent]",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHeader, {
-									"data-uid": "src/pages/Maintenance.tsx:93:17",
-									"data-prohibitions": "[]",
+									"data-uid": "src/pages/Maintenance.tsx:96:17",
+									"data-prohibitions": "[editContent]",
 									children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TableRow, {
-										"data-uid": "src/pages/Maintenance.tsx:94:19",
-										"data-prohibitions": "[]",
+										"data-uid": "src/pages/Maintenance.tsx:97:19",
+										"data-prohibitions": "[editContent]",
 										children: [
 											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHead, {
-												"data-uid": "src/pages/Maintenance.tsx:95:21",
-												"data-prohibitions": "[]",
-												children: "SKU / Item"
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHead, {
-												"data-uid": "src/pages/Maintenance.tsx:96:21",
-												"data-prohibitions": "[]",
-												children: "Hub"
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHead, {
-												"data-uid": "src/pages/Maintenance.tsx:97:21",
-												"data-prohibitions": "[]",
-												children: "Usage Freq"
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHead, {
 												"data-uid": "src/pages/Maintenance.tsx:98:21",
-												"data-prohibitions": "[]",
-												children: "Min Stock"
+												"data-prohibitions": "[editContent]",
+												children: t("sku_item")
 											}),
 											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHead, {
 												"data-uid": "src/pages/Maintenance.tsx:99:21",
-												"data-prohibitions": "[]",
-												children: "Current"
+												"data-prohibitions": "[editContent]",
+												children: t("hub")
 											}),
 											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHead, {
 												"data-uid": "src/pages/Maintenance.tsx:100:21",
-												"data-prohibitions": "[]",
-												children: "Status"
+												"data-prohibitions": "[editContent]",
+												children: t("usage_freq")
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHead, {
+												"data-uid": "src/pages/Maintenance.tsx:101:21",
+												"data-prohibitions": "[editContent]",
+												children: t("min_stock")
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHead, {
+												"data-uid": "src/pages/Maintenance.tsx:102:21",
+												"data-prohibitions": "[editContent]",
+												children: t("current")
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableHead, {
+												"data-uid": "src/pages/Maintenance.tsx:103:21",
+												"data-prohibitions": "[editContent]",
+												children: t("status")
 											})
 										]
 									})
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableBody, {
-									"data-uid": "src/pages/Maintenance.tsx:103:17",
+									"data-uid": "src/pages/Maintenance.tsx:106:17",
 									"data-prohibitions": "[editContent]",
 									children: inventoryItems.map((item) => {
 										const isCritical = item.current <= item.min;
 										return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TableRow, {
-											"data-uid": "src/pages/Maintenance.tsx:107:23",
+											"data-uid": "src/pages/Maintenance.tsx:110:23",
 											"data-prohibitions": "[editContent]",
 											children: [
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableCell, {
-													"data-uid": "src/pages/Maintenance.tsx:108:25",
+													"data-uid": "src/pages/Maintenance.tsx:111:25",
 													"data-prohibitions": "[editContent]",
 													className: "font-medium",
-													children: item.name
+													children: t(item.name)
 												}),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableCell, {
-													"data-uid": "src/pages/Maintenance.tsx:109:25",
+													"data-uid": "src/pages/Maintenance.tsx:112:25",
 													"data-prohibitions": "[editContent]",
-													children: item.hub
+													children: t(item.hub)
 												}),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableCell, {
-													"data-uid": "src/pages/Maintenance.tsx:110:25",
+													"data-uid": "src/pages/Maintenance.tsx:113:25",
 													"data-prohibitions": "[editContent]",
-													children: item.usage
+													children: t(item.usage)
 												}),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableCell, {
-													"data-uid": "src/pages/Maintenance.tsx:111:25",
+													"data-uid": "src/pages/Maintenance.tsx:114:25",
 													"data-prohibitions": "[editContent]",
 													children: item.min
 												}),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableCell, {
-													"data-uid": "src/pages/Maintenance.tsx:112:25",
+													"data-uid": "src/pages/Maintenance.tsx:115:25",
 													"data-prohibitions": "[editContent]",
 													className: "font-mono font-semibold",
 													children: item.current
 												}),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TableCell, {
-													"data-uid": "src/pages/Maintenance.tsx:113:25",
+													"data-uid": "src/pages/Maintenance.tsx:116:25",
 													"data-prohibitions": "[editContent]",
 													children: isCritical ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-														"data-uid": "src/pages/Maintenance.tsx:115:29",
-														"data-prohibitions": "[]",
+														"data-uid": "src/pages/Maintenance.tsx:118:29",
+														"data-prohibitions": "[editContent]",
 														variant: "destructive",
-														children: "Repor Urgente"
+														children: t("status_urgent")
 													}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-														"data-uid": "src/pages/Maintenance.tsx:117:29",
-														"data-prohibitions": "[]",
+														"data-uid": "src/pages/Maintenance.tsx:120:29",
+														"data-prohibitions": "[editContent]",
 														variant: "outline",
 														className: "border-primary text-primary",
-														children: "Normal"
+														children: t("status_normal")
 													})
 												})
 											]
@@ -31648,37 +32481,38 @@ function Tasks() {
 	const [currentStep, setCurrentStep] = (0, import_react.useState)(1);
 	const [approvalsList, setApprovalsList] = (0, import_react.useState)(pendingApprovals);
 	const { toast } = useToast();
+	const t = useTranslation();
 	const handleValidateStep = (stepId) => {
 		toast({
-			title: "Etapa Concluída",
-			description: `${ONBOARDING_STEPS[stepId - 1].title} finalizada com sucesso.`
+			title: t("step_completed"),
+			description: `${t(ONBOARDING_STEPS[stepId - 1].title)} ${t("step_completed_desc")}`
 		});
 		setCurrentStep(stepId + 1);
 	};
 	const handleApprove = (id) => {
 		setApprovalsList((prev) => prev.filter((a) => a.id !== id));
 		toast({
-			title: "Aprovado",
-			description: `Solicitação ${id} aprovada e registrada em log.`
+			title: t("approved"),
+			description: t("approved_log")
 		});
 	};
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		"data-uid": "src/pages/Tasks.tsx:39:5",
+		"data-uid": "src/pages/Tasks.tsx:41:5",
 		"data-prohibitions": "[editContent]",
 		className: "flex flex-col gap-6 max-w-7xl mx-auto pb-12",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			"data-uid": "src/pages/Tasks.tsx:40:7",
-			"data-prohibitions": "[]",
+			"data-uid": "src/pages/Tasks.tsx:42:7",
+			"data-prohibitions": "[editContent]",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
-				"data-uid": "src/pages/Tasks.tsx:41:9",
-				"data-prohibitions": "[]",
+				"data-uid": "src/pages/Tasks.tsx:43:9",
+				"data-prohibitions": "[editContent]",
 				className: "text-3xl font-bold tracking-tight",
-				children: "Task & Ticket Management"
+				children: t("tasks_title")
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				"data-uid": "src/pages/Tasks.tsx:42:9",
-				"data-prohibitions": "[]",
+				"data-uid": "src/pages/Tasks.tsx:44:9",
+				"data-prohibitions": "[editContent]",
 				className: "text-muted-foreground mt-1",
-				children: "Integrated workflows, approvals, and module-wide tickets."
+				children: t("tasks_desc")
 			})]
 		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Tabs, {
 			"data-uid": "src/pages/Tasks.tsx:47:7",
@@ -31688,48 +32522,60 @@ function Tasks() {
 			children: [
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsList, {
 					"data-uid": "src/pages/Tasks.tsx:48:9",
-					"data-prohibitions": "[]",
+					"data-prohibitions": "[editContent]",
 					className: "grid w-full sm:w-auto grid-cols-2 sm:grid-cols-4 h-auto",
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
 							"data-uid": "src/pages/Tasks.tsx:49:11",
-							"data-prohibitions": "[]",
+							"data-prohibitions": "[editContent]",
 							value: "tickets",
 							className: "py-2 gap-2",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Ticket, {
-								"data-uid": "src/pages/Tasks.tsx:50:13",
-								"data-prohibitions": "[editContent]",
-								className: "w-4 h-4"
-							}), " Tickets"]
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Ticket, {
+									"data-uid": "src/pages/Tasks.tsx:50:13",
+									"data-prohibitions": "[editContent]",
+									className: "w-4 h-4"
+								}),
+								" ",
+								t("tickets")
+							]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
 							"data-uid": "src/pages/Tasks.tsx:52:11",
-							"data-prohibitions": "[]",
+							"data-prohibitions": "[editContent]",
 							value: "calendar",
 							className: "py-2 gap-2",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CalendarDays, {
-								"data-uid": "src/pages/Tasks.tsx:53:13",
-								"data-prohibitions": "[editContent]",
-								className: "w-4 h-4"
-							}), " Calendar"]
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CalendarDays, {
+									"data-uid": "src/pages/Tasks.tsx:53:13",
+									"data-prohibitions": "[editContent]",
+									className: "w-4 h-4"
+								}),
+								" ",
+								t("calendar")
+							]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsTrigger, {
 							"data-uid": "src/pages/Tasks.tsx:55:11",
-							"data-prohibitions": "[]",
+							"data-prohibitions": "[editContent]",
 							value: "gantt",
 							className: "py-2 gap-2",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TextAlignStart, {
-								"data-uid": "src/pages/Tasks.tsx:56:13",
-								"data-prohibitions": "[editContent]",
-								className: "w-4 h-4"
-							}), " Gantt"]
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TextAlignStart, {
+									"data-uid": "src/pages/Tasks.tsx:56:13",
+									"data-prohibitions": "[editContent]",
+									className: "w-4 h-4"
+								}),
+								" ",
+								t("gantt")
+							]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsTrigger, {
 							"data-uid": "src/pages/Tasks.tsx:58:11",
-							"data-prohibitions": "[]",
+							"data-prohibitions": "[editContent]",
 							value: "workflows",
 							className: "py-2 gap-2",
-							children: "Workflows"
+							children: t("workflows")
 						})
 					]
 				}),
@@ -31744,15 +32590,15 @@ function Tasks() {
 						className: "shadow-sm",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardHeader, {
 							"data-uid": "src/pages/Tasks.tsx:65:13",
-							"data-prohibitions": "[]",
+							"data-prohibitions": "[editContent]",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardTitle, {
 								"data-uid": "src/pages/Tasks.tsx:66:15",
-								"data-prohibitions": "[]",
-								children: "Global Tickets View"
+								"data-prohibitions": "[editContent]",
+								children: t("global_tickets")
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardDescription, {
 								"data-uid": "src/pages/Tasks.tsx:67:15",
-								"data-prohibitions": "[]",
-								children: "Cross-module task attribution and tracking."
+								"data-prohibitions": "[editContent]",
+								children: t("global_tickets_desc")
 							})]
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
 							"data-uid": "src/pages/Tasks.tsx:69:13",
@@ -31840,10 +32686,10 @@ function Tasks() {
 											}),
 											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 												"data-uid": "src/pages/Tasks.tsx:114:23",
-												"data-prohibitions": "[]",
+												"data-prohibitions": "[editContent]",
 												variant: "outline",
 												size: "sm",
-												children: "View"
+												children: t("view")
 											})
 										]
 									})]
@@ -31854,109 +32700,109 @@ function Tasks() {
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
 					"data-uid": "src/pages/Tasks.tsx:125:9",
-					"data-prohibitions": "[]",
+					"data-prohibitions": "[editContent]",
 					value: "calendar",
 					className: "mt-6",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
 						"data-uid": "src/pages/Tasks.tsx:126:11",
-						"data-prohibitions": "[]",
+						"data-prohibitions": "[editContent]",
 						className: "shadow-sm",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardHeader, {
 							"data-uid": "src/pages/Tasks.tsx:127:13",
-							"data-prohibitions": "[]",
+							"data-prohibitions": "[editContent]",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardTitle, {
 								"data-uid": "src/pages/Tasks.tsx:128:15",
-								"data-prohibitions": "[]",
-								children: "Calendar View"
+								"data-prohibitions": "[editContent]",
+								children: t("calendar_view")
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardDescription, {
 								"data-uid": "src/pages/Tasks.tsx:129:15",
-								"data-prohibitions": "[]",
-								children: "Visual timeline of deadlines and maintenance schedules."
+								"data-prohibitions": "[editContent]",
+								children: t("calendar_desc")
 							})]
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
-							"data-uid": "src/pages/Tasks.tsx:133:13",
-							"data-prohibitions": "[]",
+							"data-uid": "src/pages/Tasks.tsx:131:13",
+							"data-prohibitions": "[editContent]",
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								"data-uid": "src/pages/Tasks.tsx:134:15",
-								"data-prohibitions": "[]",
+								"data-uid": "src/pages/Tasks.tsx:132:15",
+								"data-prohibitions": "[editContent]",
 								className: "h-[400px] border-2 border-dashed rounded-xl flex items-center justify-center bg-muted/10 text-muted-foreground flex-col gap-2",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CalendarDays, {
-									"data-uid": "src/pages/Tasks.tsx:135:17",
+									"data-uid": "src/pages/Tasks.tsx:133:17",
 									"data-prohibitions": "[editContent]",
 									className: "w-12 h-12 opacity-20"
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-									"data-uid": "src/pages/Tasks.tsx:136:17",
-									"data-prohibitions": "[]",
-									children: "Interactive Calendar Integration to be rendered here."
+									"data-uid": "src/pages/Tasks.tsx:134:17",
+									"data-prohibitions": "[editContent]",
+									children: t("calendar_placeholder")
 								})]
 							})
 						})]
 					})
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TabsContent, {
-					"data-uid": "src/pages/Tasks.tsx:142:9",
-					"data-prohibitions": "[]",
+					"data-uid": "src/pages/Tasks.tsx:140:9",
+					"data-prohibitions": "[editContent]",
 					value: "gantt",
 					className: "mt-6",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-						"data-uid": "src/pages/Tasks.tsx:143:11",
-						"data-prohibitions": "[]",
+						"data-uid": "src/pages/Tasks.tsx:141:11",
+						"data-prohibitions": "[editContent]",
 						className: "shadow-sm",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardHeader, {
-							"data-uid": "src/pages/Tasks.tsx:144:13",
-							"data-prohibitions": "[]",
+							"data-uid": "src/pages/Tasks.tsx:142:13",
+							"data-prohibitions": "[editContent]",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardTitle, {
-								"data-uid": "src/pages/Tasks.tsx:145:15",
-								"data-prohibitions": "[]",
-								children: "Gantt Chart"
+								"data-uid": "src/pages/Tasks.tsx:143:15",
+								"data-prohibitions": "[editContent]",
+								children: t("gantt_chart")
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardDescription, {
-								"data-uid": "src/pages/Tasks.tsx:146:15",
-								"data-prohibitions": "[]",
-								children: "Long-term project and operation timeline tracking."
+								"data-uid": "src/pages/Tasks.tsx:144:15",
+								"data-prohibitions": "[editContent]",
+								children: t("gantt_desc")
 							})]
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
-							"data-uid": "src/pages/Tasks.tsx:148:13",
-							"data-prohibitions": "[]",
+							"data-uid": "src/pages/Tasks.tsx:146:13",
+							"data-prohibitions": "[editContent]",
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								"data-uid": "src/pages/Tasks.tsx:149:15",
-								"data-prohibitions": "[]",
+								"data-uid": "src/pages/Tasks.tsx:147:15",
+								"data-prohibitions": "[editContent]",
 								className: "h-[400px] border-2 border-dashed rounded-xl flex items-center justify-center bg-muted/10 text-muted-foreground flex-col gap-2",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TextAlignStart, {
-									"data-uid": "src/pages/Tasks.tsx:150:17",
+									"data-uid": "src/pages/Tasks.tsx:148:17",
 									"data-prohibitions": "[editContent]",
 									className: "w-12 h-12 opacity-20"
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-									"data-uid": "src/pages/Tasks.tsx:151:17",
-									"data-prohibitions": "[]",
-									children: "Gantt Chart Component to be rendered here."
+									"data-uid": "src/pages/Tasks.tsx:149:17",
+									"data-prohibitions": "[editContent]",
+									children: t("gantt_placeholder")
 								})]
 							})
 						})]
 					})
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TabsContent, {
-					"data-uid": "src/pages/Tasks.tsx:157:9",
+					"data-uid": "src/pages/Tasks.tsx:155:9",
 					"data-prohibitions": "[editContent]",
 					value: "workflows",
 					className: "mt-6 space-y-6",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-						"data-uid": "src/pages/Tasks.tsx:158:11",
+						"data-uid": "src/pages/Tasks.tsx:156:11",
 						"data-prohibitions": "[editContent]",
 						className: "shadow-sm border-primary/20",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardHeader, {
-							"data-uid": "src/pages/Tasks.tsx:159:13",
-							"data-prohibitions": "[]",
+							"data-uid": "src/pages/Tasks.tsx:157:13",
+							"data-prohibitions": "[editContent]",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardTitle, {
-								"data-uid": "src/pages/Tasks.tsx:160:15",
-								"data-prohibitions": "[]",
-								children: "Cascade Workflow: New Courier Onboarding"
+								"data-uid": "src/pages/Tasks.tsx:158:15",
+								"data-prohibitions": "[editContent]",
+								children: t("cascade_workflow")
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardDescription, {
-								"data-uid": "src/pages/Tasks.tsx:161:15",
-								"data-prohibitions": "[]",
-								children: "Mandatory sequential validation flow."
+								"data-uid": "src/pages/Tasks.tsx:159:15",
+								"data-prohibitions": "[editContent]",
+								children: t("cascade_desc")
 							})]
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
-							"data-uid": "src/pages/Tasks.tsx:163:13",
+							"data-uid": "src/pages/Tasks.tsx:161:13",
 							"data-prohibitions": "[editContent]",
 							className: "flex flex-col gap-0",
 							children: ONBOARDING_STEPS.map((step, index) => {
@@ -31964,15 +32810,15 @@ function Tasks() {
 								const isActive = currentStep === step.id;
 								const isLocked = currentStep < step.id;
 								return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									"data-uid": "src/pages/Tasks.tsx:170:19",
+									"data-uid": "src/pages/Tasks.tsx:168:19",
 									"data-prohibitions": "[editContent]",
 									className: "relative",
 									children: [index < ONBOARDING_STEPS.length - 1 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-										"data-uid": "src/pages/Tasks.tsx:172:23",
+										"data-uid": "src/pages/Tasks.tsx:170:23",
 										"data-prohibitions": "[editContent]",
 										className: `absolute top-10 left-6 w-0.5 h-full -ml-px ${isValidated ? "bg-primary" : "bg-muted"}`
 									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										"data-uid": "src/pages/Tasks.tsx:177:21",
+										"data-uid": "src/pages/Tasks.tsx:175:21",
 										"data-prohibitions": "[editContent]",
 										className: `relative p-4 rounded-xl flex items-center justify-between mb-4 transition-all
                       ${isActive ? "bg-primary/5 border border-primary/30 shadow-sm" : "border border-transparent"}
@@ -31980,67 +32826,67 @@ function Tasks() {
                     `,
 										children: [
 											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-												"data-uid": "src/pages/Tasks.tsx:183:23",
+												"data-uid": "src/pages/Tasks.tsx:181:23",
 												"data-prohibitions": "[editContent]",
 												className: "flex items-center gap-4 z-10 bg-background/50 rounded-full pr-4",
 												children: [isValidated ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-													"data-uid": "src/pages/Tasks.tsx:185:27",
+													"data-uid": "src/pages/Tasks.tsx:183:27",
 													"data-prohibitions": "[]",
 													className: "w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center shrink-0",
 													children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, {
-														"data-uid": "src/pages/Tasks.tsx:186:29",
+														"data-uid": "src/pages/Tasks.tsx:184:29",
 														"data-prohibitions": "[editContent]",
 														className: "w-5 h-5"
 													})
 												}) : isActive ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-													"data-uid": "src/pages/Tasks.tsx:189:27",
+													"data-uid": "src/pages/Tasks.tsx:187:27",
 													"data-prohibitions": "[editContent]",
 													className: "w-8 h-8 rounded-full border-2 border-primary text-primary flex items-center justify-center shrink-0 bg-background",
 													children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-														"data-uid": "src/pages/Tasks.tsx:190:29",
+														"data-uid": "src/pages/Tasks.tsx:188:29",
 														"data-prohibitions": "[editContent]",
 														className: "font-bold text-sm",
 														children: step.id
 													})
 												}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-													"data-uid": "src/pages/Tasks.tsx:193:27",
+													"data-uid": "src/pages/Tasks.tsx:191:27",
 													"data-prohibitions": "[editContent]",
 													className: "w-8 h-8 rounded-full bg-muted text-muted-foreground flex items-center justify-center shrink-0",
 													children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-														"data-uid": "src/pages/Tasks.tsx:194:29",
+														"data-uid": "src/pages/Tasks.tsx:192:29",
 														"data-prohibitions": "[editContent]",
 														className: "font-medium text-sm",
 														children: step.id
 													})
 												}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-													"data-uid": "src/pages/Tasks.tsx:197:25",
+													"data-uid": "src/pages/Tasks.tsx:195:25",
 													"data-prohibitions": "[editContent]",
 													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", {
-														"data-uid": "src/pages/Tasks.tsx:198:27",
+														"data-uid": "src/pages/Tasks.tsx:196:27",
 														"data-prohibitions": "[editContent]",
 														className: `font-semibold ${isActive ? "text-primary" : ""}`,
-														children: step.title
+														children: t(step.title)
 													}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-														"data-uid": "src/pages/Tasks.tsx:201:27",
+														"data-uid": "src/pages/Tasks.tsx:199:27",
 														"data-prohibitions": "[editContent]",
 														className: "text-sm text-muted-foreground",
-														children: step.desc
+														children: t(step.desc)
 													})]
 												})]
 											}),
 											!isLocked && !isValidated && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-												"data-uid": "src/pages/Tasks.tsx:206:25",
-												"data-prohibitions": "[]",
+												"data-uid": "src/pages/Tasks.tsx:204:25",
+												"data-prohibitions": "[editContent]",
 												onClick: () => handleValidateStep(step.id),
 												size: "sm",
-												children: "Validar Etapa"
+												children: t("validate_step")
 											}),
 											isValidated && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-												"data-uid": "src/pages/Tasks.tsx:211:25",
-												"data-prohibitions": "[]",
+												"data-uid": "src/pages/Tasks.tsx:209:25",
+												"data-prohibitions": "[editContent]",
 												variant: "outline",
 												className: "text-primary border-primary",
-												children: "Validado"
+												children: t("validated")
 											})
 										]
 									})]
@@ -32048,83 +32894,83 @@ function Tasks() {
 							})
 						})]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-						"data-uid": "src/pages/Tasks.tsx:222:11",
+						"data-uid": "src/pages/Tasks.tsx:220:11",
 						"data-prohibitions": "[editContent]",
 						className: "shadow-sm",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardHeader, {
-							"data-uid": "src/pages/Tasks.tsx:223:13",
+							"data-uid": "src/pages/Tasks.tsx:221:13",
 							"data-prohibitions": "[editContent]",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardTitle, {
-								"data-uid": "src/pages/Tasks.tsx:224:15",
+								"data-uid": "src/pages/Tasks.tsx:222:15",
 								"data-prohibitions": "[editContent]",
 								className: "flex items-center gap-2",
-								children: ["Approvals Inbox", approvalsList.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-									"data-uid": "src/pages/Tasks.tsx:227:19",
+								children: [t("approvals_inbox"), approvalsList.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+									"data-uid": "src/pages/Tasks.tsx:225:19",
 									"data-prohibitions": "[editContent]",
 									variant: "destructive",
 									className: "ml-2",
 									children: approvalsList.length
 								})]
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardDescription, {
-								"data-uid": "src/pages/Tasks.tsx:232:15",
-								"data-prohibitions": "[]",
-								children: "Critical actions requiring dual validation."
+								"data-uid": "src/pages/Tasks.tsx:230:15",
+								"data-prohibitions": "[editContent]",
+								children: t("approvals_desc")
 							})]
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
-							"data-uid": "src/pages/Tasks.tsx:234:13",
+							"data-uid": "src/pages/Tasks.tsx:232:13",
 							"data-prohibitions": "[editContent]",
 							children: approvalsList.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								"data-uid": "src/pages/Tasks.tsx:236:17",
-								"data-prohibitions": "[]",
+								"data-uid": "src/pages/Tasks.tsx:234:17",
+								"data-prohibitions": "[editContent]",
 								className: "text-center py-10 text-muted-foreground",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, {
-									"data-uid": "src/pages/Tasks.tsx:237:19",
+									"data-uid": "src/pages/Tasks.tsx:235:19",
 									"data-prohibitions": "[editContent]",
 									className: "w-12 h-12 mx-auto mb-3 opacity-20"
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-									"data-uid": "src/pages/Tasks.tsx:238:19",
-									"data-prohibitions": "[]",
-									children: "No pending approvals."
+									"data-uid": "src/pages/Tasks.tsx:236:19",
+									"data-prohibitions": "[editContent]",
+									children: t("no_approvals")
 								})]
 							}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								"data-uid": "src/pages/Tasks.tsx:241:17",
+								"data-uid": "src/pages/Tasks.tsx:239:17",
 								"data-prohibitions": "[editContent]",
 								className: "flex flex-col gap-4",
 								children: approvalsList.map((app) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									"data-uid": "src/pages/Tasks.tsx:243:21",
+									"data-uid": "src/pages/Tasks.tsx:241:21",
 									"data-prohibitions": "[editContent]",
 									className: "flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 border rounded-xl hover:bg-muted/30 transition-colors",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										"data-uid": "src/pages/Tasks.tsx:247:23",
+										"data-uid": "src/pages/Tasks.tsx:245:23",
 										"data-prohibitions": "[editContent]",
 										className: "flex items-start gap-3 mb-4 sm:mb-0",
 										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Clock, {
-											"data-uid": "src/pages/Tasks.tsx:248:25",
+											"data-uid": "src/pages/Tasks.tsx:246:25",
 											"data-prohibitions": "[editContent]",
 											className: "text-amber-500 w-5 h-5 mt-0.5"
 										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-											"data-uid": "src/pages/Tasks.tsx:249:25",
+											"data-uid": "src/pages/Tasks.tsx:247:25",
 											"data-prohibitions": "[editContent]",
 											children: [
 												/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-													"data-uid": "src/pages/Tasks.tsx:250:27",
+													"data-uid": "src/pages/Tasks.tsx:248:27",
 													"data-prohibitions": "[editContent]",
 													className: "flex items-center gap-2 mb-1",
 													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-														"data-uid": "src/pages/Tasks.tsx:251:29",
+														"data-uid": "src/pages/Tasks.tsx:249:29",
 														"data-prohibitions": "[editContent]",
 														variant: "secondary",
 														className: "font-mono text-xs",
 														children: app.id
 													}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
-														"data-uid": "src/pages/Tasks.tsx:254:29",
+														"data-uid": "src/pages/Tasks.tsx:252:29",
 														"data-prohibitions": "[editContent]",
 														variant: "outline",
 														children: app.team
 													})]
 												}),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h4", {
-													"data-uid": "src/pages/Tasks.tsx:256:27",
+													"data-uid": "src/pages/Tasks.tsx:254:27",
 													"data-prohibitions": "[editContent]",
 													className: "font-semibold text-sm",
 													children: [
@@ -32134,39 +32980,42 @@ function Tasks() {
 													]
 												}),
 												/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-													"data-uid": "src/pages/Tasks.tsx:259:27",
+													"data-uid": "src/pages/Tasks.tsx:257:27",
 													"data-prohibitions": "[editContent]",
 													className: "text-xs text-muted-foreground mt-1",
 													children: [
-														"Value: ",
+														t("value"),
+														": ",
 														/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
-															"data-uid": "src/pages/Tasks.tsx:260:36",
+															"data-uid": "src/pages/Tasks.tsx:258:43",
 															"data-prohibitions": "[editContent]",
 															className: "text-foreground",
 															children: app.value
 														}),
-														" | Requester: ",
+														" |",
+														t("requester"),
+														": ",
 														app.requester
 													]
 												})
 											]
 										})]
 									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										"data-uid": "src/pages/Tasks.tsx:265:23",
-										"data-prohibitions": "[]",
+										"data-uid": "src/pages/Tasks.tsx:263:23",
+										"data-prohibitions": "[editContent]",
 										className: "flex items-center gap-2 w-full sm:w-auto",
 										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-											"data-uid": "src/pages/Tasks.tsx:266:25",
-											"data-prohibitions": "[]",
+											"data-uid": "src/pages/Tasks.tsx:264:25",
+											"data-prohibitions": "[editContent]",
 											variant: "outline",
 											className: "flex-1 sm:flex-none",
-											children: "Reject"
+											children: t("reject")
 										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-											"data-uid": "src/pages/Tasks.tsx:269:25",
-											"data-prohibitions": "[]",
+											"data-uid": "src/pages/Tasks.tsx:267:25",
+											"data-prohibitions": "[editContent]",
 											onClick: () => handleApprove(app.id),
 											className: "flex-1 sm:flex-none",
-											children: "Approve"
+											children: t("approve")
 										})]
 									})]
 								}, app.id))
@@ -32181,160 +33030,177 @@ function Tasks() {
 //#endregion
 //#region src/pages/Financial.tsx
 function Financial() {
+	const t = useTranslation();
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		"data-uid": "src/pages/Financial.tsx:7:5",
-		"data-prohibitions": "[]",
+		"data-uid": "src/pages/Financial.tsx:10:5",
+		"data-prohibitions": "[editContent]",
 		className: "space-y-6 max-w-7xl mx-auto pb-12",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				"data-uid": "src/pages/Financial.tsx:8:7",
-				"data-prohibitions": "[]",
+				"data-uid": "src/pages/Financial.tsx:11:7",
+				"data-prohibitions": "[editContent]",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
-					"data-uid": "src/pages/Financial.tsx:9:9",
-					"data-prohibitions": "[]",
+					"data-uid": "src/pages/Financial.tsx:12:9",
+					"data-prohibitions": "[editContent]",
 					className: "text-3xl font-bold tracking-tight",
-					children: "Financial Governance Hub"
+					children: t("fin_title")
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					"data-uid": "src/pages/Financial.tsx:10:9",
-					"data-prohibitions": "[]",
+					"data-uid": "src/pages/Financial.tsx:13:9",
+					"data-prohibitions": "[editContent]",
 					className: "text-muted-foreground mt-1",
-					children: "AsaaS API integration, AP/AR, and Subsidy management."
+					children: t("fin_desc")
 				})]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				"data-uid": "src/pages/Financial.tsx:15:7",
-				"data-prohibitions": "[]",
+				"data-uid": "src/pages/Financial.tsx:16:7",
+				"data-prohibitions": "[editContent]",
 				className: "grid gap-4 md:grid-cols-3",
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-						"data-uid": "src/pages/Financial.tsx:16:9",
-						"data-prohibitions": "[]",
+						"data-uid": "src/pages/Financial.tsx:17:9",
+						"data-prohibitions": "[editContent]",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardHeader, {
-							"data-uid": "src/pages/Financial.tsx:17:11",
-							"data-prohibitions": "[]",
+							"data-uid": "src/pages/Financial.tsx:18:11",
+							"data-prohibitions": "[editContent]",
 							className: "pb-2",
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardTitle, {
-								"data-uid": "src/pages/Financial.tsx:18:13",
-								"data-prohibitions": "[]",
+								"data-uid": "src/pages/Financial.tsx:19:13",
+								"data-prohibitions": "[editContent]",
 								className: "text-sm font-medium text-muted-foreground flex justify-between",
-								children: ["Accounts Receivable ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, {
-									"data-uid": "src/pages/Financial.tsx:19:35",
-									"data-prohibitions": "[editContent]",
-									className: "w-4 h-4 text-emerald-500"
-								})]
+								children: [
+									t("accounts_receivable"),
+									" ",
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, {
+										"data-uid": "src/pages/Financial.tsx:20:42",
+										"data-prohibitions": "[editContent]",
+										className: "w-4 h-4 text-emerald-500"
+									})
+								]
 							})
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
-							"data-uid": "src/pages/Financial.tsx:22:11",
-							"data-prohibitions": "[]",
+							"data-uid": "src/pages/Financial.tsx:23:11",
+							"data-prohibitions": "[editContent]",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								"data-uid": "src/pages/Financial.tsx:23:13",
+								"data-uid": "src/pages/Financial.tsx:24:13",
 								"data-prohibitions": "[]",
 								className: "text-2xl font-bold",
 								children: "R$ 142.500,00"
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-								"data-uid": "src/pages/Financial.tsx:24:13",
-								"data-prohibitions": "[]",
+								"data-uid": "src/pages/Financial.tsx:25:13",
+								"data-prohibitions": "[editContent]",
 								className: "text-xs text-emerald-600 mt-1 flex items-center gap-1",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCcw, {
-									"data-uid": "src/pages/Financial.tsx:25:15",
-									"data-prohibitions": "[editContent]",
-									className: "w-3 h-3"
-								}), " AsaaS Synced"]
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCcw, {
+										"data-uid": "src/pages/Financial.tsx:26:15",
+										"data-prohibitions": "[editContent]",
+										className: "w-3 h-3"
+									}),
+									" ",
+									t("asaas_synced")
+								]
 							})]
 						})]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-						"data-uid": "src/pages/Financial.tsx:29:9",
-						"data-prohibitions": "[]",
+						"data-uid": "src/pages/Financial.tsx:30:9",
+						"data-prohibitions": "[editContent]",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardHeader, {
-							"data-uid": "src/pages/Financial.tsx:30:11",
-							"data-prohibitions": "[]",
+							"data-uid": "src/pages/Financial.tsx:31:11",
+							"data-prohibitions": "[editContent]",
 							className: "pb-2",
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardTitle, {
-								"data-uid": "src/pages/Financial.tsx:31:13",
-								"data-prohibitions": "[]",
+								"data-uid": "src/pages/Financial.tsx:32:13",
+								"data-prohibitions": "[editContent]",
 								className: "text-sm font-medium text-muted-foreground flex justify-between",
-								children: ["Accounts Payable ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowDownRight, {
-									"data-uid": "src/pages/Financial.tsx:32:32",
-									"data-prohibitions": "[editContent]",
-									className: "w-4 h-4 text-red-500"
-								})]
+								children: [
+									t("accounts_payable"),
+									" ",
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowDownRight, {
+										"data-uid": "src/pages/Financial.tsx:33:39",
+										"data-prohibitions": "[editContent]",
+										className: "w-4 h-4 text-red-500"
+									})
+								]
 							})
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
-							"data-uid": "src/pages/Financial.tsx:35:11",
-							"data-prohibitions": "[]",
+							"data-uid": "src/pages/Financial.tsx:36:11",
+							"data-prohibitions": "[editContent]",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								"data-uid": "src/pages/Financial.tsx:36:13",
+								"data-uid": "src/pages/Financial.tsx:37:13",
 								"data-prohibitions": "[]",
 								className: "text-2xl font-bold",
 								children: "R$ 38.200,00"
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								"data-uid": "src/pages/Financial.tsx:37:13",
-								"data-prohibitions": "[]",
+								"data-uid": "src/pages/Financial.tsx:38:13",
+								"data-prohibitions": "[editContent]",
 								className: "text-xs text-muted-foreground mt-1",
-								children: "Suppliers & Workshops"
+								children: t("suppliers_workshops")
 							})]
 						})]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-						"data-uid": "src/pages/Financial.tsx:40:9",
-						"data-prohibitions": "[]",
+						"data-uid": "src/pages/Financial.tsx:41:9",
+						"data-prohibitions": "[editContent]",
 						className: "border-primary/30 bg-primary/5",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardHeader, {
-							"data-uid": "src/pages/Financial.tsx:41:11",
-							"data-prohibitions": "[]",
+							"data-uid": "src/pages/Financial.tsx:42:11",
+							"data-prohibitions": "[editContent]",
 							className: "pb-2",
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardTitle, {
-								"data-uid": "src/pages/Financial.tsx:42:13",
-								"data-prohibitions": "[]",
+								"data-uid": "src/pages/Financial.tsx:43:13",
+								"data-prohibitions": "[editContent]",
 								className: "text-sm font-medium text-primary flex items-center gap-2",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DollarSign, {
-									"data-uid": "src/pages/Financial.tsx:43:15",
-									"data-prohibitions": "[editContent]",
-									className: "w-4 h-4"
-								}), " 99 Subsidy Pool"]
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DollarSign, {
+										"data-uid": "src/pages/Financial.tsx:44:15",
+										"data-prohibitions": "[editContent]",
+										className: "w-4 h-4"
+									}),
+									" ",
+									t("subsidy_pool")
+								]
 							})
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardContent, {
-							"data-uid": "src/pages/Financial.tsx:46:11",
-							"data-prohibitions": "[]",
+							"data-uid": "src/pages/Financial.tsx:47:11",
+							"data-prohibitions": "[editContent]",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								"data-uid": "src/pages/Financial.tsx:47:13",
+								"data-uid": "src/pages/Financial.tsx:48:13",
 								"data-prohibitions": "[]",
 								className: "text-2xl font-bold text-primary",
 								children: "R$ 15.000,00"
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								"data-uid": "src/pages/Financial.tsx:48:13",
-								"data-prohibitions": "[]",
+								"data-uid": "src/pages/Financial.tsx:49:13",
+								"data-prohibitions": "[editContent]",
 								className: "text-xs text-muted-foreground mt-1",
-								children: "Automated discount applied"
+								children: t("auto_discount")
 							})]
 						})]
 					})
 				]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-				"data-uid": "src/pages/Financial.tsx:53:7",
-				"data-prohibitions": "[]",
+				"data-uid": "src/pages/Financial.tsx:54:7",
+				"data-prohibitions": "[editContent]",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardHeader, {
-					"data-uid": "src/pages/Financial.tsx:54:9",
-					"data-prohibitions": "[]",
+					"data-uid": "src/pages/Financial.tsx:55:9",
+					"data-prohibitions": "[editContent]",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardTitle, {
-						"data-uid": "src/pages/Financial.tsx:55:11",
-						"data-prohibitions": "[]",
-						children: "Recent Transactions (Mock)"
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardDescription, {
 						"data-uid": "src/pages/Financial.tsx:56:11",
-						"data-prohibitions": "[]",
-						children: "Real-time feed from payment gateway."
+						"data-prohibitions": "[editContent]",
+						children: t("recent_transactions")
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardDescription, {
+						"data-uid": "src/pages/Financial.tsx:57:11",
+						"data-prohibitions": "[editContent]",
+						children: t("real_time_feed")
 					})]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
-					"data-uid": "src/pages/Financial.tsx:58:9",
-					"data-prohibitions": "[]",
+					"data-uid": "src/pages/Financial.tsx:59:9",
+					"data-prohibitions": "[editContent]",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						"data-uid": "src/pages/Financial.tsx:59:11",
-						"data-prohibitions": "[]",
+						"data-uid": "src/pages/Financial.tsx:60:11",
+						"data-prohibitions": "[editContent]",
 						className: "text-center py-12 text-muted-foreground border-2 border-dashed rounded-lg",
-						children: "Transaction table module to be populated by AsaaS API."
+						children: t("transaction_placeholder")
 					})
 				})]
 			})
@@ -32344,114 +33210,123 @@ function Financial() {
 //#endregion
 //#region src/pages/Security.tsx
 function Security() {
+	const t = useTranslation();
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		"data-uid": "src/pages/Security.tsx:7:5",
-		"data-prohibitions": "[]",
+		"data-uid": "src/pages/Security.tsx:10:5",
+		"data-prohibitions": "[editContent]",
 		className: "space-y-6 max-w-7xl mx-auto pb-12",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			"data-uid": "src/pages/Security.tsx:8:7",
-			"data-prohibitions": "[]",
+			"data-uid": "src/pages/Security.tsx:11:7",
+			"data-prohibitions": "[editContent]",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
-				"data-uid": "src/pages/Security.tsx:9:9",
-				"data-prohibitions": "[]",
+				"data-uid": "src/pages/Security.tsx:12:9",
+				"data-prohibitions": "[editContent]",
 				className: "text-3xl font-bold tracking-tight",
-				children: "Security & Risk Module"
+				children: t("sec_title")
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				"data-uid": "src/pages/Security.tsx:10:9",
-				"data-prohibitions": "[]",
+				"data-uid": "src/pages/Security.tsx:13:9",
+				"data-prohibitions": "[editContent]",
 				className: "text-muted-foreground mt-1",
-				children: "Fraud detection, recovery workflows, and police reporting."
+				children: t("sec_desc")
 			})]
 		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			"data-uid": "src/pages/Security.tsx:15:7",
-			"data-prohibitions": "[]",
+			"data-uid": "src/pages/Security.tsx:16:7",
+			"data-prohibitions": "[editContent]",
 			className: "grid gap-6 md:grid-cols-2",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-				"data-uid": "src/pages/Security.tsx:16:9",
-				"data-prohibitions": "[]",
+				"data-uid": "src/pages/Security.tsx:17:9",
+				"data-prohibitions": "[editContent]",
 				className: "border-red-200 shadow-sm",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardHeader, {
-					"data-uid": "src/pages/Security.tsx:17:11",
-					"data-prohibitions": "[]",
+					"data-uid": "src/pages/Security.tsx:18:11",
+					"data-prohibitions": "[editContent]",
 					className: "bg-red-50/50 pb-4",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardTitle, {
-						"data-uid": "src/pages/Security.tsx:18:13",
-						"data-prohibitions": "[]",
+						"data-uid": "src/pages/Security.tsx:19:13",
+						"data-prohibitions": "[editContent]",
 						className: "text-red-700 flex items-center gap-2",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ShieldAlert, {
-							"data-uid": "src/pages/Security.tsx:19:15",
-							"data-prohibitions": "[editContent]",
-							className: "w-5 h-5"
-						}), " High Risk Alerts"]
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ShieldAlert, {
+								"data-uid": "src/pages/Security.tsx:20:15",
+								"data-prohibitions": "[editContent]",
+								className: "w-5 h-5"
+							}),
+							" ",
+							t("high_risk_alerts")
+						]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardDescription, {
-						"data-uid": "src/pages/Security.tsx:21:13",
-						"data-prohibitions": "[]",
-						children: "Bikes suspected of misappropriation (telemetry disconnected)."
+						"data-uid": "src/pages/Security.tsx:22:13",
+						"data-prohibitions": "[editContent]",
+						children: t("high_risk_desc")
 					})]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
-					"data-uid": "src/pages/Security.tsx:25:11",
-					"data-prohibitions": "[]",
+					"data-uid": "src/pages/Security.tsx:24:11",
+					"data-prohibitions": "[editContent]",
 					className: "p-0",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						"data-uid": "src/pages/Security.tsx:26:13",
-						"data-prohibitions": "[]",
+						"data-uid": "src/pages/Security.tsx:25:13",
+						"data-prohibitions": "[editContent]",
 						className: "divide-y",
 						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							"data-uid": "src/pages/Security.tsx:27:15",
-							"data-prohibitions": "[]",
+							"data-uid": "src/pages/Security.tsx:26:15",
+							"data-prohibitions": "[editContent]",
 							className: "p-4 flex items-center justify-between",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								"data-uid": "src/pages/Security.tsx:28:17",
-								"data-prohibitions": "[]",
+								"data-uid": "src/pages/Security.tsx:27:17",
+								"data-prohibitions": "[editContent]",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-									"data-uid": "src/pages/Security.tsx:29:19",
+									"data-uid": "src/pages/Security.tsx:28:19",
 									"data-prohibitions": "[]",
 									className: "font-mono font-bold",
 									children: "Chassi: 9C88X1..."
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-									"data-uid": "src/pages/Security.tsx:30:19",
-									"data-prohibitions": "[]",
+									"data-uid": "src/pages/Security.tsx:29:19",
+									"data-prohibitions": "[editContent]",
 									className: "text-sm text-muted-foreground",
-									children: "Last seen: 48h ago - Zona Leste, SP"
+									children: t("last_seen")
 								})]
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-								"data-uid": "src/pages/Security.tsx:34:17",
-								"data-prohibitions": "[]",
+								"data-uid": "src/pages/Security.tsx:31:17",
+								"data-prohibitions": "[editContent]",
 								variant: "destructive",
 								size: "sm",
-								children: "Trigger Recovery"
+								children: t("trigger_recovery")
 							})]
 						})
 					})
 				})]
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Card, {
-				"data-uid": "src/pages/Security.tsx:42:9",
-				"data-prohibitions": "[]",
+				"data-uid": "src/pages/Security.tsx:39:9",
+				"data-prohibitions": "[editContent]",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardHeader, {
-					"data-uid": "src/pages/Security.tsx:43:11",
-					"data-prohibitions": "[]",
+					"data-uid": "src/pages/Security.tsx:40:11",
+					"data-prohibitions": "[editContent]",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardTitle, {
-						"data-uid": "src/pages/Security.tsx:44:13",
-						"data-prohibitions": "[]",
+						"data-uid": "src/pages/Security.tsx:41:13",
+						"data-prohibitions": "[editContent]",
 						className: "flex items-center gap-2",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MapPin, {
-							"data-uid": "src/pages/Security.tsx:45:15",
-							"data-prohibitions": "[editContent]",
-							className: "w-5 h-5 text-primary"
-						}), " Trackplus Integration"]
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MapPin, {
+								"data-uid": "src/pages/Security.tsx:42:15",
+								"data-prohibitions": "[editContent]",
+								className: "w-5 h-5 text-primary"
+							}),
+							" ",
+							t("trackplus_integration")
+						]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardDescription, {
-						"data-uid": "src/pages/Security.tsx:47:13",
-						"data-prohibitions": "[]",
-						children: "Live map feed for recovery teams."
+						"data-uid": "src/pages/Security.tsx:44:13",
+						"data-prohibitions": "[editContent]",
+						children: t("live_map_feed")
 					})]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
-					"data-uid": "src/pages/Security.tsx:49:11",
-					"data-prohibitions": "[]",
+					"data-uid": "src/pages/Security.tsx:46:11",
+					"data-prohibitions": "[editContent]",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						"data-uid": "src/pages/Security.tsx:50:13",
-						"data-prohibitions": "[]",
+						"data-uid": "src/pages/Security.tsx:47:13",
+						"data-prohibitions": "[editContent]",
 						className: "bg-slate-100 rounded-lg h-48 flex items-center justify-center border text-muted-foreground",
-						children: "Map View Placeholder"
+						children: t("map_placeholder")
 					})
 				})]
 			})]
@@ -32462,36 +33337,55 @@ function Security() {
 //#region src/pages/NotFound.tsx
 var NotFound = () => {
 	const location = useLocation();
+	const { language } = useAppStore();
 	(0, import_react.useEffect)(() => {
 		console.error("404 Error: User attempted to access non-existent route:", location.pathname);
 	}, [location.pathname]);
+	const dict = {
+		PT: {
+			title: "404",
+			desc: "Ops! Página não encontrada",
+			link: "Voltar ao Início"
+		},
+		EN: {
+			title: "404",
+			desc: "Oops! Page not found",
+			link: "Return to Home"
+		},
+		ES: {
+			title: "404",
+			desc: "¡Uy! Página no encontrada",
+			link: "Volver al Inicio"
+		}
+	};
+	const content = dict[language] || dict.PT;
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-		"data-uid": "src/pages/NotFound.tsx:13:5",
-		"data-prohibitions": "[]",
-		className: "min-h-screen flex items-center justify-center bg-gray-100",
+		"data-uid": "src/pages/NotFound.tsx:22:5",
+		"data-prohibitions": "[editContent]",
+		className: "min-h-[80vh] flex flex-col items-center justify-center bg-background text-foreground",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			"data-uid": "src/pages/NotFound.tsx:14:7",
-			"data-prohibitions": "[]",
+			"data-uid": "src/pages/NotFound.tsx:23:7",
+			"data-prohibitions": "[editContent]",
 			className: "text-center",
 			children: [
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
-					"data-uid": "src/pages/NotFound.tsx:15:9",
-					"data-prohibitions": "[]",
-					className: "text-4xl font-bold mb-4",
-					children: "404"
+					"data-uid": "src/pages/NotFound.tsx:24:9",
+					"data-prohibitions": "[editContent]",
+					className: "text-6xl font-bold mb-4 text-primary",
+					children: content.title
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					"data-uid": "src/pages/NotFound.tsx:16:9",
-					"data-prohibitions": "[]",
-					className: "text-xl text-gray-600 mb-4",
-					children: "Oops! Page not found"
+					"data-uid": "src/pages/NotFound.tsx:25:9",
+					"data-prohibitions": "[editContent]",
+					className: "text-xl text-muted-foreground mb-6",
+					children: content.desc
 				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
-					"data-uid": "src/pages/NotFound.tsx:17:9",
-					"data-prohibitions": "[]",
-					href: "/",
-					className: "text-blue-500 hover:text-blue-700 underline",
-					children: "Return to Home"
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+					"data-uid": "src/pages/NotFound.tsx:26:9",
+					"data-prohibitions": "[editContent]",
+					to: "/",
+					className: "text-primary hover:text-primary/80 hover:underline transition-colors font-medium",
+					children: content.link
 				})
 			]
 		})
@@ -32501,135 +33395,135 @@ var NotFound = () => {
 //#region src/App.tsx
 function App() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AppProvider, {
-		"data-uid": "src/App.tsx:20:5",
+		"data-uid": "src/App.tsx:21:5",
 		"data-prohibitions": "[]",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(BrowserRouter, {
-			"data-uid": "src/App.tsx:21:7",
+			"data-uid": "src/App.tsx:22:7",
 			"data-prohibitions": "[]",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Routes, {
-				"data-uid": "src/App.tsx:22:9",
+				"data-uid": "src/App.tsx:23:9",
 				"data-prohibitions": "[]",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Route, {
-					"data-uid": "src/App.tsx:23:11",
+					"data-uid": "src/App.tsx:24:11",
 					"data-prohibitions": "[]",
 					path: "/",
 					element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layout, {
-						"data-uid": "src/App.tsx:23:36",
+						"data-uid": "src/App.tsx:24:36",
 						"data-prohibitions": "[editContent]"
 					}),
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
-							"data-uid": "src/App.tsx:24:13",
+							"data-uid": "src/App.tsx:25:13",
 							"data-prohibitions": "[editContent]",
 							index: true,
 							element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Index, {
-								"data-uid": "src/App.tsx:24:35",
-								"data-prohibitions": "[editContent]"
-							})
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
-							"data-uid": "src/App.tsx:25:13",
-							"data-prohibitions": "[editContent]",
-							path: "crm",
-							element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CRM, {
-								"data-uid": "src/App.tsx:25:40",
+								"data-uid": "src/App.tsx:25:35",
 								"data-prohibitions": "[editContent]"
 							})
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
 							"data-uid": "src/App.tsx:26:13",
 							"data-prohibitions": "[editContent]",
-							path: "crm/:id",
-							element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LeadDetail, {
-								"data-uid": "src/App.tsx:26:44",
+							path: "crm",
+							element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CRM, {
+								"data-uid": "src/App.tsx:26:40",
 								"data-prohibitions": "[editContent]"
 							})
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
 							"data-uid": "src/App.tsx:27:13",
 							"data-prohibitions": "[editContent]",
-							path: "bikes",
-							element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bikes, {
-								"data-uid": "src/App.tsx:27:42",
+							path: "crm/:id",
+							element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LeadDetail, {
+								"data-uid": "src/App.tsx:27:44",
 								"data-prohibitions": "[editContent]"
 							})
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
 							"data-uid": "src/App.tsx:28:13",
 							"data-prohibitions": "[editContent]",
-							path: "bikes/:id",
-							element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BikeDetail, {
-								"data-uid": "src/App.tsx:28:46",
+							path: "bikes",
+							element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bikes, {
+								"data-uid": "src/App.tsx:28:42",
 								"data-prohibitions": "[editContent]"
 							})
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
 							"data-uid": "src/App.tsx:29:13",
 							"data-prohibitions": "[editContent]",
-							path: "deliverers",
-							element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Deliverers, {
-								"data-uid": "src/App.tsx:29:47",
+							path: "bikes/:id",
+							element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BikeDetail, {
+								"data-uid": "src/App.tsx:29:46",
 								"data-prohibitions": "[editContent]"
 							})
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
 							"data-uid": "src/App.tsx:30:13",
 							"data-prohibitions": "[editContent]",
-							path: "deliverers/:id",
-							element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DelivererDetail, {
-								"data-uid": "src/App.tsx:30:51",
+							path: "deliverers",
+							element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Deliverers, {
+								"data-uid": "src/App.tsx:30:47",
 								"data-prohibitions": "[editContent]"
 							})
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
 							"data-uid": "src/App.tsx:31:13",
 							"data-prohibitions": "[editContent]",
-							path: "maintenance",
-							element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Maintenance, {
-								"data-uid": "src/App.tsx:31:48",
+							path: "deliverers/:id",
+							element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DelivererDetail, {
+								"data-uid": "src/App.tsx:31:51",
 								"data-prohibitions": "[editContent]"
 							})
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
 							"data-uid": "src/App.tsx:32:13",
 							"data-prohibitions": "[editContent]",
-							path: "tasks",
-							element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Tasks, {
-								"data-uid": "src/App.tsx:32:42",
+							path: "maintenance",
+							element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Maintenance, {
+								"data-uid": "src/App.tsx:32:48",
 								"data-prohibitions": "[editContent]"
 							})
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
 							"data-uid": "src/App.tsx:33:13",
 							"data-prohibitions": "[editContent]",
-							path: "financial",
-							element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Financial, {
-								"data-uid": "src/App.tsx:33:46",
+							path: "tasks",
+							element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Tasks, {
+								"data-uid": "src/App.tsx:33:42",
 								"data-prohibitions": "[editContent]"
 							})
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
 							"data-uid": "src/App.tsx:34:13",
 							"data-prohibitions": "[editContent]",
-							path: "security",
-							element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Security, {
-								"data-uid": "src/App.tsx:34:45",
+							path: "financial",
+							element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Financial, {
+								"data-uid": "src/App.tsx:34:46",
 								"data-prohibitions": "[editContent]"
 							})
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
 							"data-uid": "src/App.tsx:35:13",
 							"data-prohibitions": "[editContent]",
+							path: "security",
+							element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Security, {
+								"data-uid": "src/App.tsx:35:45",
+								"data-prohibitions": "[editContent]"
+							})
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
+							"data-uid": "src/App.tsx:36:13",
+							"data-prohibitions": "[editContent]",
 							path: "*",
 							element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NotFound, {
-								"data-uid": "src/App.tsx:35:38",
+								"data-uid": "src/App.tsx:36:38",
 								"data-prohibitions": "[editContent]"
 							})
 						})
 					]
 				})
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Toaster, {
-				"data-uid": "src/App.tsx:38:9",
+				"data-uid": "src/App.tsx:39:9",
 				"data-prohibitions": "[editContent]"
 			})]
 		})
@@ -32643,4 +33537,4 @@ function App() {
 }));
 //#endregion
 
-//# sourceMappingURL=index-CiZeEU-p.js.map
+//# sourceMappingURL=index-DFzd3r9U.js.map

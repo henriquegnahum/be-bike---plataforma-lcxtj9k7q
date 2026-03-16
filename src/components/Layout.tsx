@@ -19,7 +19,6 @@ export default function Layout() {
           <Outlet />
         </main>
 
-        {/* Global AI Floating Button */}
         <div className="fixed bottom-6 right-6 z-40 animate-bounce hover:animate-none">
           <Button
             onClick={() => setAiOpen(true)}
