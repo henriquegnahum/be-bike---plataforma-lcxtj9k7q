@@ -9,7 +9,7 @@ import {
 import { UserAvatar } from './UserAvatar'
 import useAppStore from '@/stores/main'
 import { useUserStore } from '@/stores/user'
-import { LogOut, User, Settings } from 'lucide-react'
+import { LogOut } from 'lucide-react'
 
 export function UserMenu() {
   const { setIsAuthenticated } = useAppStore()
@@ -27,13 +27,6 @@ export function UserMenu() {
           <p className="font-semibold">{profile.name}</p>
           <p className="text-xs text-muted-foreground">{profile.email}</p>
         </DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          <User className="w-4 h-4 mr-2" /> Meu Perfil
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Settings className="w-4 h-4 mr-2" /> Configurações
-        </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem
           onClick={() => setIsAuthenticated(false)}
