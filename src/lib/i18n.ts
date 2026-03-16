@@ -1,4 +1,5 @@
 import useAppStore from '@/stores/main'
+import { useCallback } from 'react'
 
 const PT = {
   // Navigation & General
@@ -721,7 +722,7 @@ const ES: typeof PT = {
   suppliers_workshops: 'Proveedores y Talleres',
   subsidy_pool: 'Fondo de Subsidios 99',
   auto_discount: 'Descuento automático aplicado',
-  recent_transactions: 'Transacciones Recientes (Mock)',
+  recent_transactions: 'Transacciones Recentes (Mock)',
   real_time_feed: 'Feed en tiempo real de la pasarela de pago.',
   transaction_placeholder: 'Módulo de tabla de transacciones por API AsaaS.',
 
@@ -826,14 +827,18 @@ const dict = { PT, EN, ES }
 
 export function useTranslation() {
   const { language } = useAppStore()
-  return (key: keyof typeof PT, params?: Record<string, string>) => {
-    const dictObj = dict[language] || dict.PT
-    let str = dictObj[key] || key
-    if (params) {
-      Object.entries(params).forEach(([k, v]) => {
-        str = str.replace(`{${k}}`, v)
-      })
-    }
-    return str
-  }
+
+  return useCallback(
+    (key: keyof typeof PT, params?: Record<string, string>) => {
+      const dictObj = dict[language] || dict.PT
+      let str = dictObj[key] || key
+      if (params) {
+        Object.entries(params).forEach(([k, v]) => {
+          str = str.replace(`{${k}}`, v)
+        })
+      }
+      return str
+    },
+    [language],
+  )
 }

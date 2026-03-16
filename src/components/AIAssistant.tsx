@@ -33,10 +33,15 @@ export function AIAssistant({
 
   // Reset initial message on language change if it's the only one
   useEffect(() => {
-    if (messages.length === 1 && messages[0].role === 'assistant') {
-      setMessages([{ role: 'assistant', content: t('ai_default_response') }])
+    const defaultContent = t('ai_default_response')
+    if (
+      messages.length === 1 &&
+      messages[0].role === 'assistant' &&
+      messages[0].content !== defaultContent
+    ) {
+      setMessages([{ role: 'assistant', content: defaultContent }])
     }
-  }, [language, t, messages.length])
+  }, [language, t, messages])
 
   const handleSend = () => {
     if (!input.trim()) return

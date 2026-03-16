@@ -26527,7 +26527,7 @@ var dict = {
 		suppliers_workshops: "Proveedores y Talleres",
 		subsidy_pool: "Fondo de Subsidios 99",
 		auto_discount: "Descuento automático aplicado",
-		recent_transactions: "Transacciones Recientes (Mock)",
+		recent_transactions: "Transacciones Recentes (Mock)",
 		real_time_feed: "Feed en tiempo real de la pasarela de pago.",
 		transaction_placeholder: "Módulo de tabla de transacciones por API AsaaS.",
 		sec_title: "Módulo de Seguridad y Riesgo",
@@ -26619,13 +26619,13 @@ var dict = {
 };
 function useTranslation() {
 	const { language } = useAppStore();
-	return (key, params) => {
+	return (0, import_react.useCallback)((key, params) => {
 		let str = (dict[language] || dict.PT)[key] || key;
 		if (params) Object.entries(params).forEach(([k, v]) => {
 			str = str.replace(`{${k}}`, v);
 		});
 		return str;
-	};
+	}, [language]);
 }
 //#endregion
 //#region src/components/AppSidebar.tsx
@@ -29236,14 +29236,15 @@ function AIAssistant({ open, onOpenChange }) {
 	const [input, setInput] = (0, import_react.useState)("");
 	const [isTyping, setIsTyping] = (0, import_react.useState)(false);
 	(0, import_react.useEffect)(() => {
-		if (messages.length === 1 && messages[0].role === "assistant") setMessages([{
+		const defaultContent = t("ai_default_response");
+		if (messages.length === 1 && messages[0].role === "assistant" && messages[0].content !== defaultContent) setMessages([{
 			role: "assistant",
-			content: t("ai_default_response")
+			content: defaultContent
 		}]);
 	}, [
 		language,
 		t,
-		messages.length
+		messages
 	]);
 	const handleSend = () => {
 		if (!input.trim()) return;
@@ -29268,96 +29269,96 @@ function AIAssistant({ open, onOpenChange }) {
 		}, 1500);
 	};
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sheet, {
-		"data-uid": "src/components/AIAssistant.tsx:76:5",
+		"data-uid": "src/components/AIAssistant.tsx:81:5",
 		"data-prohibitions": "[editContent]",
 		open,
 		onOpenChange,
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(SheetContent, {
-			"data-uid": "src/components/AIAssistant.tsx:77:7",
+			"data-uid": "src/components/AIAssistant.tsx:82:7",
 			"data-prohibitions": "[editContent]",
 			className: "w-full sm:max-w-md flex flex-col p-0 border-l-primary/20",
 			children: [
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(SheetHeader, {
-					"data-uid": "src/components/AIAssistant.tsx:78:9",
+					"data-uid": "src/components/AIAssistant.tsx:83:9",
 					"data-prohibitions": "[editContent]",
 					className: "p-6 border-b bg-muted/30",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(SheetTitle, {
-						"data-uid": "src/components/AIAssistant.tsx:79:11",
+						"data-uid": "src/components/AIAssistant.tsx:84:11",
 						"data-prohibitions": "[editContent]",
 						className: "flex items-center gap-2 text-primary",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, {
-							"data-uid": "src/components/AIAssistant.tsx:80:13",
+							"data-uid": "src/components/AIAssistant.tsx:85:13",
 							"data-prohibitions": "[editContent]",
 							className: "w-5 h-5"
 						}), t("ai_title")]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SheetDescription, {
-						"data-uid": "src/components/AIAssistant.tsx:83:11",
+						"data-uid": "src/components/AIAssistant.tsx:88:11",
 						"data-prohibitions": "[editContent]",
 						children: t("ai_subtitle")
 					})]
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ScrollArea, {
-					"data-uid": "src/components/AIAssistant.tsx:86:9",
+					"data-uid": "src/components/AIAssistant.tsx:91:9",
 					"data-prohibitions": "[editContent]",
 					className: "flex-1 p-4",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						"data-uid": "src/components/AIAssistant.tsx:87:11",
+						"data-uid": "src/components/AIAssistant.tsx:92:11",
 						"data-prohibitions": "[editContent]",
 						className: "flex flex-col gap-4",
 						children: [messages.map((m, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							"data-uid": "src/components/AIAssistant.tsx:89:15",
+							"data-uid": "src/components/AIAssistant.tsx:94:15",
 							"data-prohibitions": "[editContent]",
 							className: `flex gap-3 max-w-[90%] ${m.role === "user" ? "ml-auto flex-row-reverse" : ""}`,
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								"data-uid": "src/components/AIAssistant.tsx:93:17",
+								"data-uid": "src/components/AIAssistant.tsx:98:17",
 								"data-prohibitions": "[editContent]",
 								className: `w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${m.role === "user" ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"}`,
 								children: m.role === "user" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(User, {
-									"data-uid": "src/components/AIAssistant.tsx:96:40",
+									"data-uid": "src/components/AIAssistant.tsx:101:40",
 									"data-prohibitions": "[editContent]",
 									size: 16
 								}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bot, {
-									"data-uid": "src/components/AIAssistant.tsx:96:61",
+									"data-uid": "src/components/AIAssistant.tsx:101:61",
 									"data-prohibitions": "[editContent]",
 									size: 16
 								})
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								"data-uid": "src/components/AIAssistant.tsx:98:17",
+								"data-uid": "src/components/AIAssistant.tsx:103:17",
 								"data-prohibitions": "[editContent]",
 								className: `p-3 rounded-xl text-sm leading-relaxed shadow-sm ${m.role === "user" ? "bg-primary text-primary-foreground rounded-tr-sm" : "bg-muted/50 border rounded-tl-sm"}`,
 								children: m.content
 							})]
 						}, i)), isTyping && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							"data-uid": "src/components/AIAssistant.tsx:106:15",
+							"data-uid": "src/components/AIAssistant.tsx:111:15",
 							"data-prohibitions": "[]",
 							className: "flex gap-3 max-w-[85%]",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								"data-uid": "src/components/AIAssistant.tsx:107:17",
+								"data-uid": "src/components/AIAssistant.tsx:112:17",
 								"data-prohibitions": "[]",
 								className: "w-8 h-8 rounded-full bg-muted text-muted-foreground flex items-center justify-center shrink-0",
 								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bot, {
-									"data-uid": "src/components/AIAssistant.tsx:108:19",
+									"data-uid": "src/components/AIAssistant.tsx:113:19",
 									"data-prohibitions": "[editContent]",
 									size: 16
 								})
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								"data-uid": "src/components/AIAssistant.tsx:110:17",
+								"data-uid": "src/components/AIAssistant.tsx:115:17",
 								"data-prohibitions": "[]",
 								className: "p-3 rounded-xl text-sm bg-muted/50 border rounded-tl-sm flex items-center gap-1",
 								children: [
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										"data-uid": "src/components/AIAssistant.tsx:111:19",
+										"data-uid": "src/components/AIAssistant.tsx:116:19",
 										"data-prohibitions": "[]",
 										className: "w-1.5 h-1.5 rounded-full bg-primary/50 animate-bounce"
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										"data-uid": "src/components/AIAssistant.tsx:112:19",
+										"data-uid": "src/components/AIAssistant.tsx:117:19",
 										"data-prohibitions": "[]",
 										className: "w-1.5 h-1.5 rounded-full bg-primary/50 animate-bounce",
 										style: { animationDelay: "0.2s" }
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										"data-uid": "src/components/AIAssistant.tsx:116:19",
+										"data-uid": "src/components/AIAssistant.tsx:121:19",
 										"data-prohibitions": "[]",
 										className: "w-1.5 h-1.5 rounded-full bg-primary/50 animate-bounce",
 										style: { animationDelay: "0.4s" }
@@ -29368,11 +29369,11 @@ function AIAssistant({ open, onOpenChange }) {
 					})
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-					"data-uid": "src/components/AIAssistant.tsx:126:9",
+					"data-uid": "src/components/AIAssistant.tsx:131:9",
 					"data-prohibitions": "[]",
 					className: "p-4 border-t bg-background",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
-						"data-uid": "src/components/AIAssistant.tsx:127:11",
+						"data-uid": "src/components/AIAssistant.tsx:132:11",
 						"data-prohibitions": "[]",
 						onSubmit: (e) => {
 							e.preventDefault();
@@ -29380,7 +29381,7 @@ function AIAssistant({ open, onOpenChange }) {
 						},
 						className: "flex gap-2",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-							"data-uid": "src/components/AIAssistant.tsx:134:13",
+							"data-uid": "src/components/AIAssistant.tsx:139:13",
 							"data-prohibitions": "[editContent]",
 							value: input,
 							onChange: (e) => setInput(e.target.value),
@@ -29388,14 +29389,14 @@ function AIAssistant({ open, onOpenChange }) {
 							className: "rounded-full shadow-sm",
 							disabled: isTyping
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-							"data-uid": "src/components/AIAssistant.tsx:141:13",
+							"data-uid": "src/components/AIAssistant.tsx:146:13",
 							"data-prohibitions": "[]",
 							type: "submit",
 							size: "icon",
 							className: "rounded-full shrink-0 shadow-sm",
 							disabled: isTyping || !input.trim(),
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Send, {
-								"data-uid": "src/components/AIAssistant.tsx:147:15",
+								"data-uid": "src/components/AIAssistant.tsx:152:15",
 								"data-prohibitions": "[editContent]",
 								className: "w-4 h-4"
 							})
@@ -33537,4 +33538,4 @@ function App() {
 }));
 //#endregion
 
-//# sourceMappingURL=index-DFzd3r9U.js.map
+//# sourceMappingURL=index-Dk-8t8p-.js.map
