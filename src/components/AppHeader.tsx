@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom'
 import { SidebarTrigger } from '@/components/ui/sidebar'
 import { Button } from '@/components/ui/button'
-import { Menu, Globe, Sun, Moon } from 'lucide-react'
+import { Menu, Globe, Sun, Moon, LogOut } from 'lucide-react'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,11 +13,10 @@ import {
 import useAppStore from '@/stores/main'
 import { useTranslation } from '@/lib/i18n'
 import { useTheme } from 'next-themes'
-import { UserMenu } from '@/components/user/UserMenu'
 
 export function AppHeader() {
   const location = useLocation()
-  const { language, setLanguage } = useAppStore()
+  const { language, setLanguage, setIsAuthenticated } = useAppStore()
   const t = useTranslation()
   const { theme, setTheme } = useTheme()
 
@@ -87,7 +86,9 @@ export function AppHeader() {
           </DropdownMenuContent>
         </DropdownMenu>
 
-        <UserMenu />
+        <Button variant="ghost" size="icon" onClick={() => setIsAuthenticated(false)}>
+          <LogOut className="h-5 w-5 text-muted-foreground hover:text-foreground transition-colors" />
+        </Button>
       </div>
     </header>
   )
