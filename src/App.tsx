@@ -20,6 +20,8 @@ import Financial from '@/pages/Financial'
 import Security from '@/pages/Security'
 import Chat from '@/pages/Chat'
 import Integrations from '@/pages/Integrations'
+import Meetings from '@/pages/Meetings'
+import ComingSoon from '@/pages/ComingSoon'
 import NotFound from '@/pages/NotFound'
 import Login from '@/pages/Login'
 import useAppStore, { AppProvider } from '@/stores/main'
@@ -74,6 +76,8 @@ function AppContent() {
           <Route path="tasks" element={<Tasks />} />
           <Route path="financial" element={<Financial />} />
           <Route path="security" element={<Security />} />
+          <Route path="meetings" element={<Meetings />} />
+          <Route path="coming-soon" element={<ComingSoon />} />
           <Route path="chat" element={<Navigate to="/chat/geral" replace />} />
           <Route path="chat/:channel" element={<Chat />} />
           <Route path="integrations" element={<Integrations />} />

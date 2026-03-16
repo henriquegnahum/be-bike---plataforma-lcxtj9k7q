@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
+import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { useToast } from '@/hooks/use-toast'
@@ -32,15 +32,11 @@ export default function Login() {
       <div className="absolute top-[-20%] left-[-10%] w-[800px] h-[800px] bg-primary/20 rounded-full blur-[140px] pointer-events-none z-0 mix-blend-screen" />
       <div className="absolute bottom-[-20%] right-[-10%] w-[800px] h-[800px] bg-blue-500/20 rounded-full blur-[140px] pointer-events-none z-0 mix-blend-screen" />
 
-      <Card className="w-full max-w-md glass-card border-primary/20 shadow-[0_8px_40px_rgba(28,209,92,0.1)] relative z-10 m-4 animate-in fade-in zoom-in-95 duration-700">
-        <CardHeader className="text-center pb-8 pt-10">
-          <div className="flex justify-center mb-6">
+      <Card className="w-full max-w-md glass-card border-primary/20 shadow-[0_8px_40px_rgba(28,209,92,0.1)] relative z-10 m-4 animate-in fade-in zoom-in-95 duration-700 bg-white/60 dark:bg-zinc-950/60 backdrop-blur-3xl">
+        <CardHeader className="text-center pb-6 pt-10">
+          <div className="flex justify-center">
             <img src={logoImg} alt="Be Bike" className="h-10 w-auto dark:invert" />
           </div>
-          <CardTitle className="text-2xl font-extrabold tracking-tight">Be Bike OS 2.0</CardTitle>
-          <CardDescription className="text-base font-medium mt-2">
-            Acesse o centro de comando global
-          </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleLogin} className="space-y-6">
@@ -76,9 +72,9 @@ export default function Login() {
               type="submit"
               className="w-full h-12 rounded-2xl text-[15px] font-bold shadow-[0_8px_20px_rgba(28,209,92,0.2)] hover:shadow-[0_12px_24px_rgba(28,209,92,0.3)] transition-all"
             >
-              <Sparkles className="w-5 h-5 mr-2" /> Entrar no Sistema
+              <Sparkles className="w-5 h-5 mr-2" /> Entrar
             </Button>
-            <p className="text-center text-xs text-muted-foreground font-medium pt-4 flex items-center justify-center gap-1.5 opacity-70">
+            <p className="text-center text-xs text-muted-foreground font-medium pt-2 flex items-center justify-center gap-1.5 opacity-70">
               <Lock className="w-3 h-3" /> Acesso protegido por criptografia E2E
             </p>
           </form>
