@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
@@ -10,6 +10,7 @@ import { useToast } from '@/hooks/use-toast'
 export function ProfileTab() {
   const { profile, setProfile } = useUserStore()
   const [formData, setFormData] = useState(profile)
+  const fileInputRef = useRef<HTMLInputElement>(null)
   const { toast } = useToast()
 
   const handleSave = () => {
@@ -17,18 +18,31 @@ export function ProfileTab() {
     toast({ title: 'Perfil atualizado', description: 'Suas informações foram salvas com sucesso.' })
   }
 
-  const handleAvatarUpdate = () => {
-    // Mocking an avatar upload
-    setFormData({
-      ...formData,
-      avatarUrl: `https://img.usecurling.com/ppl/thumbnail?seed=${Math.random()}`,
-    })
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (file) {
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        setFormData({ ...formData, avatarUrl: reader.result as string })
+      }
+      reader.readAsDataURL(file)
+    }
   }
 
   return (
     <div className="space-y-6 max-h-[60vh] overflow-y-auto pr-2 pb-4 no-scrollbar">
       <div className="flex flex-col items-center justify-center p-4 bg-background/50 border border-border/60 rounded-2xl shadow-sm">
-        <div className="relative group cursor-pointer" onClick={handleAvatarUpdate}>
+        <input
+          type="file"
+          accept="image/*"
+          ref={fileInputRef}
+          onChange={handleFileChange}
+          className="hidden"
+        />
+        <div
+          className="relative group cursor-pointer"
+          onClick={() => fileInputRef.current?.click()}
+        >
           <div className="w-20 h-20 rounded-full border-2 border-primary/20 overflow-hidden shadow-inner bg-muted">
             {formData.avatarUrl ? (
               <img src={formData.avatarUrl} alt="Avatar" className="w-full h-full object-cover" />

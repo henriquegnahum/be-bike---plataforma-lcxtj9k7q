@@ -4,83 +4,84 @@
 
 @layer base {
   :root {
-    --background: 240 10% 98%;
-    --foreground: 270 2% 26%; /* #414042 */
+    --background: 0 0% 100%;
+    --foreground: 220 15% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 270 2% 26%;
+    --card-foreground: 220 15% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 270 2% 26%;
+    --popover-foreground: 220 15% 15%;
 
-    /* Be Bike Green #1cd15c */
-    --primary: 141 76% 46%;
+    /* Bipsync / Green Palette */
+    --primary: 160 84% 39%; /* #10B981 */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 141 20% 96%;
-    --secondary-foreground: 141 76% 20%;
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 160 84% 20%;
 
-    --muted: 240 5% 92%;
-    --muted-foreground: 240 1% 45%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 10% 45%;
 
-    --accent: 141 20% 96%;
-    --accent-foreground: 141 76% 40%;
+    --accent: 158 96% 47%; /* #05ED99 */
+    --accent-foreground: 220 15% 15%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 5% 85%;
-    --input: 240 5% 85%;
-    --ring: 141 76% 46%;
-    --radius: 2rem;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 160 84% 39%;
+
+    --radius: 1rem;
 
     --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 270 2% 26%;
-    --sidebar-primary: 141 76% 46%;
+    --sidebar-foreground: 220 15% 15%;
+    --sidebar-primary: 160 84% 39%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 141 20% 92%;
-    --sidebar-accent-foreground: 141 76% 25%;
-    --sidebar-border: 240 5% 90%;
-    --sidebar-ring: 141 76% 46%;
+    --sidebar-accent: 220 14% 94%;
+    --sidebar-accent-foreground: 160 84% 30%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 160 84% 39%;
   }
 
   .dark {
-    --background: 240 5% 6%;
+    --background: 220 20% 6%;
     --foreground: 0 0% 98%;
 
-    --card: 240 4% 9%;
+    --card: 220 20% 10%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 240 4% 9%;
+    --popover: 220 20% 10%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 141 76% 46%;
+    --primary: 160 84% 39%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 240 4% 15%;
+    --secondary: 220 20% 15%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 240 4% 16%;
-    --muted-foreground: 240 1% 65%;
+    --muted: 220 20% 15%;
+    --muted-foreground: 220 10% 65%;
 
-    --accent: 240 4% 15%;
+    --accent: 158 96% 47%;
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 62% 40%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 4% 18%;
-    --input: 240 4% 18%;
-    --ring: 141 76% 46%;
+    --border: 220 20% 18%;
+    --input: 220 20% 18%;
+    --ring: 160 84% 39%;
 
-    --sidebar-background: 240 5% 6%;
+    --sidebar-background: 220 20% 6%;
     --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 141 76% 46%;
+    --sidebar-primary: 160 84% 39%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 4% 15%;
+    --sidebar-accent: 220 20% 15%;
     --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 240 4% 18%;
-    --sidebar-ring: 141 76% 46%;
+    --sidebar-border: 220 20% 18%;
+    --sidebar-ring: 160 84% 39%;
   }
 }
 
@@ -94,17 +95,45 @@
 }
 
 @layer utilities {
-  .green-gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#2de870];
+  .liquid-glass {
+    @apply bg-white/60 dark:bg-zinc-950/50 backdrop-blur-3xl border border-white/60 dark:border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.04)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.15)];
   }
 
-  /* Liquid Glass Aesthetics */
   .glass-card {
-    @apply rounded-[2rem] border border-white/60 dark:border-white/10 bg-white/60 dark:bg-zinc-950/50 backdrop-blur-3xl shadow-[0_8px_32px_rgba(0,0,0,0.04)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.15)] transition-all duration-500 hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_12px_40px_rgba(0,0,0,0.25)];
+    @apply liquid-glass rounded-[2rem] transition-all duration-500 hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_12px_40px_rgba(0,0,0,0.25)];
   }
 
   .glass-panel {
-    @apply bg-white/50 dark:bg-zinc-950/40 backdrop-blur-3xl border-white/60 dark:border-white/10 transition-all duration-500;
+    @apply liquid-glass transition-all duration-500;
+  }
+
+  .btn-glow {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-glow::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, hsl(var(--accent) / 0.5) 0%, transparent 50%);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .btn-glow:hover::after {
+    opacity: 1;
+  }
+
+  .btn-glow > * {
+    position: relative;
+    z-index: 1;
   }
 
   .premium-glow {
@@ -113,7 +142,7 @@
 
   .premium-glow::before {
     content: '';
-    @apply absolute -inset-[1px] rounded-[inherit] bg-gradient-to-r from-primary/30 via-emerald-400/20 to-blue-400/20 blur-sm opacity-0 transition-opacity duration-500 z-[-1];
+    @apply absolute -inset-[1px] rounded-[inherit] bg-gradient-to-r from-primary/30 via-accent/20 to-blue-400/20 blur-sm opacity-0 transition-opacity duration-500 z-[-1];
   }
 
   .premium-glow:hover::before {

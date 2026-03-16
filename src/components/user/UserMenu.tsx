@@ -15,7 +15,7 @@ import { StatusTab } from './StatusTab'
 import { PrefsTab } from './PrefsTab'
 import useAppStore from '@/stores/main'
 import { useUserStore } from '@/stores/user'
-import { LogOut, User, Activity, Bell, Download } from 'lucide-react'
+import { LogOut, User, Activity, BellOff, Download, Settings } from 'lucide-react'
 
 export function UserMenu() {
   const [dialogOpen, setDialogOpen] = useState(false)
@@ -55,7 +55,7 @@ export function UserMenu() {
             onClick={() => openTab('prefs')}
             className="cursor-pointer py-2.5 font-medium"
           >
-            <Bell className="w-4 h-4 mr-2" /> Pausar notificações
+            <BellOff className="w-4 h-4 mr-2" /> Pausar notificações
           </DropdownMenuItem>
           <DropdownMenuSeparator className="bg-border/50" />
           <DropdownMenuItem
@@ -68,7 +68,7 @@ export function UserMenu() {
             onClick={() => openTab('prefs')}
             className="cursor-pointer py-2.5 font-medium"
           >
-            <Bell className="w-4 h-4 mr-2" /> Preferências
+            <Settings className="w-4 h-4 mr-2" /> Preferências
           </DropdownMenuItem>
           <DropdownMenuItem className="cursor-pointer py-2.5 font-medium">
             <Download className="w-4 h-4 mr-2" /> Downloads locais

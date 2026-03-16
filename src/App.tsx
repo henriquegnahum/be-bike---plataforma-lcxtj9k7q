@@ -2,6 +2,7 @@ import './App.css'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { Toaster } from '@/components/ui/sonner'
 import Layout from '@/components/Layout'
+import Landing from '@/pages/Landing'
 import Index from '@/pages/Index'
 import Hubs from '@/pages/Hubs'
 import CalendarPage from '@/pages/Calendar'
@@ -57,12 +58,21 @@ function AppContent() {
   const { isAuthenticated } = useAppStore()
 
   if (!isAuthenticated) {
-    return <Login />
+    return (
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </BrowserRouter>
+    )
   }
 
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/login" element={<Navigate to="/" replace />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Index />} />
           <Route path="hubs" element={<Hubs />} />

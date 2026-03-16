@@ -2,6 +2,13 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 import { useUserStore, PresenceStatus } from '@/stores/user'
 import { Switch } from '@/components/ui/switch'
 import { Check, Clock, Car, Video, Zap } from 'lucide-react'
@@ -11,11 +18,22 @@ export function StatusTab() {
   const { status, setStatus, customStatus, setCustomStatus } = useUserStore()
   const [emoji, setEmoji] = useState(customStatus?.emoji || '🚀')
   const [text, setText] = useState(customStatus?.text || '')
+  const [duration, setDuration] = useState('1h')
   const { toast } = useToast()
 
   const handleSaveStatus = () => {
     if (text) {
-      setCustomStatus({ emoji, text, expiresAt: null })
+      const expiresAt = new Date()
+      if (duration === '30m') expiresAt.setMinutes(expiresAt.getMinutes() + 30)
+      else if (duration === '1h') expiresAt.setHours(expiresAt.getHours() + 1)
+      else if (duration === '4h') expiresAt.setHours(expiresAt.getHours() + 4)
+      else if (duration === 'today') expiresAt.setHours(23, 59, 59, 999)
+
+      setCustomStatus({
+        emoji,
+        text,
+        expiresAt: duration === 'always' ? null : expiresAt.toISOString(),
+      })
       toast({ title: 'Status Atualizado', description: 'Seu status customizado está visível.' })
     } else {
       setCustomStatus(null)
@@ -75,11 +93,23 @@ export function StatusTab() {
           <Input
             value={text}
             onChange={(e) => setText(e.target.value)}
-            placeholder="Qual o seu foco agora?"
+            placeholder="Ex: Em reunião, Visitando Hub..."
             className="flex-1 bg-background"
           />
         </div>
         <div className="flex gap-2">
+          <Select value={duration} onValueChange={setDuration}>
+            <SelectTrigger className="w-[140px] bg-background">
+              <SelectValue placeholder="Duração" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="30m">30 minutos</SelectItem>
+              <SelectItem value="1h">1 hora</SelectItem>
+              <SelectItem value="4h">4 horas</SelectItem>
+              <SelectItem value="today">Até hoje</SelectItem>
+              <SelectItem value="always">Não limpar</SelectItem>
+            </SelectContent>
+          </Select>
           <Button onClick={handleSaveStatus} className="flex-1 shadow-sm">
             <Check className="w-4 h-4 mr-2" /> Salvar Status
           </Button>
@@ -90,7 +120,7 @@ export function StatusTab() {
                 setCustomStatus(null)
                 setText('')
               }}
-              className="text-destructive"
+              className="text-destructive shrink-0"
             >
               Limpar
             </Button>

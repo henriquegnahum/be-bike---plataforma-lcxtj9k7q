@@ -1,18 +1,23 @@
+import { useState } from 'react'
 import { useUserStore } from '@/stores/user'
 import { Switch } from '@/components/ui/switch'
 import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
-import { BellOff, Monitor, Smartphone, Moon } from 'lucide-react'
+import { Input } from '@/components/ui/input'
+import { BellOff, Monitor, Smartphone, Moon, Clock } from 'lucide-react'
 import { useToast } from '@/hooks/use-toast'
 
 export function PrefsTab() {
   const { preferences, setPreferences } = useUserStore()
   const { toast } = useToast()
+  const [customMinutes, setCustomMinutes] = useState('')
+  const [showCustom, setShowCustom] = useState(false)
 
   const setDnd = (minutes: number | null) => {
     if (!minutes) {
       setPreferences({ dndUntil: null })
       toast({ title: 'Notificações Retomadas', description: 'Você voltará a receber alertas.' })
+      setShowCustom(false)
       return
     }
     const d = new Date()
@@ -22,6 +27,16 @@ export function PrefsTab() {
       title: 'Notificações Pausadas',
       description: `Alertas silenciados até ${d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}.`,
     })
+    setShowCustom(false)
+    setCustomMinutes('')
+  }
+
+  const handleCustomSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    const mins = parseInt(customMinutes)
+    if (!isNaN(mins) && mins > 0) {
+      setDnd(mins)
+    }
   }
 
   const isDndActive = preferences.dndUntil && new Date(preferences.dndUntil) > new Date()
@@ -52,19 +67,58 @@ export function PrefsTab() {
             </Button>
           </div>
         ) : (
-          <div className="grid grid-cols-2 gap-2 mt-2">
-            <Button variant="outline" onClick={() => setDnd(30)} className="text-xs">
-              30 min
-            </Button>
-            <Button variant="outline" onClick={() => setDnd(60)} className="text-xs">
-              1 hora
-            </Button>
-            <Button variant="outline" onClick={() => setDnd(240)} className="text-xs">
-              4 horas
-            </Button>
-            <Button variant="outline" onClick={() => setDnd(24 * 60)} className="text-xs">
-              <Moon className="w-3 h-3 mr-2" /> Até amanhã
-            </Button>
+          <div className="space-y-3">
+            <div className="grid grid-cols-2 gap-2 mt-2">
+              <Button variant="outline" onClick={() => setDnd(30)} className="text-xs">
+                30 min
+              </Button>
+              <Button variant="outline" onClick={() => setDnd(60)} className="text-xs">
+                1 hora
+              </Button>
+              <Button variant="outline" onClick={() => setDnd(240)} className="text-xs">
+                4 horas
+              </Button>
+              <Button variant="outline" onClick={() => setDnd(24 * 60)} className="text-xs">
+                <Moon className="w-3 h-3 mr-2" /> Até amanhã
+              </Button>
+            </div>
+
+            {!showCustom ? (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setShowCustom(true)}
+                className="w-full text-xs text-red-600 hover:text-red-700 hover:bg-red-500/10"
+              >
+                <Clock className="w-3 h-3 mr-2" /> Período Personalizado
+              </Button>
+            ) : (
+              <form
+                onSubmit={handleCustomSubmit}
+                className="flex gap-2 animate-in fade-in zoom-in-95"
+              >
+                <Input
+                  type="number"
+                  min="1"
+                  placeholder="Minutos"
+                  value={customMinutes}
+                  onChange={(e) => setCustomMinutes(e.target.value)}
+                  className="h-9 text-xs bg-background/50"
+                />
+                <Button type="submit" size="sm" className="h-9 px-3 shrink-0">
+                  Aplicar
+                </Button>
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setShowCustom(false)}
+                  className="h-9 px-3 text-muted-foreground"
+                >
+                  Cancelar
+                </Button>
+              </form>
+            )}
           </div>
         )}
       </div>
