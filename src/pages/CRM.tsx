@@ -2,14 +2,18 @@ import { useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { Phone, User, ArrowRight, ArrowLeft, ExternalLink } from 'lucide-react'
+import { Phone, User, ArrowRight, ArrowLeft, ExternalLink, Download, Upload } from 'lucide-react'
 import { MOCK_CRM_LEADS } from '@/lib/mock-data'
 import { Link } from 'react-router-dom'
+import { useTranslation } from '@/lib/i18n'
+import { useToast } from '@/hooks/use-toast'
 
 const STAGES = ['Leads', 'Contacted', 'Analysis', 'Negotiation', 'Signed/Onboarding']
 
 export default function CRM() {
   const [leads, setLeads] = useState(MOCK_CRM_LEADS)
+  const t = useTranslation()
+  const { toast } = useToast()
 
   const moveLead = (e: React.MouseEvent, id: string, direction: 'next' | 'prev') => {
     e.preventDefault()
@@ -27,18 +31,30 @@ export default function CRM() {
     )
   }
 
+  const handleAction = (action: string) => {
+    toast({ title: action, description: `Ação ${action} simulada com sucesso.` })
+  }
+
   return (
     <div className="space-y-6 h-[calc(100vh-8rem)] flex flex-col">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center flex-wrap gap-4">
         <div>
           <h1 className="text-3xl font-bold tracking-tight text-secondary">Advanced CRM Funnel</h1>
           <p className="text-muted-foreground">
             Manage deliverer acquisition with predictive scoring.
           </p>
         </div>
-        <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
-          Import Leads (CSV)
-        </Button>
+        <div className="flex gap-2">
+          <Button variant="outline" onClick={() => handleAction('Export CSV')}>
+            <Download className="w-4 h-4 mr-2" /> CSV
+          </Button>
+          <Button variant="outline" onClick={() => handleAction('Export XML')}>
+            <Download className="w-4 h-4 mr-2" /> XML
+          </Button>
+          <Button onClick={() => handleAction('Import Data')}>
+            <Upload className="w-4 h-4 mr-2" /> {t('import')}
+          </Button>
+        </div>
       </div>
 
       <div className="flex-1 flex gap-4 overflow-x-auto pb-4 items-start">
@@ -58,17 +74,11 @@ export default function CRM() {
               {leads
                 .filter((l) => l.stage === stage)
                 .map((lead) => (
-                  <Link
-                    key={lead.id}
-                    to={`/crm/${lead.id}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <Link key={lead.id} to={`/crm/${lead.id}`}>
                     <Card className="cursor-pointer hover:border-primary/50 hover:shadow-md transition-all group">
                       <CardHeader className="p-3 pb-2 flex flex-row items-start justify-between space-y-0">
                         <CardTitle className="text-sm flex items-center gap-2 text-secondary">
-                          <User className="w-4 h-4 text-primary" />
-                          {lead.name}
+                          <User className="w-4 h-4 text-primary" /> {lead.name}
                         </CardTitle>
                         <ExternalLink className="w-3 h-3 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
                       </CardHeader>

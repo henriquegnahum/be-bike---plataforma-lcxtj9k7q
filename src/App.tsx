@@ -13,28 +13,31 @@ import Tasks from '@/pages/Tasks'
 import Financial from '@/pages/Financial'
 import Security from '@/pages/Security'
 import NotFound from '@/pages/NotFound'
+import { AppProvider } from '@/stores/main'
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Index />} />
-          <Route path="crm" element={<CRM />} />
-          <Route path="crm/:id" element={<LeadDetail />} />
-          <Route path="bikes" element={<Bikes />} />
-          <Route path="bikes/:id" element={<BikeDetail />} />
-          <Route path="deliverers" element={<Deliverers />} />
-          <Route path="deliverers/:id" element={<DelivererDetail />} />
-          <Route path="maintenance" element={<Maintenance />} />
-          <Route path="tasks" element={<Tasks />} />
-          <Route path="financial" element={<Financial />} />
-          <Route path="security" element={<Security />} />
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
-      <Toaster />
-    </BrowserRouter>
+    <AppProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Index />} />
+            <Route path="crm" element={<CRM />} />
+            <Route path="crm/:id" element={<LeadDetail />} />
+            <Route path="bikes" element={<Bikes />} />
+            <Route path="bikes/:id" element={<BikeDetail />} />
+            <Route path="deliverers" element={<Deliverers />} />
+            <Route path="deliverers/:id" element={<DelivererDetail />} />
+            <Route path="maintenance" element={<Maintenance />} />
+            <Route path="tasks" element={<Tasks />} />
+            <Route path="financial" element={<Financial />} />
+            <Route path="security" element={<Security />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+        <Toaster />
+      </BrowserRouter>
+    </AppProvider>
   )
 }
 

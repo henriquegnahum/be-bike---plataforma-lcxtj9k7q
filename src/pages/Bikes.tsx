@@ -17,32 +17,21 @@ import { useToast } from '@/hooks/use-toast'
 export default function Bikes() {
   const { toast } = useToast()
 
-  const handleExport = (type: string) => {
-    toast({ title: `Exporting Data`, description: `Database is being exported as ${type}.` })
-  }
+  const handleAction = (type: string) =>
+    toast({ title: `Ação Executada`, description: `Sistema processando: ${type}.` })
 
-  const getStatusBadge = (status: string) => {
-    switch (status) {
-      case 'Ativa':
-        return <Badge className="bg-primary hover:bg-primary/90">{status}</Badge>
-      case 'Disponível':
-        return (
-          <Badge variant="outline" className="border-primary text-primary">
-            {status}
-          </Badge>
-        )
-      case 'Oficina':
-        return (
-          <Badge variant="secondary" className="bg-orange-100 text-orange-800 hover:bg-orange-200">
-            {status}
-          </Badge>
-        )
-      case 'Perdida':
-      case 'Apropriação indébita':
-        return <Badge variant="destructive">{status}</Badge>
-      default:
-        return <Badge variant="secondary">{status}</Badge>
-    }
+  const getRevisionBadge = (mileage: number, lastRev: number) => {
+    const diff = mileage - lastRev
+    if (diff >= 2500)
+      return (
+        <span
+          className="flex h-2 w-2 rounded-full bg-red-500 animate-pulse"
+          title="Revisar Agora"
+        ></span>
+      )
+    if (diff >= 2200)
+      return <span className="flex h-2 w-2 rounded-full bg-orange-500" title="Atenção"></span>
+    return null
   }
 
   return (
@@ -53,13 +42,13 @@ export default function Bikes() {
           <p className="text-muted-foreground">Comprehensive lifecycle and status management.</p>
         </div>
         <div className="flex flex-wrap gap-2">
-          <Button variant="outline" onClick={() => handleExport('CSV')} size="sm">
+          <Button variant="outline" onClick={() => handleAction('Export CSV')} size="sm">
             <Download className="w-4 h-4 mr-2" /> CSV
           </Button>
-          <Button variant="outline" onClick={() => handleExport('XML')} size="sm">
+          <Button variant="outline" onClick={() => handleAction('Export XML')} size="sm">
             <Download className="w-4 h-4 mr-2" /> XML
           </Button>
-          <Button variant="secondary" size="sm">
+          <Button variant="secondary" size="sm" onClick={() => handleAction('Bulk Import')}>
             <Upload className="w-4 h-4 mr-2" /> Bulk Import
           </Button>
           <Button className="bg-primary text-white">
@@ -70,7 +59,7 @@ export default function Bikes() {
 
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-secondary">
+          <CardTitle className="flex items-center gap-2">
             <BikeIcon className="w-5 h-5 text-primary" /> Active Fleet Inventory
           </CardTitle>
         </CardHeader>
@@ -79,7 +68,7 @@ export default function Bikes() {
             <TableHeader>
               <TableRow>
                 <TableHead>Chassi (ID)</TableHead>
-                <TableHead>Model / Version</TableHead>
+                <TableHead>Model / Project</TableHead>
                 <TableHead>Status</TableHead>
                 <TableHead>Telemetry (KM)</TableHead>
                 <TableHead>Assigned To</TableHead>
@@ -92,18 +81,17 @@ export default function Bikes() {
                   <TableCell className="font-mono font-medium text-xs">{bike.chassi}</TableCell>
                   <TableCell>
                     {bike.model}{' '}
-                    <span className="text-muted-foreground text-xs block">{bike.version}</span>
+                    <span className="text-muted-foreground text-xs block">{bike.project}</span>
                   </TableCell>
-                  <TableCell>{getStatusBadge(bike.status)}</TableCell>
+                  <TableCell>
+                    <Badge variant={bike.status === 'Ativa' ? 'default' : 'outline'}>
+                      {bike.status}
+                    </Badge>
+                  </TableCell>
                   <TableCell>
                     <div className="flex items-center gap-2">
                       <span className="font-semibold">{bike.mileage}</span>
-                      {bike.mileage - bike.lastRevisionKm > 2300 && (
-                        <span
-                          className="flex h-2 w-2 rounded-full bg-orange-500 animate-pulse"
-                          title="Revision Due Soon"
-                        ></span>
-                      )}
+                      {getRevisionBadge(bike.mileage, bike.lastRevisionKm)}
                     </div>
                   </TableCell>
                   <TableCell>
@@ -113,9 +101,7 @@ export default function Bikes() {
                   </TableCell>
                   <TableCell className="text-right">
                     <Button variant="ghost" size="sm" asChild>
-                      <Link to={`/bikes/${bike.id}`} target="_blank" rel="noopener noreferrer">
-                        View Details
-                      </Link>
+                      <Link to={`/bikes/${bike.id}`}>View Details</Link>
                     </Button>
                   </TableCell>
                 </TableRow>

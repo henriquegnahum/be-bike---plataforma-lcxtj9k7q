@@ -17,9 +17,8 @@ import { useToast } from '@/hooks/use-toast'
 export default function Deliverers() {
   const { toast } = useToast()
 
-  const handleExport = (type: string) => {
-    toast({ title: `Exporting Data`, description: `Database is being exported as ${type}.` })
-  }
+  const handleAction = (type: string) =>
+    toast({ title: `Ação Executada`, description: `Sistema processando: ${type}.` })
 
   return (
     <div className="space-y-6 max-w-7xl mx-auto pb-12">
@@ -31,13 +30,13 @@ export default function Deliverers() {
           <p className="text-muted-foreground">Unified base for all couriers and subscribers.</p>
         </div>
         <div className="flex flex-wrap gap-2">
-          <Button variant="outline" onClick={() => handleExport('CSV')} size="sm">
+          <Button variant="outline" size="sm" onClick={() => handleAction('Export CSV')}>
             <Download className="w-4 h-4 mr-2" /> CSV
           </Button>
-          <Button variant="outline" onClick={() => handleExport('XML')} size="sm">
+          <Button variant="outline" size="sm" onClick={() => handleAction('Export XML')}>
             <Download className="w-4 h-4 mr-2" /> XML
           </Button>
-          <Button variant="secondary" size="sm">
+          <Button variant="secondary" size="sm" onClick={() => handleAction('Bulk Import')}>
             <Upload className="w-4 h-4 mr-2" /> Import Clientes
           </Button>
         </div>
@@ -45,7 +44,7 @@ export default function Deliverers() {
 
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-secondary">
+          <CardTitle className="flex items-center gap-2">
             <Users className="w-5 h-5 text-primary" /> Directory
           </CardTitle>
         </CardHeader>
@@ -67,7 +66,7 @@ export default function Deliverers() {
                   <TableCell className="font-medium">{deliverer.name}</TableCell>
                   <TableCell className="font-mono text-xs">{deliverer.cpf}</TableCell>
                   <TableCell>
-                    <Badge variant={deliverer.status === 'Active' ? 'default' : 'secondary'}>
+                    <Badge variant={deliverer.status === 'Active' ? 'default' : 'outline'}>
                       {deliverer.status}
                     </Badge>
                   </TableCell>
@@ -78,31 +77,17 @@ export default function Deliverers() {
                       }
                       className={
                         deliverer.contractStatus === 'Adimplente'
-                          ? 'text-emerald-600 border-emerald-200'
+                          ? 'text-emerald-600 border-emerald-500'
                           : ''
                       }
                     >
                       {deliverer.contractStatus}
                     </Badge>
                   </TableCell>
-                  <TableCell>
-                    {deliverer.activeBike ? (
-                      <Badge variant="secondary" className="font-mono text-[10px]">
-                        {deliverer.activeBike}
-                      </Badge>
-                    ) : (
-                      '-'
-                    )}
-                  </TableCell>
+                  <TableCell>{deliverer.activeBike || '-'}</TableCell>
                   <TableCell className="text-right">
                     <Button variant="ghost" size="sm" asChild>
-                      <Link
-                        to={`/deliverers/${deliverer.id}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Open Card
-                      </Link>
+                      <Link to={`/deliverers/${deliverer.id}`}>Open Card</Link>
                     </Button>
                   </TableCell>
                 </TableRow>

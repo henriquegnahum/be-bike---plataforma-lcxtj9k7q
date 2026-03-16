@@ -21,20 +21,51 @@ import {
   SidebarHeader,
 } from '@/components/ui/sidebar'
 import logoImg from '@/assets/bebike_logo-5fe56.png'
-
-const menuItems = [
-  { title: 'Dashboard', icon: LayoutDashboard, url: '/' },
-  { title: 'CRM & Funnel', icon: KanbanSquare, url: '/crm' },
-  { title: 'Fleet Master', icon: Bike, url: '/bikes' },
-  { title: 'Deliverer Master', icon: Users, url: '/deliverers' },
-  { title: 'Maintenance & Supply', icon: Wrench, url: '/maintenance' },
-  { title: 'Financial Hub', icon: DollarSign, url: '/financial' },
-  { title: 'Security & Risk', icon: ShieldAlert, url: '/security' },
-  { title: 'Tasks & Workflows', icon: CheckSquare, url: '/tasks' },
-]
+import useAppStore from '@/stores/main'
+import { useTranslation } from '@/lib/i18n'
 
 export function AppSidebar() {
   const location = useLocation()
+  const { role } = useAppStore()
+  const t = useTranslation()
+
+  const allMenuItems = [
+    {
+      titleKey: 'dashboard',
+      icon: LayoutDashboard,
+      url: '/',
+      roles: ['Admin', 'Finance', 'Operations', 'Hubs', 'Supply'],
+    },
+    { titleKey: 'crm', icon: KanbanSquare, url: '/crm', roles: ['Admin', 'Operations', 'Hubs'] },
+    {
+      titleKey: 'fleet',
+      icon: Bike,
+      url: '/bikes',
+      roles: ['Admin', 'Operations', 'Hubs', 'Supply'],
+    },
+    {
+      titleKey: 'deliverers',
+      icon: Users,
+      url: '/deliverers',
+      roles: ['Admin', 'Operations', 'Hubs'],
+    },
+    {
+      titleKey: 'maintenance',
+      icon: Wrench,
+      url: '/maintenance',
+      roles: ['Admin', 'Operations', 'Hubs', 'Supply'],
+    },
+    { titleKey: 'financial', icon: DollarSign, url: '/financial', roles: ['Admin', 'Finance'] },
+    { titleKey: 'security', icon: ShieldAlert, url: '/security', roles: ['Admin', 'Operations'] },
+    {
+      titleKey: 'tasks',
+      icon: CheckSquare,
+      url: '/tasks',
+      roles: ['Admin', 'Finance', 'Operations', 'Hubs', 'Supply'],
+    },
+  ]
+
+  const menuItems = allMenuItems.filter((item) => item.roles.includes(role))
 
   return (
     <Sidebar className="border-r border-border bg-sidebar">
@@ -51,7 +82,7 @@ export function AppSidebar() {
           <SidebarGroupContent>
             <SidebarMenu>
               {menuItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
+                <SidebarMenuItem key={item.titleKey}>
                   <SidebarMenuButton
                     asChild
                     isActive={
@@ -59,14 +90,9 @@ export function AppSidebar() {
                       (item.url !== '/' && location.pathname.startsWith(item.url))
                     }
                   >
-                    <Link
-                      to={item.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-3"
-                    >
+                    <Link to={item.url} className="flex items-center gap-3">
                       <item.icon className="w-5 h-5" />
-                      <span className="font-medium">{item.title}</span>
+                      <span className="font-medium">{t(item.titleKey as any)}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
