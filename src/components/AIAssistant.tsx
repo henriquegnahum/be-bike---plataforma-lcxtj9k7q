@@ -31,7 +31,6 @@ export function AIAssistant({
   const [input, setInput] = useState('')
   const [isTyping, setIsTyping] = useState(false)
 
-  // Reset initial message on language change if it's the only one
   useEffect(() => {
     const defaultContent = t('ai_default_response')
     if (
@@ -64,8 +63,7 @@ export function AIAssistant({
       } else if (
         lowerInput.includes('manuten') ||
         lowerInput.includes('bike') ||
-        lowerInput.includes('maint') ||
-        lowerInput.includes('moto')
+        lowerInput.includes('maint')
       ) {
         aiResponse = t('ai_maint_response')
       } else if (lowerInput.includes('99') || lowerInput.includes('sub')) {
@@ -79,8 +77,8 @@ export function AIAssistant({
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent className="w-full sm:max-w-md flex flex-col p-0 border-l-primary/20">
-        <SheetHeader className="p-6 border-b bg-muted/30">
+      <SheetContent className="w-full sm:max-w-md flex flex-col p-0 border-l-primary/20 bg-background/90 backdrop-blur-xl">
+        <SheetHeader className="p-6 border-b border-border/50 bg-muted/20">
           <SheetTitle className="flex items-center gap-2 text-primary">
             <Sparkles className="w-5 h-5" />
             {t('ai_title')}
@@ -101,7 +99,7 @@ export function AIAssistant({
                   {m.role === 'user' ? <User size={16} /> : <Bot size={16} />}
                 </div>
                 <div
-                  className={`p-3 rounded-xl text-sm leading-relaxed shadow-sm ${m.role === 'user' ? 'bg-primary text-primary-foreground rounded-tr-sm' : 'bg-muted/50 border rounded-tl-sm'}`}
+                  className={`p-3 rounded-xl text-sm leading-relaxed shadow-sm ${m.role === 'user' ? 'bg-primary text-primary-foreground rounded-tr-sm' : 'bg-muted/50 border border-border/50 rounded-tl-sm'}`}
                 >
                   {m.content}
                 </div>
@@ -112,7 +110,7 @@ export function AIAssistant({
                 <div className="w-8 h-8 rounded-full bg-muted text-muted-foreground flex items-center justify-center shrink-0">
                   <Bot size={16} />
                 </div>
-                <div className="p-3 rounded-xl text-sm bg-muted/50 border rounded-tl-sm flex items-center gap-1">
+                <div className="p-3 rounded-xl text-sm bg-muted/50 border border-border/50 rounded-tl-sm flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary/50 animate-bounce"></span>
                   <span
                     className="w-1.5 h-1.5 rounded-full bg-primary/50 animate-bounce"
@@ -128,7 +126,7 @@ export function AIAssistant({
           </div>
         </ScrollArea>
 
-        <div className="p-4 border-t bg-background">
+        <div className="p-4 border-t border-border/50 bg-background/50">
           <form
             onSubmit={(e) => {
               e.preventDefault()
@@ -140,7 +138,7 @@ export function AIAssistant({
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder={t('ai_placeholder')}
-              className="rounded-full shadow-sm"
+              className="rounded-full shadow-sm border-border/50 bg-background/50 focus-visible:ring-primary/50"
               disabled={isTyping}
             />
             <Button

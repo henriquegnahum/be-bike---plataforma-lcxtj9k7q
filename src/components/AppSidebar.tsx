@@ -68,35 +68,40 @@ export function AppSidebar() {
   const menuItems = allMenuItems.filter((item) => item.roles.includes(role))
 
   return (
-    <Sidebar className="border-r border-border bg-sidebar">
-      <SidebarHeader className="h-16 flex items-center px-6 py-4 border-b border-border bg-white">
+    <Sidebar className="border-r border-border/50 bg-background/60 backdrop-blur-xl">
+      <SidebarHeader className="h-16 flex items-center px-6 py-4 border-b border-border/50">
         <Link to="/" className="flex items-center gap-2">
-          <img src={logoImg} alt="Be Bike" className="h-8 w-auto object-contain" />
+          <img src={logoImg} alt="Be Bike" className="h-8 w-auto object-contain dark:invert" />
         </Link>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mt-4">
+          <SidebarGroupLabel className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mt-4 mb-2 px-4">
             Command Center
           </SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu>
-              {menuItems.map((item) => (
-                <SidebarMenuItem key={item.titleKey}>
-                  <SidebarMenuButton
-                    asChild
-                    isActive={
-                      location.pathname === item.url ||
-                      (item.url !== '/' && location.pathname.startsWith(item.url))
-                    }
-                  >
-                    <Link to={item.url} className="flex items-center gap-3">
-                      <item.icon className="w-5 h-5" />
-                      <span className="font-medium">{t(item.titleKey as any)}</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
+            <SidebarMenu className="px-2 space-y-1">
+              {menuItems.map((item) => {
+                const isActive =
+                  location.pathname === item.url ||
+                  (item.url !== '/' && location.pathname.startsWith(item.url))
+                return (
+                  <SidebarMenuItem key={item.titleKey}>
+                    <SidebarMenuButton
+                      asChild
+                      isActive={isActive}
+                      className={`rounded-xl transition-all duration-200 py-2.5 px-3 hover:bg-primary/10 hover:text-primary ${isActive ? 'bg-primary/15 text-primary font-bold shadow-sm' : 'text-muted-foreground font-medium'}`}
+                    >
+                      <Link to={item.url} className="flex items-center gap-3">
+                        <item.icon
+                          className={`w-5 h-5 transition-colors ${isActive ? 'text-primary' : 'text-muted-foreground'}`}
+                        />
+                        <span>{t(item.titleKey as any)}</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                )
+              })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>

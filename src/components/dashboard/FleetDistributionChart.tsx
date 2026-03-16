@@ -1,5 +1,5 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { PieChart, Pie } from 'recharts'
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
+import { PieChart, Pie, Cell } from 'recharts'
 import {
   ChartContainer,
   ChartTooltip,
@@ -31,32 +31,47 @@ export function FleetDistributionChart() {
   const config = useMemo(
     () => ({
       fleet_segment_99food: { label: t('fleet_segment_99food'), color: 'hsl(var(--primary))' },
-      fleet_segment_other: { label: t('fleet_segment_other'), color: 'hsl(var(--secondary))' },
-      fleet_segment_b2b: { label: t('fleet_segment_b2b'), color: '#3b82f6' },
-      fleet_segment_intermediation: { label: t('fleet_segment_intermediation'), color: '#10b981' },
-      fleet_segment_own: { label: t('fleet_segment_own'), color: '#f59e0b' },
+      fleet_segment_other: { label: t('fleet_segment_other'), color: '#34d399' },
+      fleet_segment_b2b: { label: t('fleet_segment_b2b'), color: '#059669' },
+      fleet_segment_intermediation: { label: t('fleet_segment_intermediation'), color: '#047857' },
+      fleet_segment_own: { label: t('fleet_segment_own'), color: '#8b5cf6' },
     }),
     [t],
   )
 
   return (
-    <Card className="shadow-sm flex flex-col">
+    <Card className="glass-card flex flex-col h-full border-border/60">
       <CardHeader>
-        <CardTitle className="text-lg">{t('fleet_distribution')}</CardTitle>
+        <CardTitle>{t('fleet_distribution')}</CardTitle>
+        <CardDescription>Visão geral da categorização de ativos em campo</CardDescription>
       </CardHeader>
-      <CardContent className="flex-1 pb-0">
+      <CardContent className="flex-1 pb-6 pt-2">
         <ChartContainer config={config} className="mx-auto aspect-square max-h-[300px]">
           <PieChart>
             <Pie
               data={data}
               dataKey="value"
               nameKey="segment"
-              innerRadius={60}
-              outerRadius={80}
-              strokeWidth={2}
+              innerRadius={75}
+              outerRadius={95}
+              paddingAngle={4}
+              strokeWidth={0}
+              animationDuration={1500}
+              animationBegin={200}
+              cornerRadius={8}
+            >
+              {data.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={entry.fill} />
+              ))}
+            </Pie>
+            <ChartTooltip
+              content={<ChartTooltipContent hideLabel />}
+              cursor={{ fill: 'transparent' }}
             />
-            <ChartTooltip content={<ChartTooltipContent hideLabel />} />
-            <ChartLegend content={<ChartLegendContent />} className="flex-wrap gap-2 text-xs" />
+            <ChartLegend
+              content={<ChartLegendContent />}
+              className="flex-wrap gap-2 text-xs mt-4"
+            />
           </PieChart>
         </ChartContainer>
       </CardContent>

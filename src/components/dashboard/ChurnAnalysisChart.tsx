@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts'
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart'
 import { useTranslation } from '@/lib/i18n'
@@ -20,30 +20,45 @@ export function ChurnAnalysisChart() {
 
   const config = useMemo(
     () => ({
-      count: { label: t('churn_reasons'), color: 'hsl(var(--destructive))' },
+      count: { label: t('churn_reasons'), color: '#ef4444' },
     }),
     [t],
   )
 
   return (
-    <Card className="shadow-sm flex flex-col">
+    <Card className="glass-card flex flex-col h-full border-border/60">
       <CardHeader>
-        <CardTitle className="text-lg">{t('churn_reasons')}</CardTitle>
+        <CardTitle>{t('churn_reasons')}</CardTitle>
+        <CardDescription>Principais motivos de cancelamento identificados</CardDescription>
       </CardHeader>
-      <CardContent className="flex-1 pb-4">
+      <CardContent className="flex-1 pb-4 pt-2">
         <ChartContainer config={config} className="w-full h-[250px]">
-          <BarChart data={data} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
-            <CartesianGrid strokeDasharray="3 3" vertical={false} />
+          <BarChart data={data} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+            <CartesianGrid
+              strokeDasharray="3 3"
+              vertical={false}
+              stroke="hsl(var(--border))"
+              opacity={0.5}
+            />
             <XAxis
               dataKey="reason"
               tickLine={false}
               axisLine={false}
-              tickMargin={8}
-              fontSize={10}
+              tickMargin={10}
+              fontSize={11}
             />
-            <YAxis tickLine={false} axisLine={false} tickMargin={8} />
-            <ChartTooltip content={<ChartTooltipContent />} />
-            <Bar dataKey="count" fill="var(--color-count)" radius={[4, 4, 0, 0]} />
+            <YAxis tickLine={false} axisLine={false} tickMargin={10} fontSize={12} />
+            <ChartTooltip
+              cursor={{ fill: 'hsl(var(--muted)/0.4)' }}
+              content={<ChartTooltipContent />}
+            />
+            <Bar
+              dataKey="count"
+              fill="var(--color-count)"
+              radius={[6, 6, 0, 0]}
+              animationDuration={1500}
+              barSize={32}
+            />
           </BarChart>
         </ChartContainer>
       </CardContent>

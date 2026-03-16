@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import {
   Table,
   TableBody,
@@ -27,26 +27,27 @@ export function FinancialContractsTable() {
   ]
 
   return (
-    <Card className="shadow-sm overflow-hidden">
-      <CardHeader className="border-b bg-muted/10 pb-4">
-        <CardTitle className="text-lg">{t('financial_contracts_overview')}</CardTitle>
+    <Card className="glass-card border-border/60 overflow-hidden">
+      <CardHeader className="border-b bg-muted/20 pb-4">
+        <CardTitle>{t('financial_contracts_overview')}</CardTitle>
+        <CardDescription>Detalhamento de contratos gerais e status de adimplência</CardDescription>
       </CardHeader>
       <CardContent className="p-0">
         <Table>
           <TableHeader>
-            <TableRow>
-              <TableHead>{t('contract_id')}</TableHead>
-              <TableHead>{t('contract_type')}</TableHead>
-              <TableHead>{t('contract_value')}</TableHead>
-              <TableHead>{t('status')}</TableHead>
+            <TableRow className="bg-muted/10 hover:bg-muted/10 border-b-border/60">
+              <TableHead className="font-semibold text-foreground">{t('contract_id')}</TableHead>
+              <TableHead className="font-semibold text-foreground">{t('contract_type')}</TableHead>
+              <TableHead className="font-semibold text-foreground">{t('contract_value')}</TableHead>
+              <TableHead className="font-semibold text-foreground">{t('status')}</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {contracts.map((c) => (
-              <TableRow key={c.id}>
-                <TableCell className="font-mono text-xs">{c.id}</TableCell>
+              <TableRow key={c.id} className="hover:bg-muted/40 transition-colors">
+                <TableCell className="font-mono text-xs font-medium">{c.id}</TableCell>
                 <TableCell className="font-medium">{t(c.type as any)}</TableCell>
-                <TableCell>{c.value}</TableCell>
+                <TableCell className="font-semibold">{c.value}</TableCell>
                 <TableCell>
                   <Badge
                     variant={
@@ -57,7 +58,7 @@ export function FinancialContractsTable() {
                           : 'secondary'
                     }
                     className={
-                      c.status === 'Adimplente' ? 'border-emerald-500 text-emerald-600' : ''
+                      c.status === 'Adimplente' ? 'border-primary/50 text-primary bg-primary/5' : ''
                     }
                   >
                     {t(c.status as any)}

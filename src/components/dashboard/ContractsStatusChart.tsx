@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts'
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart'
 import { useTranslation } from '@/lib/i18n'
@@ -18,7 +18,7 @@ export function ContractsStatusChart() {
 
   const config = useMemo(
     () => ({
-      active_contracts: { label: t('active_contracts'), color: '#10b981' },
+      active_contracts: { label: t('active_contracts'), color: 'hsl(var(--primary))' },
       expiring_contracts: { label: t('expiring_contracts'), color: '#f59e0b' },
       pending_contracts: { label: t('pending_contracts'), color: '#64748b' },
     }),
@@ -26,14 +26,24 @@ export function ContractsStatusChart() {
   )
 
   return (
-    <Card className="shadow-sm flex flex-col">
+    <Card className="glass-card flex flex-col h-full border-border/60">
       <CardHeader>
-        <CardTitle className="text-lg">{t('contracts_status')}</CardTitle>
+        <CardTitle>{t('contracts_status')}</CardTitle>
+        <CardDescription>Volume de contratos por ciclo de vida atual</CardDescription>
       </CardHeader>
-      <CardContent className="flex-1 pb-4">
+      <CardContent className="flex-1 pb-4 pt-2">
         <ChartContainer config={config} className="w-full h-[250px]">
-          <BarChart data={data} layout="vertical" margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
-            <CartesianGrid strokeDasharray="3 3" horizontal={false} />
+          <BarChart
+            data={data}
+            layout="vertical"
+            margin={{ top: 0, right: 20, left: -20, bottom: 0 }}
+          >
+            <CartesianGrid
+              strokeDasharray="3 3"
+              horizontal={false}
+              stroke="hsl(var(--border))"
+              opacity={0.5}
+            />
             <XAxis type="number" hide />
             <YAxis
               dataKey="status"
@@ -41,10 +51,14 @@ export function ContractsStatusChart() {
               tickLine={false}
               axisLine={false}
               tickFormatter={(value) => t(value as any)}
-              width={80}
+              width={90}
+              fontSize={12}
             />
-            <ChartTooltip content={<ChartTooltipContent hideLabel />} />
-            <Bar dataKey="count" radius={[0, 4, 4, 0]} />
+            <ChartTooltip
+              cursor={{ fill: 'hsl(var(--muted)/0.4)' }}
+              content={<ChartTooltipContent hideLabel />}
+            />
+            <Bar dataKey="count" radius={[0, 6, 6, 0]} animationDuration={1500} barSize={32} />
           </BarChart>
         </ChartContainer>
       </CardContent>
