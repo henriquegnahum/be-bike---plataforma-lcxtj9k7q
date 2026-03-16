@@ -1,0 +1,230 @@
+//#region src/lib/mock-data.ts
+var today = (/* @__PURE__ */ new Date()).toISOString().split("T")[0];
+var MOCK_CRM_LEADS = [
+	{
+		id: "1",
+		name: "Carlos Silva",
+		phone: "11988881111",
+		email: "carlos@email.com",
+		stage: "Leads",
+		source: "Instagram (Meta)",
+		type: "Entregador 99Food",
+		cpf: "123.456.789-00",
+		rg: "12.345.678-9",
+		uf: "SP",
+		gender: "Masculino",
+		dob: "1990-05-15",
+		naturalidade: "São Paulo",
+		parentsNames: "Maria Silva, José Silva",
+		civilStatus: "Solteiro",
+		address: "Rua das Flores, 123 - Centro",
+		cep: "01000-000",
+		contractStatus: "Vigente",
+		financialStatus: "Adimplente",
+		contractDuration: "12 meses",
+		performanceScore: "85",
+		bikesHistory: ["9C21A4B2C3D4E5F6G"]
+	},
+	{
+		id: "2",
+		name: "Ana Oliveira",
+		phone: "11977772222",
+		email: "ana@email.com",
+		stage: "Contacted",
+		source: "Referral",
+		type: "B2B",
+		cpf: "234.567.890-11",
+		rg: "23.456.789-0",
+		uf: "RJ",
+		gender: "Feminino",
+		dob: "1988-10-22",
+		naturalidade: "Rio de Janeiro",
+		parentsNames: "Sonia Oliveira",
+		civilStatus: "Casada",
+		address: "Av Paulista, 1000",
+		cep: "01310-100",
+		contractStatus: "Em avaliação",
+		financialStatus: "Nada consta",
+		contractDuration: "N/A",
+		performanceScore: "N/A",
+		bikesHistory: []
+	},
+	{
+		id: "3",
+		name: "Pedro Santos",
+		phone: "11966663333",
+		stage: "Analysis",
+		source: "Website",
+		type: "Entregador",
+		contractStatus: "Encerrado",
+		financialStatus: "Inadimplente"
+	},
+	{
+		id: "4",
+		name: "João Costa",
+		phone: "11955554444",
+		stage: "Negotiation",
+		source: "Organic",
+		type: "Outros",
+		contractStatus: "Apropriação indébita",
+		financialStatus: "Pendências financeiras"
+	},
+	{
+		id: "5",
+		name: "Maria Lima",
+		phone: "11944445555",
+		stage: "Signed/Onboarding",
+		source: "Instagram",
+		type: "Entregador 99",
+		contractStatus: "Vigente",
+		financialStatus: "Adimplente"
+	}
+];
+var MOCK_BIKES = [
+	{
+		id: "1",
+		chassi: "9C21A4B2C3D4E5F6G",
+		status: "Ativa",
+		model: "BeBike City Pro",
+		version: "2024 V1",
+		brand: "BeBike",
+		size: "M",
+		color: "Laranja",
+		invoiceValue: "R$ 5.400,00",
+		purchaseDate: "2023-10-01",
+		project: "99Food",
+		trackerNum: "TRK-9001",
+		batteryNum: "BAT-1102",
+		lockCode: "8842",
+		mileage: 2600,
+		lastRevisionKm: 0,
+		deliverer: "Carlos Silva"
+	},
+	{
+		id: "2",
+		chassi: "9C22B5C3D4E5F6G7H",
+		status: "Oficina",
+		model: "BeBike Cargo",
+		version: "2023 V2",
+		brand: "BeBike",
+		size: "G",
+		color: "Preto",
+		invoiceValue: "R$ 6.200,00",
+		purchaseDate: "2023-05-15",
+		project: "Magalu",
+		trackerNum: "TRK-9055",
+		batteryNum: "BAT-1150",
+		lockCode: "1123",
+		mileage: 5100,
+		lastRevisionKm: 2500,
+		deliverer: null
+	},
+	{
+		id: "3",
+		chassi: "9C23C6D4E5F6G7H8I",
+		status: "Ociosa",
+		model: "BeBike City Pro",
+		version: "2024 V1",
+		brand: "BeBike",
+		size: "P",
+		color: "Laranja",
+		invoiceValue: "R$ 5.400,00",
+		purchaseDate: "2024-01-10",
+		project: "Internal",
+		trackerNum: "TRK-9088",
+		batteryNum: "BAT-1200",
+		lockCode: "9900",
+		mileage: 2450,
+		lastRevisionKm: 0,
+		deliverer: null
+	}
+];
+var MOCK_DELIVERERS = [
+	{
+		id: "1",
+		name: "Carlos Silva",
+		cpf: "123.456.789-00",
+		status: "Active",
+		contractStatus: "Adimplente",
+		trips: 145,
+		rating: 4.8,
+		activeBike: "9C21A4B2C3D4E5F6G",
+		joinDate: "2023-11-10",
+		phone: "11988881111"
+	},
+	{
+		id: "2",
+		name: "Ana Oliveira",
+		cpf: "234.567.890-11",
+		status: "Onboarding",
+		contractStatus: "Em Análise",
+		trips: 0,
+		rating: 0,
+		activeBike: null,
+		joinDate: "2024-04-25",
+		phone: "11977772222"
+	},
+	{
+		id: "3",
+		name: "Pedro Santos",
+		cpf: "345.678.901-22",
+		status: "In Debt",
+		contractStatus: "Inadimplente",
+		trips: 412,
+		rating: 4.2,
+		activeBike: "9C23C6D4E5F6G7H8I",
+		joinDate: "2023-08-05",
+		phone: "11966663333"
+	}
+];
+var taskColumns = [
+	{
+		id: "todo",
+		title: "A Fazer (O.S.)",
+		tasks: [{
+			id: "OS-1100",
+			chassi: "9C21A",
+			desc: "Revisão 2500km"
+		}]
+	},
+	{
+		id: "doing",
+		title: "Em Manutenção",
+		tasks: []
+	},
+	{
+		id: "done",
+		title: "Finalizado",
+		tasks: []
+	}
+];
+var MOCK_EVENTS = [
+	{
+		id: "E1",
+		title: "Retirada: Carlos Silva",
+		type: "withdrawal",
+		date: today,
+		time: "10:00",
+		linkedTo: "CPF: 123.***"
+	},
+	{
+		id: "E2",
+		title: "Manutenção Preditiva #9C21A",
+		type: "maintenance",
+		date: today,
+		time: "14:00",
+		linkedTo: "Chassi: 9C21A"
+	},
+	{
+		id: "E3",
+		title: "Devolução: Pedro Santos",
+		type: "return",
+		date: today,
+		time: "09:00",
+		linkedTo: "CPF: 345.***"
+	}
+];
+//#endregion
+export { taskColumns as a, MOCK_EVENTS as i, MOCK_CRM_LEADS as n, MOCK_DELIVERERS as r, MOCK_BIKES as t };
+
+//# sourceMappingURL=mock-data-DXLf5JeC.js.map

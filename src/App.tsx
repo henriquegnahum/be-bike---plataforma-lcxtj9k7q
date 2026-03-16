@@ -1,121 +1,81 @@
-import './App.css'
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import { Toaster } from '@/components/ui/sonner'
+import { Suspense, lazy } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Layout from '@/components/Layout'
-import Landing from '@/pages/Landing'
-import Index from '@/pages/Index'
-import Hubs from '@/pages/Hubs'
-import CalendarPage from '@/pages/Calendar'
-import SalesDashboard from '@/pages/sales/SalesDashboard'
-import CustomerBase from '@/pages/sales/CustomerBase'
-import SalesFunnels from '@/pages/sales/SalesFunnels'
-import LeadDetail from '@/pages/LeadDetail'
-import Marketing from '@/pages/Marketing'
-import Bikes from '@/pages/Bikes'
-import BikeDetail from '@/pages/BikeDetail'
-import Deliverers from '@/pages/Deliverers'
-import DelivererDetail from '@/pages/DelivererDetail'
-import Maintenance from '@/pages/Maintenance'
-import CommunityDashboard from '@/pages/community/CommunityDashboard'
-import PointsProgram from '@/pages/community/PointsProgram'
-import CustomerService from '@/pages/community/CustomerService'
-import Tasks from '@/pages/Tasks'
-import Financial from '@/pages/Financial'
-import Security from '@/pages/Security'
-import Chat from '@/pages/Chat'
-import Integrations from '@/pages/Integrations'
-import Meetings from '@/pages/Meetings'
-import ComingSoon from '@/pages/ComingSoon'
-import NotFound from '@/pages/NotFound'
-import Login from '@/pages/Login'
-import useAppStore, { AppProvider } from '@/stores/main'
-import { UserProvider } from '@/stores/user'
-import { ThemeProvider } from 'next-themes'
+import { Skeleton } from '@/components/ui/skeleton'
 
-try {
-  const patchSheet = (prop: 'cssRules' | 'rules') => {
-    const original = Object.getOwnPropertyDescriptor(CSSStyleSheet.prototype, prop)
-    if (original) {
-      Object.defineProperty(CSSStyleSheet.prototype, prop, {
-        get() {
-          try {
-            return original.get?.call(this) || []
-          } catch (e: any) {
-            if (e.name === 'SecurityError') return []
-            throw e
-          }
-        },
-      })
-    }
-  }
-  patchSheet('cssRules')
-  patchSheet('rules')
-} catch (err) {
-  // Ignore errors on patch
+// Lazy load all pages to reduce build memory footprint and prevent OOM (Exit Code 143)
+const Index = lazy(() => import('@/pages/Index'))
+const Bikes = lazy(() => import('@/pages/Bikes'))
+const BikeDetail = lazy(() => import('@/pages/BikeDetail'))
+const Calendar = lazy(() => import('@/pages/Calendar'))
+const Chat = lazy(() => import('@/pages/Chat'))
+const ComingSoon = lazy(() => import('@/pages/ComingSoon'))
+const Deliverers = lazy(() => import('@/pages/Deliverers'))
+const DelivererDetail = lazy(() => import('@/pages/DelivererDetail'))
+const Financial = lazy(() => import('@/pages/Financial'))
+const Hubs = lazy(() => import('@/pages/Hubs'))
+const Integrations = lazy(() => import('@/pages/Integrations'))
+const Landing = lazy(() => import('@/pages/Landing'))
+const LeadDetail = lazy(() => import('@/pages/LeadDetail'))
+const Login = lazy(() => import('@/pages/Login'))
+const Maintenance = lazy(() => import('@/pages/Maintenance'))
+const Marketing = lazy(() => import('@/pages/Marketing'))
+const Meetings = lazy(() => import('@/pages/Meetings'))
+const Security = lazy(() => import('@/pages/Security'))
+const Tasks = lazy(() => import('@/pages/Tasks'))
+const CommunityDashboard = lazy(() => import('@/pages/community/CommunityDashboard'))
+const CustomerService = lazy(() => import('@/pages/community/CustomerService'))
+const PointsProgram = lazy(() => import('@/pages/community/PointsProgram'))
+const CustomerBase = lazy(() => import('@/pages/sales/CustomerBase'))
+const SalesDashboard = lazy(() => import('@/pages/sales/SalesDashboard'))
+const SalesFunnels = lazy(() => import('@/pages/sales/SalesFunnels'))
+
+function Loader() {
+  return (
+    <div className="flex h-[50vh] w-full items-center justify-center">
+      <div className="flex flex-col items-center gap-4">
+        <Skeleton className="h-12 w-12 rounded-full" />
+        <Skeleton className="h-4 w-32" />
+      </div>
+    </div>
+  )
 }
 
-function AppContent() {
-  const { isAuthenticated } = useAppStore()
-
-  if (!isAuthenticated) {
-    return (
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </BrowserRouter>
-    )
-  }
-
+export default function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/login" element={<Navigate to="/" replace />} />
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Index />} />
-          <Route path="hubs" element={<Hubs />} />
-          <Route path="calendar" element={<CalendarPage />} />
-          <Route path="sales/dashboard" element={<SalesDashboard />} />
-          <Route path="sales/customers" element={<CustomerBase />} />
-          <Route path="sales/customers/:id" element={<LeadDetail />} />
-          <Route path="sales/funnels" element={<SalesFunnels />} />
-          <Route path="marketing" element={<Marketing />} />
-          <Route path="bikes" element={<Bikes />} />
-          <Route path="bikes/:id" element={<BikeDetail />} />
-          <Route path="deliverers" element={<Deliverers />} />
-          <Route path="deliverers/:id" element={<DelivererDetail />} />
-          <Route path="maintenance" element={<Maintenance />} />
-          <Route path="community/dashboard" element={<CommunityDashboard />} />
-          <Route path="community/points" element={<PointsProgram />} />
-          <Route path="community/service" element={<CustomerService />} />
-          <Route path="tasks" element={<Tasks />} />
-          <Route path="financial" element={<Financial />} />
-          <Route path="security" element={<Security />} />
-          <Route path="meetings" element={<Meetings />} />
-          <Route path="coming-soon" element={<ComingSoon />} />
-          <Route path="chat" element={<Navigate to="/chat/geral" replace />} />
-          <Route path="chat/:channel" element={<Chat />} />
-          <Route path="integrations" element={<Integrations />} />
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/landing" element={<Landing />} />
+
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Index />} />
+            <Route path="bikes" element={<Bikes />} />
+            <Route path="bikes/:id" element={<BikeDetail />} />
+            <Route path="calendar" element={<Calendar />} />
+            <Route path="chat" element={<Chat />} />
+            <Route path="deliverers" element={<Deliverers />} />
+            <Route path="deliverers/:id" element={<DelivererDetail />} />
+            <Route path="financial" element={<Financial />} />
+            <Route path="hubs" element={<Hubs />} />
+            <Route path="integrations" element={<Integrations />} />
+            <Route path="crm" element={<SalesDashboard />} />
+            <Route path="crm/leads/:id" element={<LeadDetail />} />
+            <Route path="crm/customers" element={<CustomerBase />} />
+            <Route path="crm/funnels" element={<SalesFunnels />} />
+            <Route path="maintenance" element={<Maintenance />} />
+            <Route path="marketing" element={<Marketing />} />
+            <Route path="meetings" element={<Meetings />} />
+            <Route path="security" element={<Security />} />
+            <Route path="tasks" element={<Tasks />} />
+            <Route path="community" element={<CommunityDashboard />} />
+            <Route path="customer-service" element={<CustomerService />} />
+            <Route path="community/points" element={<PointsProgram />} />
+            <Route path="*" element={<ComingSoon />} />
+          </Route>
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   )
 }
-
-function App() {
-  return (
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-      <AppProvider>
-        <UserProvider>
-          <AppContent />
-          <Toaster />
-        </UserProvider>
-      </AppProvider>
-    </ThemeProvider>
-  )
-}
-
-export default App
