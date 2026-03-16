@@ -23,10 +23,7 @@ export function AIAssistant({
   const t = useTranslation()
   const { language } = useAppStore()
   const [messages, setMessages] = useState([
-    {
-      role: 'assistant',
-      content: t('ai_default_response'),
-    },
+    { role: 'assistant', content: t('ai_default_response') },
   ])
   const [input, setInput] = useState('')
   const [isTyping, setIsTyping] = useState(false)
@@ -56,91 +53,98 @@ export function AIAssistant({
       if (
         lowerInput.includes('churn') ||
         lowerInput.includes('risc') ||
-        lowerInput.includes('riesgo') ||
         lowerInput.includes('risk')
       ) {
         aiResponse = t('ai_churn_response')
       } else if (
         lowerInput.includes('manuten') ||
         lowerInput.includes('bike') ||
-        lowerInput.includes('maint') ||
-        lowerInput.includes('peca')
+        lowerInput.includes('maint')
       ) {
         aiResponse = t('ai_maint_response')
       } else if (
         lowerInput.includes('99') ||
-        lowerInput.includes('sub') ||
-        lowerInput.includes('finan')
+        lowerInput.includes('finan') ||
+        lowerInput.includes('sub')
       ) {
         aiResponse = t('ai_fin_response')
+      } else if (
+        lowerInput.includes('hub') ||
+        lowerInput.includes('overload') ||
+        lowerInput.includes('sobrecarregado')
+      ) {
+        aiResponse =
+          t('ai_hub_response' as any) ||
+          'Hub SP-Sul está sobrecarregado.\n\n[Explicabilidade]: O hub tem 15 O.S. atrasadas e a produtividade técnica caiu 18% nas últimas 48h. Recomendo realocar 2 mecânicos do Hub SP-Centro.'
       }
 
       setMessages((prev) => [...prev, { role: 'assistant', content: aiResponse }])
       setIsTyping(false)
-    }, 1800)
+    }, 1500)
   }
 
-  const renderMessageContent = (content: string) => {
+  const renderMessage = (content: string) => {
     if (content.includes('[Explicabilidade]:')) {
       const parts = content.split('[Explicabilidade]:')
       return (
         <>
-          <p>{parts[0]}</p>
-          <div className="mt-2 bg-background/50 p-2.5 rounded-lg border border-primary/20 shadow-inner flex flex-col gap-1">
-            <span className="text-[10px] font-bold uppercase text-primary flex items-center gap-1">
-              <BrainCircuit className="w-3 h-3" /> Explicabilidade do Modelo
+          <p className="font-medium text-[13px] leading-relaxed">{parts[0]}</p>
+          <div className="mt-3 bg-background/60 p-3 rounded-xl border border-primary/20 shadow-sm flex flex-col gap-1.5 backdrop-blur-md">
+            <span className="text-[10px] font-extrabold uppercase tracking-wider text-primary flex items-center gap-1.5">
+              <BrainCircuit className="w-3.5 h-3.5" /> Explicabilidade IA
             </span>
-            <p className="text-xs text-muted-foreground">{parts[1].trim()}</p>
+            <p className="text-xs text-muted-foreground font-medium leading-relaxed">
+              {parts[1].trim()}
+            </p>
           </div>
         </>
       )
     }
-    return <p>{content}</p>
+    return <p className="font-medium text-[13px] leading-relaxed">{content}</p>
   }
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent className="w-full sm:max-w-md flex flex-col p-0 border-l-primary/20 bg-background/80 backdrop-blur-3xl shadow-[-10px_0_40px_rgba(28,209,92,0.1)]">
-        <SheetHeader className="p-6 border-b border-border/50 bg-muted/30">
-          <SheetTitle className="flex items-center gap-2 text-primary">
-            <Sparkles className="w-5 h-5" />
-            {t('ai_title')}
+      <SheetContent className="w-full sm:max-w-md flex flex-col p-0 border-l-primary/20 bg-background/70 backdrop-blur-3xl shadow-[-20px_0_60px_rgba(28,209,92,0.15)]">
+        <SheetHeader className="p-6 border-b border-border/50 bg-muted/20">
+          <SheetTitle className="flex items-center gap-2 text-primary font-extrabold tracking-tight text-2xl">
+            <Sparkles className="w-6 h-6" /> Be.ai
           </SheetTitle>
-          <SheetDescription>{t('ai_subtitle')}</SheetDescription>
+          <SheetDescription className="font-medium">{t('ai_subtitle')}</SheetDescription>
         </SheetHeader>
 
         <ScrollArea className="flex-1 p-4">
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-5">
             {messages.map((m, i) => (
               <div
                 key={i}
-                className={`flex gap-3 max-w-[90%] animate-fade-in-up ${m.role === 'user' ? 'ml-auto flex-row-reverse' : ''}`}
+                className={`flex gap-3 max-w-[92%] animate-in fade-in slide-in-from-bottom-2 ${m.role === 'user' ? 'ml-auto flex-row-reverse' : ''}`}
               >
                 <div
-                  className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 shadow-sm ${m.role === 'user' ? 'bg-primary text-primary-foreground' : 'bg-secondary text-primary border border-primary/20'}`}
+                  className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 shadow-sm ${m.role === 'user' ? 'bg-primary text-primary-foreground' : 'bg-primary/10 text-primary border border-primary/20'}`}
                 >
                   {m.role === 'user' ? <User size={16} /> : <Bot size={16} />}
                 </div>
                 <div
-                  className={`p-3.5 rounded-2xl text-sm leading-relaxed shadow-sm ${m.role === 'user' ? 'bg-primary text-primary-foreground rounded-tr-sm' : 'bg-card/90 border border-border/50 rounded-tl-sm backdrop-blur-md'}`}
+                  className={`p-4 rounded-2xl shadow-sm ${m.role === 'user' ? 'bg-primary text-primary-foreground rounded-tr-sm' : 'bg-card border border-border/60 rounded-tl-sm'}`}
                 >
-                  {renderMessageContent(m.content)}
+                  {renderMessage(m.content)}
                 </div>
               </div>
             ))}
             {isTyping && (
-              <div className="flex gap-3 max-w-[85%] animate-fade-in">
-                <div className="w-8 h-8 rounded-full bg-secondary text-primary border border-primary/20 flex items-center justify-center shrink-0">
+              <div className="flex gap-3 max-w-[85%] animate-in fade-in">
+                <div className="w-8 h-8 rounded-full bg-primary/10 text-primary border border-primary/20 flex items-center justify-center shrink-0">
                   <Bot size={16} />
                 </div>
-                <div className="p-3.5 rounded-2xl text-sm bg-card/90 border border-border/50 rounded-tl-sm backdrop-blur-md flex items-center gap-1.5 h-[50px]">
-                  <span className="w-2 h-2 rounded-full bg-primary/50 animate-bounce"></span>
+                <div className="p-4 rounded-2xl bg-card border border-border/60 rounded-tl-sm flex items-center gap-1.5 h-[52px]">
+                  <span className="w-2 h-2 rounded-full bg-primary/60 animate-bounce"></span>
                   <span
-                    className="w-2 h-2 rounded-full bg-primary/50 animate-bounce"
+                    className="w-2 h-2 rounded-full bg-primary/60 animate-bounce"
                     style={{ animationDelay: '0.2s' }}
                   ></span>
                   <span
-                    className="w-2 h-2 rounded-full bg-primary/50 animate-bounce"
+                    className="w-2 h-2 rounded-full bg-primary/60 animate-bounce"
                     style={{ animationDelay: '0.4s' }}
                   ></span>
                 </div>
@@ -149,7 +153,7 @@ export function AIAssistant({
           </div>
         </ScrollArea>
 
-        <div className="p-4 border-t border-border/50 bg-background/50 backdrop-blur-lg">
+        <div className="p-4 border-t border-border/50 bg-background/50">
           <form
             onSubmit={(e) => {
               e.preventDefault()
@@ -161,16 +165,16 @@ export function AIAssistant({
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder={t('ai_placeholder')}
-              className="rounded-full shadow-inner border-border/50 bg-background/80 focus-visible:ring-primary/50 h-11 px-4"
+              className="rounded-full shadow-inner bg-background focus-visible:ring-primary/50 h-12 px-5 font-medium"
               disabled={isTyping}
             />
             <Button
               type="submit"
               size="icon"
-              className="h-11 w-11 rounded-full shrink-0 shadow-md bg-primary hover:bg-primary/90 text-white transition-transform hover:scale-105"
+              className="h-12 w-12 rounded-full shrink-0 shadow-md bg-primary hover:bg-primary/90 text-white hover:scale-105 transition-transform"
               disabled={isTyping || !input.trim()}
             >
-              <Send className="w-4 h-4 ml-0.5" />
+              <Send className="w-5 h-5 ml-0.5" />
             </Button>
           </form>
         </div>

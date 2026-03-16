@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { CheckCircle2, Clock, Check, CalendarDays, AlignLeft, Ticket } from 'lucide-react'
+import { CheckCircle2, Clock, Check, AlignLeft, Ticket } from 'lucide-react'
 import { useToast } from '@/hooks/use-toast'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { pendingApprovals } from '@/lib/mock-data'
@@ -38,127 +38,34 @@ export default function Tasks() {
   }
 
   return (
-    <div className="flex flex-col gap-6 max-w-7xl mx-auto pb-12">
+    <div className="flex flex-col gap-6 max-w-7xl mx-auto pb-12 animate-in fade-in duration-700">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">{t('tasks_title')}</h1>
-        <p className="text-muted-foreground mt-1">{t('tasks_desc')}</p>
+        <h1 className="text-4xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
+          {t('tasks_title')}
+        </h1>
+        <p className="text-muted-foreground mt-2 font-medium">{t('tasks_desc')}</p>
       </div>
 
-      <Tabs defaultValue="tickets" className="w-full">
-        <TabsList className="grid w-full sm:w-auto grid-cols-2 sm:grid-cols-4 h-auto">
-          <TabsTrigger value="tickets" className="py-2 gap-2">
+      <Tabs defaultValue="workflows" className="w-full">
+        <TabsList className="grid w-full sm:w-auto grid-cols-2 sm:grid-cols-3 h-auto glass-card p-1">
+          <TabsTrigger value="workflows" className="py-2.5 gap-2 rounded-xl text-sm">
+            {t('workflows')}
+          </TabsTrigger>
+          <TabsTrigger value="tickets" className="py-2.5 gap-2 rounded-xl text-sm">
             <Ticket className="w-4 h-4" /> {t('tickets')}
           </TabsTrigger>
-          <TabsTrigger value="calendar" className="py-2 gap-2">
-            <CalendarDays className="w-4 h-4" /> {t('calendar')}
-          </TabsTrigger>
-          <TabsTrigger value="gantt" className="py-2 gap-2">
+          <TabsTrigger value="gantt" className="py-2.5 gap-2 rounded-xl text-sm">
             <AlignLeft className="w-4 h-4" /> {t('gantt')}
-          </TabsTrigger>
-          <TabsTrigger value="workflows" className="py-2 gap-2">
-            {t('workflows')}
           </TabsTrigger>
         </TabsList>
 
-        <TabsContent value="tickets" className="mt-6">
-          <Card className="shadow-sm">
-            <CardHeader>
-              <CardTitle>{t('global_tickets')}</CardTitle>
-              <CardDescription>{t('global_tickets_desc')}</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="flex flex-col gap-4">
-                {[
-                  {
-                    id: 'TK-101',
-                    title: 'Review Courier Documents',
-                    module: 'Operations',
-                    assignee: 'João (Hub)',
-                    due: 'Today',
-                  },
-                  {
-                    id: 'TK-102',
-                    title: 'Process AsaaS Payment Failure',
-                    module: 'Finance',
-                    assignee: 'Ana (Fin)',
-                    due: 'Tomorrow',
-                  },
-                  {
-                    id: 'TK-103',
-                    title: 'Schedule 2500km Maintenance',
-                    module: 'Supply',
-                    assignee: 'Carlos (Maint)',
-                    due: 'In 3 Days',
-                  },
-                ].map((tk) => (
-                  <div
-                    key={tk.id}
-                    className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 border rounded-xl hover:bg-muted/30 transition-colors gap-4"
-                  >
-                    <div>
-                      <div className="flex items-center gap-2 mb-1">
-                        <Badge variant="secondary" className="font-mono text-xs">
-                          {tk.id}
-                        </Badge>
-                        <Badge variant="outline" className="text-[10px] uppercase">
-                          {tk.module}
-                        </Badge>
-                      </div>
-                      <h4 className="font-semibold text-secondary">{tk.title}</h4>
-                    </div>
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground w-full sm:w-auto">
-                      <div className="flex items-center gap-1">
-                        <Clock className="w-4 h-4" /> {tk.due}
-                      </div>
-                      <div className="px-2 py-1 bg-muted rounded text-xs">{tk.assignee}</div>
-                      <Button variant="outline" size="sm">
-                        {t('view')}
-                      </Button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        <TabsContent value="calendar" className="mt-6">
-          <Card className="shadow-sm">
-            <CardHeader>
-              <CardTitle>{t('calendar_view')}</CardTitle>
-              <CardDescription>{t('calendar_desc')}</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="h-[400px] border-2 border-dashed rounded-xl flex items-center justify-center bg-muted/10 text-muted-foreground flex-col gap-2">
-                <CalendarDays className="w-12 h-12 opacity-20" />
-                <p>{t('calendar_placeholder')}</p>
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        <TabsContent value="gantt" className="mt-6">
-          <Card className="shadow-sm">
-            <CardHeader>
-              <CardTitle>{t('gantt_chart')}</CardTitle>
-              <CardDescription>{t('gantt_desc')}</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="h-[400px] border-2 border-dashed rounded-xl flex items-center justify-center bg-muted/10 text-muted-foreground flex-col gap-2">
-                <AlignLeft className="w-12 h-12 opacity-20" />
-                <p>{t('gantt_placeholder')}</p>
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        <TabsContent value="workflows" className="mt-6 space-y-6">
-          <Card className="shadow-sm border-primary/20">
-            <CardHeader>
+        <TabsContent value="workflows" className="mt-8 space-y-8">
+          <Card className="glass-card border-primary/20">
+            <CardHeader className="bg-primary/5 border-b border-primary/10">
               <CardTitle>{t('cascade_workflow')}</CardTitle>
               <CardDescription>{t('cascade_desc')}</CardDescription>
             </CardHeader>
-            <CardContent className="flex flex-col gap-0">
+            <CardContent className="flex flex-col gap-0 pt-6">
               {ONBOARDING_STEPS.map((step, index) => {
                 const isValidated = currentStep > step.id
                 const isActive = currentStep === step.id
@@ -168,46 +75,52 @@ export default function Tasks() {
                   <div key={step.id} className="relative">
                     {index < ONBOARDING_STEPS.length - 1 && (
                       <div
-                        className={`absolute top-10 left-6 w-0.5 h-full -ml-px ${isValidated ? 'bg-primary' : 'bg-muted'}`}
+                        className={`absolute top-10 left-6 w-[2px] h-full -ml-px ${isValidated ? 'bg-primary' : 'bg-muted'}`}
                       />
                     )}
-
                     <div
-                      className={`relative p-4 rounded-xl flex items-center justify-between mb-4 transition-all
-                      ${isActive ? 'bg-primary/5 border border-primary/30 shadow-sm' : 'border border-transparent'}
-                      ${isLocked ? 'opacity-50 grayscale pointer-events-none' : ''}
-                    `}
+                      className={`relative p-4 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4 transition-all ${isActive ? 'bg-primary/5 border border-primary/30 shadow-md' : 'border border-transparent'} ${isLocked ? 'opacity-50 grayscale pointer-events-none' : ''}`}
                     >
-                      <div className="flex items-center gap-4 z-10 bg-background/50 rounded-full pr-4">
+                      <div className="flex items-center gap-4 z-10 bg-background/50 backdrop-blur-sm rounded-full pr-4 p-1">
                         {isValidated ? (
-                          <div className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center shrink-0">
+                          <div className="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center shrink-0 shadow-sm">
                             <Check className="w-5 h-5" />
                           </div>
                         ) : isActive ? (
-                          <div className="w-8 h-8 rounded-full border-2 border-primary text-primary flex items-center justify-center shrink-0 bg-background">
-                            <span className="font-bold text-sm">{step.id}</span>
+                          <div className="w-10 h-10 rounded-full border-2 border-primary text-primary flex items-center justify-center shrink-0 bg-background shadow-[0_0_15px_rgba(28,209,92,0.2)]">
+                            <span className="font-extrabold">{step.id}</span>
                           </div>
                         ) : (
-                          <div className="w-8 h-8 rounded-full bg-muted text-muted-foreground flex items-center justify-center shrink-0">
-                            <span className="font-medium text-sm">{step.id}</span>
+                          <div className="w-10 h-10 rounded-full bg-muted text-muted-foreground flex items-center justify-center shrink-0 font-bold">
+                            {step.id}
                           </div>
                         )}
                         <div>
-                          <h4 className={`font-semibold ${isActive ? 'text-primary' : ''}`}>
+                          <h4
+                            className={`font-bold tracking-tight text-[15px] ${isActive ? 'text-primary' : 'text-foreground'}`}
+                          >
                             {t(step.title as any)}
                           </h4>
-                          <p className="text-sm text-muted-foreground">{t(step.desc as any)}</p>
+                          <p className="text-sm text-muted-foreground font-medium">
+                            {t(step.desc as any)}
+                          </p>
                         </div>
                       </div>
-
                       {!isLocked && !isValidated && (
-                        <Button onClick={() => handleValidateStep(step.id)} size="sm">
+                        <Button
+                          onClick={() => handleValidateStep(step.id)}
+                          size="sm"
+                          className="ml-[3.25rem] sm:ml-0 font-bold tracking-wider uppercase text-xs"
+                        >
                           {t('validate_step')}
                         </Button>
                       )}
                       {isValidated && (
-                        <Badge variant="outline" className="text-primary border-primary">
-                          {t('validated')}
+                        <Badge
+                          variant="outline"
+                          className="ml-[3.25rem] sm:ml-0 text-primary border-primary gap-1"
+                        >
+                          <CheckCircle2 className="w-3 h-3" /> {t('validated')}
                         </Badge>
                       )}
                     </div>
@@ -217,56 +130,64 @@ export default function Tasks() {
             </CardContent>
           </Card>
 
-          <Card className="shadow-sm">
-            <CardHeader>
+          <Card className="glass-card">
+            <CardHeader className="bg-muted/10 border-b">
               <CardTitle className="flex items-center gap-2">
                 {t('approvals_inbox')}
                 {approvalsList.length > 0 && (
-                  <Badge variant="destructive" className="ml-2">
+                  <Badge variant="destructive" className="ml-2 px-2 shadow-sm">
                     {approvalsList.length}
                   </Badge>
                 )}
               </CardTitle>
               <CardDescription>{t('approvals_desc')}</CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="pt-6">
               {approvalsList.length === 0 ? (
-                <div className="text-center py-10 text-muted-foreground">
+                <div className="text-center py-12 text-muted-foreground border-2 border-dashed rounded-2xl bg-muted/5">
                   <CheckCircle2 className="w-12 h-12 mx-auto mb-3 opacity-20" />
-                  <p>{t('no_approvals')}</p>
+                  <p className="font-medium tracking-wide">{t('no_approvals')}</p>
                 </div>
               ) : (
                 <div className="flex flex-col gap-4">
                   {approvalsList.map((app) => (
                     <div
                       key={app.id}
-                      className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 border rounded-xl hover:bg-muted/30 transition-colors"
+                      className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-5 border rounded-2xl hover:bg-muted/30 transition-colors bg-background/50 shadow-sm"
                     >
-                      <div className="flex items-start gap-3 mb-4 sm:mb-0">
-                        <Clock className="text-amber-500 w-5 h-5 mt-0.5" />
+                      <div className="flex items-start gap-4 mb-4 sm:mb-0">
+                        <Clock className="text-orange-500 w-5 h-5 mt-1 shrink-0" />
                         <div>
                           <div className="flex items-center gap-2 mb-1">
-                            <Badge variant="secondary" className="font-mono text-xs">
+                            <Badge variant="secondary" className="font-mono text-xs font-bold">
                               {app.id}
                             </Badge>
-                            <Badge variant="outline">{app.team}</Badge>
+                            <Badge
+                              variant="outline"
+                              className="text-[10px] uppercase font-bold text-muted-foreground"
+                            >
+                              {app.team}
+                            </Badge>
                           </div>
-                          <h4 className="font-semibold text-sm">
+                          <h4 className="font-bold text-[15px]">
                             {app.type}: {app.desc}
                           </h4>
-                          <p className="text-xs text-muted-foreground mt-1">
-                            {t('value')}: <strong className="text-foreground">{app.value}</strong> |
+                          <p className="text-sm text-muted-foreground mt-1 font-medium">
+                            {t('value')}: <strong className="text-foreground">{app.value}</strong> |{' '}
                             {t('requester')}: {app.requester}
                           </p>
                         </div>
                       </div>
-                      <div className="flex items-center gap-2 w-full sm:w-auto">
-                        <Button variant="outline" className="flex-1 sm:flex-none">
+                      <div className="flex items-center gap-3 w-full sm:w-auto">
+                        <Button
+                          variant="outline"
+                          className="flex-1 sm:flex-none border-red-200 text-red-600 hover:bg-red-50"
+                        >
                           {t('reject')}
                         </Button>
                         <Button
                           onClick={() => handleApprove(app.id)}
-                          className="flex-1 sm:flex-none"
+                          className="flex-1 sm:flex-none bg-primary"
                         >
                           {t('approve')}
                         </Button>
@@ -275,6 +196,60 @@ export default function Tasks() {
                   ))}
                 </div>
               )}
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="tickets" className="mt-8">
+          <Card className="glass-card">
+            <CardHeader className="bg-muted/10 border-b">
+              <CardTitle>{t('global_tickets')}</CardTitle>
+              <CardDescription>{t('global_tickets_desc')}</CardDescription>
+            </CardHeader>
+            <CardContent className="pt-6">
+              <div className="flex flex-col gap-4">
+                {[
+                  {
+                    id: 'TK-101',
+                    title: 'Review Courier Documents',
+                    module: 'Operations',
+                    assignee: 'João (Hub)',
+                    due: 'Today',
+                  },
+                ].map((tk) => (
+                  <div
+                    key={tk.id}
+                    className="flex justify-between items-center p-4 border rounded-2xl hover:bg-muted/30 transition-colors bg-background/50"
+                  >
+                    <div>
+                      <div className="flex gap-2 mb-1">
+                        <Badge variant="secondary" className="font-mono text-xs">
+                          {tk.id}
+                        </Badge>
+                      </div>
+                      <h4 className="font-bold">{tk.title}</h4>
+                    </div>
+                    <Button variant="outline" size="sm">
+                      {t('view')}
+                    </Button>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="gantt" className="mt-8">
+          <Card className="glass-card">
+            <CardHeader>
+              <CardTitle>{t('gantt_chart')}</CardTitle>
+              <CardDescription>{t('gantt_desc')}</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="h-[400px] border-2 border-dashed rounded-2xl flex items-center justify-center bg-muted/10 text-muted-foreground flex-col gap-3">
+                <AlignLeft className="w-12 h-12 opacity-20" />
+                <p className="font-medium tracking-wide">{t('gantt_placeholder')}</p>
+              </div>
             </CardContent>
           </Card>
         </TabsContent>

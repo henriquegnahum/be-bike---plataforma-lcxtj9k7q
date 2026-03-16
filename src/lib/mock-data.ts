@@ -1,3 +1,5 @@
+const today = new Date().toISOString().split('T')[0]
+
 export const MOCK_CRM_LEADS = [
   {
     id: '1',
@@ -121,7 +123,7 @@ export const MOCK_BIKES = [
   {
     id: '3',
     chassi: '9C23C6D4E5F6G7H8I',
-    status: 'Disponível',
+    status: 'Ociosa',
     model: 'BeBike City Pro',
     version: '2024 V1',
     brand: 'BeBike',
@@ -210,17 +212,6 @@ export const MOCK_DELIVERER_LOGS = [
   },
 ]
 
-export const MOCK_CLOUD_HUMANS_TICKETS = [
-  {
-    id: 'CH-8821',
-    subject: 'Problema Login App',
-    user: 'Ana Oliveira',
-    status: 'Open',
-    priority: 'High',
-    time: '10m ago',
-  },
-]
-
 export const taskColumns = [
   {
     id: 'todo',
@@ -244,5 +235,32 @@ export const pendingApprovals = [
     desc: 'Devolução de caução',
     value: 'R$ 150,00',
     requester: 'Op. Hub Sul',
+  },
+]
+
+export const MOCK_EVENTS = [
+  {
+    id: 'E1',
+    title: 'Retirada: Carlos Silva',
+    type: 'withdrawal',
+    date: today,
+    time: '10:00',
+    linkedTo: 'CPF: 123.***',
+  },
+  {
+    id: 'E2',
+    title: 'Manutenção Preditiva #9C21A',
+    type: 'maintenance',
+    date: today,
+    time: '14:00',
+    linkedTo: 'Chassi: 9C21A',
+  },
+  {
+    id: 'E3',
+    title: 'Devolução: Pedro Santos',
+    type: 'return',
+    date: today,
+    time: '09:00',
+    linkedTo: 'CPF: 345.***',
   },
 ]

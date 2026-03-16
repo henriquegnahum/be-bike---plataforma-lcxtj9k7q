@@ -10,64 +10,85 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { Bike as BikeIcon, Plus, Download, Upload } from 'lucide-react'
+import {
+  Bike as BikeIcon,
+  Plus,
+  Download,
+  Upload,
+  AlertTriangle,
+  AlertCircle,
+  CheckCircle2,
+} from 'lucide-react'
 import { MOCK_BIKES } from '@/lib/mock-data'
-import { useToast } from '@/hooks/use-toast'
 import { useTranslation } from '@/lib/i18n'
 
 export default function Bikes() {
-  const { toast } = useToast()
   const t = useTranslation()
 
-  const handleAction = (type: string) =>
-    toast({ title: t('action_executed'), description: `${t('system_processing')} ${type}.` })
-
-  const getRevisionBadge = (mileage: number, lastRev: number) => {
+  const getRevisionBadge = (mileage: number, lastRev: number, status: string) => {
+    if (status === 'Oficina')
+      return (
+        <Badge variant="secondary" className="ml-2 gap-1 text-[10px]">
+          <Wrench className="w-3 h-3" /> Em Revisão
+        </Badge>
+      )
     const diff = mileage - lastRev
     if (diff >= 2500)
       return (
-        <span
-          className="flex h-2 w-2 rounded-full bg-red-500 animate-pulse"
-          title={t('Revisar Agora')}
-        ></span>
+        <Badge variant="destructive" className="ml-2 gap-1 text-[10px]">
+          <AlertTriangle className="w-3 h-3" /> Revisar Agora
+        </Badge>
       )
     if (diff >= 2200)
-      return <span className="flex h-2 w-2 rounded-full bg-orange-500" title={t('Atenção')}></span>
-    return null
+      return (
+        <Badge
+          variant="outline"
+          className="ml-2 gap-1 text-[10px] text-orange-500 border-orange-500"
+        >
+          <AlertCircle className="w-3 h-3" /> Atenção
+        </Badge>
+      )
+    return (
+      <Badge
+        variant="outline"
+        className="ml-2 gap-1 text-[10px] text-emerald-500 border-emerald-500"
+      >
+        <CheckCircle2 className="w-3 h-3" /> OK
+      </Badge>
+    )
   }
 
   return (
-    <div className="space-y-6 max-w-7xl mx-auto">
+    <div className="space-y-6 max-w-7xl mx-auto animate-in fade-in duration-700">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-secondary">{t('fleet_title')}</h1>
-          <p className="text-muted-foreground">{t('fleet_desc')}</p>
+          <h1 className="text-4xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
+            {t('fleet_title')}
+          </h1>
+          <p className="text-muted-foreground mt-2 font-medium">{t('fleet_desc')}</p>
         </div>
         <div className="flex flex-wrap gap-2">
-          <Button variant="outline" onClick={() => handleAction('Export CSV')} size="sm">
+          <Button variant="outline" size="sm">
             <Download className="w-4 h-4 mr-2" /> CSV
           </Button>
-          <Button variant="outline" onClick={() => handleAction('Export XML')} size="sm">
-            <Download className="w-4 h-4 mr-2" /> XML
-          </Button>
-          <Button variant="secondary" size="sm" onClick={() => handleAction('Bulk Import')}>
+          <Button variant="secondary" size="sm">
             <Upload className="w-4 h-4 mr-2" /> {t('bulk_import')}
           </Button>
-          <Button className="bg-primary text-white">
+          <Button>
             <Plus className="w-4 h-4 mr-2" /> {t('new_bike')}
           </Button>
         </div>
       </div>
 
-      <Card>
-        <CardHeader>
+      <Card className="glass-card overflow-hidden">
+        <CardHeader className="bg-muted/10 border-b">
           <CardTitle className="flex items-center gap-2">
             <BikeIcon className="w-5 h-5 text-primary" /> {t('active_fleet_inventory')}
           </CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="p-0">
           <Table>
-            <TableHeader>
+            <TableHeader className="bg-background/50 backdrop-blur-md">
               <TableRow>
                 <TableHead>{t('chassi_id')}</TableHead>
                 <TableHead>{t('model_project')}</TableHead>
@@ -79,26 +100,43 @@ export default function Bikes() {
             </TableHeader>
             <TableBody>
               {MOCK_BIKES.map((bike) => (
-                <TableRow key={bike.id} className="hover:bg-muted/30">
-                  <TableCell className="font-mono font-medium text-xs">{bike.chassi}</TableCell>
+                <TableRow key={bike.id} className="hover:bg-muted/30 transition-colors">
+                  <TableCell className="font-mono font-bold text-xs">{bike.chassi}</TableCell>
                   <TableCell>
                     {bike.model}{' '}
-                    <span className="text-muted-foreground text-xs block">{bike.project}</span>
+                    <span className="text-muted-foreground text-xs block font-medium">
+                      {bike.project}
+                    </span>
                   </TableCell>
                   <TableCell>
-                    <Badge variant={bike.status === 'Ativa' ? 'default' : 'outline'}>
+                    <Badge
+                      variant={
+                        bike.status === 'Ativa'
+                          ? 'default'
+                          : bike.status === 'Oficina'
+                            ? 'destructive'
+                            : 'secondary'
+                      }
+                      className={
+                        bike.status === 'Ativa'
+                          ? 'bg-primary/20 text-primary border-primary/20 hover:bg-primary/30'
+                          : ''
+                      }
+                    >
                       {t(bike.status as any)}
                     </Badge>
                   </TableCell>
                   <TableCell>
-                    <div className="flex items-center gap-2">
-                      <span className="font-semibold">{bike.mileage}</span>
-                      {getRevisionBadge(bike.mileage, bike.lastRevisionKm)}
+                    <div className="flex items-center">
+                      <span className="font-semibold tabular-nums">{bike.mileage}</span>
+                      {getRevisionBadge(bike.mileage, bike.lastRevisionKm, bike.status)}
                     </div>
                   </TableCell>
                   <TableCell>
                     {bike.deliverer || (
-                      <span className="text-muted-foreground italic">{t('unassigned')}</span>
+                      <span className="text-muted-foreground italic text-xs">
+                        {t('unassigned')}
+                      </span>
                     )}
                   </TableCell>
                   <TableCell className="text-right">

@@ -11,9 +11,18 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import { Wrench, Settings, Bike as BikeIcon, Activity, ShieldCheck, Calendar } from 'lucide-react'
+import {
+  Wrench,
+  Settings,
+  Bike as BikeIcon,
+  Activity,
+  ShieldCheck,
+  Calendar,
+  AlertTriangle,
+  AlertCircle,
+  CheckCircle2,
+} from 'lucide-react'
 import { MOCK_BIKES, MOCK_BIKE_OS } from '@/lib/mock-data'
-import { useToast } from '@/hooks/use-toast'
 import { useState } from 'react'
 import { useTranslation } from '@/lib/i18n'
 
@@ -21,159 +30,177 @@ export default function BikeDetail() {
   const { id } = useParams()
   const foundBike = MOCK_BIKES.find((b) => b.id === id) || MOCK_BIKES[0]
   const [bike, setBike] = useState(foundBike)
-  const { toast } = useToast()
   const t = useTranslation()
 
   const nextRevisionKm = bike.lastRevisionKm + 2500
   const kmToRevision = nextRevisionKm - bike.mileage
 
-  const getRevisionStatus = () => {
+  const getRevData = () => {
     if (bike.status === 'Oficina')
-      return { label: t('Em Revisão'), color: 'text-blue-500', bg: 'bg-blue-50' }
+      return { l: 'Em Revisão', c: 'text-blue-500', bg: 'bg-blue-50', i: Wrench }
     if (kmToRevision <= 0)
-      return { label: t('Revisar Agora'), color: 'text-red-500', bg: 'bg-red-50' }
+      return { l: 'Revisar Agora', c: 'text-red-500', bg: 'bg-red-50', i: AlertTriangle }
     if (kmToRevision <= 300)
-      return { label: t('Atenção'), color: 'text-orange-500', bg: 'bg-orange-50' }
-    return { label: t('Ok'), color: 'text-emerald-500', bg: 'bg-emerald-50' }
+      return { l: 'Atenção', c: 'text-orange-500', bg: 'bg-orange-50', i: AlertCircle }
+    return { l: 'OK', c: 'text-emerald-500', bg: 'bg-emerald-50', i: CheckCircle2 }
   }
-  const revStatus = getRevisionStatus()
-
-  const setOficina = () => {
-    setBike({ ...bike, status: 'Oficina' })
-    toast({ title: t('status_updated'), description: t('workshop_log_created') })
-  }
+  const revStatus = getRevData()
+  const RevIcon = revStatus.i
 
   return (
-    <div className="space-y-6 max-w-6xl mx-auto pb-12">
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-6 rounded-xl border shadow-sm">
+    <div className="space-y-6 max-w-6xl mx-auto pb-12 animate-in fade-in duration-700">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 glass-card p-6 border-primary/20 shadow-[0_8px_30px_rgba(28,209,92,0.05)]">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight font-mono text-secondary">
+          <h1 className="text-4xl font-bold tracking-tight font-mono text-foreground">
             {bike.chassi}
           </h1>
-          <p className="text-muted-foreground flex items-center gap-2 mt-1">
-            <BikeIcon className="w-4 h-4 text-primary" /> {bike.model} • {bike.project}
+          <p className="text-muted-foreground flex items-center gap-2 mt-2 font-medium">
+            <BikeIcon className="w-5 h-5 text-primary" /> {bike.model} • {bike.project}
           </p>
         </div>
         <div className="flex items-center gap-3">
           <Badge
-            className="text-lg px-4 py-1"
+            className="text-lg px-4 py-1.5 shadow-md"
             variant={bike.status === 'Ativa' ? 'default' : 'secondary'}
           >
             {t(bike.status as any)}
           </Badge>
-          <Button variant="outline" onClick={setOficina} disabled={bike.status === 'Oficina'}>
-            {t('send_workshop')}
+          <Button variant="outline" disabled={bike.status === 'Oficina'}>
+            <Wrench className="w-4 h-4 mr-2" /> {t('send_workshop')}
           </Button>
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <Card className="md:col-span-1 border-primary/20 bg-primary/5">
-          <CardHeader>
+        <Card className="md:col-span-1 glass-card border-primary/20">
+          <CardHeader className="bg-primary/5 border-b border-primary/10">
             <CardTitle className="text-lg flex items-center gap-2">
-              <Activity className="w-4 h-4" /> {t('telemetry')}
+              <Activity className="w-4 h-4 text-primary" /> {t('telemetry')}
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-5">
+          <CardContent className="space-y-6 pt-6">
             <div>
-              <p className="text-xs text-muted-foreground uppercase">{t('total_km')}</p>
-              <p className="text-2xl font-bold">{bike.mileage} km</p>
+              <p className="text-xs text-muted-foreground uppercase font-bold tracking-wider">
+                {t('total_km')}
+              </p>
+              <p className="text-3xl font-extrabold tabular-nums">
+                {bike.mileage} <span className="text-lg text-muted-foreground font-medium">km</span>
+              </p>
             </div>
             <div>
-              <p className="text-xs text-muted-foreground uppercase">{t('last_revision')}</p>
-              <p className="font-medium">{bike.lastRevisionKm} km</p>
+              <p className="text-xs text-muted-foreground uppercase font-bold tracking-wider">
+                {t('last_revision')}
+              </p>
+              <p className="text-lg font-semibold tabular-nums">{bike.lastRevisionKm} km</p>
             </div>
             <div
-              className={`p-3 rounded-lg border ${revStatus.bg} border-${revStatus.color.split('-')[1]}-200`}
+              className={`p-4 rounded-2xl border ${revStatus.bg} border-${revStatus.c.split('-')[1]}-200 shadow-inner`}
             >
-              <p className="text-xs font-semibold uppercase flex justify-between">
-                {t('next_revision')} <span className={revStatus.color}>{revStatus.label}</span>
+              <p className="text-xs font-bold uppercase tracking-wider flex items-center gap-2 mb-2">
+                {t('next_revision')}{' '}
+                <Badge
+                  variant="outline"
+                  className={`ml-auto border-transparent ${revStatus.c} bg-white/50 flex gap-1`}
+                >
+                  <RevIcon className="w-3 h-3" /> {revStatus.l}
+                </Badge>
               </p>
-              <p className="font-bold text-lg">{nextRevisionKm} km</p>
-              <p className="text-xs text-muted-foreground mt-1">
+              <p className="font-extrabold text-2xl tabular-nums">{nextRevisionKm} km</p>
+              <p className="text-sm font-medium mt-1 opacity-80">
                 {t('in')} {Math.max(kmToRevision, 0)} km
               </p>
             </div>
-            <Button className="w-full mt-4" variant="default">
-              <Wrench className="w-4 h-4 mr-2" /> {t('auto_os')}
-            </Button>
           </CardContent>
         </Card>
 
-        <Card className="md:col-span-3">
+        <Card className="md:col-span-3 glass-card overflow-hidden">
           <CardContent className="p-0">
             <Tabs defaultValue="specs" className="w-full">
-              <div className="px-6 py-4 border-b bg-muted/10">
-                <TabsList>
-                  <TabsTrigger value="specs">
-                    <Settings className="w-4 h-4 mr-2" /> {t('specs_finance')}
+              <div className="px-6 py-4 border-b bg-muted/10 backdrop-blur-md">
+                <TabsList className="bg-background/50 shadow-sm">
+                  <TabsTrigger value="specs" className="gap-2">
+                    <Settings className="w-4 h-4" /> {t('specs_finance')}
                   </TabsTrigger>
-                  <TabsTrigger value="maintenance">
-                    <Wrench className="w-4 h-4 mr-2" /> {t('maintenance_log')}
+                  <TabsTrigger value="maintenance" className="gap-2">
+                    <Wrench className="w-4 h-4" /> {t('maintenance_log')}
                   </TabsTrigger>
                 </TabsList>
               </div>
 
-              <TabsContent value="specs" className="p-6 m-0">
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
+              <TabsContent value="specs" className="p-8 m-0 space-y-8">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-8">
                   <div>
-                    <p className="text-xs text-muted-foreground uppercase">{t('brand_size')}</p>
-                    <p className="font-medium">
+                    <p className="text-xs text-muted-foreground uppercase font-bold tracking-wider">
+                      {t('brand_size')}
+                    </p>
+                    <p className="font-semibold text-lg">
                       {bike.brand} - {bike.size}
                     </p>
                   </div>
                   <div>
-                    <p className="text-xs text-muted-foreground uppercase">{t('color_version')}</p>
-                    <p className="font-medium">
+                    <p className="text-xs text-muted-foreground uppercase font-bold tracking-wider">
+                      {t('color_version')}
+                    </p>
+                    <p className="font-semibold text-lg">
                       {bike.color} - {bike.version}
                     </p>
                   </div>
                   <div>
-                    <p className="text-xs text-muted-foreground uppercase flex items-center gap-1">
+                    <p className="text-xs text-muted-foreground uppercase font-bold tracking-wider flex items-center gap-1">
                       <Calendar className="w-3 h-3" /> {t('purchase_invoice')}
                     </p>
-                    <p className="font-medium">
-                      {bike.purchaseDate} • {bike.invoiceValue}
-                    </p>
+                    <p className="font-semibold text-lg">{bike.purchaseDate}</p>
                   </div>
                 </div>
 
-                <h4 className="font-semibold text-secondary mt-8 mb-4 border-b pb-2 flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4" /> {t('security_assets')}
-                </h4>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 bg-slate-50 p-4 rounded-xl border">
-                  <div>
-                    <p className="text-xs text-muted-foreground uppercase">{t('tracker_num')}</p>
-                    <p className="font-mono text-sm">{bike.trackerNum}</p>
-                  </div>
-                  <div>
-                    <p className="text-xs text-muted-foreground uppercase">{t('battery_num')}</p>
-                    <p className="font-mono text-sm">{bike.batteryNum}</p>
-                  </div>
-                  <div>
-                    <p className="text-xs text-muted-foreground uppercase">{t('lock_code')}</p>
-                    <p className="font-mono text-sm font-bold">{bike.lockCode}</p>
+                <div>
+                  <h4 className="font-bold text-foreground mb-4 flex items-center gap-2">
+                    <ShieldCheck className="w-5 h-5 text-primary" /> {t('security_assets')}
+                  </h4>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 bg-background/50 p-6 rounded-2xl border shadow-sm">
+                    <div>
+                      <p className="text-xs text-muted-foreground uppercase font-bold tracking-wider">
+                        {t('tracker_num')}
+                      </p>
+                      <p className="font-mono text-base font-medium">{bike.trackerNum}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground uppercase font-bold tracking-wider">
+                        {t('battery_num')}
+                      </p>
+                      <p className="font-mono text-base font-medium">{bike.batteryNum}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground uppercase font-bold tracking-wider">
+                        {t('lock_code')}
+                      </p>
+                      <p className="font-mono text-xl font-extrabold text-primary">
+                        {bike.lockCode}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </TabsContent>
 
-              <TabsContent value="maintenance" className="p-6 m-0">
+              <TabsContent value="maintenance" className="p-0 m-0">
                 <Table>
-                  <TableHeader>
+                  <TableHeader className="bg-muted/5">
                     <TableRow>
-                      <TableHead>O.S.</TableHead>
+                      <TableHead className="pl-6">O.S.</TableHead>
                       <TableHead>{t('date')}</TableHead>
                       <TableHead>{t('description')}</TableHead>
-                      <TableHead>{t('cost')}</TableHead>
+                      <TableHead className="pr-6 text-right">{t('cost')}</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
                     {MOCK_BIKE_OS.map((os) => (
                       <TableRow key={os.id}>
-                        <TableCell className="font-mono text-xs">{os.id}</TableCell>
-                        <TableCell>{os.date}</TableCell>
+                        <TableCell className="pl-6 font-mono text-xs font-bold">{os.id}</TableCell>
+                        <TableCell className="font-medium">{os.date}</TableCell>
                         <TableCell>{os.description}</TableCell>
-                        <TableCell>R$ {os.cost}</TableCell>
+                        <TableCell className="pr-6 text-right font-bold text-primary">
+                          R$ {os.cost.toFixed(2)}
+                        </TableCell>
                       </TableRow>
                     ))}
                   </TableBody>

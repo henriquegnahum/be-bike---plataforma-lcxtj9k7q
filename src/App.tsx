@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Toaster } from '@/components/ui/sonner'
 import Layout from '@/components/Layout'
 import Index from '@/pages/Index'
+import Hubs from '@/pages/Hubs'
+import CalendarPage from '@/pages/Calendar'
 import CRM from '@/pages/CRM'
 import Marketing from '@/pages/Marketing'
 import LeadDetail from '@/pages/LeadDetail'
@@ -20,7 +22,6 @@ import NotFound from '@/pages/NotFound'
 import { AppProvider } from '@/stores/main'
 import { ThemeProvider } from 'next-themes'
 
-// Global patch to prevent SecurityError when accessing cssRules on cross-origin stylesheets.
 try {
   const patchSheet = (prop: 'cssRules' | 'rules') => {
     const original = Object.getOwnPropertyDescriptor(CSSStyleSheet.prototype, prop)
@@ -30,9 +31,7 @@ try {
           try {
             return original.get?.call(this) || []
           } catch (e: any) {
-            if (e.name === 'SecurityError') {
-              return []
-            }
+            if (e.name === 'SecurityError') return []
             throw e
           }
         },
@@ -41,9 +40,7 @@ try {
   }
   patchSheet('cssRules')
   patchSheet('rules')
-} catch (err) {
-  // Silently ignore if patch fails
-}
+} catch (err) {}
 
 function App() {
   return (
@@ -53,6 +50,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<Index />} />
+              <Route path="hubs" element={<Hubs />} />
+              <Route path="calendar" element={<CalendarPage />} />
               <Route path="crm" element={<CRM />} />
               <Route path="crm/:id" element={<LeadDetail />} />
               <Route path="marketing" element={<Marketing />} />
