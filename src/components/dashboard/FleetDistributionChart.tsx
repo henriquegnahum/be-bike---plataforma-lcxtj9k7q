@@ -32,8 +32,8 @@ export function FleetDistributionChart() {
     () => ({
       fleet_segment_99food: { label: t('fleet_segment_99food'), color: 'hsl(var(--primary))' },
       fleet_segment_other: { label: t('fleet_segment_other'), color: '#34d399' },
-      fleet_segment_b2b: { label: t('fleet_segment_b2b'), color: '#059669' },
-      fleet_segment_intermediation: { label: t('fleet_segment_intermediation'), color: '#047857' },
+      fleet_segment_b2b: { label: t('fleet_segment_b2b'), color: '#0ea5e9' },
+      fleet_segment_intermediation: { label: t('fleet_segment_intermediation'), color: '#f59e0b' },
       fleet_segment_own: { label: t('fleet_segment_own'), color: '#8b5cf6' },
     }),
     [t],
@@ -43,25 +43,35 @@ export function FleetDistributionChart() {
     <Card className="glass-card flex flex-col h-full border-border/60">
       <CardHeader>
         <CardTitle>{t('fleet_distribution')}</CardTitle>
-        <CardDescription>Visão geral da categorização de ativos em campo</CardDescription>
+        <CardDescription>Visão geral da categorização estratégica de ativos</CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-6 pt-2">
-        <ChartContainer config={config} className="mx-auto aspect-square max-h-[300px]">
+        <ChartContainer config={config} className="mx-auto aspect-square max-h-[320px]">
           <PieChart>
+            <defs>
+              <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="4" stdDeviation="6" floodOpacity="0.15" />
+              </filter>
+            </defs>
             <Pie
               data={data}
               dataKey="value"
               nameKey="segment"
-              innerRadius={75}
-              outerRadius={95}
-              paddingAngle={4}
+              innerRadius={80}
+              outerRadius={105}
+              paddingAngle={6}
               strokeWidth={0}
               animationDuration={1500}
               animationBegin={200}
-              cornerRadius={8}
+              cornerRadius={10}
+              style={{ filter: 'url(#shadow)' }}
             >
               {data.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={entry.fill} />
+                <Cell
+                  key={`cell-${index}`}
+                  fill={entry.fill}
+                  className="transition-all hover:opacity-80"
+                />
               ))}
             </Pie>
             <ChartTooltip
@@ -70,7 +80,7 @@ export function FleetDistributionChart() {
             />
             <ChartLegend
               content={<ChartLegendContent />}
-              className="flex-wrap gap-2 text-xs mt-4"
+              className="flex-wrap gap-x-4 gap-y-2 text-[11px] mt-4 opacity-80"
             />
           </PieChart>
         </ChartContainer>

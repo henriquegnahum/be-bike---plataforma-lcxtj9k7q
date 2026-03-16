@@ -47,7 +47,7 @@ export function AppHeader() {
   }
 
   return (
-    <header className="sticky top-0 z-20 w-full flex h-16 items-center justify-between border-b border-border/40 bg-background/60 backdrop-blur-2xl px-4 md:px-6 shadow-sm transition-colors duration-300">
+    <header className="sticky top-0 z-20 w-full flex h-16 items-center justify-between border-b glass-panel px-4 md:px-6 shadow-sm">
       <div className="flex items-center gap-4">
         <SidebarTrigger>
           <Menu className="h-5 w-5 text-foreground" />
@@ -56,7 +56,7 @@ export function AppHeader() {
           {getPageTitle()}
           <Badge
             variant="outline"
-            className="text-[10px] uppercase font-bold bg-primary/10 text-primary border-primary/20"
+            className="text-[10px] uppercase font-bold bg-primary/10 text-primary border-primary/20 backdrop-blur-sm"
           >
             {role}
           </Badge>
@@ -68,7 +68,7 @@ export function AppHeader() {
           variant="ghost"
           size="sm"
           onClick={handleFeedback}
-          className="hidden md:flex gap-2 text-muted-foreground hover:text-foreground"
+          className="hidden md:flex gap-2 text-muted-foreground hover:text-foreground hover:bg-background/40"
         >
           <MessageSquarePlus className="w-4 h-4" /> {t('feedback')}
         </Button>
@@ -77,7 +77,7 @@ export function AppHeader() {
           variant="ghost"
           size="icon"
           onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-          className="text-muted-foreground hover:text-foreground"
+          className="text-muted-foreground hover:text-foreground hover:bg-background/40"
         >
           <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
           <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
@@ -89,7 +89,7 @@ export function AppHeader() {
             <Button
               variant="ghost"
               size="icon"
-              className="text-muted-foreground hover:text-foreground"
+              className="text-muted-foreground hover:text-foreground hover:bg-background/40"
             >
               <Globe className="h-5 w-5" />
             </Button>
@@ -104,7 +104,9 @@ export function AppHeader() {
                 className="justify-between cursor-pointer"
               >
                 {l === 'PT' ? 'Português (BR)' : l === 'EN' ? 'English' : 'Español'}
-                {language === l && <span className="w-2 h-2 rounded-full bg-primary" />}
+                {language === l && (
+                  <span className="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_var(--primary)]" />
+                )}
               </DropdownMenuItem>
             ))}
           </DropdownMenuContent>
@@ -115,7 +117,7 @@ export function AppHeader() {
             <Button
               variant="outline"
               size="sm"
-              className="gap-2 ml-2 border-border/60 hover:border-primary/50 transition-colors bg-background/50 backdrop-blur-sm"
+              className="gap-2 ml-2 border-border/60 hover:border-primary/50 transition-colors bg-white/40 dark:bg-black/40 backdrop-blur-md"
             >
               <User className="h-4 w-4 text-primary" />
               <span className="hidden sm:inline-block font-semibold">{role}</span>
@@ -130,7 +132,10 @@ export function AppHeader() {
                 onClick={() => setRole(r)}
                 className="justify-between cursor-pointer"
               >
-                {r} {role === r && <span className="w-2 h-2 rounded-full bg-primary" />}
+                {r}{' '}
+                {role === r && (
+                  <span className="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_var(--primary)]" />
+                )}
               </DropdownMenuItem>
             ))}
             <DropdownMenuSeparator />

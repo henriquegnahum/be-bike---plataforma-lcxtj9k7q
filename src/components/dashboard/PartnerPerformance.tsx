@@ -26,14 +26,18 @@ export function PartnerPerformance() {
               <div className="flex justify-between text-sm items-end">
                 <span className="font-semibold text-foreground">{m.label}</span>
                 <span className="text-muted-foreground font-mono text-xs">
-                  <span className={isOverGoal ? 'text-primary font-bold' : ''}>{m.value}%</span> /{' '}
+                  <span className={isOverGoal ? 'text-blue-500 font-bold' : ''}>{m.value}%</span> /{' '}
                   {m.target}%
                 </span>
               </div>
               <Progress
                 value={m.value}
-                className="h-2.5 bg-muted group-hover:bg-muted/80 transition-colors"
-                indicatorClassName={isOverGoal ? 'bg-primary' : 'bg-primary/70'}
+                className="h-2.5 bg-muted group-hover:bg-muted/80 transition-colors shadow-inner"
+                indicatorClassName={
+                  isOverGoal
+                    ? 'bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.6)]'
+                    : 'bg-blue-400/70'
+                }
               />
             </div>
           )

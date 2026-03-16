@@ -46,8 +46,8 @@ export function FinancialContractsTable() {
             {contracts.map((c) => (
               <TableRow key={c.id} className="hover:bg-muted/40 transition-colors">
                 <TableCell className="font-mono text-xs font-medium">{c.id}</TableCell>
-                <TableCell className="font-medium">{t(c.type as any)}</TableCell>
-                <TableCell className="font-semibold">{c.value}</TableCell>
+                <TableCell className="font-medium text-foreground/90">{t(c.type as any)}</TableCell>
+                <TableCell className="font-bold text-foreground">{c.value}</TableCell>
                 <TableCell>
                   <Badge
                     variant={
@@ -58,7 +58,9 @@ export function FinancialContractsTable() {
                           : 'secondary'
                     }
                     className={
-                      c.status === 'Adimplente' ? 'border-primary/50 text-primary bg-primary/5' : ''
+                      c.status === 'Adimplente'
+                        ? 'border-primary/50 text-primary bg-primary/10 shadow-[0_0_8px_rgba(28,209,92,0.1)]'
+                        : ''
                     }
                   >
                     {t(c.status as any)}

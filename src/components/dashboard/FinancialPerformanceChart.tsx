@@ -40,44 +40,54 @@ export function FinancialPerformanceChart() {
         <CardDescription>Acompanhamento de receitas vs despesas operacionais</CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-4 pt-2">
-        <ChartContainer config={config} className="w-full h-full min-h-[250px] max-h-[300px]">
+        <ChartContainer config={config} className="w-full h-full min-h-[280px] max-h-[320px]">
           <AreaChart data={data} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
             <defs>
               <linearGradient id="fillRev" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="var(--color-revenue)" stopOpacity={0.3} />
+                <stop offset="5%" stopColor="var(--color-revenue)" stopOpacity={0.4} />
                 <stop offset="95%" stopColor="var(--color-revenue)" stopOpacity={0} />
               </linearGradient>
               <linearGradient id="fillExp" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="var(--color-expenses)" stopOpacity={0.3} />
+                <stop offset="5%" stopColor="var(--color-expenses)" stopOpacity={0.2} />
                 <stop offset="95%" stopColor="var(--color-expenses)" stopOpacity={0} />
               </linearGradient>
             </defs>
             <CartesianGrid
-              strokeDasharray="3 3"
+              strokeDasharray="4 4"
               vertical={false}
               stroke="hsl(var(--border))"
-              opacity={0.5}
+              opacity={0.4}
             />
             <XAxis
               dataKey="month"
               tickLine={false}
               axisLine={false}
-              tickMargin={10}
+              tickMargin={12}
               fontSize={12}
+              className="text-muted-foreground font-medium"
             />
-            <YAxis tickLine={false} axisLine={false} tickMargin={10} fontSize={12} />
+            <YAxis
+              tickLine={false}
+              axisLine={false}
+              tickMargin={12}
+              fontSize={12}
+              className="text-muted-foreground font-medium"
+            />
             <ChartTooltip
-              content={<ChartTooltipContent indicator="dot" />}
-              cursor={{ stroke: 'hsl(var(--border))', strokeWidth: 1 }}
+              content={
+                <ChartTooltipContent indicator="dot" className="glass-card bg-background/90" />
+              }
+              cursor={{ stroke: 'hsl(var(--primary)/0.3)', strokeWidth: 2, strokeDasharray: '4 4' }}
             />
             <ChartLegend content={<ChartLegendContent />} />
             <Area
               type="monotone"
               dataKey="revenue"
               stroke="var(--color-revenue)"
-              strokeWidth={3}
+              strokeWidth={4}
               fill="url(#fillRev)"
-              animationDuration={1500}
+              animationDuration={2000}
+              activeDot={{ r: 6, fill: 'var(--color-revenue)', stroke: '#fff', strokeWidth: 2 }}
             />
             <Area
               type="monotone"
@@ -85,7 +95,7 @@ export function FinancialPerformanceChart() {
               stroke="var(--color-expenses)"
               strokeWidth={3}
               fill="url(#fillExp)"
-              animationDuration={1500}
+              animationDuration={2000}
             />
           </AreaChart>
         </ChartContainer>

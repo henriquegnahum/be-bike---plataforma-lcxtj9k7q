@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts'
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Cell } from 'recharts'
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart'
 import { useTranslation } from '@/lib/i18n'
 import { useMemo } from 'react'
@@ -42,7 +42,7 @@ export function ContractsStatusChart() {
               strokeDasharray="3 3"
               horizontal={false}
               stroke="hsl(var(--border))"
-              opacity={0.5}
+              opacity={0.4}
             />
             <XAxis type="number" hide />
             <YAxis
@@ -53,12 +53,21 @@ export function ContractsStatusChart() {
               tickFormatter={(value) => t(value as any)}
               width={90}
               fontSize={12}
+              className="font-medium"
             />
             <ChartTooltip
-              cursor={{ fill: 'hsl(var(--muted)/0.4)' }}
-              content={<ChartTooltipContent hideLabel />}
+              cursor={{ fill: 'hsl(var(--muted)/0.3)' }}
+              content={<ChartTooltipContent hideLabel className="glass-card bg-background/90" />}
             />
-            <Bar dataKey="count" radius={[0, 6, 6, 0]} animationDuration={1500} barSize={32} />
+            <Bar dataKey="count" radius={[0, 8, 8, 0]} animationDuration={1500} barSize={36}>
+              {data.map((entry, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={entry.fill}
+                  className="hover:opacity-80 transition-opacity"
+                />
+              ))}
+            </Bar>
           </BarChart>
         </ChartContainer>
       </CardContent>

@@ -12,9 +12,9 @@ export default function Index() {
   const t = useTranslation()
 
   return (
-    <div className="space-y-8 pb-12">
+    <div className="space-y-8 pb-12 relative z-10">
       <div className="opacity-0 animate-fade-in-up" style={{ animationDelay: '0ms' }}>
-        <h1 className="text-4xl font-extrabold tracking-tight text-foreground w-fit">
+        <h1 className="text-4xl font-extrabold tracking-tight text-foreground w-fit bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
           {t('dashboard')}
         </h1>
         <p className="text-muted-foreground mt-2 text-lg font-medium">{t('index_desc')}</p>

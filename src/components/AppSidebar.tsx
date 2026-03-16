@@ -68,7 +68,7 @@ export function AppSidebar() {
   const menuItems = allMenuItems.filter((item) => item.roles.includes(role))
 
   return (
-    <Sidebar className="border-r border-border/50 bg-background/60 backdrop-blur-xl">
+    <Sidebar className="border-r glass-panel">
       <SidebarHeader className="h-16 flex items-center px-6 py-4 border-b border-border/50">
         <Link to="/" className="flex items-center gap-2">
           <img src={logoImg} alt="Be Bike" className="h-8 w-auto object-contain dark:invert" />
@@ -90,7 +90,7 @@ export function AppSidebar() {
                     <SidebarMenuButton
                       asChild
                       isActive={isActive}
-                      className={`rounded-xl transition-all duration-200 py-2.5 px-3 hover:bg-primary/10 hover:text-primary ${isActive ? 'bg-primary/15 text-primary font-bold shadow-sm' : 'text-muted-foreground font-medium'}`}
+                      className={`rounded-xl transition-all duration-300 py-2.5 px-3 hover:bg-primary/10 hover:text-primary ${isActive ? 'bg-primary/15 text-primary font-bold shadow-[0_2px_10px_rgba(28,209,92,0.1)]' : 'text-muted-foreground font-medium'}`}
                     >
                       <Link to={item.url} className="flex items-center gap-3">
                         <item.icon

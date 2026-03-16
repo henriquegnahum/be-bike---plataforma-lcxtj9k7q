@@ -33,8 +33,10 @@ export function LeadGoalControl() {
               </div>
               <Progress
                 value={percent}
-                className="h-2.5 bg-muted group-hover:bg-muted/80 transition-colors"
-                indicatorClassName={isOverGoal ? 'bg-primary' : 'bg-primary/70'}
+                className="h-2.5 bg-muted group-hover:bg-muted/80 transition-colors shadow-inner"
+                indicatorClassName={
+                  isOverGoal ? 'bg-primary shadow-[0_0_8px_var(--primary)]' : 'bg-primary/70'
+                }
               />
             </div>
           )

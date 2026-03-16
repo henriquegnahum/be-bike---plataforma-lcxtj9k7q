@@ -3,7 +3,7 @@ import { useCallback } from 'react'
 
 const PT = {
   // Navigation & General
-  dashboard: 'Painel Hub',
+  dashboard: 'Be Bike OS 2.0',
   crm: 'CRM e Funil',
   fleet: 'Gestão de Frota',
   deliverers: 'Entregadores',
@@ -30,11 +30,11 @@ const PT = {
   cost: 'Custo',
 
   // Index & Dashboard New Sections
-  index_desc: 'Centro de comando centralizado unificando CRM, Operações e dados Financeiros.',
+  index_desc: 'Comando Inteligente. Visões Modulares: Operacional, Gerencial e Preditiva.',
   active_fleet: 'Frota Ativa',
   active_deliverers: 'Entregadores Ativos',
-  monthly_conversion: 'Conversão Mensal',
-  mrr: 'MRR (AsaaS)',
+  monthly_conversion: 'Conversão (Leads)',
+  mrr: 'MRR (Financeiro)',
   cloud_humans: 'Atendimento Cloud Humans',
   recent_tickets: 'Tickets recentes integrados via API',
   ai_insights: 'Insights de IA',
@@ -50,14 +50,14 @@ const PT = {
   fleet_segment_b2b: 'Bikes B2B',
   fleet_segment_intermediation: 'Bikes intermediação (Mountain Bike, Road) - Lojistas',
   fleet_segment_own: 'Bikes próprias (Mountain Bike, Road)',
-  fleet_distribution: 'Distribuição da Frota',
+  fleet_distribution: 'Gestão de Frota (Segmentação)',
   financial_performance: 'Gestão Financeira',
   contracts_status: 'Gestão de Contratos',
   churn_reasons: 'Motivos de Churn',
-  partner_performance: 'Performance de métricas dentro da 99Food/Parceiros',
-  lead_goal_control: 'Controle de Leads Meta',
+  partner_performance: 'Performance 99Food/Parceiros',
+  lead_goal_control: 'Controle de Leads (Metas)',
   by_entry_source: 'Por origem de entrada',
-  financial_contracts_overview: 'Financeiro - Contratos Geral',
+  financial_contracts_overview: 'Financeiro Geral (Fluxo de Caixa)',
   revenue: 'Receita',
   expenses: 'Despesas',
   active_contracts: 'Ativos',
@@ -220,18 +220,18 @@ const PT = {
   map_placeholder: 'Placeholder de Visão de Mapa',
 
   // AI Assistant
-  ai_title: 'Be Bike AI Insights',
-  ai_subtitle: 'Faça perguntas sobre frota, churn, subsídios e alertas.',
-  ai_placeholder: 'Ex: Quem está em risco de churn?',
-  ai_typing: 'Digitando...',
+  ai_title: 'Be Bike OS Engine',
+  ai_subtitle: 'Motor de Decisão Preditiva com Explicabilidade Total.',
+  ai_placeholder: 'Consulte operações, riscos ou finanças...',
+  ai_typing: 'Processando inferências...',
   ai_default_response:
-    'Consultei a base unificada. Notei que temos entregadores com risco alto de churn esta semana e 3 bikes aguardando manutenção preditiva.',
+    'Sincronizei a base de dados. Sugestão: Alocar 5 novas bikes para a Zona Sul.\n\n[Explicabilidade]: O modelo identificou um pico de 22% na demanda 99Food na região nas últimas 48h, enquanto 3 bikes locais entraram em manutenção preventiva.',
   ai_churn_response:
-    'Identifiquei 12 entregadores com risco alto de churn. O CPF 222.333.444-55 (Maria Oliveira) está com score 60 e taxa de conclusão no app 99 em apenas 70%. Deseja iniciar um fluxo de retenção?',
+    'Ação Sugerida: Iniciar fluxo de retenção para 12 entregadores.\n\n[Explicabilidade]: A análise preditiva detectou que o CPF 222.333.444-55 (Maria Oliveira) está com score 60 e taxa de conclusão no app 99 caiu para 70%, o que historicamente precede o churn em 85% dos casos.',
   ai_maint_response:
-    'A Bike #X-123 ultrapassou o limite de 2.500km hoje. Uma OS preditiva foi sugerida. Além disso, o estoque de Pneu Aro 29 no Hub Centro está crítico (4 unidades).',
+    'Ação Sugerida: Gerar O.S. Preditiva e Acionar Compras.\n\n[Explicabilidade]: A Bike #X-123 ultrapassou o limite de 2.500km via telemetria hoje. Simultaneamente, o estoque de Pneu Aro 29 no Hub Centro atingiu o limite crítico (4 unidades) com base no lead time de entrega de 5 dias do fornecedor.',
   ai_fin_response:
-    'A sincronização com a 99 ocorreu há 2 horas. 85% dos entregadores estão elegíveis para o nível Ouro de subsídio este mês.',
+    'Ação Sugerida: Liberar subsídio nível Ouro para 85% da base.\n\n[Explicabilidade]: A API da 99 confirmou o atingimento das metas de conclusão de corridas. A liberação automática reduzirá a inadimplência projetada em 12% no próximo ciclo.',
 
   // BO Summary
   bo_copied_title: 'Resumo B.O. Copiado (1400c)',
@@ -311,7 +311,7 @@ const PT = {
 }
 
 const EN: typeof PT = {
-  dashboard: 'Dashboard Hub',
+  dashboard: 'Be Bike OS 2.0',
   crm: 'CRM & Funnel',
   fleet: 'Fleet Management',
   deliverers: 'Deliverers',
@@ -337,11 +337,11 @@ const EN: typeof PT = {
   description: 'Description',
   cost: 'Cost',
 
-  index_desc: 'Centralized command center unifying CRM, Operations, and Financial data.',
+  index_desc: 'Intelligent Command. Modular Views: Operational, Managerial, and Predictive.',
   active_fleet: 'Active Fleet',
   active_deliverers: 'Active Deliverers',
-  monthly_conversion: 'Monthly Conversion',
-  mrr: 'MRR (AsaaS)',
+  monthly_conversion: 'Lead Conversion',
+  mrr: 'MRR (Financial)',
   cloud_humans: 'Cloud Humans Service',
   recent_tickets: 'Recent support tickets integrated via API',
   ai_insights: 'AI Insights',
@@ -357,14 +357,14 @@ const EN: typeof PT = {
   fleet_segment_b2b: 'B2B Bikes',
   fleet_segment_intermediation: 'Intermediation Bikes (MTB/Road) - Dealers',
   fleet_segment_own: 'Own Bikes (MTB/Road)',
-  fleet_distribution: 'Fleet Distribution',
+  fleet_distribution: 'Fleet Management (Segments)',
   financial_performance: 'Financial Management',
   contracts_status: 'Contract Management',
   churn_reasons: 'Churn Reasons',
-  partner_performance: 'Metric Performance (99Food/Partners)',
+  partner_performance: '99Food/Partners Performance',
   lead_goal_control: 'Lead Goal Control',
   by_entry_source: 'By entry source',
-  financial_contracts_overview: 'Financial - General Contracts',
+  financial_contracts_overview: 'General Financials (Cash Flow)',
   revenue: 'Revenue',
   expenses: 'Expenses',
   active_contracts: 'Active',
@@ -517,18 +517,18 @@ const EN: typeof PT = {
   live_map_feed: 'Live map feed for recovery teams.',
   map_placeholder: 'Map View Placeholder',
 
-  ai_title: 'Be Bike AI Insights',
-  ai_subtitle: 'Ask questions about fleet, churn, subsidies and alerts.',
-  ai_placeholder: 'Ex: Who is at risk of churn?',
-  ai_typing: 'Typing...',
+  ai_title: 'Be Bike OS Engine',
+  ai_subtitle: 'Predictive Decision Engine with Total Explainability.',
+  ai_placeholder: 'Ask about operations, risks or finance...',
+  ai_typing: 'Processing inferences...',
   ai_default_response:
-    'I consulted the unified base. We have couriers with high churn risk this week and 3 bikes waiting for predictive maintenance.',
+    'Database synced. Suggestion: Allocate 5 new bikes to the South Zone.\n\n[Explainability]: The model identified a 22% spike in 99Food demand in the region over the last 48h, while 3 local bikes entered preventive maintenance.',
   ai_churn_response:
-    'Identified 12 couriers with high churn risk. ID 222.333.444-55 (Maria Oliveira) has a score of 60 and a 99 app completion rate of only 70%. Do you want to start a retention workflow?',
+    'Suggested Action: Start retention flow for 12 couriers.\n\n[Explainability]: Predictive analysis detected that ID 222.333.444-55 (Maria Oliveira) has a score of 60 and the completion rate in the 99 app dropped to 70%, which historically precedes churn in 85% of cases.',
   ai_maint_response:
-    'Bike #X-123 exceeded the 2500km limit today. A predictive O.S. was suggested. Also, 29" Tire stock at Hub Center is critical (4 units).',
+    'Suggested Action: Generate Predictive O.S. and Trigger Purchasing.\n\n[Explainability]: Bike #X-123 exceeded the 2500km limit via telemetry today. Simultaneously, 29" Tire stock at Hub Center reached critical limit (4 units) based on supplier 5-day lead time.',
   ai_fin_response:
-    'Synchronization with 99 occurred 2 hours ago. 85% of couriers are eligible for the Gold subsidy level this month.',
+    'Suggested Action: Release Gold level subsidy to 85% of base.\n\n[Explainability]: 99 API confirmed trip completion goals were met. Automatic release will reduce projected default by 12% in the next cycle.',
 
   bo_copied_title: 'Digital P.R. Copied (1400c)',
   bo_copied_desc: 'Paste it on the police portal. Redirecting...',
@@ -605,7 +605,7 @@ const EN: typeof PT = {
 }
 
 const ES: typeof PT = {
-  dashboard: 'Tablero Hub',
+  dashboard: 'Be Bike OS 2.0',
   crm: 'CRM y Embudo',
   fleet: 'Gestión de Flota',
   deliverers: 'Repartidores',
@@ -631,11 +631,11 @@ const ES: typeof PT = {
   description: 'Descripción',
   cost: 'Costo',
 
-  index_desc: 'Centro de comando centralizado que unifica CRM, Operaciones y datos Financieros.',
+  index_desc: 'Comando Inteligente. Vistas Modulares: Operativa, Gerencial y Predictiva.',
   active_fleet: 'Flota Activa',
   active_deliverers: 'Repartidores Activos',
-  monthly_conversion: 'Conversión Mensual',
-  mrr: 'MRR (AsaaS)',
+  monthly_conversion: 'Conversión (Leads)',
+  mrr: 'MRR (Financiero)',
   cloud_humans: 'Servicio Cloud Humans',
   recent_tickets: 'Tickets recientes integrados vía API',
   ai_insights: 'Insights de IA',
@@ -651,14 +651,14 @@ const ES: typeof PT = {
   fleet_segment_b2b: 'Bikes B2B',
   fleet_segment_intermediation: 'Bikes intermediación (MTB/Road) - Tiendas',
   fleet_segment_own: 'Bikes propias (MTB/Road)',
-  fleet_distribution: 'Distribución de Flota',
+  fleet_distribution: 'Gestión de Flota (Segmentos)',
   financial_performance: 'Gestión Financiera',
   contracts_status: 'Gestión de Contratos',
   churn_reasons: 'Motivos de Abandono',
-  partner_performance: 'Rendimiento de métricas (99Food/Socios)',
-  lead_goal_control: 'Control de Leads Meta',
+  partner_performance: 'Rendimiento 99Food/Socios',
+  lead_goal_control: 'Control de Leads (Metas)',
   by_entry_source: 'Por origen de entrada',
-  financial_contracts_overview: 'Financiero - Contratos General',
+  financial_contracts_overview: 'Finanzas Generales (Flujo de Caja)',
   revenue: 'Ingresos',
   expenses: 'Gastos',
   active_contracts: 'Activos',
@@ -811,18 +811,18 @@ const ES: typeof PT = {
   live_map_feed: 'Feed de mapa en vivo para equipos de recuperación.',
   map_placeholder: 'Placeholder de Vista de Mapa',
 
-  ai_title: 'Be Bike AI Insights',
-  ai_subtitle: 'Haga preguntas sobre flota, abandono, subsidios y alertas.',
-  ai_placeholder: 'Ej: ¿Quién está en riesgo de abandono?',
-  ai_typing: 'Escribiendo...',
+  ai_title: 'Be Bike OS Engine',
+  ai_subtitle: 'Motor de Decisión Predictiva con Explicabilidad Total.',
+  ai_placeholder: 'Consulte sobre operaciones, riesgos o finanzas...',
+  ai_typing: 'Procesando inferencias...',
   ai_default_response:
-    'Consulté la base unificada. Tenemos repartidores con alto riesgo de abandono esta semana y 3 bikes esperando mantenimiento predictivo.',
+    'Sincronicé la base de datos. Sugerencia: Asignar 5 nuevas bikes a la Zona Sur.\n\n[Explicabilidad]: El modelo identificó un pico del 22% en la demanda 99Food en la región en las últimas 48h, mientras que 3 bikes locales entraron en mantenimiento preventivo.',
   ai_churn_response:
-    'Identifiqué 12 repartidores con alto riesgo de abandono. El ID 222.333.444-55 (Maria Oliveira) tiene un puntaje de 60 y una tasa de finalización en la app 99 de solo 70%. ¿Desea iniciar un flujo de retención?',
+    'Acción Sugerida: Iniciar flujo de retención para 12 repartidores.\n\n[Explicabilidad]: El análisis predictivo detectó que el ID 222.333.444-55 (Maria Oliveira) tiene un puntaje de 60 y la tasa de finalización en la app 99 cayó al 70%, lo que históricamente precede al abandono en el 85% de los casos.',
   ai_maint_response:
-    'La Bike #X-123 superó el límite de 2500km hoy. Se sugirió una O.S. predictiva. Además, el stock de Neumático Aro 29 en Hub Centro es crítico (4 unidades).',
+    'Acción Sugerida: Generar O.S. Predictiva y Activar Compras.\n\n[Explicabilidad]: La Bike #X-123 superó el límite de 2500km vía telemetría hoy. Simultáneamente, el stock de Neumático Aro 29 en Hub Centro alcanzó el límite crítico (4 unidades) basado en el tiempo de entrega de 5 días del proveedor.',
   ai_fin_response:
-    'La sincronización con 99 ocurrió hace 2 horas. El 85% de los repartidores son elegibles para el nivel Oro de subsidio este mes.',
+    'Acción Sugerida: Liberar subsidio nivel Oro para el 85% de la base.\n\n[Explicabilidad]: La API de 99 confirmó el cumplimiento de las metas de carreras. La liberación automática reducirá la morosidad proyectada en un 12% en el próximo ciclo.',
 
   bo_copied_title: 'Denuncia Digital Copiada (1400c)',
   bo_copied_desc: 'Péguela en el portal de la policía. Redirigiendo...',
