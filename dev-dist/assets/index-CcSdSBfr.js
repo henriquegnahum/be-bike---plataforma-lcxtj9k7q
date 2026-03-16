@@ -33394,137 +33394,152 @@ var NotFound = () => {
 };
 //#endregion
 //#region src/App.tsx
+try {
+	const patchSheet = (prop) => {
+		const original = Object.getOwnPropertyDescriptor(CSSStyleSheet.prototype, prop);
+		if (original) Object.defineProperty(CSSStyleSheet.prototype, prop, { get() {
+			try {
+				return original.get?.call(this) || [];
+			} catch (e) {
+				if (e.name === "SecurityError") return [];
+				throw e;
+			}
+		} });
+	};
+	patchSheet("cssRules");
+	patchSheet("rules");
+} catch (err) {}
 function App() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AppProvider, {
-		"data-uid": "src/App.tsx:21:5",
+		"data-uid": "src/App.tsx:47:5",
 		"data-prohibitions": "[]",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(BrowserRouter, {
-			"data-uid": "src/App.tsx:22:7",
+			"data-uid": "src/App.tsx:48:7",
 			"data-prohibitions": "[]",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Routes, {
-				"data-uid": "src/App.tsx:23:9",
+				"data-uid": "src/App.tsx:49:9",
 				"data-prohibitions": "[]",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Route, {
-					"data-uid": "src/App.tsx:24:11",
+					"data-uid": "src/App.tsx:50:11",
 					"data-prohibitions": "[]",
 					path: "/",
 					element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layout, {
-						"data-uid": "src/App.tsx:24:36",
+						"data-uid": "src/App.tsx:50:36",
 						"data-prohibitions": "[editContent]"
 					}),
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
-							"data-uid": "src/App.tsx:25:13",
+							"data-uid": "src/App.tsx:51:13",
 							"data-prohibitions": "[editContent]",
 							index: true,
 							element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Index, {
-								"data-uid": "src/App.tsx:25:35",
+								"data-uid": "src/App.tsx:51:35",
 								"data-prohibitions": "[editContent]"
 							})
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
-							"data-uid": "src/App.tsx:26:13",
+							"data-uid": "src/App.tsx:52:13",
 							"data-prohibitions": "[editContent]",
 							path: "crm",
 							element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CRM, {
-								"data-uid": "src/App.tsx:26:40",
+								"data-uid": "src/App.tsx:52:40",
 								"data-prohibitions": "[editContent]"
 							})
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
-							"data-uid": "src/App.tsx:27:13",
+							"data-uid": "src/App.tsx:53:13",
 							"data-prohibitions": "[editContent]",
 							path: "crm/:id",
 							element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LeadDetail, {
-								"data-uid": "src/App.tsx:27:44",
+								"data-uid": "src/App.tsx:53:44",
 								"data-prohibitions": "[editContent]"
 							})
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
-							"data-uid": "src/App.tsx:28:13",
+							"data-uid": "src/App.tsx:54:13",
 							"data-prohibitions": "[editContent]",
 							path: "bikes",
 							element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bikes, {
-								"data-uid": "src/App.tsx:28:42",
+								"data-uid": "src/App.tsx:54:42",
 								"data-prohibitions": "[editContent]"
 							})
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
-							"data-uid": "src/App.tsx:29:13",
+							"data-uid": "src/App.tsx:55:13",
 							"data-prohibitions": "[editContent]",
 							path: "bikes/:id",
 							element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BikeDetail, {
-								"data-uid": "src/App.tsx:29:46",
+								"data-uid": "src/App.tsx:55:46",
 								"data-prohibitions": "[editContent]"
 							})
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
-							"data-uid": "src/App.tsx:30:13",
+							"data-uid": "src/App.tsx:56:13",
 							"data-prohibitions": "[editContent]",
 							path: "deliverers",
 							element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Deliverers, {
-								"data-uid": "src/App.tsx:30:47",
+								"data-uid": "src/App.tsx:56:47",
 								"data-prohibitions": "[editContent]"
 							})
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
-							"data-uid": "src/App.tsx:31:13",
+							"data-uid": "src/App.tsx:57:13",
 							"data-prohibitions": "[editContent]",
 							path: "deliverers/:id",
 							element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DelivererDetail, {
-								"data-uid": "src/App.tsx:31:51",
+								"data-uid": "src/App.tsx:57:51",
 								"data-prohibitions": "[editContent]"
 							})
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
-							"data-uid": "src/App.tsx:32:13",
+							"data-uid": "src/App.tsx:58:13",
 							"data-prohibitions": "[editContent]",
 							path: "maintenance",
 							element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Maintenance, {
-								"data-uid": "src/App.tsx:32:48",
+								"data-uid": "src/App.tsx:58:48",
 								"data-prohibitions": "[editContent]"
 							})
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
-							"data-uid": "src/App.tsx:33:13",
+							"data-uid": "src/App.tsx:59:13",
 							"data-prohibitions": "[editContent]",
 							path: "tasks",
 							element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Tasks, {
-								"data-uid": "src/App.tsx:33:42",
+								"data-uid": "src/App.tsx:59:42",
 								"data-prohibitions": "[editContent]"
 							})
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
-							"data-uid": "src/App.tsx:34:13",
+							"data-uid": "src/App.tsx:60:13",
 							"data-prohibitions": "[editContent]",
 							path: "financial",
 							element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Financial, {
-								"data-uid": "src/App.tsx:34:46",
+								"data-uid": "src/App.tsx:60:46",
 								"data-prohibitions": "[editContent]"
 							})
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
-							"data-uid": "src/App.tsx:35:13",
+							"data-uid": "src/App.tsx:61:13",
 							"data-prohibitions": "[editContent]",
 							path: "security",
 							element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Security, {
-								"data-uid": "src/App.tsx:35:45",
+								"data-uid": "src/App.tsx:61:45",
 								"data-prohibitions": "[editContent]"
 							})
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
-							"data-uid": "src/App.tsx:36:13",
+							"data-uid": "src/App.tsx:62:13",
 							"data-prohibitions": "[editContent]",
 							path: "*",
 							element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NotFound, {
-								"data-uid": "src/App.tsx:36:38",
+								"data-uid": "src/App.tsx:62:38",
 								"data-prohibitions": "[editContent]"
 							})
 						})
 					]
 				})
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Toaster, {
-				"data-uid": "src/App.tsx:39:9",
+				"data-uid": "src/App.tsx:65:9",
 				"data-prohibitions": "[editContent]"
 			})]
 		})
@@ -33538,4 +33553,4 @@ function App() {
 }));
 //#endregion
 
-//# sourceMappingURL=index-Dk-8t8p-.js.map
+//# sourceMappingURL=index-CcSdSBfr.js.map

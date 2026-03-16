@@ -16,6 +16,32 @@ import Security from '@/pages/Security'
 import NotFound from '@/pages/NotFound'
 import { AppProvider } from '@/stores/main'
 
+// Global patch to prevent SecurityError when accessing cssRules on cross-origin stylesheets.
+// This resolves issues with html-to-image or similar tools trying to read restricted stylesheets.
+try {
+  const patchSheet = (prop: 'cssRules' | 'rules') => {
+    const original = Object.getOwnPropertyDescriptor(CSSStyleSheet.prototype, prop)
+    if (original) {
+      Object.defineProperty(CSSStyleSheet.prototype, prop, {
+        get() {
+          try {
+            return original.get?.call(this) || []
+          } catch (e: any) {
+            if (e.name === 'SecurityError') {
+              return []
+            }
+            throw e
+          }
+        },
+      })
+    }
+  }
+  patchSheet('cssRules')
+  patchSheet('rules')
+} catch (err) {
+  // Silently ignore if patch fails
+}
+
 function App() {
   return (
     <AppProvider>
