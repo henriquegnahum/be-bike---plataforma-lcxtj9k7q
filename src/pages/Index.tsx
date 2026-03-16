@@ -35,7 +35,7 @@ export default function Index() {
           <PopoverContent className="w-64" align="end">
             <h4 className="font-semibold text-sm mb-3">Widgets Visíveis</h4>
             <div className="space-y-3">
-              {Object.entries(dashboardConfig).map(([key, value]) => (
+              {Object.entries(dashboardConfig || {}).map(([key, value]) => (
                 <div key={key} className="flex items-center justify-between">
                   <span className="text-sm">{t(key as any) || key}</span>
                   <Switch checked={value} onCheckedChange={() => toggleDashboardWidget(key)} />
@@ -79,30 +79,30 @@ export default function Index() {
         </Link>
       </div>
 
-      {dashboardConfig.kpis && <DashboardKPIs />}
+      {dashboardConfig?.kpis && <DashboardKPIs />}
 
-      {(dashboardConfig.fleet || dashboardConfig.financial) && (
+      {(dashboardConfig?.fleet || dashboardConfig?.financial) && (
         <div className="grid gap-6 lg:grid-cols-2">
-          {dashboardConfig.fleet && <FleetDistributionChart />}
-          {dashboardConfig.financial && <FinancialPerformanceChart />}
+          {dashboardConfig?.fleet && <FleetDistributionChart />}
+          {dashboardConfig?.financial && <FinancialPerformanceChart />}
         </div>
       )}
 
-      {(dashboardConfig.contracts || dashboardConfig.churn) && (
+      {(dashboardConfig?.contracts || dashboardConfig?.churn) && (
         <div className="grid gap-6 lg:grid-cols-2">
-          {dashboardConfig.contracts && <ContractsStatusChart />}
-          {dashboardConfig.churn && <ChurnAnalysisChart />}
+          {dashboardConfig?.contracts && <ContractsStatusChart />}
+          {dashboardConfig?.churn && <ChurnAnalysisChart />}
         </div>
       )}
 
-      {(dashboardConfig.leads || dashboardConfig.partners) && (
+      {(dashboardConfig?.leads || dashboardConfig?.partners) && (
         <div className="grid gap-6 lg:grid-cols-2">
-          {dashboardConfig.leads && <LeadGoalControl />}
-          {dashboardConfig.partners && <PartnerPerformance />}
+          {dashboardConfig?.leads && <LeadGoalControl />}
+          {dashboardConfig?.partners && <PartnerPerformance />}
         </div>
       )}
 
-      {dashboardConfig.table && <FinancialContractsTable />}
+      {dashboardConfig?.table && <FinancialContractsTable />}
     </div>
   )
 }
