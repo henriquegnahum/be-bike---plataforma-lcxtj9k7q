@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
 import { SidebarProvider } from '@/components/ui/sidebar'
 import { AppSidebar } from './AppSidebar'
@@ -12,31 +11,6 @@ import { Sparkles } from 'lucide-react'
 
 export default function Layout() {
   const { aiOpen, setAiOpen } = useAppStore()
-
-  useEffect(() => {
-    try {
-      const originalCssRulesDescriptor = Object.getOwnPropertyDescriptor(
-        CSSStyleSheet.prototype,
-        'cssRules',
-      )
-      if (originalCssRulesDescriptor) {
-        Object.defineProperty(CSSStyleSheet.prototype, 'cssRules', {
-          get() {
-            try {
-              return originalCssRulesDescriptor.get?.call(this)
-            } catch (e: any) {
-              if (e.name === 'SecurityError' || (e.message && e.message.includes('cssRules'))) {
-                return []
-              }
-              throw e
-            }
-          },
-        })
-      }
-    } catch (error) {
-      console.warn('Failed to apply CSSStyleSheet safeguard', error)
-    }
-  }, [])
 
   return (
     <SidebarProvider>

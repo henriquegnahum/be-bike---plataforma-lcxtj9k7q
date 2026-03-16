@@ -1,5 +1,4 @@
 import { useTranslation } from '@/lib/i18n'
-import useAppStore from '@/stores/main'
 import { DashboardKPIs } from '@/components/dashboard/DashboardKPIs'
 import { FleetDistributionChart } from '@/components/dashboard/FleetDistributionChart'
 import { FinancialPerformanceChart } from '@/components/dashboard/FinancialPerformanceChart'
@@ -9,15 +8,11 @@ import { LeadGoalControl } from '@/components/dashboard/LeadGoalControl'
 import { PartnerPerformance } from '@/components/dashboard/PartnerPerformance'
 import { FinancialContractsTable } from '@/components/dashboard/FinancialContractsTable'
 import { Link } from 'react-router-dom'
-import { TrendingDown, Wrench, Settings2 } from 'lucide-react'
+import { TrendingDown, Wrench } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
-import { Switch } from '@/components/ui/switch'
-import { Button } from '@/components/ui/button'
 
 export default function Index() {
   const t = useTranslation()
-  const { dashboardConfig, toggleDashboardWidget } = useAppStore()
 
   return (
     <div className="space-y-6 pb-8">
@@ -26,24 +21,6 @@ export default function Index() {
           <h1 className="text-3xl font-bold tracking-tight">{t('dashboard')}</h1>
           <p className="text-muted-foreground mt-1">{t('index_desc')}</p>
         </div>
-        <Popover>
-          <PopoverTrigger asChild>
-            <Button variant="outline">
-              <Settings2 className="w-4 h-4 mr-2" /> Personalizar
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent className="w-64" align="end">
-            <h4 className="font-semibold text-sm mb-3">Widgets Visíveis</h4>
-            <div className="space-y-3">
-              {Object.entries(dashboardConfig || {}).map(([key, value]) => (
-                <div key={key} className="flex items-center justify-between">
-                  <span className="text-sm">{t(key as any) || key}</span>
-                  <Switch checked={value} onCheckedChange={() => toggleDashboardWidget(key)} />
-                </div>
-              ))}
-            </div>
-          </PopoverContent>
-        </Popover>
       </div>
 
       <div className="grid gap-6 md:grid-cols-2 mb-6">
@@ -62,7 +39,7 @@ export default function Index() {
             </CardContent>
           </Card>
         </Link>
-        <Link to="/sales/customers" className="block">
+        <Link to="/crm/customers" className="block">
           <Card className="h-full hover:bg-muted/50 transition-colors">
             <CardContent className="p-6 flex items-start gap-4">
               <div className="p-2 bg-blue-100 rounded-lg text-blue-600 dark:bg-blue-900/20 dark:text-blue-400">
@@ -79,30 +56,24 @@ export default function Index() {
         </Link>
       </div>
 
-      {dashboardConfig?.kpis && <DashboardKPIs />}
+      <DashboardKPIs />
 
-      {(dashboardConfig?.fleet || dashboardConfig?.financial) && (
-        <div className="grid gap-6 lg:grid-cols-2">
-          {dashboardConfig?.fleet && <FleetDistributionChart />}
-          {dashboardConfig?.financial && <FinancialPerformanceChart />}
-        </div>
-      )}
+      <div className="grid gap-6 lg:grid-cols-2">
+        <FleetDistributionChart />
+        <FinancialPerformanceChart />
+      </div>
 
-      {(dashboardConfig?.contracts || dashboardConfig?.churn) && (
-        <div className="grid gap-6 lg:grid-cols-2">
-          {dashboardConfig?.contracts && <ContractsStatusChart />}
-          {dashboardConfig?.churn && <ChurnAnalysisChart />}
-        </div>
-      )}
+      <div className="grid gap-6 lg:grid-cols-2">
+        <ContractsStatusChart />
+        <ChurnAnalysisChart />
+      </div>
 
-      {(dashboardConfig?.leads || dashboardConfig?.partners) && (
-        <div className="grid gap-6 lg:grid-cols-2">
-          {dashboardConfig?.leads && <LeadGoalControl />}
-          {dashboardConfig?.partners && <PartnerPerformance />}
-        </div>
-      )}
+      <div className="grid gap-6 lg:grid-cols-2">
+        <LeadGoalControl />
+        <PartnerPerformance />
+      </div>
 
-      {dashboardConfig?.table && <FinancialContractsTable />}
+      <FinancialContractsTable />
     </div>
   )
 }

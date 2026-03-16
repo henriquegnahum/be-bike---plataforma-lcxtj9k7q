@@ -11,8 +11,6 @@ type AppState = {
   setIsAuthenticated: (auth: boolean) => void
   channels: string[]
   addChannel: (channel: string) => void
-  dashboardConfig: Record<string, boolean>
-  toggleDashboardWidget: (widget: string) => void
 }
 
 export const AppContext = createContext<AppState>({} as AppState)
@@ -29,26 +27,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     'hubs',
     'financeiro',
   ])
-  const [dashboardConfig, setDashboardConfig] = useState({
-    kpis: true,
-    fleet: true,
-    financial: true,
-    contracts: true,
-    churn: true,
-    leads: true,
-    partners: true,
-    table: true,
-  })
 
   const addChannel = (channel: string) => {
     if (!channels.includes(channel)) setChannels([...channels, channel])
-  }
-
-  const toggleDashboardWidget = (widget: string) => {
-    setDashboardConfig((prev) => ({
-      ...prev,
-      [widget]: !prev[widget as keyof typeof dashboardConfig],
-    }))
   }
 
   return React.createElement(
@@ -65,8 +46,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         setIsAuthenticated,
         channels,
         addChannel,
-        dashboardConfig,
-        toggleDashboardWidget,
       },
     },
     children,
