@@ -13,6 +13,7 @@ import {
 import useAppStore from '@/stores/main'
 import { useTranslation } from '@/lib/i18n'
 import { useTheme } from 'next-themes'
+import { UserMenu } from '@/components/user/UserMenu'
 
 export function AppHeader() {
   const location = useLocation()
@@ -43,7 +44,7 @@ export function AppHeader() {
   }
 
   return (
-    <header className="sticky top-0 z-20 w-full flex h-14 items-center justify-between border-b border-border/50 glass-panel px-4 md:px-6 shadow-sm">
+    <header className="sticky top-0 z-20 w-full flex h-16 items-center justify-between border-b border-border/50 glass-panel px-4 md:px-6 shadow-sm">
       <div className="flex items-center gap-4">
         <SidebarTrigger>
           <Menu className="h-5 w-5 text-foreground" />
@@ -53,7 +54,7 @@ export function AppHeader() {
         </div>
       </div>
 
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-3">
         <Button
           variant="ghost"
           size="icon"
@@ -92,6 +93,10 @@ export function AppHeader() {
             ))}
           </DropdownMenuContent>
         </DropdownMenu>
+
+        <div className="w-px h-6 bg-border/60 mx-1 hidden sm:block" />
+
+        <UserMenu />
       </div>
     </header>
   )

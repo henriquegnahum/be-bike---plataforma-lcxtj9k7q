@@ -15,20 +15,27 @@ import {
   UserCircle2,
 } from 'lucide-react'
 import { ScrollArea } from '@/components/ui/scroll-area'
+import { UserAvatar } from '@/components/user/UserAvatar'
+import { useUserStore } from '@/stores/user'
 
 export default function Chat() {
   const { channel = 'geral' } = useParams()
+  const { profile, status, customStatus, preferences } = useUserStore()
   const [msg, setMsg] = useState('')
   const [messages, setMessages] = useState<any[]>([
     {
       text: 'Pessoal, a demanda no hub SP-Sul subiu muito. Alguém disponível para reforço?',
       time: '10:42',
-      sender: 'Marcos (Gerente)',
+      sender: 'Marcos Silva',
+      senderRole: 'Gerente Hub',
+      senderStatus: 'online',
     },
     {
       text: 'Estou finalizando uma O.S. no Centro e posso ir.',
       time: '10:45',
-      sender: 'Ana (Mecânica)',
+      sender: 'Ana Paula',
+      senderRole: 'Mecânica Sênior',
+      senderStatus: 'away',
     },
   ])
 
@@ -157,16 +164,21 @@ export default function Chat() {
                 key={i}
                 className={`flex gap-4 animate-in fade-in slide-in-from-bottom-2 ${m.sender === 'Você' ? 'flex-row-reverse' : ''}`}
               >
-                <div
-                  className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 shadow-sm ${m.sender === 'Você' ? 'bg-primary text-primary-foreground' : 'bg-secondary text-secondary-foreground border border-border/50'}`}
-                >
-                  <UserCircle2 className="w-6 h-6" />
-                </div>
+                {m.sender === 'Você' ? (
+                  <UserAvatar className="w-10 h-10 shadow-sm shrink-0" />
+                ) : (
+                  <UserAvatar
+                    className="w-10 h-10 shadow-sm shrink-0"
+                    user={{ name: m.sender, role: m.senderRole, status: m.senderStatus }}
+                  />
+                )}
                 <div
                   className={`flex flex-col ${m.sender === 'Você' ? 'items-end' : 'items-start'} max-w-[80%]`}
                 >
                   <div className="flex items-center gap-2 mb-1.5 px-1">
-                    <span className="font-bold text-sm text-foreground">{m.sender}</span>
+                    <span className="font-bold text-sm text-foreground">
+                      {m.sender === 'Você' ? profile.name : m.sender}
+                    </span>
                     <span className="text-xs font-medium text-muted-foreground">{m.time}</span>
                   </div>
                   <div

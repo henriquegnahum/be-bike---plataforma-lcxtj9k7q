@@ -1,15 +1,6 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import {
-  ChevronRight,
-  MessageSquare,
-  Sparkles,
-  User,
-  Settings,
-  Hash,
-  Plus,
-  LogOut,
-} from 'lucide-react'
+import { ChevronRight, MessageSquare, Sparkles, Settings, Hash, Plus, LogOut } from 'lucide-react'
 import {
   Sidebar,
   SidebarContent,
@@ -27,6 +18,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/component
 import { Button } from '@/components/ui/button'
 import logoImg from '@/assets/bebike_logo-5fe56.png'
 import useAppStore from '@/stores/main'
+import { useUserStore } from '@/stores/user'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -44,14 +36,16 @@ import {
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { navHierarchy } from '@/lib/navigation'
+import { UserAvatar } from '@/components/user/UserAvatar'
 
 export function AppSidebar() {
   const location = useLocation()
   const { role, setRole, setAiOpen, channels, addChannel, setIsAuthenticated } = useAppStore()
+  const { profile } = useUserStore()
   const [newChannel, setNewChannel] = useState('')
   const [isDialogOpen, setIsDialogOpen] = useState(false)
 
-  const roles = ['Admin', 'Finance', 'Operations', 'Hubs', 'Supply']
+  const roles = ['Administrador', 'Financeiro', 'Operações', 'Hubs', 'Suprimentos']
 
   const isActiveUrl = (url: string) => {
     return location.pathname === url || (url !== '/' && location.pathname.startsWith(url))
@@ -181,23 +175,23 @@ export function AppSidebar() {
           <DropdownMenuTrigger asChild>
             <Button
               variant="ghost"
-              className="w-full justify-start rounded-xl px-2 hover:bg-muted/50 h-12"
+              className="w-full justify-start rounded-xl px-2 hover:bg-muted/50 h-14 border border-transparent hover:border-border/50 transition-all"
             >
               <span className="flex items-center gap-3">
-                <span className="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center shrink-0 shadow-inner">
-                  <User className="w-4 h-4" />
-                </span>
-                <span className="flex flex-col items-start text-left">
-                  <span className="text-sm font-bold leading-none text-foreground">
-                    Thiago Silva
+                <UserAvatar className="w-9 h-9" showTooltip={false} />
+                <span className="flex flex-col items-start text-left truncate">
+                  <span className="text-sm font-bold leading-none text-foreground truncate w-[130px]">
+                    {profile.name}
                   </span>
-                  <span className="text-xs text-muted-foreground mt-1 font-medium">{role}</span>
+                  <span className="text-xs text-muted-foreground mt-1.5 font-medium truncate w-[130px]">
+                    {profile.role}
+                  </span>
                 </span>
               </span>
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-56 glass-card mb-2">
-            <DropdownMenuLabel>Alternar Perfil</DropdownMenuLabel>
+          <DropdownMenuContent align="end" className="w-60 glass-card mb-2">
+            <DropdownMenuLabel>Alternar Papel (Admin Mock)</DropdownMenuLabel>
             <DropdownMenuSeparator />
             {roles.map((r) => (
               <DropdownMenuItem
@@ -206,21 +200,21 @@ export function AppSidebar() {
                 className="justify-between cursor-pointer font-medium"
               >
                 {r}{' '}
-                {role === r && (
+                {profile.role === r && (
                   <span className="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_var(--primary)]" />
                 )}
               </DropdownMenuItem>
             ))}
             <DropdownMenuSeparator />
             <DropdownMenuItem className="cursor-pointer text-muted-foreground font-medium">
-              <Settings className="w-4 h-4 mr-2" /> Configurações
+              <Settings className="w-4 h-4 mr-2" /> Preferências Locais
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem
               className="cursor-pointer text-red-500 font-bold focus:text-red-500 focus:bg-red-500/10"
               onClick={() => setIsAuthenticated(false)}
             >
-              <LogOut className="w-4 h-4 mr-2" /> Sair do Sistema
+              <LogOut className="w-4 h-4 mr-2" /> Desconectar Sessão
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

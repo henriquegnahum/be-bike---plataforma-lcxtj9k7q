@@ -28,6 +28,7 @@ import ComingSoon from '@/pages/ComingSoon'
 import NotFound from '@/pages/NotFound'
 import Login from '@/pages/Login'
 import useAppStore, { AppProvider } from '@/stores/main'
+import { UserProvider } from '@/stores/user'
 import { ThemeProvider } from 'next-themes'
 
 try {
@@ -98,8 +99,10 @@ function App() {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <AppProvider>
-        <AppContent />
-        <Toaster />
+        <UserProvider>
+          <AppContent />
+          <Toaster />
+        </UserProvider>
       </AppProvider>
     </ThemeProvider>
   )
