@@ -40,7 +40,9 @@ try {
   }
   patchSheet('cssRules')
   patchSheet('rules')
-} catch (err) {}
+} catch (err) {
+  // Ignore errors on patch
+}
 
 function App() {
   return (
