@@ -45,7 +45,7 @@ export default function CustomerService() {
               4<span className="text-3xl text-muted-foreground">m</span> 12
               <span className="text-3xl text-muted-foreground">s</span>
             </div>
-            <p className="text-xs font-medium text-muted-foreground mt-2 flex items-center gap-1.5">
+            <div className="text-xs font-medium text-muted-foreground mt-2 flex items-center gap-1.5">
               SLA médio de primeira resposta{' '}
               <Badge
                 variant="outline"
@@ -53,7 +53,7 @@ export default function CustomerService() {
               >
                 -15s vs ontem
               </Badge>
-            </p>
+            </div>
           </CardContent>
         </Card>
 

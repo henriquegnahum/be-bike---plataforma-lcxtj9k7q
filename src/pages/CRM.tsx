@@ -111,12 +111,16 @@ export default function CRM() {
             className="w-80 flex-shrink-0 glass-panel rounded-[2rem] p-4 border flex flex-col h-full shadow-sm"
           >
             <div className="flex items-center justify-between mb-4 px-2">
-              <h3 className="font-extrabold text-foreground/80 uppercase text-xs tracking-wider flex items-center gap-2">
+              <div
+                className="font-extrabold text-foreground/80 uppercase text-xs tracking-wider flex items-center gap-2"
+                role="heading"
+                aria-level={3}
+              >
                 {t(stage)}
                 <Badge variant="secondary" className="shadow-sm text-[10px] py-0">
                   {leads.filter((l) => l.stage === stage).length}
                 </Badge>
-              </h3>
+              </div>
             </div>
             <div className="space-y-3 overflow-y-auto flex-1 pr-1 pb-2 no-scrollbar">
               {leads

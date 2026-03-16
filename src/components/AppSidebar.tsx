@@ -183,17 +183,17 @@ export function AppSidebar() {
               variant="ghost"
               className="w-full justify-start rounded-xl px-2 hover:bg-muted/50 h-12"
             >
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center shrink-0 shadow-inner">
+              <span className="flex items-center gap-3">
+                <span className="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center shrink-0 shadow-inner">
                   <User className="w-4 h-4" />
-                </div>
-                <div className="flex flex-col items-start text-left">
+                </span>
+                <span className="flex flex-col items-start text-left">
                   <span className="text-sm font-bold leading-none text-foreground">
                     Thiago Silva
                   </span>
                   <span className="text-xs text-muted-foreground mt-1 font-medium">{role}</span>
-                </div>
-              </div>
+                </span>
+              </span>
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-56 glass-card mb-2">

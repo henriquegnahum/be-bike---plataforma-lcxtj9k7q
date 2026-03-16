@@ -40,7 +40,11 @@ export default function DelivererDetail() {
             <User className="h-8 w-8" />
           </div>
           <div>
-            <h1 className="text-3xl font-extrabold tracking-tight text-foreground flex items-center gap-3">
+            <div
+              className="text-3xl font-extrabold tracking-tight text-foreground flex items-center gap-3"
+              role="heading"
+              aria-level={1}
+            >
               {deliverer.name}
               <Badge
                 variant={deliverer.status === 'Active' ? 'default' : 'outline'}
@@ -48,7 +52,7 @@ export default function DelivererDetail() {
               >
                 {t(deliverer.status as any)}
               </Badge>
-            </h1>
+            </div>
             <p className="text-muted-foreground font-mono text-sm mt-1 font-medium">
               CPF: {deliverer.cpf}
             </p>

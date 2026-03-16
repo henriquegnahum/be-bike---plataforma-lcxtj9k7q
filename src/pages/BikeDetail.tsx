@@ -96,7 +96,7 @@ export default function BikeDetail() {
             <div
               className={`p-4 rounded-2xl border ${revStatus.bg} border-${revStatus.c.split('-')[1]}-200 shadow-inner`}
             >
-              <p className="text-xs font-bold uppercase tracking-wider flex items-center gap-2 mb-2">
+              <div className="text-xs font-bold uppercase tracking-wider flex items-center gap-2 mb-2">
                 {t('next_revision')}{' '}
                 <Badge
                   variant="outline"
@@ -104,7 +104,7 @@ export default function BikeDetail() {
                 >
                   <RevIcon className="w-3 h-3" /> {revStatus.l}
                 </Badge>
-              </p>
+              </div>
               <p className="font-extrabold text-2xl tabular-nums">{nextRevisionKm} km</p>
               <p className="text-sm font-medium mt-1 opacity-80">
                 {t('in')} {Math.max(kmToRevision, 0)} km

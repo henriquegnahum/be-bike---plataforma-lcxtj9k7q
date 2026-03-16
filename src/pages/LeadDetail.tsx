@@ -52,12 +52,16 @@ export default function LeadDetail() {
             <User className="h-8 w-8" />
           </div>
           <div>
-            <h1 className="text-3xl font-extrabold tracking-tight text-foreground flex items-center gap-3">
+            <div
+              className="text-3xl font-extrabold tracking-tight text-foreground flex items-center gap-3"
+              role="heading"
+              aria-level={1}
+            >
               {lead.name}{' '}
               <Badge variant="outline" className="shadow-sm">
                 {t(lead.stage as any)}
               </Badge>
-            </h1>
+            </div>
             <p className="text-muted-foreground font-mono text-sm mt-1 font-medium">
               {lead.phone} • {t(lead.type as any)}
             </p>
