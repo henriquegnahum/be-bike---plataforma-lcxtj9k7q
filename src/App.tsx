@@ -1,5 +1,5 @@
 import './App.css'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { Toaster } from '@/components/ui/sonner'
 import Layout from '@/components/Layout'
 import Index from '@/pages/Index'
@@ -21,7 +21,8 @@ import Security from '@/pages/Security'
 import Chat from '@/pages/Chat'
 import Integrations from '@/pages/Integrations'
 import NotFound from '@/pages/NotFound'
-import { AppProvider } from '@/stores/main'
+import Login from '@/pages/Login'
+import useAppStore, { AppProvider } from '@/stores/main'
 import { ThemeProvider } from 'next-themes'
 
 try {
@@ -46,37 +47,49 @@ try {
   // Ignore errors on patch
 }
 
+function AppContent() {
+  const { isAuthenticated } = useAppStore()
+
+  if (!isAuthenticated) {
+    return <Login />
+  }
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Index />} />
+          <Route path="hubs" element={<Hubs />} />
+          <Route path="calendar" element={<CalendarPage />} />
+          <Route path="crm" element={<CRM />} />
+          <Route path="crm/:id" element={<LeadDetail />} />
+          <Route path="marketing" element={<Marketing />} />
+          <Route path="bikes" element={<Bikes />} />
+          <Route path="bikes/:id" element={<BikeDetail />} />
+          <Route path="deliverers" element={<Deliverers />} />
+          <Route path="deliverers/:id" element={<DelivererDetail />} />
+          <Route path="maintenance" element={<Maintenance />} />
+          <Route path="customer-service" element={<CustomerService />} />
+          <Route path="community" element={<Community />} />
+          <Route path="tasks" element={<Tasks />} />
+          <Route path="financial" element={<Financial />} />
+          <Route path="security" element={<Security />} />
+          <Route path="chat" element={<Navigate to="/chat/geral" replace />} />
+          <Route path="chat/:channel" element={<Chat />} />
+          <Route path="integrations" element={<Integrations />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  )
+}
+
 function App() {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <AppProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Index />} />
-              <Route path="hubs" element={<Hubs />} />
-              <Route path="calendar" element={<CalendarPage />} />
-              <Route path="crm" element={<CRM />} />
-              <Route path="crm/:id" element={<LeadDetail />} />
-              <Route path="marketing" element={<Marketing />} />
-              <Route path="bikes" element={<Bikes />} />
-              <Route path="bikes/:id" element={<BikeDetail />} />
-              <Route path="deliverers" element={<Deliverers />} />
-              <Route path="deliverers/:id" element={<DelivererDetail />} />
-              <Route path="maintenance" element={<Maintenance />} />
-              <Route path="customer-service" element={<CustomerService />} />
-              <Route path="community" element={<Community />} />
-              <Route path="tasks" element={<Tasks />} />
-              <Route path="financial" element={<Financial />} />
-              <Route path="security" element={<Security />} />
-              <Route path="chat" element={<Chat />} />
-              <Route path="chat/:channel" element={<Chat />} />
-              <Route path="integrations" element={<Integrations />} />
-              <Route path="*" element={<NotFound />} />
-            </Route>
-          </Routes>
-          <Toaster />
-        </BrowserRouter>
+        <AppContent />
+        <Toaster />
       </AppProvider>
     </ThemeProvider>
   )
