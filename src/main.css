@@ -5,13 +5,13 @@
 @layer base {
   :root {
     --background: 240 10% 98%;
-    --foreground: 240 1% 26%; /* #414042 */
+    --foreground: 270 2% 26%; /* #414042 */
 
     --card: 0 0% 100%;
-    --card-foreground: 240 1% 26%;
+    --card-foreground: 270 2% 26%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 240 1% 26%;
+    --popover-foreground: 270 2% 26%;
 
     /* Be Bike Green #1cd15c */
     --primary: 141 76% 46%;
@@ -32,10 +32,10 @@
     --border: 240 5% 85%;
     --input: 240 5% 85%;
     --ring: 141 76% 46%;
-    --radius: 1rem;
+    --radius: 2rem;
 
     --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 1% 26%;
+    --sidebar-foreground: 270 2% 26%;
     --sidebar-primary: 141 76% 46%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 141 20% 92%;
@@ -89,7 +89,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-sans antialiased transition-colors duration-300;
+    @apply bg-background text-foreground font-sans antialiased transition-colors duration-500;
   }
 }
 
@@ -100,11 +100,11 @@
 
   /* Liquid Glass Aesthetics */
   .glass-card {
-    @apply bg-white/50 dark:bg-zinc-950/40 backdrop-blur-2xl border border-white/60 dark:border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.04)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.15)] transition-all duration-500 hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_12px_40px_rgba(0,0,0,0.25)];
+    @apply rounded-[2rem] border border-white/60 dark:border-white/10 bg-white/60 dark:bg-zinc-950/50 backdrop-blur-3xl shadow-[0_8px_32px_rgba(0,0,0,0.04)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.15)] transition-all duration-500 hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_12px_40px_rgba(0,0,0,0.25)];
   }
 
   .glass-panel {
-    @apply bg-white/60 dark:bg-zinc-950/50 backdrop-blur-3xl border-white/60 dark:border-white/10 transition-all duration-300;
+    @apply bg-white/60 dark:bg-zinc-950/50 backdrop-blur-3xl border-white/60 dark:border-white/10 transition-all duration-500;
   }
 
   .premium-glow {

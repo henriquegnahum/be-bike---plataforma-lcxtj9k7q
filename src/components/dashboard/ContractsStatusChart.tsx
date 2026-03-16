@@ -26,13 +26,16 @@ export function ContractsStatusChart() {
   )
 
   return (
-    <Card className="glass-card flex flex-col h-full border-border/60">
+    <Card className="flex flex-col h-full border-border/60">
       <CardHeader>
         <CardTitle>{t('contracts_status')}</CardTitle>
         <CardDescription>Volume de contratos por ciclo de vida atual</CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-4 pt-2">
-        <ChartContainer config={config} className="w-full h-[250px]">
+        <ChartContainer
+          config={config}
+          className="w-full h-[250px] animate-in zoom-in-95 fade-in duration-1000 fill-mode-both"
+        >
           <BarChart
             data={data}
             layout="vertical"

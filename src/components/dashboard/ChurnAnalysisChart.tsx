@@ -26,13 +26,16 @@ export function ChurnAnalysisChart() {
   )
 
   return (
-    <Card className="glass-card flex flex-col h-full border-border/60">
+    <Card className="flex flex-col h-full border-border/60">
       <CardHeader>
         <CardTitle>{t('churn_reasons')}</CardTitle>
         <CardDescription>Principais motivos de cancelamento identificados</CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-4 pt-2">
-        <ChartContainer config={config} className="w-full h-[250px]">
+        <ChartContainer
+          config={config}
+          className="w-full h-[250px] animate-in zoom-in-95 fade-in duration-1000 fill-mode-both"
+        >
           <BarChart data={data} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
             <defs>
               <linearGradient id="colorCount" x1="0" y1="0" x2="0" y2="1">

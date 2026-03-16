@@ -37,9 +37,12 @@ export function AppHeader() {
     const path = location.pathname
     if (path === '/') return t('dashboard')
     if (path.startsWith('/crm')) return t('crm')
+    if (path.startsWith('/marketing')) return t('marketing')
     if (path.startsWith('/bikes')) return t('fleet')
-    if (path.startsWith('/deliverers')) return t('deliverers')
     if (path.startsWith('/maintenance')) return t('maintenance')
+    if (path.startsWith('/customer-service')) return t('customer_service')
+    if (path.startsWith('/community')) return t('community')
+    if (path.startsWith('/deliverers')) return t('deliverers')
     if (path.startsWith('/financial')) return t('financial')
     if (path.startsWith('/security')) return t('security')
     if (path.startsWith('/tasks')) return t('tasks')
@@ -117,7 +120,7 @@ export function AppHeader() {
             <Button
               variant="outline"
               size="sm"
-              className="gap-2 ml-2 border-border/60 hover:border-primary/50 transition-colors bg-white/40 dark:bg-black/40 backdrop-blur-md"
+              className="gap-2 ml-2 border-border/60 hover:border-primary/50 transition-colors bg-white/40 dark:bg-black/40 backdrop-blur-md rounded-2xl"
             >
               <User className="h-4 w-4 text-primary" />
               <span className="hidden sm:inline-block font-semibold">{role}</span>

@@ -8,6 +8,9 @@ import {
   KanbanSquare,
   DollarSign,
   ShieldAlert,
+  Megaphone,
+  Headset,
+  MessageCircleHeart,
 } from 'lucide-react'
 import {
   Sidebar,
@@ -37,6 +40,7 @@ export function AppSidebar() {
       roles: ['Admin', 'Finance', 'Operations', 'Hubs', 'Supply'],
     },
     { titleKey: 'crm', icon: KanbanSquare, url: '/crm', roles: ['Admin', 'Operations', 'Hubs'] },
+    { titleKey: 'marketing', icon: Megaphone, url: '/marketing', roles: ['Admin', 'Operations'] },
     {
       titleKey: 'fleet',
       icon: Bike,
@@ -44,19 +48,31 @@ export function AppSidebar() {
       roles: ['Admin', 'Operations', 'Hubs', 'Supply'],
     },
     {
-      titleKey: 'deliverers',
-      icon: Users,
-      url: '/deliverers',
-      roles: ['Admin', 'Operations', 'Hubs'],
-    },
-    {
       titleKey: 'maintenance',
       icon: Wrench,
       url: '/maintenance',
       roles: ['Admin', 'Operations', 'Hubs', 'Supply'],
     },
-    { titleKey: 'financial', icon: DollarSign, url: '/financial', roles: ['Admin', 'Finance'] },
+    {
+      titleKey: 'customer_service',
+      icon: Headset,
+      url: '/customer-service',
+      roles: ['Admin', 'Operations', 'Hubs'],
+    },
+    {
+      titleKey: 'community',
+      icon: MessageCircleHeart,
+      url: '/community',
+      roles: ['Admin', 'Operations'],
+    },
     { titleKey: 'security', icon: ShieldAlert, url: '/security', roles: ['Admin', 'Operations'] },
+    { titleKey: 'financial', icon: DollarSign, url: '/financial', roles: ['Admin', 'Finance'] },
+    {
+      titleKey: 'deliverers',
+      icon: Users,
+      url: '/deliverers',
+      roles: ['Admin', 'Operations', 'Hubs'],
+    },
     {
       titleKey: 'tasks',
       icon: CheckSquare,

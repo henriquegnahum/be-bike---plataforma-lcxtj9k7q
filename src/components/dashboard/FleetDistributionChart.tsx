@@ -40,13 +40,16 @@ export function FleetDistributionChart() {
   )
 
   return (
-    <Card className="glass-card flex flex-col h-full border-border/60">
+    <Card className="flex flex-col h-full border-border/60">
       <CardHeader>
         <CardTitle>{t('fleet_distribution')}</CardTitle>
         <CardDescription>Visão geral da categorização estratégica de ativos</CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-6 pt-2">
-        <ChartContainer config={config} className="mx-auto aspect-square max-h-[320px]">
+        <ChartContainer
+          config={config}
+          className="mx-auto aspect-square max-h-[320px] animate-in zoom-in-95 fade-in duration-1000 fill-mode-both"
+        >
           <PieChart>
             <defs>
               <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">

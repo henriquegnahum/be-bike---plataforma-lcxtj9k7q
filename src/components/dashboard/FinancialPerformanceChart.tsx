@@ -34,13 +34,16 @@ export function FinancialPerformanceChart() {
   )
 
   return (
-    <Card className="glass-card flex flex-col h-full border-border/60">
+    <Card className="flex flex-col h-full border-border/60">
       <CardHeader>
         <CardTitle>{t('financial_performance')} (k)</CardTitle>
         <CardDescription>Acompanhamento de receitas vs despesas operacionais</CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-4 pt-2">
-        <ChartContainer config={config} className="w-full h-full min-h-[280px] max-h-[320px]">
+        <ChartContainer
+          config={config}
+          className="w-full h-full min-h-[280px] max-h-[320px] animate-in zoom-in-95 fade-in duration-1000 fill-mode-both"
+        >
           <AreaChart data={data} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
             <defs>
               <linearGradient id="fillRev" x1="0" y1="0" x2="0" y2="1">
