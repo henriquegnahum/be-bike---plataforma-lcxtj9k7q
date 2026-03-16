@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { ChevronRight, MessageSquare, Sparkles, Settings, Hash, Plus, LogOut } from 'lucide-react'
+import { ChevronRight, MessageSquare, Sparkles, Plus } from 'lucide-react'
 import {
   Sidebar,
   SidebarContent,
@@ -18,15 +18,6 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/component
 import { Button } from '@/components/ui/button'
 import logoImg from '@/assets/bebike_logo-5fe56.png'
 import useAppStore from '@/stores/main'
-import { useUserStore } from '@/stores/user'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
 import {
   Dialog,
   DialogContent,
@@ -36,16 +27,12 @@ import {
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { navHierarchy } from '@/lib/navigation'
-import { UserAvatar } from '@/components/user/UserAvatar'
 
 export function AppSidebar() {
   const location = useLocation()
-  const { role, setRole, setAiOpen, channels, addChannel, setIsAuthenticated } = useAppStore()
-  const { profile } = useUserStore()
+  const { setAiOpen, channels, addChannel } = useAppStore()
   const [newChannel, setNewChannel] = useState('')
   const [isDialogOpen, setIsDialogOpen] = useState(false)
-
-  const roles = ['Administrador', 'Financeiro', 'Operações', 'Hubs', 'Suprimentos']
 
   const isActiveUrl = (url: string) => {
     return location.pathname === url || (url !== '/' && location.pathname.startsWith(url))
@@ -60,14 +47,14 @@ export function AppSidebar() {
   }
 
   return (
-    <Sidebar className="border-r border-border/50 glass-panel">
-      <SidebarHeader className="h-16 flex items-center px-6 py-4 border-b border-border/50">
+    <Sidebar className="border-r">
+      <SidebarHeader className="h-16 flex items-center px-6 py-4 border-b">
         <Link to="/" className="flex items-center gap-2">
           <img src={logoImg} alt="Be Bike" className="h-8 w-auto object-contain dark:invert" />
         </Link>
       </SidebarHeader>
 
-      <SidebarContent className="py-4 no-scrollbar">
+      <SidebarContent className="py-4">
         <SidebarGroup>
           <SidebarMenu className="gap-2 px-2">
             {navHierarchy.map((group) => {
@@ -82,15 +69,15 @@ export function AppSidebar() {
                   <SidebarMenuItem>
                     <CollapsibleTrigger asChild>
                       <SidebarMenuButton
-                        className={`rounded-xl transition-all duration-300 py-3 px-3 hover:bg-primary/10 hover:text-primary ${isActiveGroup ? 'text-primary font-bold bg-primary/5 shadow-sm' : 'text-muted-foreground font-medium'}`}
+                        className={`rounded-md transition-colors py-2 px-3 ${isActiveGroup ? 'text-primary font-medium' : 'text-muted-foreground'}`}
                       >
-                        <group.icon className="w-5 h-5" />
+                        <group.icon className="w-4 h-4" />
                         <span>{group.title}</span>
-                        <ChevronRight className="ml-auto w-4 h-4 transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+                        <ChevronRight className="ml-auto w-4 h-4 transition-transform group-data-[state=open]/collapsible:rotate-90" />
                       </SidebarMenuButton>
                     </CollapsibleTrigger>
                     <CollapsibleContent>
-                      <SidebarMenuSub className="border-l-2 border-border/50 ml-4 pl-2 mt-1 gap-1">
+                      <SidebarMenuSub className="border-l ml-4 pl-2 mt-1 gap-1">
                         {group.items.map((item: any) => {
                           const isActive = isActiveUrl(item.url)
                           return (
@@ -98,7 +85,7 @@ export function AppSidebar() {
                               <SidebarMenuSubButton
                                 asChild
                                 isActive={isActive}
-                                className={`rounded-lg py-2 px-3 transition-colors ${isActive ? 'bg-primary/15 text-primary font-bold' : 'text-muted-foreground hover:bg-muted/50 hover:text-foreground font-medium'}`}
+                                className={`rounded-md py-1.5 px-3 transition-colors ${isActive ? 'bg-primary/10 text-primary font-medium' : 'text-muted-foreground hover:bg-muted/50'}`}
                               >
                                 <Link to={item.url}>{item.title}</Link>
                               </SidebarMenuSubButton>
@@ -116,15 +103,15 @@ export function AppSidebar() {
               <SidebarMenuItem>
                 <CollapsibleTrigger asChild>
                   <SidebarMenuButton
-                    className={`rounded-xl transition-all duration-300 py-3 px-3 hover:bg-primary/10 hover:text-primary ${isActiveUrl('/chat') ? 'text-primary font-bold bg-primary/5 shadow-sm' : 'text-muted-foreground font-medium'}`}
+                    className={`rounded-md transition-colors py-2 px-3 ${isActiveUrl('/chat') ? 'text-primary font-medium' : 'text-muted-foreground'}`}
                   >
-                    <MessageSquare className="w-5 h-5" />
+                    <MessageSquare className="w-4 h-4" />
                     <span>Comunicação</span>
-                    <ChevronRight className="ml-auto w-4 h-4 transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+                    <ChevronRight className="ml-auto w-4 h-4 transition-transform group-data-[state=open]/collapsible:rotate-90" />
                   </SidebarMenuButton>
                 </CollapsibleTrigger>
                 <CollapsibleContent>
-                  <SidebarMenuSub className="border-l-2 border-border/50 ml-4 pl-2 mt-1 gap-1">
+                  <SidebarMenuSub className="border-l ml-4 pl-2 mt-1 gap-1">
                     {channels.map((ch) => {
                       const url = `/chat/${ch}`
                       const isActive = isActiveUrl(url)
@@ -133,11 +120,9 @@ export function AppSidebar() {
                           <SidebarMenuSubButton
                             asChild
                             isActive={isActive}
-                            className={`rounded-lg py-2 px-3 transition-colors ${isActive ? 'bg-primary/15 text-primary font-bold' : 'text-muted-foreground hover:bg-muted/50 hover:text-foreground font-medium'}`}
+                            className={`rounded-md py-1.5 px-3 transition-colors ${isActive ? 'bg-primary/10 text-primary font-medium' : 'text-muted-foreground hover:bg-muted/50'}`}
                           >
-                            <Link to={url} className="flex items-center gap-2">
-                              <Hash className="w-3.5 h-3.5 opacity-50" /> {ch}
-                            </Link>
+                            <Link to={url}># {ch}</Link>
                           </SidebarMenuSubButton>
                         </SidebarMenuSubItem>
                       )
@@ -146,9 +131,9 @@ export function AppSidebar() {
                       <SidebarMenuSubButton asChild>
                         <button
                           onClick={() => setIsDialogOpen(true)}
-                          className="w-full flex items-center gap-2 rounded-lg py-2 px-3 transition-colors text-primary hover:bg-primary/10 font-bold text-[13px] mt-1"
+                          className="w-full flex items-center gap-2 rounded-md py-1.5 px-3 transition-colors text-muted-foreground hover:bg-muted/50 mt-1"
                         >
-                          <Plus className="w-4 h-4" /> Novo Canal
+                          <Plus className="w-3 h-3" /> Novo Canal
                         </button>
                       </SidebarMenuSubButton>
                     </SidebarMenuSubItem>
@@ -160,91 +145,31 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
 
-      <SidebarFooter className="border-t border-border/50 p-4 gap-4 bg-background/30 backdrop-blur-md">
-        <div className="flex gap-2">
-          <Button
-            variant="default"
-            className="flex-1 rounded-xl shadow-[0_4px_15px_rgba(28,209,92,0.2)]"
-            onClick={() => setAiOpen(true)}
-          >
-            <Sparkles className="w-4 h-4 mr-2" /> Be.ai
-          </Button>
-        </div>
-
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button
-              variant="ghost"
-              className="w-full justify-start rounded-xl px-2 hover:bg-muted/50 h-14 border border-transparent hover:border-border/50 transition-all"
-            >
-              <span className="flex items-center gap-3">
-                <UserAvatar className="w-9 h-9" showTooltip={false} />
-                <span className="flex flex-col items-start text-left truncate">
-                  <span className="text-sm font-bold leading-none text-foreground truncate w-[130px]">
-                    {profile.name}
-                  </span>
-                  <span className="text-xs text-muted-foreground mt-1.5 font-medium truncate w-[130px]">
-                    {profile.role}
-                  </span>
-                </span>
-              </span>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-60 glass-card mb-2">
-            <DropdownMenuLabel>Alternar Papel (Admin Mock)</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            {roles.map((r) => (
-              <DropdownMenuItem
-                key={r}
-                onClick={() => setRole(r)}
-                className="justify-between cursor-pointer font-medium"
-              >
-                {r}{' '}
-                {profile.role === r && (
-                  <span className="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_var(--primary)]" />
-                )}
-              </DropdownMenuItem>
-            ))}
-            <DropdownMenuSeparator />
-            <DropdownMenuItem className="cursor-pointer text-muted-foreground font-medium">
-              <Settings className="w-4 h-4 mr-2" /> Preferências Locais
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem
-              className="cursor-pointer text-red-500 font-bold focus:text-red-500 focus:bg-red-500/10"
-              onClick={() => setIsAuthenticated(false)}
-            >
-              <LogOut className="w-4 h-4 mr-2" /> Desconectar Sessão
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+      <SidebarFooter className="border-t p-4">
+        <Button variant="default" className="w-full" onClick={() => setAiOpen(true)}>
+          <Sparkles className="w-4 h-4 mr-2" /> Be.ai Assistente
+        </Button>
       </SidebarFooter>
 
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="glass-card sm:max-w-md border-primary/20">
+        <DialogContent className="sm:max-w-md">
           <DialogHeader>
             <DialogTitle>Criar Novo Canal</DialogTitle>
           </DialogHeader>
           <div className="py-4">
-            <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2 block">
-              Nome do Canal
-            </label>
             <Input
               value={newChannel}
               onChange={(e) => setNewChannel(e.target.value)}
               placeholder="ex: suporte-urgente"
-              className="bg-background/50 h-12 rounded-xl text-[15px]"
               autoFocus
               onKeyDown={(e) => e.key === 'Enter' && handleAddChannel()}
             />
           </div>
           <DialogFooter>
-            <Button variant="outline" onClick={() => setIsDialogOpen(false)} className="rounded-xl">
+            <Button variant="outline" onClick={() => setIsDialogOpen(false)}>
               Cancelar
             </Button>
-            <Button onClick={handleAddChannel} className="rounded-xl">
-              Criar Canal
-            </Button>
+            <Button onClick={handleAddChannel}>Criar Canal</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>

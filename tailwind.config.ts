@@ -26,8 +26,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['system-ui', 'sans-serif'],
+        display: ['system-ui', 'sans-serif'],
       },
       colors: {
         border: 'hsl(var(--border))',
@@ -78,13 +78,6 @@ export default {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
-      },
-      boxShadow: {
-        subtle: '0 4px 24px -6px rgba(0, 0, 0, 0.05), 0 2px 8px -2px rgba(0, 0, 0, 0.03)',
-        elevation: '0 10px 40px -10px rgba(0, 0, 0, 0.08)',
-      },
-      transitionTimingFunction: {
-        apple: 'cubic-bezier(0.42, 0, 0.58, 1)',
       },
     },
   },

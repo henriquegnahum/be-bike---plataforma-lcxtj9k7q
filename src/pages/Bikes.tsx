@@ -12,16 +12,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import {
-  Bike as BikeIcon,
-  Plus,
-  Download,
-  Upload,
-  AlertTriangle,
-  AlertCircle,
-  CheckCircle2,
-  Wrench,
-} from 'lucide-react'
+import { Plus, Download } from 'lucide-react'
 import { MOCK_BIKES } from '@/lib/mock-data'
 import { useTranslation } from '@/lib/i18n'
 
@@ -33,162 +24,73 @@ export default function Bikes() {
     (b) => statusFilter === 'Todas' || b.status === statusFilter,
   )
 
-  const getRevisionBadge = (mileage: number, lastRev: number, status: string) => {
-    if (status === 'Oficina')
-      return (
-        <Badge variant="secondary" className="ml-2 gap-1 text-[10px]">
-          <Wrench className="w-3 h-3" /> Em Revisão
-        </Badge>
-      )
-    const diff = mileage - lastRev
-    if (diff >= 2500)
-      return (
-        <Badge variant="destructive" className="ml-2 gap-1 text-[10px]">
-          <AlertTriangle className="w-3 h-3" /> Revisar Agora
-        </Badge>
-      )
-    if (diff >= 2200)
-      return (
-        <Badge
-          variant="outline"
-          className="ml-2 gap-1 text-[10px] text-orange-500 border-orange-500"
-        >
-          <AlertCircle className="w-3 h-3" /> Atenção
-        </Badge>
-      )
-    return (
-      <Badge
-        variant="outline"
-        className="ml-2 gap-1 text-[10px] text-emerald-500 border-emerald-500"
-      >
-        <CheckCircle2 className="w-3 h-3" /> OK
-      </Badge>
-    )
-  }
-
   return (
-    <div className="space-y-6 max-w-7xl mx-auto animate-in fade-in duration-700">
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+    <div className="space-y-6 pb-8">
+      <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-4xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
-            {t('fleet_title')}
-          </h1>
-          <p className="text-muted-foreground mt-2 font-medium">{t('fleet_desc')}</p>
+          <h1 className="text-3xl font-bold tracking-tight">{t('fleet_title')}</h1>
+          <p className="text-muted-foreground mt-1">{t('fleet_desc')}</p>
         </div>
-        <div className="flex flex-wrap gap-2">
-          <Button variant="outline" size="sm">
+        <div className="flex gap-2">
+          <Button variant="outline">
             <Download className="w-4 h-4 mr-2" /> CSV
           </Button>
-          <Button variant="secondary" size="sm">
-            <Upload className="w-4 h-4 mr-2" /> {t('bulk_import')}
-          </Button>
           <Button>
-            <Plus className="w-4 h-4 mr-2" /> {t('new_bike')}
+            <Plus className="w-4 h-4 mr-2" /> Nova Bike
           </Button>
         </div>
       </div>
 
-      <Tabs defaultValue="Todas" className="w-full" onValueChange={setStatusFilter}>
-        <TabsList className="grid w-full sm:w-auto grid-cols-4 glass-card p-1 shadow-sm mb-6 h-auto">
-          <TabsTrigger
-            value="Todas"
-            className="rounded-xl py-2.5 data-[state=active]:bg-background/80"
-          >
-            Todas
-          </TabsTrigger>
-          <TabsTrigger
-            value="Ativa"
-            className="rounded-xl py-2.5 data-[state=active]:bg-background/80"
-          >
-            Em Uso
-          </TabsTrigger>
-          <TabsTrigger
-            value="Oficina"
-            className="rounded-xl py-2.5 data-[state=active]:bg-background/80"
-          >
-            Manutenção
-          </TabsTrigger>
-          <TabsTrigger
-            value="Ociosa"
-            className="rounded-xl py-2.5 data-[state=active]:bg-background/80"
-          >
-            Ociosa
-          </TabsTrigger>
+      <Tabs defaultValue="Todas" onValueChange={setStatusFilter}>
+        <TabsList className="mb-4">
+          <TabsTrigger value="Todas">Todas</TabsTrigger>
+          <TabsTrigger value="Ativa">Ativas</TabsTrigger>
+          <TabsTrigger value="Oficina">Oficina</TabsTrigger>
         </TabsList>
 
-        <Card className="glass-card overflow-hidden">
-          <CardHeader className="bg-muted/10 border-b">
-            <CardTitle className="flex items-center gap-2">
-              <BikeIcon className="w-5 h-5 text-primary" /> {t('active_fleet_inventory')}
-            </CardTitle>
+        <Card>
+          <CardHeader className="border-b">
+            <CardTitle className="text-lg">Frota</CardTitle>
           </CardHeader>
           <CardContent className="p-0">
             <Table>
-              <TableHeader className="bg-background/50 backdrop-blur-md">
+              <TableHeader>
                 <TableRow>
-                  <TableHead>{t('chassi_id')}</TableHead>
-                  <TableHead>{t('model_project')}</TableHead>
-                  <TableHead>{t('status')}</TableHead>
-                  <TableHead>{t('telemetry_km')}</TableHead>
-                  <TableHead>{t('assigned_to')}</TableHead>
-                  <TableHead className="text-right">{t('action')}</TableHead>
+                  <TableHead>Chassi</TableHead>
+                  <TableHead>Modelo</TableHead>
+                  <TableHead>Status</TableHead>
+                  <TableHead>KM</TableHead>
+                  <TableHead>Entregador</TableHead>
+                  <TableHead className="text-right">Ação</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {filteredBikes.map((bike) => (
-                  <TableRow key={bike.id} className="hover:bg-muted/30 transition-colors">
-                    <TableCell className="font-mono font-bold text-xs">{bike.chassi}</TableCell>
-                    <TableCell>
-                      {bike.model}{' '}
-                      <span className="text-muted-foreground text-xs block font-medium">
-                        {bike.project}
-                      </span>
-                    </TableCell>
+                {filteredBikes.map((b) => (
+                  <TableRow key={b.id}>
+                    <TableCell className="font-mono text-sm">{b.chassi}</TableCell>
+                    <TableCell>{b.model}</TableCell>
                     <TableCell>
                       <Badge
                         variant={
-                          bike.status === 'Ativa'
+                          b.status === 'Ativa'
                             ? 'default'
-                            : bike.status === 'Oficina'
+                            : b.status === 'Oficina'
                               ? 'destructive'
                               : 'secondary'
                         }
-                        className={
-                          bike.status === 'Ativa'
-                            ? 'bg-primary/20 text-primary border-primary/20 hover:bg-primary/30'
-                            : ''
-                        }
                       >
-                        {t(bike.status as any)}
+                        {t(b.status as any)}
                       </Badge>
                     </TableCell>
-                    <TableCell>
-                      <div className="flex items-center">
-                        <span className="font-semibold tabular-nums">{bike.mileage}</span>
-                        {getRevisionBadge(bike.mileage, bike.lastRevisionKm, bike.status)}
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      {bike.deliverer || (
-                        <span className="text-muted-foreground italic text-xs">
-                          {t('unassigned')}
-                        </span>
-                      )}
-                    </TableCell>
+                    <TableCell>{b.mileage}</TableCell>
+                    <TableCell>{b.deliverer || '-'}</TableCell>
                     <TableCell className="text-right">
                       <Button variant="ghost" size="sm" asChild>
-                        <Link to={`/bikes/${bike.id}`}>{t('view_details')}</Link>
+                        <Link to={`/bikes/${b.id}`}>Ver</Link>
                       </Button>
                     </TableCell>
                   </TableRow>
                 ))}
-                {filteredBikes.length === 0 && (
-                  <TableRow>
-                    <TableCell colSpan={6} className="text-center py-8 text-muted-foreground">
-                      Nenhuma bike encontrada nesta categoria.
-                    </TableCell>
-                  </TableRow>
-                )}
               </TableBody>
             </Table>
           </CardContent>

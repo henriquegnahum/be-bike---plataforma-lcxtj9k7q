@@ -25,8 +25,8 @@ const conversionData = [
 
 const sourceData = [
   { name: 'Meta Ads', value: 45000, fill: 'hsl(var(--primary))' },
-  { name: 'Google Search', value: 30000, fill: 'hsl(var(--chart-2, 210 100% 50%))' },
-  { name: 'Organic/Referral', value: 15000, fill: 'hsl(var(--chart-3, 30 100% 50%))' },
+  { name: 'Google', value: 30000, fill: 'hsl(var(--chart-2, 210 100% 50%))' },
+  { name: 'Orgânico', value: 15000, fill: 'hsl(var(--chart-3, 30 100% 50%))' },
 ]
 
 const velocityData = [
@@ -38,101 +38,62 @@ const velocityData = [
 
 export default function SalesDashboard() {
   const kpis = [
-    { label: 'Novos Clientes (Mês)', value: '342', icon: Users, color: 'text-blue-500' },
-    { label: 'Receita Prevista', value: 'R$ 125.4k', icon: DollarSign, color: 'text-emerald-500' },
-    { label: 'Taxa de Conversão', value: '25%', icon: Target, color: 'text-orange-500' },
-    { label: 'Velocidade Média', value: '10 Dias', icon: Activity, color: 'text-primary' },
+    { label: 'Novos Clientes', value: '342', icon: Users },
+    { label: 'Receita Prevista', value: 'R$ 125.4k', icon: DollarSign },
+    { label: 'Conversão', value: '25%', icon: Target },
+    { label: 'Velocidade', value: '10 Dias', icon: Activity },
   ]
 
   return (
-    <div className="space-y-8 pb-12 animate-in fade-in duration-700">
+    <div className="space-y-6 pb-8">
       <div>
-        <h1 className="text-4xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
-          Dashboard de Vendas
-        </h1>
-        <p className="text-muted-foreground mt-2 text-lg font-medium">
-          Métricas de conversão, receita e funil de aquisição.
-        </p>
+        <h1 className="text-3xl font-bold tracking-tight">Dashboard Comercial</h1>
+        <p className="text-muted-foreground mt-1">Métricas de conversão, receita e funil.</p>
       </div>
 
-      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         {kpis.map((kpi, i) => (
-          <Card key={i} className="glass-card group hover:-translate-y-1 transition-transform">
+          <Card key={i}>
             <CardContent className="p-6 flex items-center justify-between">
               <div className="space-y-1">
-                <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider">
-                  {kpi.label}
-                </p>
-                <p className="text-3xl font-extrabold">{kpi.value}</p>
+                <p className="text-sm font-medium text-muted-foreground">{kpi.label}</p>
+                <p className="text-2xl font-bold">{kpi.value}</p>
               </div>
-              <div className={`p-3 bg-background rounded-2xl shadow-sm border ${kpi.color}`}>
-                <kpi.icon className="h-6 w-6" />
+              <div className="p-2 bg-muted rounded-md">
+                <kpi.icon className="h-5 w-5" />
               </div>
             </CardContent>
           </Card>
         ))}
       </div>
 
-      <div className="grid gap-8 lg:grid-cols-2">
-        <Card className="glass-card premium-glow">
+      <div className="grid gap-6 lg:grid-cols-2">
+        <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <TrendingUp className="w-5 h-5 text-primary" /> Evolução da Conversão (%)
-            </CardTitle>
-            <CardDescription>
-              Taxa de conversão de Leads para Assinado ao longo dos meses.
-            </CardDescription>
+            <CardTitle className="text-lg">Evolução da Conversão (%)</CardTitle>
           </CardHeader>
           <CardContent>
             <ChartContainer
-              config={{ rate: { label: 'Conversão %', color: 'hsl(var(--primary))' } }}
+              config={{ rate: { label: 'Conversão', color: 'hsl(var(--primary))' } }}
               className="h-[300px] w-full"
             >
               <LineChart
                 data={conversionData}
                 margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
               >
-                <CartesianGrid
-                  strokeDasharray="3 3"
-                  vertical={false}
-                  stroke="hsl(var(--border))"
-                  opacity={0.4}
-                />
-                <XAxis
-                  dataKey="month"
-                  tickLine={false}
-                  axisLine={false}
-                  tickMargin={12}
-                  className="text-xs font-medium"
-                />
-                <YAxis
-                  tickLine={false}
-                  axisLine={false}
-                  tickMargin={12}
-                  className="text-xs font-medium"
-                />
-                <ChartTooltip content={<ChartTooltipContent className="glass-card" />} />
-                <Line
-                  type="monotone"
-                  dataKey="rate"
-                  stroke="var(--color-rate)"
-                  strokeWidth={4}
-                  dot={{ r: 4, strokeWidth: 2 }}
-                  activeDot={{ r: 6 }}
-                />
+                <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                <XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={8} />
+                <YAxis tickLine={false} axisLine={false} tickMargin={8} />
+                <ChartTooltip content={<ChartTooltipContent />} />
+                <Line type="monotone" dataKey="rate" stroke="var(--color-rate)" strokeWidth={3} />
               </LineChart>
             </ChartContainer>
           </CardContent>
         </Card>
 
-        <Card className="glass-card premium-glow">
+        <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <DollarSign className="w-5 h-5 text-emerald-500" /> Receita por Origem (R$)
-            </CardTitle>
-            <CardDescription>
-              Distribuição de receita prevista por canal de aquisição.
-            </CardDescription>
+            <CardTitle className="text-lg">Receita por Origem</CardTitle>
           </CardHeader>
           <CardContent>
             <ChartContainer
@@ -148,24 +109,20 @@ export default function SalesDashboard() {
                   cy="50%"
                   innerRadius={60}
                   outerRadius={100}
-                  paddingAngle={5}
                 >
                   {sourceData.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={entry.fill} />
                   ))}
                 </Pie>
-                <ChartTooltip content={<ChartTooltipContent className="glass-card" />} />
+                <ChartTooltip content={<ChartTooltipContent />} />
               </PieChart>
             </ChartContainer>
           </CardContent>
         </Card>
 
-        <Card className="glass-card lg:col-span-2 premium-glow">
+        <Card className="lg:col-span-2">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Activity className="w-5 h-5 text-blue-500" /> Velocidade de Vendas (Dias por Etapa)
-            </CardTitle>
-            <CardDescription>Tempo médio que um lead passa em cada fase do funil.</CardDescription>
+            <CardTitle className="text-lg">Velocidade de Vendas (Dias)</CardTitle>
           </CardHeader>
           <CardContent>
             <ChartContainer
@@ -177,34 +134,18 @@ export default function SalesDashboard() {
                 margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
                 layout="vertical"
               >
-                <CartesianGrid
-                  strokeDasharray="3 3"
-                  horizontal={false}
-                  stroke="hsl(var(--border))"
-                  opacity={0.4}
-                />
-                <XAxis
-                  type="number"
-                  tickLine={false}
-                  axisLine={false}
-                  tickMargin={12}
-                  className="text-xs font-medium"
-                />
+                <CartesianGrid strokeDasharray="3 3" horizontal={false} />
+                <XAxis type="number" tickLine={false} axisLine={false} tickMargin={8} />
                 <YAxis
                   dataKey="stage"
                   type="category"
                   tickLine={false}
                   axisLine={false}
-                  tickMargin={12}
+                  tickMargin={8}
                   width={150}
-                  className="text-xs font-medium"
                 />
-                <ChartTooltip content={<ChartTooltipContent className="glass-card" />} />
-                <Bar dataKey="days" fill="var(--color-days)" radius={[0, 4, 4, 0]} barSize={24}>
-                  {velocityData.map((e, i) => (
-                    <Cell key={i} className="hover:opacity-80" />
-                  ))}
-                </Bar>
+                <ChartTooltip content={<ChartTooltipContent />} />
+                <Bar dataKey="days" fill="var(--color-days)" radius={[0, 4, 4, 0]} barSize={24} />
               </BarChart>
             </ChartContainer>
           </CardContent>

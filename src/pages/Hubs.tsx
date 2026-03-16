@@ -26,7 +26,7 @@ export default function Hubs() {
       stockHealth: 85,
       techProd: 92,
       statusIcon: CheckCircle2,
-      statusColor: 'text-emerald-500',
+      statusColor: 'bg-emerald-500',
     },
     {
       id: 'HUB-SP-S',
@@ -37,7 +37,7 @@ export default function Hubs() {
       stockHealth: 45,
       techProd: 65,
       statusIcon: AlertTriangle,
-      statusColor: 'text-red-500',
+      statusColor: 'bg-red-500',
     },
     {
       id: 'HUB-RJ-C',
@@ -48,38 +48,33 @@ export default function Hubs() {
       stockHealth: 90,
       techProd: 88,
       statusIcon: CheckCircle2,
-      statusColor: 'text-emerald-500',
+      statusColor: 'bg-emerald-500',
     },
   ]
 
   return (
-    <div className="space-y-8 pb-12 animate-in fade-in duration-700">
+    <div className="space-y-6 pb-8">
       <div>
-        <h1 className="text-4xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
-          {t('hubs')}
-        </h1>
-        <p className="text-muted-foreground mt-2 font-medium">
+        <h1 className="text-3xl font-bold tracking-tight">{t('hubs')}</h1>
+        <p className="text-muted-foreground mt-1">
           Controle Integrado de Operações, Estoque e Produtividade.
         </p>
       </div>
 
       <div className="grid gap-6 md:grid-cols-3">
         {hubs.map((hub) => (
-          <Card key={hub.id} className="glass-card group overflow-hidden relative">
-            <div
-              className={`absolute top-0 right-0 w-32 h-32 opacity-10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 bg-current ${hub.statusColor}`}
-            />
-            <CardHeader className="pb-4 border-b border-border/50">
+          <Card key={hub.id}>
+            <CardHeader className="pb-4 border-b">
               <div className="flex justify-between items-start">
                 <div>
-                  <CardTitle className="flex items-center gap-2 text-xl">
-                    <Building2 className="w-5 h-5 text-primary" /> {hub.name}
+                  <CardTitle className="flex items-center gap-2 text-lg">
+                    <Building2 className="w-4 h-4" /> {hub.name}
                   </CardTitle>
                   <CardDescription className="font-mono text-xs mt-1">{hub.id}</CardDescription>
                 </div>
                 <Badge
-                  variant="outline"
-                  className={`gap-1 bg-background/50 backdrop-blur-md ${hub.statusColor} border-${hub.statusColor.split('-')[1]}-200 shadow-sm`}
+                  variant={hub.status === 'Operacional' ? 'default' : 'destructive'}
+                  className="gap-1"
                 >
                   <hub.statusIcon className="w-3 h-3" /> {hub.status}
                 </Badge>
@@ -88,57 +83,42 @@ export default function Hubs() {
             <CardContent className="pt-6 space-y-6">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <p className="text-xs font-bold text-muted-foreground uppercase flex items-center gap-1">
-                    <ArrowUpRight className="w-3 h-3 text-emerald-500" /> {t('withdrawals')}
+                  <p className="text-xs font-medium text-muted-foreground flex items-center gap-1">
+                    <ArrowUpRight className="w-3 h-3" /> {t('withdrawals')}
                   </p>
-                  <p className="text-2xl font-extrabold">{hub.withdrawals}</p>
+                  <p className="text-2xl font-bold">{hub.withdrawals}</p>
                 </div>
                 <div className="space-y-1">
-                  <p className="text-xs font-bold text-muted-foreground uppercase flex items-center gap-1">
-                    <ArrowDownLeft className="w-3 h-3 text-orange-500" /> {t('returns')}
+                  <p className="text-xs font-medium text-muted-foreground flex items-center gap-1">
+                    <ArrowDownLeft className="w-3 h-3" /> {t('returns')}
                   </p>
-                  <p className="text-2xl font-extrabold">{hub.returns}</p>
+                  <p className="text-2xl font-bold">{hub.returns}</p>
                 </div>
               </div>
 
               <div className="space-y-4 pt-2">
                 <div className="space-y-2">
-                  <div className="flex justify-between text-xs font-bold">
-                    <span className="flex items-center gap-1 text-muted-foreground">
+                  <div className="flex justify-between text-xs font-medium">
+                    <span className="flex items-center gap-1">
                       <Activity className="w-3 h-3" /> {t('stock_health')}
                     </span>
-                    <span className={hub.stockHealth < 50 ? 'text-red-500' : 'text-emerald-500'}>
-                      {hub.stockHealth}%
-                    </span>
+                    <span>{hub.stockHealth}%</span>
                   </div>
-                  <Progress
-                    value={hub.stockHealth}
-                    className="h-2"
-                    indicatorClassName={hub.stockHealth < 50 ? 'bg-red-500' : 'bg-emerald-500'}
-                  />
+                  <Progress value={hub.stockHealth} className="h-2" />
                 </div>
 
                 <div className="space-y-2">
-                  <div className="flex justify-between text-xs font-bold">
-                    <span className="flex items-center gap-1 text-muted-foreground">
+                  <div className="flex justify-between text-xs font-medium">
+                    <span className="flex items-center gap-1">
                       <Wrench className="w-3 h-3" /> {t('tech_productivity')}
                     </span>
-                    <span className={hub.techProd < 70 ? 'text-red-500' : 'text-blue-500'}>
-                      {hub.techProd}%
-                    </span>
+                    <span>{hub.techProd}%</span>
                   </div>
-                  <Progress
-                    value={hub.techProd}
-                    className="h-2"
-                    indicatorClassName={hub.techProd < 70 ? 'bg-red-500' : 'bg-blue-500'}
-                  />
+                  <Progress value={hub.techProd} className="h-2" />
                 </div>
               </div>
 
-              <Button
-                className="w-full mt-2 shadow-sm hover:shadow-md transition-shadow"
-                variant="outline"
-              >
+              <Button className="w-full mt-4" variant="outline">
                 {t('manage_hub')}
               </Button>
             </CardContent>

@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import { Card, CardContent, CardHeader } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 import { useToast } from '@/hooks/use-toast'
 import useAppStore from '@/stores/main'
 import logoImg from '@/assets/bebike_logo-5fe56.png'
-import { Sparkles, Lock } from 'lucide-react'
 
 export default function Login() {
   const [email, setEmail] = useState('')
@@ -17,10 +17,9 @@ export default function Login() {
     e.preventDefault()
     if (email === 'thiago@bebike.com.br' && password === '123456') {
       setIsAuthenticated(true)
-      toast({ title: 'Acesso liberado', description: 'Bem-vindo ao Be Bike OS 2.0.' })
     } else {
       toast({
-        title: 'Erro de autenticação',
+        title: 'Erro',
         description: 'Credenciais inválidas. Tente thiago@bebike.com.br / 123456',
         variant: 'destructive',
       })
@@ -28,55 +27,39 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background relative overflow-hidden selection:bg-primary/20 selection:text-primary">
-      <div className="absolute top-[-20%] left-[-10%] w-[800px] h-[800px] bg-primary/20 rounded-full blur-[140px] pointer-events-none z-0 mix-blend-screen" />
-      <div className="absolute bottom-[-20%] right-[-10%] w-[800px] h-[800px] bg-blue-500/20 rounded-full blur-[140px] pointer-events-none z-0 mix-blend-screen" />
-
-      <Card className="w-full max-w-md glass-card border-primary/20 shadow-[0_8px_40px_rgba(28,209,92,0.1)] relative z-10 m-4 animate-in fade-in zoom-in-95 duration-700 bg-white/60 dark:bg-zinc-950/60 backdrop-blur-3xl">
-        <CardHeader className="text-center pb-6 pt-10">
-          <div className="flex justify-center">
-            <img src={logoImg} alt="Be Bike" className="h-10 w-auto dark:invert" />
-          </div>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-muted/20 p-4">
+      <div className="mb-8">
+        <img src={logoImg} alt="Be Bike" className="h-10 dark:invert" />
+      </div>
+      <Card className="w-full max-w-sm">
+        <CardHeader>
+          <CardTitle className="text-2xl text-center">Login</CardTitle>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleLogin} className="space-y-6">
-            <div className="space-y-4">
-              <div className="space-y-2">
-                <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider pl-1">
-                  E-mail Corporativo
-                </label>
-                <Input
-                  type="email"
-                  placeholder="thiago@bebike.com.br"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="h-12 rounded-2xl bg-background/50 border-border/60 shadow-inner focus-visible:ring-primary/50 text-[15px] px-4"
-                  required
-                />
-              </div>
-              <div className="space-y-2">
-                <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider pl-1">
-                  Senha
-                </label>
-                <Input
-                  type="password"
-                  placeholder="••••••"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="h-12 rounded-2xl bg-background/50 border-border/60 shadow-inner focus-visible:ring-primary/50 text-[15px] px-4 font-mono tracking-widest"
-                  required
-                />
-              </div>
+          <form onSubmit={handleLogin} className="space-y-4">
+            <div className="space-y-2">
+              <Label>Email</Label>
+              <Input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="thiago@bebike.com.br"
+                required
+              />
             </div>
-            <Button
-              type="submit"
-              className="w-full h-12 rounded-2xl text-[15px] font-bold shadow-[0_8px_20px_rgba(28,209,92,0.2)] hover:shadow-[0_12px_24px_rgba(28,209,92,0.3)] transition-all"
-            >
-              <Sparkles className="w-5 h-5 mr-2" /> Entrar
+            <div className="space-y-2">
+              <Label>Senha</Label>
+              <Input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="••••••"
+                required
+              />
+            </div>
+            <Button type="submit" className="w-full">
+              Entrar
             </Button>
-            <p className="text-center text-xs text-muted-foreground font-medium pt-2 flex items-center justify-center gap-1.5 opacity-70">
-              <Lock className="w-3 h-3" /> Acesso protegido por criptografia E2E
-            </p>
           </form>
         </CardContent>
       </Card>
