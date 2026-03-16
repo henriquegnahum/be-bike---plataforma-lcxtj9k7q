@@ -1,7 +1,7 @@
-import { Link, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { SidebarTrigger, useSidebar } from '@/components/ui/sidebar'
 import { Button } from '@/components/ui/button'
-import { Bell, Menu, User } from 'lucide-react'
+import { Bell, Menu, User, Settings } from 'lucide-react'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,18 +10,26 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import { useState } from 'react'
+import { Badge } from '@/components/ui/badge'
 
 export function AppHeader() {
   const location = useLocation()
   const { isMobile } = useSidebar()
+  const [role, setRole] = useState('Admin')
+
+  const roles = ['Admin', 'Finance', 'Operations', 'Hubs', 'Supply']
 
   const getPageTitle = () => {
     const path = location.pathname
-    if (path === '/') return 'Dashboard'
-    if (path.startsWith('/crm')) return 'CRM & Funnel'
+    if (path === '/') return 'Dashboard Hub'
+    if (path.startsWith('/crm')) return 'CRM & Sales Funnel'
     if (path.startsWith('/bikes')) return 'Fleet Master'
     if (path.startsWith('/deliverers')) return 'Deliverer Master'
-    if (path.startsWith('/maintenance')) return 'Maintenance'
+    if (path.startsWith('/maintenance')) return 'Maintenance & Supply Chain'
+    if (path.startsWith('/financial')) return 'Financial Governance'
+    if (path.startsWith('/security')) return 'Security & Risk'
+    if (path.startsWith('/tasks')) return 'Task Management'
     return ''
   }
 
@@ -31,8 +39,11 @@ export function AppHeader() {
         <SidebarTrigger>
           <Menu className="h-5 w-5 text-secondary" />
         </SidebarTrigger>
-        <div className="font-semibold text-lg text-secondary hidden md:block border-l pl-4 border-border/50">
+        <div className="font-semibold text-lg text-secondary hidden md:flex items-center gap-3 border-l pl-4 border-border/50">
           {getPageTitle()}
+          <Badge variant="outline" className="text-[10px] uppercase font-normal bg-muted/50">
+            {role} View
+          </Badge>
         </div>
       </div>
 
@@ -50,21 +61,24 @@ export function AppHeader() {
           <DropdownMenuTrigger asChild>
             <Button
               variant="outline"
-              size="icon"
-              className="rounded-full border-border hover:border-primary"
+              size="sm"
+              className="gap-2 border-border hover:border-primary"
             >
               <User className="h-4 w-4 text-secondary" />
-              <span className="sr-only">User menu</span>
+              <span className="hidden sm:inline-block font-medium">{role}</span>
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-56">
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuLabel>Switch Role (RBAC Mock)</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Profile Settings</DropdownMenuItem>
-            <DropdownMenuItem>System Configuration</DropdownMenuItem>
+            {roles.map((r) => (
+              <DropdownMenuItem key={r} onClick={() => setRole(r)} className="justify-between">
+                {r} {role === r && <span className="w-2 h-2 rounded-full bg-primary" />}
+              </DropdownMenuItem>
+            ))}
             <DropdownMenuSeparator />
-            <DropdownMenuItem className="text-destructive focus:text-destructive">
-              Log out
+            <DropdownMenuItem>
+              <Settings className="w-4 h-4 mr-2" /> System Configuration
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

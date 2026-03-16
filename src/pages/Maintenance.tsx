@@ -14,20 +14,17 @@ import {
 
 export default function Maintenance() {
   return (
-    <div className="flex flex-col gap-6 h-full max-w-full pb-10">
+    <div className="flex flex-col gap-6 max-w-7xl mx-auto pb-10">
       <div className="flex justify-between items-start flex-wrap gap-4">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Oficina & Estoque Master</h1>
-          <p className="text-muted-foreground mt-1">
-            Gestão preditiva de peças e ordens de serviço
-          </p>
+          <h1 className="text-3xl font-bold tracking-tight">Maintenance & Supply Chain</h1>
+          <p className="text-muted-foreground mt-1">Predictive O.S. and parts control.</p>
         </div>
 
-        {/* Alerta de Estoque Global */}
         {inventoryItems.some((i) => i.current <= i.min) && (
-          <div className="flex items-center gap-2 px-4 py-2 bg-destructive/10 text-destructive rounded-lg border border-destructive/20">
+          <div className="flex items-center gap-2 px-4 py-2 bg-destructive/10 text-destructive rounded-lg border border-destructive/20 shadow-sm">
             <AlertTriangle className="w-5 h-5" />
-            <span className="font-semibold text-sm">Alerta Estoque Crítico Detectado</span>
+            <span className="font-semibold text-sm">Critical Stock Alert</span>
           </div>
         )}
       </div>
@@ -35,10 +32,10 @@ export default function Maintenance() {
       <Tabs defaultValue="kanban" className="flex-1 flex flex-col">
         <TabsList className="w-full sm:w-auto self-start">
           <TabsTrigger value="kanban" className="gap-2">
-            <Wrench className="w-4 h-4" /> Kanban de O.S.
+            <Wrench className="w-4 h-4" /> O.S. Kanban
           </TabsTrigger>
           <TabsTrigger value="inventory" className="gap-2">
-            <Package className="w-4 h-4" /> Controle de Estoque
+            <Package className="w-4 h-4" /> Inventory
           </TabsTrigger>
         </TabsList>
 
@@ -77,7 +74,7 @@ export default function Maintenance() {
                   ))}
                   {col.tasks.length === 0 && (
                     <div className="flex-1 flex items-center justify-center border-2 border-dashed rounded-lg opacity-50 py-8">
-                      <span className="text-sm">Nenhuma tarefa</span>
+                      <span className="text-sm">No tasks</span>
                     </div>
                   )}
                 </div>
@@ -87,19 +84,19 @@ export default function Maintenance() {
         </TabsContent>
 
         <TabsContent value="inventory" className="mt-6">
-          <Card className="shadow-subtle">
+          <Card className="shadow-sm">
             <CardHeader>
-              <CardTitle>Inventário Consolidado</CardTitle>
+              <CardTitle>Consolidated Inventory</CardTitle>
             </CardHeader>
             <CardContent>
               <Table>
                 <TableHeader>
                   <TableRow>
                     <TableHead>SKU / Item</TableHead>
-                    <TableHead>Hub (Local)</TableHead>
-                    <TableHead>Frequência Uso</TableHead>
-                    <TableHead>Estoque Mín.</TableHead>
-                    <TableHead>Estoque Atual</TableHead>
+                    <TableHead>Hub</TableHead>
+                    <TableHead>Usage Freq</TableHead>
+                    <TableHead>Min Stock</TableHead>
+                    <TableHead>Current</TableHead>
                     <TableHead>Status</TableHead>
                   </TableRow>
                 </TableHeader>
@@ -115,9 +112,7 @@ export default function Maintenance() {
                         <TableCell className="font-mono font-semibold">{item.current}</TableCell>
                         <TableCell>
                           {isCritical ? (
-                            <Badge variant="destructive" className="animate-pulse-alert">
-                              Repor Urgente
-                            </Badge>
+                            <Badge variant="destructive">Repor Urgente</Badge>
                           ) : (
                             <Badge variant="outline" className="border-primary text-primary">
                               Normal

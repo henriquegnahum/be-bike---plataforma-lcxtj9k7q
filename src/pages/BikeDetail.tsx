@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -12,28 +12,36 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import {
-  ArrowLeft,
   Wrench,
   Settings,
   History,
   Bike as BikeIcon,
-  Calendar,
-  CheckCircle2,
+  Activity,
+  Key,
+  ShieldCheck,
 } from 'lucide-react'
-import { MOCK_BIKES, MOCK_BIKE_OS, MOCK_BIKE_PARTS } from '@/lib/mock-data'
+import { MOCK_BIKES, MOCK_BIKE_OS } from '@/lib/mock-data'
 
 export default function BikeDetail() {
   const { id } = useParams()
   const bike = MOCK_BIKES.find((b) => b.id === id) || MOCK_BIKES[0]
 
+  const nextRevisionKm = bike.lastRevisionKm + 2500
+  const kmToRevision = nextRevisionKm - bike.mileage
+
+  const getRevisionStatus = () => {
+    if (bike.status === 'Oficina')
+      return { label: 'In Revision', color: 'text-blue-500', bg: 'bg-blue-50' }
+    if (kmToRevision < 0) return { label: 'Revise Now', color: 'text-red-500', bg: 'bg-red-50' }
+    if (kmToRevision < 300)
+      return { label: 'Attention', color: 'text-orange-500', bg: 'bg-orange-50' }
+    return { label: 'Ok', color: 'text-emerald-500', bg: 'bg-emerald-50' }
+  }
+  const revStatus = getRevisionStatus()
+
   return (
-    <div className="space-y-6">
-      <div className="flex items-center gap-4 mb-4">
-        <Button variant="outline" size="icon" asChild>
-          <Link to="/bikes">
-            <ArrowLeft className="w-4 h-4" />
-          </Link>
-        </Button>
+    <div className="space-y-6 max-w-6xl mx-auto pb-12">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-6 rounded-xl border shadow-sm">
         <div>
           <h1 className="text-3xl font-bold tracking-tight font-mono text-secondary">
             {bike.chassi}
@@ -42,79 +50,127 @@ export default function BikeDetail() {
             <BikeIcon className="w-4 h-4 text-primary" /> {bike.model} • Lifecycle Dashboard
           </p>
         </div>
+        <Badge className="text-lg px-4 py-1">{bike.status}</Badge>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card className="md:col-span-1 border-primary/20">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <Card className="md:col-span-1 border-primary/20 bg-primary/5">
           <CardHeader>
-            <CardTitle className="text-lg">Current Status</CardTitle>
+            <CardTitle className="text-lg flex items-center gap-2">
+              <Activity className="w-4 h-4 text-primary" /> Telemetry
+            </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-5">
             <div>
-              <p className="text-sm text-muted-foreground mb-1">State</p>
-              <Badge className="text-sm px-3 py-1">{bike.status}</Badge>
-            </div>
-            <div>
-              <p className="text-sm text-muted-foreground mb-1">Current Deliverer</p>
-              <p className="font-medium">{bike.deliverer || 'None'}</p>
+              <p className="text-xs text-muted-foreground uppercase mb-1">Total KM (Trackplus)</p>
+              <p className="text-2xl font-bold">
+                {bike.mileage} <span className="text-sm font-normal text-muted-foreground">km</span>
+              </p>
             </div>
             <div>
-              <p className="text-sm text-muted-foreground mb-1">Total Mileage</p>
-              <p className="font-medium">{bike.mileage} km</p>
+              <p className="text-xs text-muted-foreground uppercase mb-1">Last Revision</p>
+              <p className="font-medium">{bike.lastRevisionKm} km</p>
             </div>
-            <div className="pt-4 border-t border-border">
-              <Button className="w-full bg-primary hover:bg-primary/90 text-white">
-                <Wrench className="w-4 h-4 mr-2" /> New Service Order
-              </Button>
+            <div
+              className={`p-3 rounded-lg border ${revStatus.bg} border-${revStatus.color.split('-')[1]}-200`}
+            >
+              <p className="text-xs font-semibold uppercase mb-1 flex items-center justify-between">
+                Next Revision
+                <span className={revStatus.color}>{revStatus.label}</span>
+              </p>
+              <p className="font-bold text-lg">{nextRevisionKm} km</p>
+              <p className="text-xs mt-1 text-muted-foreground">
+                in {kmToRevision > 0 ? kmToRevision : 0} km
+              </p>
             </div>
+            <Button className="w-full mt-4" variant="default">
+              <Wrench className="w-4 h-4 mr-2" /> Auto O.S.
+            </Button>
           </CardContent>
         </Card>
 
         <Card className="md:col-span-3">
           <CardContent className="p-0">
-            <Tabs defaultValue="maintenance" className="w-full">
-              <div className="px-6 py-4 border-b border-border bg-muted/20">
-                <TabsList className="grid w-full max-w-md grid-cols-3">
-                  <TabsTrigger value="maintenance">
-                    <Wrench className="w-4 h-4 mr-2" /> OrdSrv
+            <Tabs defaultValue="specs" className="w-full">
+              <div className="px-6 py-4 border-b border-border bg-muted/10">
+                <TabsList>
+                  <TabsTrigger value="specs">
+                    <Settings className="w-4 h-4 mr-2" /> Tech Specs
                   </TabsTrigger>
-                  <TabsTrigger value="parts">
-                    <Settings className="w-4 h-4 mr-2" /> Parts
+                  <TabsTrigger value="maintenance">
+                    <Wrench className="w-4 h-4 mr-2" /> OrdSrv & Parts
                   </TabsTrigger>
                   <TabsTrigger value="history">
-                    <History className="w-4 h-4 mr-2" /> Timeline
+                    <History className="w-4 h-4 mr-2" /> Assignment History
                   </TabsTrigger>
                 </TabsList>
               </div>
 
-              <TabsContent value="maintenance" className="p-6 m-0">
-                <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-lg font-semibold text-secondary">Service Orders History</h3>
+              <TabsContent value="specs" className="p-6 m-0">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
+                  <div>
+                    <p className="text-xs text-muted-foreground uppercase">Brand</p>
+                    <p className="font-medium">{bike.brand}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground uppercase">Model</p>
+                    <p className="font-medium">{bike.model}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground uppercase">Version</p>
+                    <p className="font-medium">{bike.version}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground uppercase">Size</p>
+                    <p className="font-medium">{bike.size}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground uppercase">Color</p>
+                    <p className="font-medium">{bike.color}</p>
+                  </div>
                 </div>
+
+                <h4 className="font-semibold text-secondary mt-8 mb-4 flex items-center gap-2 border-b pb-2">
+                  <ShieldCheck className="w-4 h-4" /> Security Assets
+                </h4>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 bg-slate-50 p-4 rounded-xl border">
+                  <div>
+                    <p className="text-xs text-muted-foreground uppercase flex items-center gap-1">
+                      <Activity className="w-3 h-3" /> Tracker #
+                    </p>
+                    <p className="font-mono text-sm mt-1">{bike.trackerNum}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground uppercase">Battery #</p>
+                    <p className="font-mono text-sm mt-1">{bike.batteryNum}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground uppercase flex items-center gap-1">
+                      <Key className="w-3 h-3" /> Lock Code
+                    </p>
+                    <p className="font-mono text-sm mt-1 font-bold">{bike.lockCode}</p>
+                  </div>
+                </div>
+              </TabsContent>
+
+              <TabsContent value="maintenance" className="p-6 m-0">
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead>OS Number</TableHead>
+                      <TableHead>O.S.</TableHead>
                       <TableHead>Date</TableHead>
                       <TableHead>Description</TableHead>
-                      <TableHead>Cost</TableHead>
                       <TableHead>Status</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
                     {MOCK_BIKE_OS.map((os) => (
                       <TableRow key={os.id}>
-                        <TableCell className="font-medium">{os.id}</TableCell>
+                        <TableCell className="font-mono text-xs">{os.id}</TableCell>
                         <TableCell>{os.date}</TableCell>
                         <TableCell>{os.description}</TableCell>
-                        <TableCell>${os.cost.toFixed(2)}</TableCell>
                         <TableCell>
-                          <Badge
-                            variant={os.status === 'Completed' ? 'default' : 'secondary'}
-                            className={os.status === 'Completed' ? 'bg-primary' : ''}
-                          >
-                            {os.status}
-                          </Badge>
+                          <Badge variant="outline">{os.status}</Badge>
                         </TableCell>
                       </TableRow>
                     ))}
@@ -122,73 +178,11 @@ export default function BikeDetail() {
                 </Table>
               </TabsContent>
 
-              <TabsContent value="parts" className="p-6 m-0">
-                <h3 className="text-lg font-semibold text-secondary mb-4">
-                  Parts & Inventory Tracker
-                </h3>
-                <div className="grid gap-4 md:grid-cols-2">
-                  {MOCK_BIKE_PARTS.map((part) => (
-                    <div
-                      key={part.id}
-                      className="flex items-center justify-between p-4 border border-border rounded-lg"
-                    >
-                      <div>
-                        <p className="font-medium">{part.name}</p>
-                        <p className="text-sm text-muted-foreground">ID: {part.id}</p>
-                      </div>
-                      <div className="text-right">
-                        <Badge
-                          variant="outline"
-                          className={
-                            part.status === 'Critical' ? 'border-red-500 text-red-500' : ''
-                          }
-                        >
-                          Stock: {part.stock}
-                        </Badge>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </TabsContent>
-
-              <TabsContent value="history" className="p-6 m-0">
-                <h3 className="text-lg font-semibold text-secondary mb-6">
-                  Chronological Timeline
-                </h3>
-                <div className="space-y-6 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-border before:to-transparent">
-                  <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                    <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-primary text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
-                      <CheckCircle2 className="w-5 h-5" />
-                    </div>
-                    <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-lg border border-border bg-card shadow-sm">
-                      <div className="flex items-center justify-between mb-1">
-                        <div className="font-bold text-secondary">Maintenance Completed</div>
-                        <time className="text-xs font-medium text-muted-foreground">
-                          Mar 15, 2024
-                        </time>
-                      </div>
-                      <div className="text-sm text-muted-foreground">
-                        Brake pad replacement done by Workshop Team.
-                      </div>
-                    </div>
-                  </div>
-                  <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                    <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-secondary text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
-                      <Calendar className="w-5 h-5" />
-                    </div>
-                    <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-lg border border-border bg-card shadow-sm">
-                      <div className="flex items-center justify-between mb-1">
-                        <div className="font-bold text-secondary">Assigned to Carlos</div>
-                        <time className="text-xs font-medium text-muted-foreground">
-                          Nov 10, 2023
-                        </time>
-                      </div>
-                      <div className="text-sm text-muted-foreground">
-                        Contract signed and bike delivered in perfect condition.
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <TabsContent
+                value="history"
+                className="p-6 m-0 text-center text-muted-foreground py-12"
+              >
+                Log completo de posse e CPFs vinculados aparecerá aqui.
               </TabsContent>
             </Tabs>
           </CardContent>

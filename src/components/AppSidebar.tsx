@@ -1,5 +1,14 @@
 import { Link, useLocation } from 'react-router-dom'
-import { Bike, Users, LayoutDashboard, Wrench, CheckSquare, KanbanSquare } from 'lucide-react'
+import {
+  Bike,
+  Users,
+  LayoutDashboard,
+  Wrench,
+  CheckSquare,
+  KanbanSquare,
+  DollarSign,
+  ShieldAlert,
+} from 'lucide-react'
 import {
   Sidebar,
   SidebarContent,
@@ -18,6 +27,10 @@ const menuItems = [
   { title: 'CRM & Funnel', icon: KanbanSquare, url: '/crm' },
   { title: 'Fleet Master', icon: Bike, url: '/bikes' },
   { title: 'Deliverer Master', icon: Users, url: '/deliverers' },
+  { title: 'Maintenance & Supply', icon: Wrench, url: '/maintenance' },
+  { title: 'Financial Hub', icon: DollarSign, url: '/financial' },
+  { title: 'Security & Risk', icon: ShieldAlert, url: '/security' },
+  { title: 'Tasks & Workflows', icon: CheckSquare, url: '/tasks' },
 ]
 
 export function AppSidebar() {
@@ -33,7 +46,7 @@ export function AppSidebar() {
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mt-4">
-            Core Modules
+            Command Center
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
@@ -46,7 +59,6 @@ export function AppSidebar() {
                       (item.url !== '/' && location.pathname.startsWith(item.url))
                     }
                   >
-                    {/* External links behavior requested via target="_blank" */}
                     <Link
                       to={item.url}
                       target="_blank"

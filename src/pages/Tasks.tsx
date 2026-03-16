@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { CheckCircle2, Circle, Clock, Check } from 'lucide-react'
+import { CheckCircle2, Clock, Check, CalendarDays, AlignLeft, Ticket } from 'lucide-react'
 import { useToast } from '@/hooks/use-toast'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { pendingApprovals } from '@/lib/mock-data'
@@ -36,32 +36,129 @@ export default function Tasks() {
   }
 
   return (
-    <div className="flex flex-col gap-6 max-w-5xl mx-auto pb-10">
+    <div className="flex flex-col gap-6 max-w-7xl mx-auto pb-12">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Workflows & Tarefas</h1>
+        <h1 className="text-3xl font-bold tracking-tight">Task & Ticket Management</h1>
         <p className="text-muted-foreground mt-1">
-          Motor de tarefas em cascata e alçadas de aprovação
+          Integrated workflows, approvals, and module-wide tickets.
         </p>
       </div>
 
-      <Tabs defaultValue="cascade" className="w-full">
-        <TabsList>
-          <TabsTrigger value="cascade">Workflow em Cascata</TabsTrigger>
-          <TabsTrigger value="approvals" className="gap-2">
-            Alçadas de Aprovação
-            {approvalsList.length > 0 && (
-              <Badge variant="secondary" className="ml-1 px-1.5 py-0 min-w-5">
-                {approvalsList.length}
-              </Badge>
-            )}
+      <Tabs defaultValue="tickets" className="w-full">
+        <TabsList className="grid w-full sm:w-auto grid-cols-2 sm:grid-cols-4 h-auto">
+          <TabsTrigger value="tickets" className="py-2 gap-2">
+            <Ticket className="w-4 h-4" /> Tickets
+          </TabsTrigger>
+          <TabsTrigger value="calendar" className="py-2 gap-2">
+            <CalendarDays className="w-4 h-4" /> Calendar
+          </TabsTrigger>
+          <TabsTrigger value="gantt" className="py-2 gap-2">
+            <AlignLeft className="w-4 h-4" /> Gantt
+          </TabsTrigger>
+          <TabsTrigger value="workflows" className="py-2 gap-2">
+            Workflows
           </TabsTrigger>
         </TabsList>
 
-        <TabsContent value="cascade" className="mt-6">
-          <Card className="shadow-subtle border-primary/20">
+        <TabsContent value="tickets" className="mt-6">
+          <Card className="shadow-sm">
             <CardHeader>
-              <CardTitle>Onboarding: Novo Entregador</CardTitle>
-              <CardDescription>O fluxo exige validação sequencial obrigatória.</CardDescription>
+              <CardTitle>Global Tickets View</CardTitle>
+              <CardDescription>Cross-module task attribution and tracking.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="flex flex-col gap-4">
+                {[
+                  {
+                    id: 'TK-101',
+                    title: 'Review Courier Documents',
+                    module: 'Operations',
+                    assignee: 'João (Hub)',
+                    due: 'Today',
+                  },
+                  {
+                    id: 'TK-102',
+                    title: 'Process AsaaS Payment Failure',
+                    module: 'Finance',
+                    assignee: 'Ana (Fin)',
+                    due: 'Tomorrow',
+                  },
+                  {
+                    id: 'TK-103',
+                    title: 'Schedule 2500km Maintenance',
+                    module: 'Supply',
+                    assignee: 'Carlos (Maint)',
+                    due: 'In 3 Days',
+                  },
+                ].map((tk) => (
+                  <div
+                    key={tk.id}
+                    className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 border rounded-xl hover:bg-muted/30 transition-colors gap-4"
+                  >
+                    <div>
+                      <div className="flex items-center gap-2 mb-1">
+                        <Badge variant="secondary" className="font-mono text-xs">
+                          {tk.id}
+                        </Badge>
+                        <Badge variant="outline" className="text-[10px] uppercase">
+                          {tk.module}
+                        </Badge>
+                      </div>
+                      <h4 className="font-semibold text-secondary">{tk.title}</h4>
+                    </div>
+                    <div className="flex items-center gap-4 text-sm text-muted-foreground w-full sm:w-auto">
+                      <div className="flex items-center gap-1">
+                        <Clock className="w-4 h-4" /> {tk.due}
+                      </div>
+                      <div className="px-2 py-1 bg-muted rounded text-xs">{tk.assignee}</div>
+                      <Button variant="outline" size="sm">
+                        View
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="calendar" className="mt-6">
+          <Card className="shadow-sm">
+            <CardHeader>
+              <CardTitle>Calendar View</CardTitle>
+              <CardDescription>
+                Visual timeline of deadlines and maintenance schedules.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="h-[400px] border-2 border-dashed rounded-xl flex items-center justify-center bg-muted/10 text-muted-foreground flex-col gap-2">
+                <CalendarDays className="w-12 h-12 opacity-20" />
+                <p>Interactive Calendar Integration to be rendered here.</p>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="gantt" className="mt-6">
+          <Card className="shadow-sm">
+            <CardHeader>
+              <CardTitle>Gantt Chart</CardTitle>
+              <CardDescription>Long-term project and operation timeline tracking.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="h-[400px] border-2 border-dashed rounded-xl flex items-center justify-center bg-muted/10 text-muted-foreground flex-col gap-2">
+                <AlignLeft className="w-12 h-12 opacity-20" />
+                <p>Gantt Chart Component to be rendered here.</p>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="workflows" className="mt-6 space-y-6">
+          <Card className="shadow-sm border-primary/20">
+            <CardHeader>
+              <CardTitle>Cascade Workflow: New Courier Onboarding</CardTitle>
+              <CardDescription>Mandatory sequential validation flow.</CardDescription>
             </CardHeader>
             <CardContent className="flex flex-col gap-0">
               {ONBOARDING_STEPS.map((step, index) => {
@@ -121,21 +218,24 @@ export default function Tasks() {
               })}
             </CardContent>
           </Card>
-        </TabsContent>
 
-        <TabsContent value="approvals" className="mt-6">
-          <Card className="shadow-subtle">
+          <Card className="shadow-sm">
             <CardHeader>
-              <CardTitle>Caixa de Aprovações</CardTitle>
-              <CardDescription>
-                Ações críticas que requerem dupla validação de times específicos.
-              </CardDescription>
+              <CardTitle className="flex items-center gap-2">
+                Approvals Inbox
+                {approvalsList.length > 0 && (
+                  <Badge variant="destructive" className="ml-2">
+                    {approvalsList.length}
+                  </Badge>
+                )}
+              </CardTitle>
+              <CardDescription>Critical actions requiring dual validation.</CardDescription>
             </CardHeader>
             <CardContent>
               {approvalsList.length === 0 ? (
                 <div className="text-center py-10 text-muted-foreground">
                   <CheckCircle2 className="w-12 h-12 mx-auto mb-3 opacity-20" />
-                  <p>Nenhuma aprovação pendente.</p>
+                  <p>No pending approvals.</p>
                 </div>
               ) : (
                 <div className="flex flex-col gap-4">
@@ -157,20 +257,20 @@ export default function Tasks() {
                             {app.type}: {app.desc}
                           </h4>
                           <p className="text-xs text-muted-foreground mt-1">
-                            Valor: <strong className="text-foreground">{app.value}</strong> |
-                            Solicitante: {app.requester}
+                            Value: <strong className="text-foreground">{app.value}</strong> |
+                            Requester: {app.requester}
                           </p>
                         </div>
                       </div>
                       <div className="flex items-center gap-2 w-full sm:w-auto">
                         <Button variant="outline" className="flex-1 sm:flex-none">
-                          Rejeitar
+                          Reject
                         </Button>
                         <Button
                           onClick={() => handleApprove(app.id)}
                           className="flex-1 sm:flex-none"
                         >
-                          Aprovar
+                          Approve
                         </Button>
                       </div>
                     </div>
