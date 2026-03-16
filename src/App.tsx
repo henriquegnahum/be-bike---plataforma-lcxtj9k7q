@@ -5,16 +5,19 @@ import Layout from '@/components/Layout'
 import Index from '@/pages/Index'
 import Hubs from '@/pages/Hubs'
 import CalendarPage from '@/pages/Calendar'
-import CRM from '@/pages/CRM'
-import Marketing from '@/pages/Marketing'
+import SalesDashboard from '@/pages/sales/SalesDashboard'
+import CustomerBase from '@/pages/sales/CustomerBase'
+import SalesFunnels from '@/pages/sales/SalesFunnels'
 import LeadDetail from '@/pages/LeadDetail'
+import Marketing from '@/pages/Marketing'
 import Bikes from '@/pages/Bikes'
 import BikeDetail from '@/pages/BikeDetail'
 import Deliverers from '@/pages/Deliverers'
 import DelivererDetail from '@/pages/DelivererDetail'
 import Maintenance from '@/pages/Maintenance'
-import CustomerService from '@/pages/CustomerService'
-import Community from '@/pages/Community'
+import CommunityDashboard from '@/pages/community/CommunityDashboard'
+import PointsProgram from '@/pages/community/PointsProgram'
+import CustomerService from '@/pages/community/CustomerService'
 import Tasks from '@/pages/Tasks'
 import Financial from '@/pages/Financial'
 import Security from '@/pages/Security'
@@ -63,16 +66,19 @@ function AppContent() {
           <Route index element={<Index />} />
           <Route path="hubs" element={<Hubs />} />
           <Route path="calendar" element={<CalendarPage />} />
-          <Route path="crm" element={<CRM />} />
-          <Route path="crm/:id" element={<LeadDetail />} />
+          <Route path="sales/dashboard" element={<SalesDashboard />} />
+          <Route path="sales/customers" element={<CustomerBase />} />
+          <Route path="sales/customers/:id" element={<LeadDetail />} />
+          <Route path="sales/funnels" element={<SalesFunnels />} />
           <Route path="marketing" element={<Marketing />} />
           <Route path="bikes" element={<Bikes />} />
           <Route path="bikes/:id" element={<BikeDetail />} />
           <Route path="deliverers" element={<Deliverers />} />
           <Route path="deliverers/:id" element={<DelivererDetail />} />
           <Route path="maintenance" element={<Maintenance />} />
-          <Route path="customer-service" element={<CustomerService />} />
-          <Route path="community" element={<Community />} />
+          <Route path="community/dashboard" element={<CommunityDashboard />} />
+          <Route path="community/points" element={<PointsProgram />} />
+          <Route path="community/service" element={<CustomerService />} />
           <Route path="tasks" element={<Tasks />} />
           <Route path="financial" element={<Financial />} />
           <Route path="security" element={<Security />} />

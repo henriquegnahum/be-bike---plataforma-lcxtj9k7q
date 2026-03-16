@@ -1,4 +1,4 @@
-import { LayoutDashboard, KanbanSquare, Activity, DollarSign, Settings } from 'lucide-react'
+import { LayoutDashboard, KanbanSquare, Activity, DollarSign, Settings, Users } from 'lucide-react'
 
 export const navHierarchy = [
   {
@@ -16,19 +16,20 @@ export const navHierarchy = [
       { title: 'Frota', url: '/bikes' },
       { title: 'Hubs', url: '/hubs' },
       { title: 'Manutenção', url: '/maintenance' },
-      { title: 'Supply', url: '/coming-soon' },
-      { title: 'Comunidade', url: '/community' },
-      { title: 'Atendimento', url: '/customer-service' },
+      { title: 'Comunidade (Dashboard)', url: '/community/dashboard' },
+      { title: 'Programa de pontos', url: '/community/points' },
+      { title: 'Atendimento', url: '/community/service' },
       { title: 'Segurança e Risco', url: '/security' },
     ],
   },
   {
-    title: 'Comercial & Marketing',
+    title: 'Sales',
     icon: KanbanSquare,
     items: [
-      { title: 'CRM e Leads', url: '/crm' },
+      { title: 'Dashboard de Vendas', url: '/sales/dashboard' },
+      { title: 'Base de Clientes', url: '/sales/customers' },
+      { title: 'Funis de Vendas', url: '/sales/funnels' },
       { title: 'Performance e Ads', url: '/marketing' },
-      { title: 'Contratos', url: '/coming-soon' },
     ],
   },
   {

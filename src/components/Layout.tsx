@@ -6,6 +6,8 @@ import { AIAssistant } from './AIAssistant'
 import { TopAlerts } from './TopAlerts'
 import { RightSidebar } from './RightSidebar'
 import useAppStore from '@/stores/main'
+import { Button } from '@/components/ui/button'
+import { Sparkles } from 'lucide-react'
 
 export default function Layout() {
   const { aiOpen, setAiOpen } = useAppStore()
@@ -29,6 +31,16 @@ export default function Layout() {
         </div>
 
         <AIAssistant open={aiOpen} onOpenChange={setAiOpen} />
+
+        {!aiOpen && (
+          <Button
+            onClick={() => setAiOpen(true)}
+            size="icon"
+            className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-[0_8px_30px_rgba(28,209,92,0.3)] bg-primary hover:bg-primary/90 hover:scale-110 transition-all duration-300 z-50 flex items-center justify-center border border-primary/50 group"
+          >
+            <Sparkles className="h-6 w-6 text-primary-foreground group-hover:animate-pulse" />
+          </Button>
+        )}
       </div>
     </SidebarProvider>
   )
